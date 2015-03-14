@@ -6,20 +6,34 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>SiteName</title>
+		<title>Kb</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
 	</head>
 
 	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
 		<div id="container">
 			<div id="side">
-				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >Site Name</a></div>
+				<a href="/" id="home" title="Kb" alt="Kb">Kb</a>
+				<div id="hometext"><a href="/" >Kb</a></div>
 				<div class="section">
 					<ul>
-						<li><a href="/about.html">about</a></li>
 						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
 					</ul>
 				</div>
@@ -30,21 +44,155 @@
         <li>
             <div class="idea">
                 
-                    <h1><a href="/2015/03/14/myfirstpost.html">My First Post</a></h1>
+                    <h1><a href="/2015/03/14/focu-on-content.html">Focusing on content</a></h1>
                     <div class="postdate">14 March, 2015
                         <ul>
                         
                         </ul>
                     </div>
-                    <h2>Hello world...</h2>
-<pre><code class="language-cs">static void Main() 
-{
-    Console.WriteLine(&quot;Hello World!&quot;);
-}
-</code></pre>
-<p>This is my first post on the site!</p>
+                    <p>Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.</p>
+<p>My path has been: PjBlog -&gt; Wordpress -&gt; Umbraco -&gt; MiniBlog -&gt; Pretzel</p>
+<p>Main reason to use Pretzel instead of Jekyll is that I am on Windows platform, it's always painful to run those linux stuff.</p>
+<p>And I think to for me as a developer, the focus is always being diverted by the technology I use to build the blog, instead of writing and maintaining the blog itself. So by making content simple and single files, I hope that I can from now on, focus on content.</p>
                     <br />
-                    <a href="/2015/03/14/myfirstpost.html#disqus_thread">Comments</a>
+                    <a href="/2015/03/14/focu-on-content.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html">Section references in Sitecore config files with ref attribute</a></h2>
+                    <div class="postdate">13 January, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>Have seem a lot of usages with &quot;ref&quot; attributes when setting up Sitecore Lucene Indexes. Normally it's used to refer to another section of the config file. But I wanted to do more and couldn't find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.</p>
+<ul>
+<li>Attribute &quot;ref&quot; can be used to refer to another section of the configuration files in Sitecore.</li>
+<li>The value of attribute &quot;ref&quot; is using Xpath.</li>
+<li>Attribute &quot;ref&quot; are being used to create objects in all places and eventually come to this method:</li>
+</ul>
+<pre><code class="language-c#">public static object CreateObject(XmlNode configNode, string[] parameters, bool assert, IFactoryHelper helper)
+{object obj = (((Factory.CreateFromFactory(configNode, parameters, assert) ?? Factory.CreateFromFactoryMethod(configNode, parameters, assert)) ?? Factory.CreateFromReference(configNode, parameters, assert)) ?? Factory.CreateFromTypeName(configNode, parameters, assert)) ?? Factory.CreateFromConnectionStringName(configNode, parameters, assert);}
+</code></pre>
+<ul>
+<li>When obj is still null, it returns the value as string.</li>
+</ul>
+<p>So this is always being used to create a obj to assign to a property of the parent node.</p>
+<p>when a node has 'hint=&quot;list:xxx&quot;', it means it's mapping to a method of the parent node's type(&quot;type&quot; atttibute). (please ref to this <a href="http://www.sitecore.net/Learn/Blogs/Technical-Blogs/John-West-Sitecore-Blog/Posts/2011/02/The-Sitecore-ASPNET-CMS-Configuration-Factory.aspx">Sitecore configuration factory and dependency injection</a> article on Sitecore Blog for more details)
+Hope that helped you. Now if you still have time, you can keep reading to learn my story.</p>
+<p>First, when setting up Sitecore 7 Lucene Index, you must have come across this line in the config:</p>
+<pre><code class="language-xml">&lt;Analyzer ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/analyzer&quot; /&gt;
+</code></pre>
+<p>This works great, but I wanted to use it for &quot;ExcludeField&quot; fields as well to keep my custom index configuration clean. The default configuration looks like this:</p>
+<pre><code class="language-xml">&lt;exclude hint=&quot;list:ExcludeField&quot;&gt;
+&lt;__display_name&gt;{B5E02AD9-D56F-4C41-A065-A133DB87BDEB}&lt;/__display_name&gt;
+&lt;/exclude&gt;
+</code></pre>
+<p>So I have tried to do this:</p>
+<pre><code class="language-xml">&lt;exclude ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint='list:ExcludeField']&quot; /&gt;
+and:
+&lt;exclude hint=&quot;list:ExcludeField&quot; ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint='list:ExcludeField']&quot; /&gt;
+</code></pre>
+<p>None of them worked. Though the xpath is correct, but &quot;ExcludeField&quot; is a method and when you use &quot;ref&quot;, it tries to create an object as a property, so it fails.</p>
+<p>Therefore my conclusion is that you can't use &quot;ref&quot; in configuration files for referencing methods. This is bad news for my clean configuration initiative, I still need to do more digging on this, will post it in another post which will focus on Sitecore Custom Lucene Indexes.</p>
+                    <a href="/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/01/11/Powerline-Ethernet-Adapters.html">Powerline Ethernet Adapters</a></h2>
+                    <div class="postdate">11 January, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>Bought <strong>Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)</strong> from MSY, 89 dollars.</p>
+<p>Live in a rented apartment, can't put ethernet cables into the walls and don't want the cables to lay on the floor all over the place, wireless is always a pain, stability is the biggest issue. I used to sell those powerline adapters a lot when I worked in a computer shop, never cared about it because I thought I'd never use them.</p>
+<p>But under current circumstance, I got to the conclusion that powerline adapters are the only option. So here comes the results:</p>
+<p>They are 500Mbps model with 100Mbps ports, during daytime when there's not much power usage, the speed can reach 10MB/s which is pretty much peak speed and if I put it on a powerboard, it drops to 9MB/s, still pretty good.</p>
+<p>During the night, speed drops to 6MB/s, only slightly better than my wireless, however it's much more stable, doesn't dropout that frequently like the wireless does. That's good enough for me.</p>
+<p>I do got a bit issue that the size of the adapter is too big, and the wall sockets are always in pair and close to each other which makes me can't plug it on the wall directly. That's why I was testing the speed on a powerboard.</p>
+<p>The good thing is that looks like different models should be able to pair together <a href="http://www.tp-link.com.au/article/?faqid=406">(tp-link)</a> which is convenient for future expansion.</p>
+                    <a href="/2015/01/11/Powerline-Ethernet-Adapters.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html">TDS project build fail in Teamcity with VS 2012 runner</a></h2>
+                    <div class="postdate"> 6 January, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>I'm sorry, don't have a solution yet. Still finding.</p>
+<p>Other projects build on this agent, this project builds on other agents.</p>
+<p>However .Net framework all looks fine. Teamcity is set to use Visual Studio 2012 runner. I thought it's because this agent doesn't have VS 2012 installed, but another agent doesn't have VS 2012 builds this project fine.</p>
+<p>I did notice although other agents don't have VS installed, but they all have VS folders in program files folders. However it didn't work when I copied the folder across, but I feel I was close.</p>
+<blockquote>
+<p>[17:45:29][MSBuild] xx.scproj: Build target: Rebuild
+[17:45:29][xx.scproj] Rebuild
+[17:45:29][Rebuild] CallTarget
+[17:45:29][CallTarget] GeneratePackage
+[17:45:29][GeneratePackage] Building package with files in folder .\bin\Development<br />
+[17:45:29][GeneratePackage] GeneratePackage
+[17:45:29][GeneratePackage] ProjectFilePath: E:\buildAgent\work\xxx.scproj
+[17:45:29][GeneratePackage] PackageOutputDirectory: .\bin\Development..\Package_Development<br />
+[17:45:29][GeneratePackage] ConfigurationToBuild: Development
+[17:45:29][GeneratePackage] CompiledFiles: .\bin\Development<br />
+[17:45:29][GeneratePackage] SeperateFilesAndItems: True
+[17:45:29][GeneratePackage] SitecoreAssemblyPath: ....\lib\Sitecore\Assemblies
+[17:45:29][GeneratePackage] Looking for Sitecore DLL's in E:\buildAgent\work\xx\xx....\lib\Sitecore\Assemblies
+[17:45:29][GeneratePackage] Exception Could not load file or assembly 'file:///xx\lib\Sitecore\Assemblies\Sitecore.Kernel.dll' or one of its dependencies. This assembly is built by a runtime newer than the currently loaded runtime and cannot be loaded.(HedgehogDevelopment.SitecoreProject.PackageBuilder.PackageBuilderException):
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.CheckForAssembly(String assemblyName, String assemblyRoot)
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.LoadSitecoreAssemblies(BuildContext ctx)
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.Main(String[] args)
+[17:45:29][GeneratePackage] C:\Program Files (x86)\MSBuild\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets(92, 5): Could not find required components. The Sitecore.Kernel.Dll, Sitecore.Update.dll, Sitecore.Zip.dll and Sitecore.Logging.dll are needed to build update packages. The path to these files must be set in the &quot;Update Package&quot; tab of the project property page.</p>
+</blockquote>
+                    <a href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html">Sonos with Airsonos on Windows and Mac</a></h2>
+                    <div class="postdate">18 December, 2014
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>Installing on Mac was very smooth, and playback is perfect, I used it for about 5 to 6 songs, no problems at all. So I'll say it's great on Mac.</p>
+<p>Though my home server is running Windows Home server 2011, I don't want to keep my Mac air on all the time, so obviously it'd be must better if home server can run Airsonos. But then nightmare begins.</p>
+<p>I had</p>
+<ul>
+<li>Couldn't locate vcbuild.exe</li>
+<li>fatal error c1083: cannot open include file</li>
+<li>something something is not build for x64 platform</li>
+<li>Need python</li>
+</ul>
+<p>errors.</p>
+<p>So after:</p>
+<ul>
+<li>Using 32 bit Node.js</li>
+<li>Installed Python 2.7</li>
+<li>Installed VS ++ 2010</li>
+<li>Installed Bonjour SDK</li>
+</ul>
+<p>I was finally be able to start Airsonos on my windows server and successfully located my sonos player.</p>
+<p>However then when I connect to it on iPhone, it stuck and disappears, over and over again, wouldn't play at all. I tried disabling the windows firewall, didn't work.</p>
+<p>So anyway, just want to help those people who are trying it on windows. Good luck!</p>
+                    <a href="/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html#disqus_thread">Comments</a>
                 
             </div>
         </li>
@@ -52,6 +200,38 @@
 </ul>
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+    <li>
+        <span class="olderpostdate"> 17 Dec </span> <a class="postlink" href="/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html">Google Tag Manager causing placeholder issues in IE 8</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 13 Dec </span> <a class="postlink" href="/2014/12/13/IIS-Http-error-500.19-with-web.config.html">IIS Http error 500.19 with web.config</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 13 Dec </span> <a class="postlink" href="/2014/12/13/Must-have-softwares-after-reinstalling-windows.html">Must have softwares after reinstalling windows</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 11 Dec </span> <a class="postlink" href="/2014/12/11/Multi-Site-solution-deployments-in-Azure.html">Multi-Site solution deployments in Azure</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 08 Dec </span> <a class="postlink" href="/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html">IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 08 Dec </span> <a class="postlink" href="/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html">Schedule tasks not running on CDS in Sitecore</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 07 Dec </span> <a class="postlink" href="/2014/12/07/Sitecore-Redirect-Manager.html">Sitecore Redirect Manager</a>
+    </li>
+
+    <li>
+        <span class="olderpostdate"> 04 Dec </span> <a class="postlink" href="/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html">Sitecore Indexes media url with /sitecore/shell</a>
+    </li>
 
 </ul>
 <script type="text/javascript">
@@ -64,7 +244,7 @@
         query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
     }
     }
-    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/DISQUS_NAME/get_num_replies.js' + query + '"></' + 'script>');
+    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/kezblog/get_num_replies.js' + query + '"></' + 'script>');
 })();
 //]]>
 </script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>TDS project build fail in Teamcity with VS 2012 runner</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<div id="container">
+			<div id="side">
+				<a href="/" id="home" title="Kb" alt="Kb">Kb</a>
+				<div id="hometext"><a href="/" >Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> TDS project build fail in Teamcity with VS 2012 runner </h1>
+		<span class="postdate"> 6 January, 2015
+			
+		</span>
+		<p>I'm sorry, don't have a solution yet. Still finding.</p>
+<p>Other projects build on this agent, this project builds on other agents.</p>
+<p>However .Net framework all looks fine. Teamcity is set to use Visual Studio 2012 runner. I thought it's because this agent doesn't have VS 2012 installed, but another agent doesn't have VS 2012 builds this project fine.</p>
+<p>I did notice although other agents don't have VS installed, but they all have VS folders in program files folders. However it didn't work when I copied the folder across, but I feel I was close.</p>
+<blockquote>
+<p>[17:45:29][MSBuild] xx.scproj: Build target: Rebuild
+[17:45:29][xx.scproj] Rebuild
+[17:45:29][Rebuild] CallTarget
+[17:45:29][CallTarget] GeneratePackage
+[17:45:29][GeneratePackage] Building package with files in folder .\bin\Development<br />
+[17:45:29][GeneratePackage] GeneratePackage
+[17:45:29][GeneratePackage] ProjectFilePath: E:\buildAgent\work\xxx.scproj
+[17:45:29][GeneratePackage] PackageOutputDirectory: .\bin\Development..\Package_Development<br />
+[17:45:29][GeneratePackage] ConfigurationToBuild: Development
+[17:45:29][GeneratePackage] CompiledFiles: .\bin\Development<br />
+[17:45:29][GeneratePackage] SeperateFilesAndItems: True
+[17:45:29][GeneratePackage] SitecoreAssemblyPath: ....\lib\Sitecore\Assemblies
+[17:45:29][GeneratePackage] Looking for Sitecore DLL's in E:\buildAgent\work\xx\xx....\lib\Sitecore\Assemblies
+[17:45:29][GeneratePackage] Exception Could not load file or assembly 'file:///xx\lib\Sitecore\Assemblies\Sitecore.Kernel.dll' or one of its dependencies. This assembly is built by a runtime newer than the currently loaded runtime and cannot be loaded.(HedgehogDevelopment.SitecoreProject.PackageBuilder.PackageBuilderException):
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.CheckForAssembly(String assemblyName, String assemblyRoot)
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.LoadSitecoreAssemblies(BuildContext ctx)
+[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.Main(String[] args)
+[17:45:29][GeneratePackage] C:\Program Files (x86)\MSBuild\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets(92, 5): Could not find required components. The Sitecore.Kernel.Dll, Sitecore.Update.dll, Sitecore.Zip.dll and Sitecore.Logging.dll are needed to build update packages. The path to these files must be set in the &quot;Update Package&quot; tab of the project property page.</p>
+</blockquote>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>

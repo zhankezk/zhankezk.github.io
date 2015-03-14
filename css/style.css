@@ -50,10 +50,7 @@ li
 	list-style-type:circle;
 }
 #hometext a { font-size: 2em; margin-left: 5px; margin-right:10px; display: none; color: #41B1E1; font-weight: normal;  }
-#home:hover 
-{ 
-	background:none; 
-}
+#home { font-size: 7em;}
 #side 
 { 
 	float:right; 
