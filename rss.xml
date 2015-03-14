@@ -6,14 +6,14 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 02:27:39 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 02:27:39 %z</lastBuildDate>
+    <pubDate>Sun, 15 Mar 2015 02:31:30 %z</pubDate>
+    <lastBuildDate>Sun, 15 Mar 2015 02:31:30 %z</lastBuildDate>
     
     <item>
       <title>Focusing on content</title>
       <link>http://zzzgo.com/2015/03/14/focu-on-content.html</link>
       <pubDate>Sat, 14 Mar 2015 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2015/03/14/focu-on-content.html</guid>
       <description>&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
 &lt;p&gt;My path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
@@ -25,7 +25,7 @@
       <title>Section references in Sitecore config files with ref attribute</title>
       <link>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</link>
       <pubDate>Tue, 13 Jan 2015 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</guid>
       <description>&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config file. But I wanted to do more and couldn&apos;t find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
 &lt;ul&gt;
@@ -63,7 +63,7 @@ and:
       <title>Powerline Ethernet Adapters</title>
       <link>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</link>
       <pubDate>Sun, 11 Jan 2015 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</guid>
       <description>&lt;p&gt;Bought &lt;strong&gt;Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)&lt;/strong&gt; from MSY, 89 dollars.&lt;/p&gt;
 &lt;p&gt;Live in a rented apartment, can&apos;t put ethernet cables into the walls and don&apos;t want the cables to lay on the floor all over the place, wireless is always a pain, stability is the biggest issue. I used to sell those powerline adapters a lot when I worked in a computer shop, never cared about it because I thought I&apos;d never use them.&lt;/p&gt;
@@ -78,7 +78,7 @@ and:
       <title>TDS project build fail in Teamcity with VS 2012 runner</title>
       <link>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</link>
       <pubDate>Tue, 06 Jan 2015 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</guid>
       <description>&lt;p&gt;I&apos;m sorry, don&apos;t have a solution yet. Still finding.&lt;/p&gt;
 &lt;p&gt;Other projects build on this agent, this project builds on other agents.&lt;/p&gt;
@@ -110,7 +110,7 @@ and:
       <title>Sonos with Airsonos on Windows and Mac</title>
       <link>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</link>
       <pubDate>Thu, 18 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</guid>
       <description>&lt;p&gt;Installing on Mac was very smooth, and playback is perfect, I used it for about 5 to 6 songs, no problems at all. So I&apos;ll say it&apos;s great on Mac.&lt;/p&gt;
 &lt;p&gt;Though my home server is running Windows Home server 2011, I don&apos;t want to keep my Mac air on all the time, so obviously it&apos;d be must better if home server can run Airsonos. But then nightmare begins.&lt;/p&gt;
@@ -138,7 +138,7 @@ and:
       <title>Google Tag Manager causing placeholder issues in IE 8</title>
       <link>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</link>
       <pubDate>Wed, 17 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</guid>
       <description>&lt;p&gt;&lt;strong&gt;Issue:&lt;/strong&gt;
 On form submit, if the field doesn&apos;t have content. Placeholder text are being submitted with form post.&lt;/p&gt;
@@ -158,7 +158,7 @@ Remove the incorrect rule, issues are gone.&lt;/p&gt;</description>
       <title>IIS Http error 500.19 with web.config</title>
       <link>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</link>
       <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</guid>
       <description>&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
 &lt;blockquote&gt;
@@ -184,7 +184,7 @@ Logon User     Not yet determined&lt;/p&gt;
       <title>Must have softwares after reinstalling windows</title>
       <link>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</link>
       <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</guid>
       <description>&lt;h2&gt;Daily:&lt;/h2&gt;
 &lt;ol&gt;
@@ -235,7 +235,7 @@ Logon User     Not yet determined&lt;/p&gt;
       <title>Multi-Site solution deployments in Azure</title>
       <link>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</link>
       <pubDate>Thu, 11 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;
@@ -255,7 +255,7 @@ Logon User     Not yet determined&lt;/p&gt;
       <title>IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</title>
       <link>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</link>
       <pubDate>Mon, 08 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</guid>
       <description>&lt;p&gt;It all started with those lines in defaultIndexConfiguration from Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;!-- If no configuration is specified for an index, it uses the default configuration. The configurations are not merged if the index also has a configuration. The system uses either the default configuration or the index configuration. --&amp;gt;
@@ -301,7 +301,7 @@ This setting allows you to exclude items that are based on a specific template.-
       <title>Schedule tasks not running on CDS in Sitecore</title>
       <link>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</link>
       <pubDate>Mon, 08 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</guid>
       <description>&lt;p&gt;Had a schedule task setup to generate sitemap.xml for the client, however found that it&apos;s working on CAS, but not on CDS.&lt;/p&gt;
 &lt;p&gt;Turns out since SwitchMasterToWeb.config is used when setting up CDS environment, it removes scheduling agents, only leave core in there.&lt;/p&gt;
@@ -313,7 +313,7 @@ This setting allows you to exclude items that are based on a specific template.-
       <title>Sitecore Redirect Manager</title>
       <link>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</link>
       <pubDate>Sun, 07 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</guid>
       <description>&lt;p&gt;Installed a Redirect manager module for some client&apos;s sitecore, but it doesn&apos;t handle multiple sites so I had to customize it to support multiple sites.&lt;/p&gt;
 &lt;p&gt;After that, local and testing deployments went well, everything were working perfectly . But then it doesn&apos;t redirect at all on one of the sites when I deployed to Staging.&lt;/p&gt;
@@ -325,7 +325,7 @@ This setting allows you to exclude items that are based on a specific template.-
       <title>Sitecore Indexes media url with /sitecore/shell</title>
       <link>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</link>
       <pubDate>Thu, 04 Dec 2014 00:00:00 %z</pubDate>
-      <author>Author</author>
+      <author>Ke</author>
       <guid>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</guid>
       <description>&lt;p&gt;&amp;quot;urllink&amp;quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
 &lt;p&gt;For media items, if I rebuild the indexs, the urls that gets stored into index start with &amp;quot;/~/media/...&amp;quot;, which is correct.&lt;/p&gt;
