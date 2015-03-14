@@ -101,6 +101,14 @@
   
 	
 	<url>
+		<loc>http://zzzgo.com/404.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
 		<loc>http://zzzgo.com/index.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
