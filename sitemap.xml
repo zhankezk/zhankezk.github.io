@@ -7,91 +7,91 @@
   <!-- Generated with pretzel -->
   
   <url>
-    <loc>http://domain/2015/03/14/focu-on-content.html</loc>
+    <loc>http://zzzgo.com/2015/03/14/focu-on-content.html</loc>
     <lastmod>2015-03-14T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</loc>
+    <loc>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</loc>
     <lastmod>2015-01-13T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2015/01/11/Powerline-Ethernet-Adapters.html</loc>
+    <loc>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</loc>
     <lastmod>2015-01-11T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</loc>
+    <loc>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</loc>
     <lastmod>2015-01-06T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</loc>
+    <loc>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</loc>
     <lastmod>2014-12-18T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</loc>
+    <loc>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</loc>
     <lastmod>2014-12-17T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/13/IIS-Http-error-500.19-with-web.config.html</loc>
+    <loc>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</loc>
     <lastmod>2014-12-13T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</loc>
+    <loc>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</loc>
     <lastmod>2014-12-13T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</loc>
+    <loc>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</loc>
     <lastmod>2014-12-11T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</loc>
+    <loc>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</loc>
     <lastmod>2014-12-08T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</loc>
+    <loc>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</loc>
     <lastmod>2014-12-08T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/07/Sitecore-Redirect-Manager.html</loc>
+    <loc>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</loc>
     <lastmod>2014-12-07T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   
   <url>
-    <loc>http://domain/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</loc>
+    <loc>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</loc>
     <lastmod>2014-12-04T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -101,7 +101,7 @@
   
 	
 	<url>
-		<loc>http://domain/atom.xml</loc>
+		<loc>http://zzzgo.com/index.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -109,7 +109,7 @@
   
 	
 	<url>
-		<loc>http://domain/index.html</loc>
+		<loc>http://zzzgo.com/rss.xml</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -117,15 +117,7 @@
   
 	
 	<url>
-		<loc>http://domain/rss.xml</loc>
-		<changefreq>daily</changefreq>
-		<priority>1.00</priority>
-	</url>
-	
-  
-	
-	<url>
-		<loc>http://domain/sitemap.xml</loc>
+		<loc>http://zzzgo.com/sitemap.xml</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
