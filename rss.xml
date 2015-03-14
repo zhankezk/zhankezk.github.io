@@ -6,15 +6,15 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 02:52:48 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 02:52:48 %z</lastBuildDate>
+    <pubDate>Sun, 15 Mar 2015 03:08:38 %z</pubDate>
+    <lastBuildDate>Sun, 15 Mar 2015 03:08:38 %z</lastBuildDate>
     
     <item>
       <title>Focusing on content</title>
-      <link>http://zzzgo.com/2015/03/14/focus-on-content.html</link>
+      <link>http://zzzgo.com/2015/03/14/focusing-on-content.html</link>
       <pubDate>Sat, 14 Mar 2015 00:00:00 %z</pubDate>
       <author>Ke</author>
-      <guid>http://zzzgo.com/2015/03/14/focus-on-content.html</guid>
+      <guid>http://zzzgo.com/2015/03/14/focusing-on-content.html</guid>
       <description>&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
 &lt;p&gt;My path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
 &lt;p&gt;Main reason to use Pretzel instead of Jekyll is that I am on Windows platform, it&apos;s always painful to run those linux stuff.&lt;/p&gt;
