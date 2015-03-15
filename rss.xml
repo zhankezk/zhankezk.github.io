@@ -6,8 +6,17 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 03:08:38 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 03:08:38 %z</lastBuildDate>
+    <pubDate>Sun, 15 Mar 2015 14:21:10 %z</pubDate>
+    <lastBuildDate>Sun, 15 Mar 2015 14:21:10 %z</lastBuildDate>
+    
+    <item>
+      <title>From mobile</title>
+      <link>http://zzzgo.com/2015/03/15/From-mobile.html</link>
+      <pubDate>Sun, 15 Mar 2015 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://zzzgo.com/2015/03/15/From-mobile.html</guid>
+      <description>&lt;p&gt;Testing from iPhone app, writing markdowns. Although can&apos;t publish it, but that&apos;s fine. I don&apos;t do news.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Focusing on content</title>
@@ -35,7 +44,7 @@
 &lt;li&gt;The value of attribute &amp;quot;ref&amp;quot; is using Xpath.&lt;/li&gt;
 &lt;li&gt;Attribute &amp;quot;ref&amp;quot; are being used to create objects in all places and eventually come to this method:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&quot;language-c#&quot;&gt;public static object CreateObject(XmlNode configNode, string[] parameters, bool assert, IFactoryHelper helper)
+&lt;pre&gt;&lt;code class=&quot;language-cs&quot;&gt;public static object CreateObject(XmlNode configNode, string[] parameters, bool assert, IFactoryHelper helper)
 {object obj = (((Factory.CreateFromFactory(configNode, parameters, assert) ?? Factory.CreateFromFactoryMethod(configNode, parameters, assert)) ?? Factory.CreateFromReference(configNode, parameters, assert)) ?? Factory.CreateFromTypeName(configNode, parameters, assert)) ?? Factory.CreateFromConnectionStringName(configNode, parameters, assert);}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ul&gt;

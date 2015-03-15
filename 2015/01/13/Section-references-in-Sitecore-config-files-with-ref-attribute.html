@@ -51,7 +51,7 @@
 <li>The value of attribute &quot;ref&quot; is using Xpath.</li>
 <li>Attribute &quot;ref&quot; are being used to create objects in all places and eventually come to this method:</li>
 </ul>
-<pre><code class="language-c#">public static object CreateObject(XmlNode configNode, string[] parameters, bool assert, IFactoryHelper helper)
+<pre><code class="language-cs">public static object CreateObject(XmlNode configNode, string[] parameters, bool assert, IFactoryHelper helper)
 {object obj = (((Factory.CreateFromFactory(configNode, parameters, assert) ?? Factory.CreateFromFactoryMethod(configNode, parameters, assert)) ?? Factory.CreateFromReference(configNode, parameters, assert)) ?? Factory.CreateFromTypeName(configNode, parameters, assert)) ?? Factory.CreateFromConnectionStringName(configNode, parameters, assert);}
 </code></pre>
 <ul>
