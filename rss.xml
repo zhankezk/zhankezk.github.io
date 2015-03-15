@@ -6,8 +6,8 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 16:34:41 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 16:34:41 %z</lastBuildDate>
+    <pubDate>Sun, 15 Mar 2015 18:11:20 %z</pubDate>
+    <lastBuildDate>Sun, 15 Mar 2015 18:11:20 %z</lastBuildDate>
     
     <item>
       <title>From mobile</title>
@@ -24,12 +24,12 @@
       <pubDate>Sat, 14 Mar 2015 00:00:00 %z</pubDate>
       <author>Ke</author>
       <guid>http://zzzgo.com/2015/03/14/focusing-on-content.html</guid>
-      <description>&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
-&lt;p&gt;My path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
-&lt;p&gt;Main reason to use Pretzel instead of Jekyll is that I am on Windows platform, it&apos;s always painful to run those linux stuff.&lt;/p&gt;
-&lt;p&gt;And I think to for me as a developer, the focus is always being diverted by the technology I use to build the blog, instead of writing and maintaining the blog itself. So by making content simple and single files, I hope that I can from now on, focus on content.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Update - late that day&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Spent sometime migrated all the current site to here. To be honest, I like this new site, feels much cleaner and simpler. Although now publishing is more complicated, but I guess it does help me focusing on the content, since all I do is open folder, double click and start writing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on an empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
+&lt;p&gt;My personal blogging path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
+&lt;p&gt;Main reason to use Pretzel instead of Jekyll is that I am on Windows platform, it&apos;s always painful to run those linux stuff on it.&lt;/p&gt;
+&lt;p&gt;And I think for me as a developer, the focus has always been diverted by the technology that I use to build the blog, instead of writing and maintaining the blog itself. So by making content simple and single files, I hope that I can from now on, focus more on the content.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Update - later that day&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Spent sometime migrated all the current site to here. I like this new site, feels much cleaner and simpler. Although now publishing is more complicated, but I guess it does help me focusing on the content, since all I need to do it open Notepadd++ to write.&lt;/p&gt;</description>
     </item>
     
     <item>
