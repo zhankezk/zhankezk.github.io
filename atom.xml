@@ -1,44 +1,55 @@
 <?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-    <title>Kb</title>
-    <link>http://zzzgo.com/</link>
-    <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
-    <description></description>
-    <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 16:32:52 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 16:32:52 %z</lastBuildDate>
-    
-    <item>
-      <title>From mobile</title>
-      <link>http://zzzgo.com/2015/03/15/From-mobile.html</link>
-      <pubDate>Sun, 15 Mar 2015 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2015/03/15/From-mobile.html</guid>
-      <description>&lt;p&gt;Testing from iPhone app, writing markdowns. Although can&apos;t publish it, but that&apos;s fine. I don&apos;t do news.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Focusing on content</title>
-      <link>http://zzzgo.com/2015/03/14/focusing-on-content.html</link>
-      <pubDate>Sat, 14 Mar 2015 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2015/03/14/focusing-on-content.html</guid>
-      <description>&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kb Feed</title>
+  <link href="http://zzzgo.com/"/>
+  <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
+  <updated>2015-03-15T16:32:52.0168317+11:00</updated>
+  <id>http://zzzgo.com/</id>
+  <author>
+    <name>Ke</name>
+    <email>Nope</email>
+  </author>
+
+  
+  <entry>
+    <id>http://zzzgo.com//2015/03/15/From-mobile.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2015/03/15/From-mobile.html"/>
+    <title>From mobile</title>
+    <updated>2015-03-15T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Testing from iPhone app, writing markdowns. Although can&apos;t publish it, but that&apos;s fine. I don&apos;t do news.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2015/03/14/focusing-on-content.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2015/03/14/focusing-on-content.html"/>
+    <title>Focusing on content</title>
+    <updated>2015-03-14T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on a empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
 &lt;p&gt;My path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
 &lt;p&gt;Main reason to use Pretzel instead of Jekyll is that I am on Windows platform, it&apos;s always painful to run those linux stuff.&lt;/p&gt;
 &lt;p&gt;And I think to for me as a developer, the focus is always being diverted by the technology I use to build the blog, instead of writing and maintaining the blog itself. So by making content simple and single files, I hope that I can from now on, focus on content.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Update - late that day&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Spent sometime migrated all the current site to here. To be honest, I like this new site, feels much cleaner and simpler. Although now publishing is more complicated, but I guess it does help me focusing on the content, since all I do is open folder, double click and start writing.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Section references in Sitecore config files with ref attribute</title>
-      <link>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</link>
-      <pubDate>Tue, 13 Jan 2015 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</guid>
-      <description>&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config file. But I wanted to do more and couldn&apos;t find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
+&lt;p&gt;Spent sometime migrated all the current site to here. To be honest, I like this new site, feels much cleaner and simpler. Although now publishing is more complicated, but I guess it does help me focusing on the content, since all I do is open folder, double click and start writing.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html"/>
+    <title>Section references in Sitecore config files with ref attribute</title>
+    <updated>2015-01-13T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config file. But I wanted to do more and couldn&apos;t find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Attribute &amp;quot;ref&amp;quot; can be used to refer to another section of the configuration files in Sitecore.&lt;/li&gt;
 &lt;li&gt;The value of attribute &amp;quot;ref&amp;quot; is using Xpath.&lt;/li&gt;
@@ -67,31 +78,37 @@ and:
 &amp;lt;exclude hint=&amp;quot;list:ExcludeField&amp;quot; ref=&amp;quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint=&apos;list:ExcludeField&apos;]&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;None of them worked. Though the xpath is correct, but &amp;quot;ExcludeField&amp;quot; is a method and when you use &amp;quot;ref&amp;quot;, it tries to create an object as a property, so it fails.&lt;/p&gt;
-&lt;p&gt;Therefore my conclusion is that you can&apos;t use &amp;quot;ref&amp;quot; in configuration files for referencing methods. This is bad news for my clean configuration initiative, I still need to do more digging on this, will post it in another post which will focus on Sitecore Custom Lucene Indexes.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Powerline Ethernet Adapters</title>
-      <link>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</link>
-      <pubDate>Sun, 11 Jan 2015 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</guid>
-      <description>&lt;p&gt;Bought &lt;strong&gt;Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)&lt;/strong&gt; from MSY, 89 dollars.&lt;/p&gt;
+&lt;p&gt;Therefore my conclusion is that you can&apos;t use &amp;quot;ref&amp;quot; in configuration files for referencing methods. This is bad news for my clean configuration initiative, I still need to do more digging on this, will post it in another post which will focus on Sitecore Custom Lucene Indexes.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2015/01/11/Powerline-Ethernet-Adapters.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2015/01/11/Powerline-Ethernet-Adapters.html"/>
+    <title>Powerline Ethernet Adapters</title>
+    <updated>2015-01-11T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Bought &lt;strong&gt;Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)&lt;/strong&gt; from MSY, 89 dollars.&lt;/p&gt;
 &lt;p&gt;Live in a rented apartment, can&apos;t put ethernet cables into the walls and don&apos;t want the cables to lay on the floor all over the place, wireless is always a pain, stability is the biggest issue. I used to sell those powerline adapters a lot when I worked in a computer shop, never cared about it because I thought I&apos;d never use them.&lt;/p&gt;
 &lt;p&gt;But under current circumstance, I got to the conclusion that powerline adapters are the only option. So here comes the results:&lt;/p&gt;
 &lt;p&gt;They are 500Mbps model with 100Mbps ports, during daytime when there&apos;s not much power usage, the speed can reach 10MB/s which is pretty much peak speed and if I put it on a powerboard, it drops to 9MB/s, still pretty good.&lt;/p&gt;
 &lt;p&gt;During the night, speed drops to 6MB/s, only slightly better than my wireless, however it&apos;s much more stable, doesn&apos;t dropout that frequently like the wireless does. That&apos;s good enough for me.&lt;/p&gt;
 &lt;p&gt;I do got a bit issue that the size of the adapter is too big, and the wall sockets are always in pair and close to each other which makes me can&apos;t plug it on the wall directly. That&apos;s why I was testing the speed on a powerboard.&lt;/p&gt;
-&lt;p&gt;The good thing is that looks like different models should be able to pair together &lt;a href=&quot;http://www.tp-link.com.au/article/?faqid=406&quot;&gt;(tp-link)&lt;/a&gt; which is convenient for future expansion.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>TDS project build fail in Teamcity with VS 2012 runner</title>
-      <link>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</link>
-      <pubDate>Tue, 06 Jan 2015 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</guid>
-      <description>&lt;p&gt;I&apos;m sorry, don&apos;t have a solution yet. Still finding.&lt;/p&gt;
+&lt;p&gt;The good thing is that looks like different models should be able to pair together &lt;a href=&quot;http://www.tp-link.com.au/article/?faqid=406&quot;&gt;(tp-link)&lt;/a&gt; which is convenient for future expansion.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html"/>
+    <title>TDS project build fail in Teamcity with VS 2012 runner</title>
+    <updated>2015-01-06T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;I&apos;m sorry, don&apos;t have a solution yet. Still finding.&lt;/p&gt;
 &lt;p&gt;Other projects build on this agent, this project builds on other agents.&lt;/p&gt;
 &lt;p&gt;However .Net framework all looks fine. Teamcity is set to use Visual Studio 2012 runner. I thought it&apos;s because this agent doesn&apos;t have VS 2012 installed, but another agent doesn&apos;t have VS 2012 builds this project fine.&lt;/p&gt;
 &lt;p&gt;I did notice although other agents don&apos;t have VS installed, but they all have VS folders in program files folders. However it didn&apos;t work when I copied the folder across, but I feel I was close.&lt;/p&gt;
@@ -114,16 +131,19 @@ and:
 [17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.LoadSitecoreAssemblies(BuildContext ctx)
 [17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.Main(String[] args)
 [17:45:29][GeneratePackage] C:\Program Files (x86)\MSBuild\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets(92, 5): Could not find required components. The Sitecore.Kernel.Dll, Sitecore.Update.dll, Sitecore.Zip.dll and Sitecore.Logging.dll are needed to build update packages. The path to these files must be set in the &amp;quot;Update Package&amp;quot; tab of the project property page.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sonos with Airsonos on Windows and Mac</title>
-      <link>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</link>
-      <pubDate>Thu, 18 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</guid>
-      <description>&lt;p&gt;Installing on Mac was very smooth, and playback is perfect, I used it for about 5 to 6 songs, no problems at all. So I&apos;ll say it&apos;s great on Mac.&lt;/p&gt;
+&lt;/blockquote&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html"/>
+    <title>Sonos with Airsonos on Windows and Mac</title>
+    <updated>2014-12-18T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Installing on Mac was very smooth, and playback is perfect, I used it for about 5 to 6 songs, no problems at all. So I&apos;ll say it&apos;s great on Mac.&lt;/p&gt;
 &lt;p&gt;Though my home server is running Windows Home server 2011, I don&apos;t want to keep my Mac air on all the time, so obviously it&apos;d be must better if home server can run Airsonos. But then nightmare begins.&lt;/p&gt;
 &lt;p&gt;I had&lt;/p&gt;
 &lt;ul&gt;
@@ -142,16 +162,19 @@ and:
 &lt;/ul&gt;
 &lt;p&gt;I was finally be able to start Airsonos on my windows server and successfully located my sonos player.&lt;/p&gt;
 &lt;p&gt;However then when I connect to it on iPhone, it stuck and disappears, over and over again, wouldn&apos;t play at all. I tried disabling the windows firewall, didn&apos;t work.&lt;/p&gt;
-&lt;p&gt;So anyway, just want to help those people who are trying it on windows. Good luck!&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Google Tag Manager causing placeholder issues in IE 8</title>
-      <link>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</link>
-      <pubDate>Wed, 17 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Issue:&lt;/strong&gt;
+&lt;p&gt;So anyway, just want to help those people who are trying it on windows. Good luck!&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html"/>
+    <title>Google Tag Manager causing placeholder issues in IE 8</title>
+    <updated>2014-12-17T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Issue:&lt;/strong&gt;
 On form submit, if the field doesn&apos;t have content. Placeholder text are being submitted with form post.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Background:&lt;/strong&gt;
 I am not front-end, so can&apos;t guarantee following are 100% correct regarding our FE setup.
@@ -162,16 +185,19 @@ Url contains yyyy and {event} = gtm.formSubmit - this one doesn&apos;t because i
 &lt;p&gt;&lt;strong&gt;Findings:&lt;/strong&gt;
 If this tag is fired, which means at least one of the 2 rules must match, because this incorrect criteria &amp;quot;{event} = gtm.formSubmit&amp;quot;. It somehow blocks or interfere with form submit event, must have submitted the form before some other JavaScript functions get triggered.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;
-Remove the incorrect rule, issues are gone.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>IIS Http error 500.19 with web.config</title>
-      <link>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</link>
-      <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</guid>
-      <description>&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
+Remove the incorrect rule, issues are gone.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/13/IIS-Http-error-500.19-with-web.config.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/13/IIS-Http-error-500.19-with-web.config.html"/>
+    <title>IIS Http error 500.19 with web.config</title>
+    <updated>2014-12-13T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;HTTP Error 500.19 - Internal Server Error
 The requested page cannot be accessed because the related configuration data for the page is invalid.&lt;/p&gt;
@@ -188,16 +214,19 @@ Requested URL      http://kb/
 Physical Path&lt;br /&gt;
 Logon Method       Not yet determined
 Logon User     Not yet determined&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
-      <title>Must have softwares after reinstalling windows</title>
-      <link>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</link>
-      <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</guid>
-      <description>&lt;h2&gt;Daily:&lt;/h2&gt;
+&lt;/blockquote&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/13/Must-have-softwares-after-reinstalling-windows.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/13/Must-have-softwares-after-reinstalling-windows.html"/>
+    <title>Must have softwares after reinstalling windows</title>
+    <updated>2014-12-13T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;h2&gt;Daily:&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Chrome&lt;/li&gt;
 &lt;li&gt;Everything&lt;/li&gt;
@@ -239,16 +268,19 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;li&gt;MS office&lt;/li&gt;
 &lt;li&gt;Microsoft Visual Studio Team Foundation Server 2013 Power Tools&lt;/li&gt;
 &lt;li&gt;Java&lt;/li&gt;
-&lt;/ol&gt;</description>
-    </item>
-    
-    <item>
-      <title>Multi-Site solution deployments in Azure</title>
-      <link>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</link>
-      <pubDate>Thu, 11 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</guid>
-      <description>&lt;ul&gt;
+&lt;/ol&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/11/Multi-Site-solution-deployments-in-Azure.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/11/Multi-Site-solution-deployments-in-Azure.html"/>
+    <title>Multi-Site solution deployments in Azure</title>
+    <updated>2014-12-11T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;When having multiple web projects in a solution, Azure by default only deploy the first alphabetically project regardless your settings. Source: &lt;a href=&quot;http://stackoverflow.com/questions/22021102/cant-deploy-correct-website-from-multi-project-solution-using-git-deployment-to&quot;&gt;Stackoverflow&lt;/a&gt; &amp;amp; &lt;a href=&quot;http://social.msdn.microsoft.com/forums/azure/en-US/95f161f6-9370-43ad-9ac5-714f8978cc5e/continuous-integration-deploying-wrong-project-from-solution?forum=azuregit&quot;&gt;MSDN&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -259,16 +291,19 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;p&gt;Value: -p:Configuration=Debug&lt;/p&gt;
 &lt;p&gt;This tells Azure to deploy this project and this configuration when using git and bitbucket ... Not visual studio online, which should be from build definition.&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</title>
-      <link>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</link>
-      <pubDate>Mon, 08 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</guid>
-      <description>&lt;p&gt;It all started with those lines in defaultIndexConfiguration from Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config:&lt;/p&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html"/>
+    <title>IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</title>
+    <updated>2014-12-08T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;It all started with those lines in defaultIndexConfiguration from Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;!-- If no configuration is specified for an index, it uses the default configuration. The configurations are not merged if the index also has a configuration. The system uses either the default configuration or the index configuration. --&amp;gt;
 &amp;lt;!-- GLOBALLY EXCLUDE TEMPLATES FROM BEING INDEXED
 This setting allows you to exclude items that are based on a specific template.--&amp;gt;
@@ -305,40 +340,49 @@ This setting allows you to exclude items that are based on a specific template.-
 &lt;p&gt;If I remove the node &lt;code&gt;&amp;lt;exclude hint=&amp;quot;list:ExcludeTemplate&amp;quot;&amp;gt;&lt;/code&gt; from the defaultIndexConfiguration, the warnings are gone.&lt;/p&gt;
 &lt;p&gt;Just don&apos;t understand why the excludes from the defaultconfiguration still affects my custom index when I have a complete different new index configuration.&lt;/p&gt;
 &lt;p&gt;Anyway, still trying to figure out what&apos;s wrong, will update if I have new findings.&lt;/p&gt;
-&lt;p&gt;Sitecore version: Sitecore.NET 7.1 (rev. 140324)&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Schedule tasks not running on CDS in Sitecore</title>
-      <link>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</link>
-      <pubDate>Mon, 08 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</guid>
-      <description>&lt;p&gt;Had a schedule task setup to generate sitemap.xml for the client, however found that it&apos;s working on CAS, but not on CDS.&lt;/p&gt;
+&lt;p&gt;Sitecore version: Sitecore.NET 7.1 (rev. 140324)&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html"/>
+    <title>Schedule tasks not running on CDS in Sitecore</title>
+    <updated>2014-12-08T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Had a schedule task setup to generate sitemap.xml for the client, however found that it&apos;s working on CAS, but not on CDS.&lt;/p&gt;
 &lt;p&gt;Turns out since SwitchMasterToWeb.config is used when setting up CDS environment, it removes scheduling agents, only leave core in there.&lt;/p&gt;
 &lt;p&gt;So the solution is to add a new agent in there and set the &lt;param desc=&quot;database&quot;&gt; to web. Wait for interval time, things should start working.&lt;/p&gt;
-&lt;p&gt;And the way to check this is from the log file, search for &amp;quot;Examining schedules&amp;quot;, then you will know if your setups are successful or not.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sitecore Redirect Manager</title>
-      <link>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</link>
-      <pubDate>Sun, 07 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</guid>
-      <description>&lt;p&gt;Installed a Redirect manager module for some client&apos;s sitecore, but it doesn&apos;t handle multiple sites so I had to customize it to support multiple sites.&lt;/p&gt;
+&lt;p&gt;And the way to check this is from the log file, search for &amp;quot;Examining schedules&amp;quot;, then you will know if your setups are successful or not.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/07/Sitecore-Redirect-Manager.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/07/Sitecore-Redirect-Manager.html"/>
+    <title>Sitecore Redirect Manager</title>
+    <updated>2014-12-07T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Installed a Redirect manager module for some client&apos;s sitecore, but it doesn&apos;t handle multiple sites so I had to customize it to support multiple sites.&lt;/p&gt;
 &lt;p&gt;After that, local and testing deployments went well, everything were working perfectly . But then it doesn&apos;t redirect at all on one of the sites when I deployed to Staging.&lt;/p&gt;
 &lt;p&gt;After some digging, I found that the module is using HttpContext.Current.Cache, which can&apos;t be shared across different App Domain. And this sitecore instance has 2 sites. On local and testing, they share the same app domain, however on Staging it&apos;s using different ones, and on production there&apos;s even one more app domain only for sitecore client.&lt;/p&gt;
-&lt;p&gt;So I have updated the code to use System.Runtime.Cahcing, solved the problem. Lots of examples online, I won&apos;t bother about showing code here. It&apos;s just 2 things I want to point out. First, use MemoryCahce.Default, Second, Don&apos;t use Add, it doesn&apos;t override. use Set.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Sitecore Indexes media url with /sitecore/shell</title>
-      <link>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</link>
-      <pubDate>Thu, 04 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</guid>
-      <description>&lt;p&gt;&amp;quot;urllink&amp;quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
+&lt;p&gt;So I have updated the code to use System.Runtime.Cahcing, solved the problem. Lots of examples online, I won&apos;t bother about showing code here. It&apos;s just 2 things I want to point out. First, use MemoryCahce.Default, Second, Don&apos;t use Add, it doesn&apos;t override. use Set.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://zzzgo.com//2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com//2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html"/>
+    <title>Sitecore Indexes media url with /sitecore/shell</title>
+    <updated>2014-12-04T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&amp;quot;urllink&amp;quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
 &lt;p&gt;For media items, if I rebuild the indexs, the urls that gets stored into index start with &amp;quot;/~/media/...&amp;quot;, which is correct.&lt;/p&gt;
 &lt;p&gt;But if the index strategy is onPublishEndSync, and I do republish on my media items, the urls start with &amp;quot;/sitecore/shell/~/media/...&amp;quot;.&lt;/p&gt;
 &lt;p&gt;I&apos;ve checked Sitecore source code, the difference is Context.Site. it&apos;s null when rebuilding the index, so it uses &amp;quot;/&amp;quot; as prefix. but it&apos;s &amp;quot;Sitecore shell&amp;quot; when doing publishing. Therefore it&apos;s using Context.Site.VirtualFolder of Sitecore Shell, which is &amp;quot;/sitecore/shell&amp;quot;.&lt;/p&gt;
@@ -351,8 +395,7 @@ This setting allows you to exclude items that are based on a specific template.-
 &lt;p&gt;Reason being that url should be generated by LinkManager based on current site context. However site context doesn&apos;t exist while indexing(For content item you can check the path, but for media item you cannot).&lt;/p&gt;
 &lt;p&gt;Of course there&apos;s another solution is to create your own computeredField to override the logic for media item. However I agree with Sitecore, it feels more right to remove this field from the index.&lt;/p&gt;
 &lt;p&gt;On top of all that, the initial reason for using the urlLink field was to drop the need for querying Sitecore completely while doing a Search. All the content are coming from Index&apos;s stored fields value. But on the other hand, pagination is normally being used for search results, so even there&apos;re requests to Sitecore, it shouldn&apos;t be a lot.&lt;/p&gt;
-&lt;p&gt;That&apos;d be all for now, happy to see more opinions and to discuss, thanks!&lt;/p&gt;</description>
-    </item>
-    
-  </channel> 
-</rss>
+&lt;p&gt;That&apos;d be all for now, happy to see more opinions and to discuss, thanks!&lt;/p&gt;</content>
+  </entry>
+  
+</feed>
