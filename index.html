@@ -44,14 +44,55 @@
         <li>
             <div class="idea">
                 
-                    <h1><a href="/2015/03/15/From-mobile.html">From mobile</a></h1>
+                    <h1><a href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a></h1>
+                    <div class="postdate">19 March, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <h2>Issue: Pages gets requested twice in browsers.</h2>
+<ul>
+<li>Chrome - Message in console:
+<ul>
+<li>
+<blockquote>
+<p>Resource interpreted as Image but transferred with MIME type text/html: &quot;http://pageurl&quot;</p>
+</blockquote>
+</li>
+<li>In Network Tab, Initiator says &quot;Parser&quot;.</li>
+</ul>
+</li>
+<li>Firefox - No messages, but it is requesting twice.</li>
+<li>Fidder - Not requesting twice
+<ul>
+<li>Second request head contains
+<blockquote>
+<p>Accept: image/webp,<em>/</em>;q=0.8</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Cause: background-image: url</h2>
+<pre><code class="language-html">&lt;div class=&quot;some-class&quot; style=&quot;background-image: url('')&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>Don't have much to say here, not sure if it's a bug or not.</p>
+                    <br />
+                    <a href="/2015/03/19/Chrome-request-page-twice.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/03/15/From-mobile.html">From mobile</a></h2>
                     <div class="postdate">15 March, 2015
                         <ul>
                         
                         </ul>
                     </div>
                     <p>Testing from iPhone app, writing markdowns. Although can't publish it, but that's fine. I don't do news.</p>
-                    <br />
                     <a href="/2015/03/15/From-mobile.html#disqus_thread">Comments</a>
                 
             </div>
@@ -142,47 +183,13 @@ and:
             </div>
         </li>
     
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html">TDS project build fail in Teamcity with VS 2012 runner</a></h2>
-                    <div class="postdate"> 6 January, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>I'm sorry, don't have a solution yet. Still finding.</p>
-<p>Other projects build on this agent, this project builds on other agents.</p>
-<p>However .Net framework all looks fine. Teamcity is set to use Visual Studio 2012 runner. I thought it's because this agent doesn't have VS 2012 installed, but another agent doesn't have VS 2012 builds this project fine.</p>
-<p>I did notice although other agents don't have VS installed, but they all have VS folders in program files folders. However it didn't work when I copied the folder across, but I feel I was close.</p>
-<blockquote>
-<p>[17:45:29][MSBuild] xx.scproj: Build target: Rebuild
-[17:45:29][xx.scproj] Rebuild
-[17:45:29][Rebuild] CallTarget
-[17:45:29][CallTarget] GeneratePackage
-[17:45:29][GeneratePackage] Building package with files in folder .\bin\Development<br />
-[17:45:29][GeneratePackage] GeneratePackage
-[17:45:29][GeneratePackage] ProjectFilePath: E:\buildAgent\work\xxx.scproj
-[17:45:29][GeneratePackage] PackageOutputDirectory: .\bin\Development..\Package_Development<br />
-[17:45:29][GeneratePackage] ConfigurationToBuild: Development
-[17:45:29][GeneratePackage] CompiledFiles: .\bin\Development<br />
-[17:45:29][GeneratePackage] SeperateFilesAndItems: True
-[17:45:29][GeneratePackage] SitecoreAssemblyPath: ....\lib\Sitecore\Assemblies
-[17:45:29][GeneratePackage] Looking for Sitecore DLL's in E:\buildAgent\work\xx\xx....\lib\Sitecore\Assemblies
-[17:45:29][GeneratePackage] Exception Could not load file or assembly 'file:///xx\lib\Sitecore\Assemblies\Sitecore.Kernel.dll' or one of its dependencies. This assembly is built by a runtime newer than the currently loaded runtime and cannot be loaded.(HedgehogDevelopment.SitecoreProject.PackageBuilder.PackageBuilderException):
-[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.CheckForAssembly(String assemblyName, String assemblyRoot)
-[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.LoadSitecoreAssemblies(BuildContext ctx)
-[17:45:29][GeneratePackage] at HedgehogDevelopment.SitecoreProject.PackageBuilder.Program.Main(String[] args)
-[17:45:29][GeneratePackage] C:\Program Files (x86)\MSBuild\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets(92, 5): Could not find required components. The Sitecore.Kernel.Dll, Sitecore.Update.dll, Sitecore.Zip.dll and Sitecore.Logging.dll are needed to build update packages. The path to these files must be set in the &quot;Update Package&quot; tab of the project property page.</p>
-</blockquote>
-                    <a href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
 </ul>
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+    <li>
+        <span class="olderpostdate"> 06 Jan </span> <a class="postlink" href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html">TDS project build fail in Teamcity with VS 2012 runner</a>
+    </li>
 
     <li>
         <span class="olderpostdate"> 18 Dec </span> <a class="postlink" href="/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html">Sonos with Airsonos on Windows and Mac</a>

@@ -3,13 +3,51 @@
   <title>Kb Feed</title>
   <link href="http://zzzgo.com/"/>
   <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
-  <updated>2015-03-15T18:11:20.6295732+11:00</updated>
+  <updated>2015-03-19T20:51:50.9589349+11:00</updated>
   <id>http://zzzgo.com/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html"/>
+    <title>Browser requests page twice</title>
+    <updated>2015-03-19T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;h2&gt;Issue: Pages gets requested twice in browsers.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Chrome - Message in console:
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Resource interpreted as Image but transferred with MIME type text/html: &amp;quot;http://pageurl&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;In Network Tab, Initiator says &amp;quot;Parser&amp;quot;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Firefox - No messages, but it is requesting twice.&lt;/li&gt;
+&lt;li&gt;Fidder - Not requesting twice
+&lt;ul&gt;
+&lt;li&gt;Second request head contains
+&lt;blockquote&gt;
+&lt;p&gt;Accept: image/webp,&lt;em&gt;/&lt;/em&gt;;q=0.8&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Cause: background-image: url&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&amp;quot;some-class&amp;quot; style=&amp;quot;background-image: url(&apos;&apos;)&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Don&apos;t have much to say here, not sure if it&apos;s a bug or not.&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://zzzgo.com/2015/03/15/From-mobile.html</id>

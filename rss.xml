@@ -6,8 +6,43 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 15 Mar 2015 18:11:20 %z</pubDate>
-    <lastBuildDate>Sun, 15 Mar 2015 18:11:20 %z</lastBuildDate>
+    <pubDate>Thu, 19 Mar 2015 20:51:50 %z</pubDate>
+    <lastBuildDate>Thu, 19 Mar 2015 20:51:50 %z</lastBuildDate>
+    
+    <item>
+      <title>Browser requests page twice</title>
+      <link>http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html</link>
+      <pubDate>Thu, 19 Mar 2015 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html</guid>
+      <description>&lt;h2&gt;Issue: Pages gets requested twice in browsers.&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Chrome - Message in console:
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Resource interpreted as Image but transferred with MIME type text/html: &amp;quot;http://pageurl&amp;quot;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;In Network Tab, Initiator says &amp;quot;Parser&amp;quot;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Firefox - No messages, but it is requesting twice.&lt;/li&gt;
+&lt;li&gt;Fidder - Not requesting twice
+&lt;ul&gt;
+&lt;li&gt;Second request head contains
+&lt;blockquote&gt;
+&lt;p&gt;Accept: image/webp,&lt;em&gt;/&lt;/em&gt;;q=0.8&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Cause: background-image: url&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;div class=&amp;quot;some-class&amp;quot; style=&amp;quot;background-image: url(&apos;&apos;)&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Don&apos;t have much to say here, not sure if it&apos;s a bug or not.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>From mobile</title>
