@@ -96,6 +96,14 @@ img
 	margin-bottom: 5px;
 }
 
+blockquote {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+} 
+
 
 /* min-device-width: 800px instead? */
 @media screen and (max-width:900px)

@@ -47,25 +47,22 @@
 		</span>
 		<h2>Issue: Pages gets requested twice in browsers.</h2>
 <ul>
-<li>Chrome - Message in console:
+<li>Chrome - Requesting twice.
 <ul>
-<li>
+<li>In Network Tab, Initiator says &quot;Parser&quot;.</li>
+<li>Message in console
 <blockquote>
 <p>Resource interpreted as Image but transferred with MIME type text/html: &quot;http://pageurl&quot;</p>
 </blockquote>
 </li>
-<li>In Network Tab, Initiator says &quot;Parser&quot;.</li>
 </ul>
 </li>
 <li>Firefox - No messages, but it is requesting twice.</li>
-<li>Fidder - Not requesting twice
-<ul>
-<li>Second request head contains
+<li>Fidder - Not requesting twice.</li>
+<li>When use Fidder to see Chrome and Firefox's requests, the second request head contains:
 <blockquote>
 <p>Accept: image/webp,<em>/</em>;q=0.8</p>
 </blockquote>
-</li>
-</ul>
 </li>
 </ul>
 <h2>Cause: background-image: url</h2>

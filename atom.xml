@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://zzzgo.com/"/>
   <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
-  <updated>2015-03-19T20:51:50.9589349+11:00</updated>
+  <updated>2015-03-19T21:03:48.629446+11:00</updated>
   <id>http://zzzgo.com/</id>
   <author>
     <name>Ke</name>
@@ -22,25 +22,22 @@
     </author>
     <content type="html">&lt;h2&gt;Issue: Pages gets requested twice in browsers.&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Chrome - Message in console:
+&lt;li&gt;Chrome - Requesting twice.
 &lt;ul&gt;
-&lt;li&gt;
+&lt;li&gt;In Network Tab, Initiator says &amp;quot;Parser&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Message in console
 &lt;blockquote&gt;
 &lt;p&gt;Resource interpreted as Image but transferred with MIME type text/html: &amp;quot;http://pageurl&amp;quot;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;In Network Tab, Initiator says &amp;quot;Parser&amp;quot;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Firefox - No messages, but it is requesting twice.&lt;/li&gt;
-&lt;li&gt;Fidder - Not requesting twice
-&lt;ul&gt;
-&lt;li&gt;Second request head contains
+&lt;li&gt;Fidder - Not requesting twice.&lt;/li&gt;
+&lt;li&gt;When use Fidder to see Chrome and Firefox&apos;s requests, the second request head contains:
 &lt;blockquote&gt;
 &lt;p&gt;Accept: image/webp,&lt;em&gt;/&lt;/em&gt;;q=0.8&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Cause: background-image: url&lt;/h2&gt;
