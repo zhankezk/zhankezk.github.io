@@ -6,8 +6,45 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Thu, 19 Mar 2015 21:03:48 %z</pubDate>
-    <lastBuildDate>Thu, 19 Mar 2015 21:03:48 %z</lastBuildDate>
+    <pubDate>Tue, 07 Apr 2015 22:10:41 %z</pubDate>
+    <lastBuildDate>Tue, 07 Apr 2015 22:10:41 %z</lastBuildDate>
+    
+    <item>
+      <title>Sitecore session expires(timeout) quickly(1 min) when not logged in</title>
+      <link>http://zzzgo.com/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html</link>
+      <pubDate>Tue, 24 Mar 2015 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://zzzgo.com/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html</guid>
+      <description>&lt;p&gt;&lt;em&gt;Can only consider this as a note to my self since it&apos;s all over the internet already.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Symptoms:&lt;/h2&gt;
+&lt;p&gt;Session expires very quickly for Sitecore websites. Like only 1 minute.&lt;/p&gt;
+&lt;h2&gt;Cause and solution:&lt;/h2&gt;
+&lt;p&gt;In config file:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sitecore.Analytics.Tracking.config&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Robots&apos; session timeout is set to 1 minute&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;!--  ANALYTICS ROBOTS SESSION TIMEOUT
+        The ASP.NET Session Timeout for auto detected robots. 
+        When the automatic robot detection identifies a session as being a robot, the ASP.NET
+        Session Timeout is set to this value (in minutes).
+        Default: 1
+  --&amp;gt;
+  &amp;lt;setting name=&amp;quot;Analytics.Robots.SessionTimeout&amp;quot; value=&amp;quot;1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-asp&quot;&gt;&amp;lt;sc:VisitorIdentification id=&amp;quot;VisitorIdentification&amp;quot; runat=&amp;quot;server&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;is not in website layout causing all visitors to be considered as robots.&lt;/p&gt;
+&lt;p&gt;For Sitecore MVC, please check &lt;a href=&quot;http://stackoverflow.com/questions/28626563/sitecore-7-5-mvc-and-httpcontext-session-timeout-set-to-1-min&quot;&gt;asp.net mvc - Sitecore 7.5 MVC and HttpContext.Session.Timeout set to 1 min - Stack Overflow&lt;/a&gt; out.&lt;/p&gt;
+&lt;h2&gt;Addtional Info:&lt;/h2&gt;
+&lt;p&gt;While searching for this issue, I came across something that has always been bothering us, it&apos;s the CMS editor&apos;s session expires quickly. The message&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The operation could not be completed. Your session may have been lost due to a timeout or a server failure. Please try again.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;shows up always when I try to select images or files. For this issue, sitecore actually has a patch, please go &lt;a href=&quot;https://kb.sitecore.net/articles/135940&quot;&gt;Session timeout when saving Rich Text fields&lt;/a&gt; to check it out.&lt;/p&gt;
+&lt;p&gt;For actually the places to set the session timeout for sitecore, please Google, there&apos;re plenty out there.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Browser requests page twice</title>

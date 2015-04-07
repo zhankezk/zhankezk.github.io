@@ -44,7 +44,51 @@
         <li>
             <div class="idea">
                 
-                    <h1><a href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a></h1>
+                    <h1><a href="/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html">Sitecore session expires(timeout) quickly(1 min) when not logged in</a></h1>
+                    <div class="postdate">24 March, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p><em>Can only consider this as a note to my self since it's all over the internet already.</em></p>
+<h2>Symptoms:</h2>
+<p>Session expires very quickly for Sitecore websites. Like only 1 minute.</p>
+<h2>Cause and solution:</h2>
+<p>In config file:</p>
+<blockquote>
+<p>Sitecore.Analytics.Tracking.config</p>
+</blockquote>
+<p>Robots' session timeout is set to 1 minute</p>
+<pre><code class="language-xml">&lt;!--  ANALYTICS ROBOTS SESSION TIMEOUT
+        The ASP.NET Session Timeout for auto detected robots. 
+        When the automatic robot detection identifies a session as being a robot, the ASP.NET
+        Session Timeout is set to this value (in minutes).
+        Default: 1
+  --&gt;
+  &lt;setting name=&quot;Analytics.Robots.SessionTimeout&quot; value=&quot;1&quot; /&gt;
+</code></pre>
+<p>And this</p>
+<pre><code class="language-asp">&lt;sc:VisitorIdentification id=&quot;VisitorIdentification&quot; runat=&quot;server&quot; /&gt;
+</code></pre>
+<p>is not in website layout causing all visitors to be considered as robots.</p>
+<p>For Sitecore MVC, please check <a href="http://stackoverflow.com/questions/28626563/sitecore-7-5-mvc-and-httpcontext-session-timeout-set-to-1-min">asp.net mvc - Sitecore 7.5 MVC and HttpContext.Session.Timeout set to 1 min - Stack Overflow</a> out.</p>
+<h2>Addtional Info:</h2>
+<p>While searching for this issue, I came across something that has always been bothering us, it's the CMS editor's session expires quickly. The message</p>
+<blockquote>
+<p>The operation could not be completed. Your session may have been lost due to a timeout or a server failure. Please try again.</p>
+</blockquote>
+<p>shows up always when I try to select images or files. For this issue, sitecore actually has a patch, please go <a href="https://kb.sitecore.net/articles/135940">Session timeout when saving Rich Text fields</a> to check it out.</p>
+<p>For actually the places to set the session timeout for sitecore, please Google, there're plenty out there.</p>
+                    <br />
+                    <a href="/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a></h2>
                     <div class="postdate">19 March, 2015
                         <ul>
                         
@@ -74,7 +118,6 @@
 <pre><code class="language-html">&lt;div class=&quot;some-class&quot; style=&quot;background-image: url('')&quot;&gt;&lt;/div&gt;
 </code></pre>
 <p>Don't have much to say here, not sure if it's a bug or not.</p>
-                    <br />
                     <a href="/2015/03/19/Chrome-request-page-twice.html#disqus_thread">Comments</a>
                 
             </div>
@@ -159,30 +202,13 @@ and:
             </div>
         </li>
     
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/01/11/Powerline-Ethernet-Adapters.html">Powerline Ethernet Adapters</a></h2>
-                    <div class="postdate">11 January, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>Bought <strong>Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)</strong> from MSY, 89 dollars.</p>
-<p>Live in a rented apartment, can't put ethernet cables into the walls and don't want the cables to lay on the floor all over the place, wireless is always a pain, stability is the biggest issue. I used to sell those powerline adapters a lot when I worked in a computer shop, never cared about it because I thought I'd never use them.</p>
-<p>But under current circumstance, I got to the conclusion that powerline adapters are the only option. So here comes the results:</p>
-<p>They are 500Mbps model with 100Mbps ports, during daytime when there's not much power usage, the speed can reach 10MB/s which is pretty much peak speed and if I put it on a powerboard, it drops to 9MB/s, still pretty good.</p>
-<p>During the night, speed drops to 6MB/s, only slightly better than my wireless, however it's much more stable, doesn't dropout that frequently like the wireless does. That's good enough for me.</p>
-<p>I do got a bit issue that the size of the adapter is too big, and the wall sockets are always in pair and close to each other which makes me can't plug it on the wall directly. That's why I was testing the speed on a powerboard.</p>
-<p>The good thing is that looks like different models should be able to pair together <a href="http://www.tp-link.com.au/article/?faqid=406">(tp-link)</a> which is convenient for future expansion.</p>
-                    <a href="/2015/01/11/Powerline-Ethernet-Adapters.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
 </ul>
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+    <li>
+        <span class="olderpostdate"> 11 Jan </span> <a class="postlink" href="/2015/01/11/Powerline-Ethernet-Adapters.html">Powerline Ethernet Adapters</a>
+    </li>
 
     <li>
         <span class="olderpostdate"> 06 Jan </span> <a class="postlink" href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html">TDS project build fail in Teamcity with VS 2012 runner</a>
