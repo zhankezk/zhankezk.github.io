@@ -3,13 +3,30 @@
   <title>Kb Feed</title>
   <link href="http://zzzgo.com/"/>
   <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
-  <updated>2015-04-14T23:58:48.0490602+10:00</updated>
+  <updated>2015-04-28T22:22:37.3878334+10:00</updated>
   <id>http://zzzgo.com/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</id>
+    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html"/>
+    <title>Input Method On Galaxy Note 4 Keep Reverting Back To Default</title>
+    <updated>2015-04-28T00:00:00+10:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://zzzgo.com/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Have been using iPhone these years, 4 to 5 yo 6 plus. Came to the dark side last week, got a Samsung Galaxy Note 4 with Android 4.4.4. Have been quite happy with Android, embracing an open world which makes just can&apos;t use a phone properly...&lt;/p&gt;
+&lt;h2&gt;Issue&lt;/h2&gt;
+&lt;p&gt;Installed Google Pinyin input method, but randomly, every few minutess, the input method just reverts back to the Samsung default one.&lt;/p&gt;
+&lt;h2&gt;Cause&lt;/h2&gt;
+&lt;p&gt;Greenify! I guessed it.&lt;/p&gt;
+&lt;p&gt;If Google Input Method is added to Greenify, then this is most likely your issue, just remove it and the issue will be gone.&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://zzzgo.com/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html</id>

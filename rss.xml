@@ -6,8 +6,22 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 14 Apr 2015 23:58:48 %z</pubDate>
-    <lastBuildDate>Tue, 14 Apr 2015 23:58:48 %z</lastBuildDate>
+    <pubDate>Tue, 28 Apr 2015 22:22:37 %z</pubDate>
+    <lastBuildDate>Tue, 28 Apr 2015 22:22:37 %z</lastBuildDate>
+    
+    <item>
+      <title>Input Method On Galaxy Note 4 Keep Reverting Back To Default</title>
+      <link>http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</link>
+      <pubDate>Tue, 28 Apr 2015 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</guid>
+      <description>&lt;p&gt;Have been using iPhone these years, 4 to 5 yo 6 plus. Came to the dark side last week, got a Samsung Galaxy Note 4 with Android 4.4.4. Have been quite happy with Android, embracing an open world which makes just can&apos;t use a phone properly...&lt;/p&gt;
+&lt;h2&gt;Issue&lt;/h2&gt;
+&lt;p&gt;Installed Google Pinyin input method, but randomly, every few minutess, the input method just reverts back to the Samsung default one.&lt;/p&gt;
+&lt;h2&gt;Cause&lt;/h2&gt;
+&lt;p&gt;Greenify! I guessed it.&lt;/p&gt;
+&lt;p&gt;If Google Input Method is added to Greenify, then this is most likely your issue, just remove it and the issue will be gone.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Onda v820w flash os - Booting to droidboot.img failed</title>
