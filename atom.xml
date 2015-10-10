@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://zzzgo.com/"/>
   <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
-  <updated>2015-10-11T01:22:08.4834141+11:00</updated>
+  <updated>2015-10-11T01:29:30.4550455+11:00</updated>
   <id>http://zzzgo.com/</id>
   <author>
     <name>Ke</name>
@@ -490,9 +490,8 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Development:&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;VS 2013&lt;/li&gt;
-&lt;li&gt;VS 2012&lt;/li&gt;
-&lt;li&gt;MSSQL 2012&lt;/li&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;li&gt;SQL Server&lt;/li&gt;
 &lt;li&gt;Resharper&lt;/li&gt;
 &lt;li&gt;TDS&lt;/li&gt;
 &lt;li&gt;Dotpeek&lt;/li&gt;
@@ -504,11 +503,13 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;li&gt;Selenium IDE&lt;/li&gt;
 &lt;li&gt;Firebug&lt;/li&gt;
 &lt;li&gt;Remote Desktop Connection Manager&lt;/li&gt;
-&lt;li&gt;MS office&lt;/li&gt;
+&lt;li&gt;Office&lt;/li&gt;
 &lt;li&gt;Microsoft Visual Studio Team Foundation Server 2013 Power Tools&lt;/li&gt;
 &lt;li&gt;Java&lt;/li&gt;
 &lt;li&gt;SoapUI&lt;/li&gt;
-&lt;/ol&gt;</content>
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update 1 - 11/10/2015&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Added SoapUI and FakeSMTP. Removed versions of Visual Studio and SQL server.&lt;/p&gt;</content>
   </entry>
   
   <entry>
