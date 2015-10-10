@@ -6,8 +6,8 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 11 Oct 2015 01:16:49 %z</pubDate>
-    <lastBuildDate>Sun, 11 Oct 2015 01:16:49 %z</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2015 01:22:08 %z</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2015 01:22:08 %z</lastBuildDate>
     
     <item>
       <title>Get Sitecore Item SiteInfo</title>
@@ -449,7 +449,7 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;li&gt;Resharper&lt;/li&gt;
 &lt;li&gt;TDS&lt;/li&gt;
 &lt;li&gt;Dotpeek&lt;/li&gt;
-&lt;li&gt;Smtp4Dev&lt;/li&gt;
+&lt;li&gt;Smtp4Dev/FakeSMTP&lt;/li&gt;
 &lt;li&gt;Luke&lt;/li&gt;
 &lt;li&gt;Fiddler&lt;/li&gt;
 &lt;li&gt;TortoiseSVN&lt;/li&gt;
@@ -460,6 +460,7 @@ Logon User     Not yet determined&lt;/p&gt;
 &lt;li&gt;MS office&lt;/li&gt;
 &lt;li&gt;Microsoft Visual Studio Team Foundation Server 2013 Power Tools&lt;/li&gt;
 &lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;SoapUI&lt;/li&gt;
 &lt;/ol&gt;</description>
     </item>
     
