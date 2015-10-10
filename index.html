@@ -44,7 +44,51 @@
         <li>
             <div class="idea">
                 
-                    <h1><a href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a></h1>
+                    <h1><a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html">Get Sitecore Item SiteInfo</a></h1>
+                    <div class="postdate">11 October, 2015
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.</p>
+<p>I got the idea from a post in <a href="http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated">stackoverflow</a>, however improved it a bit so it matches the site more accurately.</p>
+<pre><code class="language-csharp">public static SiteInfo GetSite(this Item item)
+{
+    var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+
+    SiteInfo currentSiteinfo = null;
+    var matchLength = 0;
+    foreach (var siteInfo in siteInfoList)
+    {
+        if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
+        {
+            matchLength = siteInfo.RootPath.Length;
+            currentSiteinfo = siteInfo;
+        }
+    }
+
+    return currentSiteinfo;
+}
+</code></pre>
+<p>Then you can use urlOption with Sitecore LinkManager to generate urls:</p>
+<pre><code class="language-csharp">var urlOptions = UrlOptions.DefaultOptions;
+var siteInfo = item.GetSite();
+if (siteInfo != null)
+{
+    urlOptions.Site = new SiteContext(siteInfo);
+}
+var url = LinkManager.GetItemUrl(item, urlOptions);
+</code></pre>
+                    <br />
+                    <a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a></h2>
                     <div class="postdate"> 4 June, 2015
                         <ul>
                         
@@ -68,7 +112,6 @@ This is a Vodafone phone in Australia</p>
 <li>Click &quot;Start&quot;</li>
 <li>It should just do it things and reboot</li>
 </ul>
-                    <br />
                     <a href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html#disqus_thread">Comments</a>
                 
             </div>
@@ -218,47 +261,13 @@ This is a Vodafone phone in Australia</p>
             </div>
         </li>
     
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a></h2>
-                    <div class="postdate">19 March, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <h2>Issue: Pages gets requested twice in browsers.</h2>
-<ul>
-<li>Chrome - Requesting twice.
-<ul>
-<li>In Network Tab, Initiator says &quot;Parser&quot;.</li>
-<li>Message in console
-<blockquote>
-<p>Resource interpreted as Image but transferred with MIME type text/html: &quot;http://pageurl&quot;</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>Firefox - No messages, but it is requesting twice.</li>
-<li>Fidder - Not requesting twice.</li>
-<li>When use Fidder to see Chrome and Firefox's requests, the second request head contains:
-<blockquote>
-<p>Accept: image/webp,<em>/</em>;q=0.8</p>
-</blockquote>
-</li>
-</ul>
-<h2>Cause: background-image: url</h2>
-<pre><code class="language-html">&lt;div class=&quot;some-class&quot; style=&quot;background-image: url('')&quot;&gt;&lt;/div&gt;
-</code></pre>
-<p>Don't have much to say here, not sure if it's a bug or not.</p>
-                    <a href="/2015/03/19/Chrome-request-page-twice.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
 </ul>
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+    <li>
+        <span class="olderpostdate"> 19 Mar </span> <a class="postlink" href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a>
+    </li>
 
     <li>
         <span class="olderpostdate"> 15 Mar </span> <a class="postlink" href="/2015/03/15/From-mobile.html">From mobile</a>

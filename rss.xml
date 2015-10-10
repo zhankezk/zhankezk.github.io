@@ -6,8 +6,45 @@
     <atom:link href="http://zzzgo.com/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Thu, 04 Jun 2015 22:46:37 %z</pubDate>
-    <lastBuildDate>Thu, 04 Jun 2015 22:46:37 %z</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2015 01:16:49 %z</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2015 01:16:49 %z</lastBuildDate>
+    
+    <item>
+      <title>Get Sitecore Item SiteInfo</title>
+      <link>http://zzzgo.com/2015/10/11/Get-Sitecore-Item-SiteInfo.html</link>
+      <pubDate>Sun, 11 Oct 2015 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://zzzgo.com/2015/10/11/Get-Sitecore-Item-SiteInfo.html</guid>
+      <description>&lt;p&gt;Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.&lt;/p&gt;
+&lt;p&gt;I got the idea from a post in &lt;a href=&quot;http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated&quot;&gt;stackoverflow&lt;/a&gt;, however improved it a bit so it matches the site more accurately.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;public static SiteInfo GetSite(this Item item)
+{
+    var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+
+    SiteInfo currentSiteinfo = null;
+    var matchLength = 0;
+    foreach (var siteInfo in siteInfoList)
+    {
+        if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;amp;&amp;amp; siteInfo.RootPath.Length &amp;gt; matchLength)
+        {
+            matchLength = siteInfo.RootPath.Length;
+            currentSiteinfo = siteInfo;
+        }
+    }
+
+    return currentSiteinfo;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then you can use urlOption with Sitecore LinkManager to generate urls:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;var urlOptions = UrlOptions.DefaultOptions;
+var siteInfo = item.GetSite();
+if (siteInfo != null)
+{
+    urlOptions.Site = new SiteContext(siteInfo);
+}
+var url = LinkManager.GetItemUrl(item, urlOptions);
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</title>
