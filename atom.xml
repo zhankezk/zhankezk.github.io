@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Kb Feed</title>
-  <link href="http://zzzgo.com/"/>
-  <link type="application/atom+xml" rel="self" href="http://zzzgo.com/atom.xml"/>
-  <updated>2015-10-11T01:29:30.4550455+11:00</updated>
-  <id>http://zzzgo.com/</id>
+  <link href="http://kezhan.info/"/>
+  <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
+  <updated>2015-12-01T22:34:04.606111+11:00</updated>
+  <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
@@ -12,13 +12,13 @@
 
   
   <entry>
-    <id>http://zzzgo.com/2015/10/11/Get-Sitecore-Item-SiteInfo.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/10/11/Get-Sitecore-Item-SiteInfo.html"/>
+    <id>http://kezhan.info/2015/10/11/Get-Sitecore-Item-SiteInfo.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/10/11/Get-Sitecore-Item-SiteInfo.html"/>
     <title>Get Sitecore Item SiteInfo</title>
     <updated>2015-10-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.&lt;/p&gt;
 &lt;p&gt;I got the idea from a post in &lt;a href=&quot;http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated&quot;&gt;stackoverflow&lt;/a&gt;, however improved it a bit so it matches the site more accurately.&lt;/p&gt;
@@ -52,13 +52,13 @@ var url = LinkManager.GetItemUrl(item, urlOptions);
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html"/>
+    <id>http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html"/>
     <title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</title>
     <updated>2015-06-04T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;&lt;em&gt;Your phone, your risk, I don&apos;t take any responsibilities.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Shortcut to purpose of this post&lt;/h2&gt;
@@ -81,13 +81,13 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html"/>
+    <id>http://kezhan.info/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html"/>
     <title>Input Method On Galaxy Note 4 Keep Reverting Back To Default</title>
     <updated>2015-04-28T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Have been using iPhone these years, 4 to 5 yo 6 plus. Came to the dark side last week, got a Samsung Galaxy Note 4 with Android 4.4.4. Have been quite happy with Android, embracing an open world which makes just can&apos;t use a phone properly...&lt;/p&gt;
 &lt;h2&gt;Issue&lt;/h2&gt;
@@ -98,13 +98,13 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html"/>
+    <id>http://kezhan.info/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html"/>
     <title>Onda v820w flash os - Booting to droidboot.img failed</title>
     <updated>2015-04-14T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Onda v820w Dual OS 32 GB&lt;/p&gt;
 &lt;p&gt;Deleted all the Android partitions and was trying to restore the stock setup.&lt;/p&gt;
@@ -176,13 +176,13 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html"/>
+    <id>http://kezhan.info/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html"/>
     <title>Sitecore session expires(timeout) quickly(1 min) when not logged in</title>
     <updated>2015-03-24T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;&lt;em&gt;Can only consider this as a note to my self since it&apos;s all over the internet already.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Symptoms:&lt;/h2&gt;
@@ -216,13 +216,13 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/03/19/Chrome-request-page-twice.html"/>
+    <id>http://kezhan.info/2015/03/19/Chrome-request-page-twice.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/19/Chrome-request-page-twice.html"/>
     <title>Browser requests page twice</title>
     <updated>2015-03-19T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;h2&gt;Issue: Pages gets requested twice in browsers.&lt;/h2&gt;
 &lt;ul&gt;
@@ -251,25 +251,25 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/03/15/From-mobile.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/03/15/From-mobile.html"/>
+    <id>http://kezhan.info/2015/03/15/From-mobile.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/15/From-mobile.html"/>
     <title>From mobile</title>
     <updated>2015-03-15T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Testing from iPhone app, writing markdowns. Although can&apos;t publish it, but that&apos;s fine. I don&apos;t do news.&lt;/p&gt;</content>
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/03/14/focusing-on-content.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/03/14/focusing-on-content.html"/>
+    <id>http://kezhan.info/2015/03/14/focusing-on-content.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/14/focusing-on-content.html"/>
     <title>Focusing on content</title>
     <updated>2015-03-14T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Amazon AWS FreeTier is going to expire this month. Thinking about the money I gonna waste on an empty, not used much server, I came to the idea that uses static site and Github Pages hosting.&lt;/p&gt;
 &lt;p&gt;My personal blogging path has been: PjBlog -&amp;gt; Wordpress -&amp;gt; Umbraco -&amp;gt; MiniBlog -&amp;gt; Pretzel&lt;/p&gt;
@@ -280,13 +280,13 @@ This is a Vodafone phone in Australia&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html"/>
+    <id>http://kezhan.info/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html"/>
     <title>Section references in Sitecore config files with ref attribute</title>
     <updated>2015-01-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config file. But I wanted to do more and couldn&apos;t find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
 &lt;ul&gt;
@@ -321,13 +321,13 @@ and:
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/01/11/Powerline-Ethernet-Adapters.html"/>
+    <id>http://kezhan.info/2015/01/11/Powerline-Ethernet-Adapters.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/11/Powerline-Ethernet-Adapters.html"/>
     <title>Powerline Ethernet Adapters</title>
     <updated>2015-01-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Bought &lt;strong&gt;Tp-Link AV500 Powerline Adapter with AC Pass Through Starter Kit (TL-PA4010PKIT)&lt;/strong&gt; from MSY, 89 dollars.&lt;/p&gt;
 &lt;p&gt;Live in a rented apartment, can&apos;t put ethernet cables into the walls and don&apos;t want the cables to lay on the floor all over the place, wireless is always a pain, stability is the biggest issue. I used to sell those powerline adapters a lot when I worked in a computer shop, never cared about it because I thought I&apos;d never use them.&lt;/p&gt;
@@ -339,13 +339,13 @@ and:
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html"/>
+    <id>http://kezhan.info/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html"/>
     <title>TDS project build fail in Teamcity with VS 2012 runner</title>
     <updated>2015-01-06T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;I&apos;m sorry, don&apos;t have a solution yet. Still finding.&lt;/p&gt;
 &lt;p&gt;Other projects build on this agent, this project builds on other agents.&lt;/p&gt;
@@ -374,13 +374,13 @@ and:
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html"/>
+    <id>http://kezhan.info/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html"/>
     <title>Sonos with Airsonos on Windows and Mac</title>
     <updated>2014-12-18T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Installing on Mac was very smooth, and playback is perfect, I used it for about 5 to 6 songs, no problems at all. So I&apos;ll say it&apos;s great on Mac.&lt;/p&gt;
 &lt;p&gt;Though my home server is running Windows Home server 2011, I don&apos;t want to keep my Mac air on all the time, so obviously it&apos;d be must better if home server can run Airsonos. But then nightmare begins.&lt;/p&gt;
@@ -405,13 +405,13 @@ and:
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html"/>
+    <id>http://kezhan.info/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html"/>
     <title>Google Tag Manager causing placeholder issues in IE 8</title>
     <updated>2014-12-17T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;&lt;strong&gt;Issue:&lt;/strong&gt;
 On form submit, if the field doesn&apos;t have content. Placeholder text are being submitted with form post.&lt;/p&gt;
@@ -428,13 +428,13 @@ Remove the incorrect rule, issues are gone.&lt;/p&gt;</content>
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/13/IIS-Http-error-500.19-with-web.config.html"/>
+    <id>http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html"/>
     <title>IIS Http error 500.19 with web.config</title>
     <updated>2014-12-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
 &lt;blockquote&gt;
@@ -457,13 +457,13 @@ Logon User     Not yet determined&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/13/Must-have-softwares-after-reinstalling-windows.html"/>
+    <id>http://kezhan.info/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/13/Must-have-softwares-after-reinstalling-windows.html"/>
     <title>Must have softwares after reinstalling windows</title>
     <updated>2014-12-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;h2&gt;Daily:&lt;/h2&gt;
 &lt;ol&gt;
@@ -513,13 +513,13 @@ Logon User     Not yet determined&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/11/Multi-Site-solution-deployments-in-Azure.html"/>
+    <id>http://kezhan.info/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/11/Multi-Site-solution-deployments-in-Azure.html"/>
     <title>Multi-Site solution deployments in Azure</title>
     <updated>2014-12-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;ul&gt;
 &lt;li&gt;
@@ -536,13 +536,13 @@ Logon User     Not yet determined&lt;/p&gt;
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html"/>
+    <id>http://kezhan.info/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html"/>
     <title>IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</title>
     <updated>2014-12-08T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;It all started with those lines in defaultIndexConfiguration from Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;!-- If no configuration is specified for an index, it uses the default configuration. The configurations are not merged if the index also has a configuration. The system uses either the default configuration or the index configuration. --&amp;gt;
@@ -585,13 +585,13 @@ This setting allows you to exclude items that are based on a specific template.-
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html"/>
+    <id>http://kezhan.info/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html"/>
     <title>Schedule tasks not running on CDS in Sitecore</title>
     <updated>2014-12-08T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Had a schedule task setup to generate sitemap.xml for the client, however found that it&apos;s working on CAS, but not on CDS.&lt;/p&gt;
 &lt;p&gt;Turns out since SwitchMasterToWeb.config is used when setting up CDS environment, it removes scheduling agents, only leave core in there.&lt;/p&gt;
@@ -600,13 +600,13 @@ This setting allows you to exclude items that are based on a specific template.-
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/07/Sitecore-Redirect-Manager.html"/>
+    <id>http://kezhan.info/2014/12/07/Sitecore-Redirect-Manager.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/07/Sitecore-Redirect-Manager.html"/>
     <title>Sitecore Redirect Manager</title>
     <updated>2014-12-07T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;Installed a Redirect manager module for some client&apos;s sitecore, but it doesn&apos;t handle multiple sites so I had to customize it to support multiple sites.&lt;/p&gt;
 &lt;p&gt;After that, local and testing deployments went well, everything were working perfectly . But then it doesn&apos;t redirect at all on one of the sites when I deployed to Staging.&lt;/p&gt;
@@ -615,13 +615,13 @@ This setting allows you to exclude items that are based on a specific template.-
   </entry>
   
   <entry>
-    <id>http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</id>
-    <link type="text/html" rel="alternate" href="http://zzzgo.com/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html"/>
+    <id>http://kezhan.info/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html"/>
     <title>Sitecore Indexes media url with /sitecore/shell</title>
     <updated>2014-12-04T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
-      <uri>http://zzzgo.com/</uri>
+      <uri>http://kezhan.info/</uri>
     </author>
     <content type="html">&lt;p&gt;&amp;quot;urllink&amp;quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
 &lt;p&gt;For media items, if I rebuild the indexs, the urls that gets stored into index start with &amp;quot;/~/media/...&amp;quot;, which is correct.&lt;/p&gt;
