@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<div id="container">
+			<div id="side">
+				<a href="/" id="home" title="Kb" alt="Kb">Kb</a>
+				<div id="hometext"><a href="/" >Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Converting Chinese to Pinyin/Quanpin in Xamarin IOS development </h1>
+		<span class="postdate"> 7 January, 2016
+			
+		</span>
+		<p>For an IOS app with Chinese names, the names have to be sorted via Pinyin(it's like phonetic words), or people can barely locate anyone.</p>
+<p>And there are lots of solutions on the internet about how to sort Chinese in Object-C, Swift or C#. However I couldn't find any on how to do it in Xamarin IOS using C#. All the C# way won't work in the Xamarin IOS app althought it compiles happily. My understanding it's that Xamarin is just a mapping(I may put it too simple here) between languages, so whatever the .Net framework is doing based on the language do not get carried over to IOS.</p>
+<p>Luickly I found the mapping that Xamarin specificliy created just for the sake of mapping libraries in Object-C: <a href="https://developer.xamarin.com/api/type/Foundation.NSMutableString/">Foundation.NSMutableString</a> and its method:</p>
+<pre><code class="language-cssharp">ApplyTransform(NSStringTransform, Boolean, NSRange, out NSRange) : Boolean
+</code></pre>
+<p>The method converts Chinese into Pinyin with tones like this &quot;zhōng wén&quot;. In my code I created an extension to sort by, however I think creating a field in the database to hold Pinyin would be more ideal.</p>
+<p>To note here I tried to created this as a property as part of the database model however since it's inside of a portable class library so it doesn't have the Foundation namespace so I couldn't, hence the extension.</p>
+<pre><code class="language-csharp">using Foundation;
+...
+        public static string GetPinyin (this string input)
+        {
+            var output = new NSMutableString ();
+            output.SetString (new NSString (input));
+            var dumy = new NSRange ();
+            output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
+            return output.ToString ();
+        }
+</code></pre>
+<p>觉得这篇尤其需要堆积一点中文来提高SEO。</p>
+<p>基本上问题就是中文通讯录的排序，在纯 IOS 和 C# 的开发环境里这都是很普通的事情，因为 Google 里搜下一大堆的。可是在 Xamarin 里用 C# 写 IOS 就不大一样了。 Object-C 和 Swift 都不能直接用，C# 的虽然可以写出来可以编译，但到了IOS那边是失效的因为框架里的功能是完全不一样的。</p>
+<p>所幸 Xamarin 的人真的就写了几个纯粹为了对应的类，这里要用的是这个： <a href="https://developer.xamarin.com/api/type/Foundation.NSMutableString/">Foundation.NSMutableString</a>。</p>
+<p>用了这个可以把中文全部转换成拼音并且还包括音调，不过对不住没找到怎么是不包括音调了。但是有了这个东西后，至少排序不成问题了。</p>
+<p>我的感觉是肯定还有更好的办法，不过暂时就先这样吧。</p>
+<p>My feeling is that this is not the best way, but for now, it works.</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
