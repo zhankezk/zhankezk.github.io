@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 29 Jan 2016 23:40:10 %z</pubDate>
-    <lastBuildDate>Fri, 29 Jan 2016 23:40:10 %z</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2016 23:43:17 %z</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2016 23:43:17 %z</lastBuildDate>
     
     <item>
       <title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
@@ -27,7 +27,7 @@
 &lt;/ul&gt;
 &lt;p&gt;UI and non-tech people friendly version will come, but not much free time at the moment, will try.&lt;/p&gt;
 &lt;h3&gt;App Name: Anyone Hue ?&lt;/h3&gt;
-&lt;p&gt;Download Link: &lt;a href=&quot;http://goo.gl/8HfI8Y&quot;&gt;Direct&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download Link: &lt;a href=&quot;/files/AnyoneHue_Console_v1.0.zip&quot;&gt;Direct&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Main functionalities:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Check multiple devices presence in local network and turn off all lights when none is connected (It&apos;s like GEO fencing for multiple people, but instead of using location, it uses wifi)&lt;/li&gt;
