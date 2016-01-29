@@ -46,7 +46,61 @@
         <li>
             <div class="idea">
                 
-                    <h1><a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a></h1>
+                    <h1><a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a></h1>
+                    <div class="postdate">29 January, 2016
+                        <ul>
+                        
+                        </ul>
+                    </div>
+                    <p>Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.</p>
+<p>Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it's designed for single people who lives along :( Because Siri can't be shared between different Apple ID and Geo Fencing only works for a single device.</p>
+<p>Siri issue can be resolved by setting up an iOS device at home only for home automation with &quot;Hey Siri&quot; enabled. But Geo Fencing is pretty much useless for me.</p>
+<p>So I wrote a Windows Console Application that pings mine and my wife's iPhone every few seconds and turn the lights off or on accordingly.</p>
+<p>Few things before we continue:</p>
+<ul>
+<li>It runs on windows, you need to have a windows machine that is always on when you want it to do the work.</li>
+<li>You need to know your Bridge IP address and device names of the devices you want to monitor.</li>
+<li>You need to follow Philips Developer Guide to setup API Key for your local Bridge.</li>
+</ul>
+<p>UI and non-tech people friendly version will come, but not much free time at the moment, will try.</p>
+<h3>App Name: Anyone Hue ?</h3>
+<p>Download Link: <a href="http://goo.gl/8HfI8Y">Direct</a></p>
+<p>Main functionalities:</p>
+<ul>
+<li>Check multiple devices presence in local network and turn off all lights when none is connected (It's like GEO fencing for multiple people, but instead of using location, it uses wifi)</li>
+<li>If any device comes back online, turn on a pre-defined light to full brightness</li>
+<li>Can stop monitoring for particular hours defined in config, it enters sleep mode for those hours.</li>
+<li>Can set retry numbers and retry waiting period</li>
+</ul>
+<p>Below is the web.config setting, hopefully can help you understands what are configurable for the app.</p>
+<pre><code class="language-xml">    &lt;!-- Device names to be monitored--&gt;
+    &lt;add key=&quot;DeviceNamesByPipes&quot; value=&quot;Device1|Device2&quot; /&gt;    
+    &lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;
+    &lt;add key=&quot;HueBridgeApiKey&quot; value=&quot;APIKey&quot; /&gt;
+    &lt;add key=&quot;HueBridgeIpAddress&quot; value=&quot;192.168.2.X&quot; /&gt;
+    &lt;add key=&quot;LightNameToTurnOn&quot; value=&quot;LightName&quot; /&gt;   
+    &lt;add key=&quot;CheckIntervalInSeconds&quot; value=&quot;5&quot; /&gt;
+    &lt;add key=&quot;PingTimeoutInSeconds&quot; value=&quot;1000&quot; /&gt;    
+    &lt;add key=&quot;RetryNumber&quot; value=&quot;3&quot; /&gt;
+    &lt;add key=&quot;RetryIntervalInSeconds&quot; value=&quot;60&quot; /&gt; 
+    &lt;!-- Active hours in a day, value can be 0 to 23 --&gt;
+    &lt;add key=&quot;ActiveHours&quot; value=&quot;20,21,22,23&quot; /&gt;
+    &lt;!-- Log file name will be appended with date --&gt;
+    &lt;add key=&quot;LogFileName&quot; value=&quot;Scanlog&quot; /&gt;
+    &lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;
+    &lt;add key=&quot;ScanStartIp&quot; value=&quot;0&quot; /&gt;
+    &lt;add key=&quot;ScanEndIp&quot; value=&quot;254&quot; /&gt;
+</code></pre>
+                    <br />
+                    <a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html#disqus_thread">Comments</a>
+                
+            </div>
+        </li>
+    
+        <li>
+            <div class="idea">
+                
+                    <h2><a class="postlink" href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a></h2>
                     <div class="postdate"> 7 January, 2016
                         <ul>
                         
@@ -76,7 +130,6 @@
 <p>用了这个可以把中文全部转换成拼音并且还包括音调，不过对不住没找到怎么是不包括音调了。但是有了这个东西后，至少排序不成问题了。</p>
 <p>我的感觉是肯定还有更好的办法，不过暂时就先这样吧。</p>
 <p>My feeling is that this is not the best way, but for now, it works.</p>
-                    <br />
                     <a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html#disqus_thread">Comments</a>
                 
             </div>
@@ -177,90 +230,13 @@ This is a Vodafone phone in Australia</p>
             </div>
         </li>
     
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html">Onda v820w flash os - Booting to droidboot.img failed</a></h2>
-                    <div class="postdate">14 April, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>Onda v820w Dual OS 32 GB</p>
-<p>Deleted all the Android partitions and was trying to restore the stock setup.</p>
-<p>Followed the offical guide, but when I plugged in the device, flashing hangs and throw error:</p>
-<blockquote>
-<p>Booting to droidboot.img failed</p>
-</blockquote>
-<p>Here is the full log:</p>
-<pre><code>04/14/15 21:02:21.619  DEBUG  : Initializing state hash (BYT)
-04/14/15 21:02:21.633  INFO   : Manufacturing Flash Tool V 6.0.43 (build on Sun May 18 12:29:29 PDT 2014)
-04/14/15 21:02:21.638  INFO   : Loading settings from C:/ProgramData/INTEL/Manufacturing Flash Tool.ini
-04/14/15 21:02:21.650  INFO   : LogLevel is set to DEBUG
-04/14/15 21:02:21.650  DEBUG  : FlashStats saves the logs into C:/Users/xx/mfgft-stats.csv
-04/14/15 21:02:21.650  INFO   : Using Qt version: 4.8.1
-04/14/15 21:02:21.650  INFO   : Using XFSTK version: 1.5.5.
-04/14/15 21:02:21.658  WARNING: Please select a flash file...
-04/14/15 21:02:28.630  INFO   : Loading Flash file (D:/1/flash.xml)
-04/14/15 21:02:28.632  INFO   : GP_Flag is set to 0x80000045
-04/14/15 21:02:28.633  DEBUG  : Fastboot sequence in flash file is used.
-04/14/15 21:02:28.633  DEBUG  : Flash image type: system
-04/14/15 21:02:28.633  DEBUG  : droidboot : D:/1/droidboot.img
-04/14/15 21:02:28.633  DEBUG  : esp : D:/1/esp.img
-04/14/15 21:02:28.633  DEBUG  : osloader : D:/1/efilinux-userdebug.efi
-04/14/15 21:02:28.633  DEBUG  : stage2_BAYTRAIL_EDK2_BYT_CRV2_IA32 : 
-04/14/15 21:02:28.633  DEBUG  : stage2_BAYTRAIL_EDK2_BYT_CRV2_X64 : 
-04/14/15 21:02:28.633  DEBUG  : FASTBOOT : 
-04/14/15 21:02:28.633  DEBUG  : SOFTFUSE : 
-04/14/15 21:02:28.633  DEBUG  : FW_DNX : 
-04/14/15 21:02:28.633  DEBUG  : IFWI : 
-04/14/15 21:02:28.634  DEBUG  : OS_DNX : 
-04/14/15 21:02:28.634  DEBUG  : XXR_DNX : 
-04/14/15 21:02:28.634  DEBUG  : KBOOT : 
-04/14/15 21:02:28.634  DEBUG  : KERNEL : 
-04/14/15 21:02:28.634  DEBUG  : RECOVERY : 
-04/14/15 21:02:28.634  DEBUG  : SYSTEM : 
-04/14/15 21:02:28.634  DEBUG  : MODEM : 
-04/14/15 21:02:28.634  DEBUG  : OTA : 
-04/14/15 21:02:28.634  DEBUG  : cmd[0] {timeout=60000, retry=2} : fastboot oem start_partitioning
-04/14/15 21:02:28.634  DEBUG  : cmd[1] {timeout=60000, retry=2} : fastboot flash /tmp/partition.tbl &quot;D:\1\partition.tbl&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[2] {timeout=60000, retry=2} : fastboot oem partition /tmp/partition.tbl
-04/14/15 21:02:28.634  DEBUG  : cmd[3] {timeout=60000, retry=2} : fastboot erase system
-04/14/15 21:02:28.634  DEBUG  : cmd[4] {timeout=60000, retry=2} : fastboot erase cache
-04/14/15 21:02:28.634  DEBUG  : cmd[5] {timeout=60000, retry=2} : fastboot erase factory
-04/14/15 21:02:28.634  DEBUG  : cmd[6] {timeout=60000, retry=2} : fastboot erase config
-04/14/15 21:02:28.634  DEBUG  : cmd[7] {timeout=60000, retry=2} : fastboot erase logs
-04/14/15 21:02:28.634  DEBUG  : cmd[8] {timeout=60000, retry=2} : fastboot erase data
-04/14/15 21:02:28.634  DEBUG  : cmd[9] {timeout=60000, retry=2} : fastboot oem stop_partitioning
-04/14/15 21:02:28.634  DEBUG  : cmd[10] {timeout=60000, retry=2} : fastboot oem wipe ESP
-04/14/15 21:02:28.634  DEBUG  : cmd[11] {timeout=60000, retry=2} : fastboot flash ESP &quot;D:\1\esp.img&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[12] {timeout=60000, retry=2} : fastboot flash fastboot &quot;D:\1\droidboot.img&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[13] {timeout=60000, retry=2} : fastboot flash boot &quot;D:\1\boot.img&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[14] {timeout=60000, retry=2} : fastboot flash recovery &quot;D:\1\recovery.img&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[15] {timeout=920000, retry=2} : fastboot -S 200M flash system &quot;D:\1\system.img&quot;
-04/14/15 21:02:28.634  DEBUG  : cmd[16] {timeout=60000, retry=2} : fastboot continue
-04/14/15 21:02:28.634  DEBUG  : Using GPFlag from flash file : 0x80000045
-04/14/15 21:02:28.634  INFO   : Ready to flash!
-04/14/15 21:02:54.685  DEBUG  : Port 0/0/1   #0: FlashManager::do_new_soc_device on port 1
-04/14/15 21:02:54.685  INFO   : do_new_medfield_device STARTING TO FLASH
-04/14/15 21:02:54.686  DEBUG  : Port 0/0/1   #0: New device detected - SN : BaytrailEF9xxxx
-04/14/15 21:02:54.686  DEBUG  : New SOC device -&gt; serial: BaytrailEF9xxxx port: 1 
-04/14/15 21:02:54.686  INFO   : Port 0/0/1   #0: DNX/droidboot phase - SN : BaytrailEF90xxxxx
-04/14/15 21:02:54.687  DEBUG  : Port 0/0/1   #0: OSLOADER = D:/1/efilinux-userdebug.efi
-04/14/15 21:02:54.687  DEBUG  : Port 0/0/1   #0: Flashing osloader ... &quot;C:/Program Files (x86)/Intel/Manufacturing Flash Tool/fastboot.exe&quot; -s BaytrailEF9xxxx flash osloader &quot;D:/1/efilinux-userdebug.efi&quot;
-04/14/15 21:03:55.896  DEBUG  : Port 0/0/1   #0: Process TIMEOUT wait for finished. Retrying ... &quot;C:/Program Files (x86)/Intel/Manufacturing Flash Tool/fastboot.exe&quot; -s BaytrailEF9xxxxx flash osloader &quot;D:/1/efilinux-userdebug.efi&quot;
-</code></pre>
-<p>After a little while, realized that the device driver is not properly installed(a yellow question mark in device manager)</p>
-<p>So I uninstalled the IntelAndroidDrvSetup1.5.0.exe driver that comes with the download. Downloaded one from <a href="https://software.intel.com/en-us/android/articles/intel-usb-driver-for-android-devices">here</a> instead, and installed it.</p>
-<p>Then in device manager, I manually selected the device. Tried everything again, all worked.</p>
-                    <a href="/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
 </ul>
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+    <li>
+        <span class="olderpostdate"> 14 Apr </span> <a class="postlink" href="/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html">Onda v820w flash os - Booting to droidboot.img failed</a>
+    </li>
 
     <li>
         <span class="olderpostdate"> 24 Mar </span> <a class="postlink" href="/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html">Sitecore session expires(timeout) quickly(1 min) when not logged in</a>

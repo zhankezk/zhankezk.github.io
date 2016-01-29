@@ -6,8 +6,55 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 25 Jan 2016 00:08:13 %z</pubDate>
-    <lastBuildDate>Mon, 25 Jan 2016 00:08:13 %z</lastBuildDate>
+    <pubDate>Fri, 29 Jan 2016 23:40:10 %z</pubDate>
+    <lastBuildDate>Fri, 29 Jan 2016 23:40:10 %z</lastBuildDate>
+    
+    <item>
+      <title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
+      <link>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</link>
+      <pubDate>Fri, 29 Jan 2016 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</guid>
+      <description>&lt;p&gt;Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can&apos;t just use the wall switch now XD.&lt;/p&gt;
+&lt;p&gt;Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it&apos;s designed for single people who lives along :( Because Siri can&apos;t be shared between different Apple ID and Geo Fencing only works for a single device.&lt;/p&gt;
+&lt;p&gt;Siri issue can be resolved by setting up an iOS device at home only for home automation with &amp;quot;Hey Siri&amp;quot; enabled. But Geo Fencing is pretty much useless for me.&lt;/p&gt;
+&lt;p&gt;So I wrote a Windows Console Application that pings mine and my wife&apos;s iPhone every few seconds and turn the lights off or on accordingly.&lt;/p&gt;
+&lt;p&gt;Few things before we continue:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It runs on windows, you need to have a windows machine that is always on when you want it to do the work.&lt;/li&gt;
+&lt;li&gt;You need to know your Bridge IP address and device names of the devices you want to monitor.&lt;/li&gt;
+&lt;li&gt;You need to follow Philips Developer Guide to setup API Key for your local Bridge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;UI and non-tech people friendly version will come, but not much free time at the moment, will try.&lt;/p&gt;
+&lt;h3&gt;App Name: Anyone Hue ?&lt;/h3&gt;
+&lt;p&gt;Download Link: &lt;a href=&quot;http://goo.gl/8HfI8Y&quot;&gt;Direct&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Main functionalities:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check multiple devices presence in local network and turn off all lights when none is connected (It&apos;s like GEO fencing for multiple people, but instead of using location, it uses wifi)&lt;/li&gt;
+&lt;li&gt;If any device comes back online, turn on a pre-defined light to full brightness&lt;/li&gt;
+&lt;li&gt;Can stop monitoring for particular hours defined in config, it enters sleep mode for those hours.&lt;/li&gt;
+&lt;li&gt;Can set retry numbers and retry waiting period&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Below is the web.config setting, hopefully can help you understands what are configurable for the app.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;    &amp;lt;!-- Device names to be monitored--&amp;gt;
+    &amp;lt;add key=&amp;quot;DeviceNamesByPipes&amp;quot; value=&amp;quot;Device1|Device2&amp;quot; /&amp;gt;    
+    &amp;lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&amp;gt;
+    &amp;lt;add key=&amp;quot;HueBridgeApiKey&amp;quot; value=&amp;quot;APIKey&amp;quot; /&amp;gt;
+    &amp;lt;add key=&amp;quot;HueBridgeIpAddress&amp;quot; value=&amp;quot;192.168.2.X&amp;quot; /&amp;gt;
+    &amp;lt;add key=&amp;quot;LightNameToTurnOn&amp;quot; value=&amp;quot;LightName&amp;quot; /&amp;gt;   
+    &amp;lt;add key=&amp;quot;CheckIntervalInSeconds&amp;quot; value=&amp;quot;5&amp;quot; /&amp;gt;
+    &amp;lt;add key=&amp;quot;PingTimeoutInSeconds&amp;quot; value=&amp;quot;1000&amp;quot; /&amp;gt;    
+    &amp;lt;add key=&amp;quot;RetryNumber&amp;quot; value=&amp;quot;3&amp;quot; /&amp;gt;
+    &amp;lt;add key=&amp;quot;RetryIntervalInSeconds&amp;quot; value=&amp;quot;60&amp;quot; /&amp;gt; 
+    &amp;lt;!-- Active hours in a day, value can be 0 to 23 --&amp;gt;
+    &amp;lt;add key=&amp;quot;ActiveHours&amp;quot; value=&amp;quot;20,21,22,23&amp;quot; /&amp;gt;
+    &amp;lt;!-- Log file name will be appended with date --&amp;gt;
+    &amp;lt;add key=&amp;quot;LogFileName&amp;quot; value=&amp;quot;Scanlog&amp;quot; /&amp;gt;
+    &amp;lt;!-- Only supports /24 subnet, value can be 0 to 254 --&amp;gt;
+    &amp;lt;add key=&amp;quot;ScanStartIp&amp;quot; value=&amp;quot;0&amp;quot; /&amp;gt;
+    &amp;lt;add key=&amp;quot;ScanEndIp&amp;quot; value=&amp;quot;254&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</title>

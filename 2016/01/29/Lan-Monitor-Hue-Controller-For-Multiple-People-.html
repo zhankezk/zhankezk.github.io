@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<div id="container">
+			<div id="side">
+				<a href="/" id="home" title="Kb" alt="Kb">Kb</a>
+				<div id="hometext"><a href="/" >Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling </h1>
+		<span class="postdate">29 January, 2016
+			
+		</span>
+		<p>Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.</p>
+<p>Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it's designed for single people who lives along :( Because Siri can't be shared between different Apple ID and Geo Fencing only works for a single device.</p>
+<p>Siri issue can be resolved by setting up an iOS device at home only for home automation with &quot;Hey Siri&quot; enabled. But Geo Fencing is pretty much useless for me.</p>
+<p>So I wrote a Windows Console Application that pings mine and my wife's iPhone every few seconds and turn the lights off or on accordingly.</p>
+<p>Few things before we continue:</p>
+<ul>
+<li>It runs on windows, you need to have a windows machine that is always on when you want it to do the work.</li>
+<li>You need to know your Bridge IP address and device names of the devices you want to monitor.</li>
+<li>You need to follow Philips Developer Guide to setup API Key for your local Bridge.</li>
+</ul>
+<p>UI and non-tech people friendly version will come, but not much free time at the moment, will try.</p>
+<h3>App Name: Anyone Hue ?</h3>
+<p>Download Link: <a href="/files/AnyoneHue_Console_v1.0.zip">Direct</a></p>
+<p>Main functionalities:</p>
+<ul>
+<li>Check multiple devices presence in local network and turn off all lights when none is connected (It's like GEO fencing for multiple people, but instead of using location, it uses wifi)</li>
+<li>If any device comes back online, turn on a pre-defined light to full brightness</li>
+<li>Can stop monitoring for particular hours defined in config, it enters sleep mode for those hours.</li>
+<li>Can set retry numbers and retry waiting period</li>
+</ul>
+<p>Below is the web.config setting, hopefully can help you understands what are configurable for the app.</p>
+<pre><code class="language-xml">    &lt;!-- Device names to be monitored--&gt;
+    &lt;add key=&quot;DeviceNamesByPipes&quot; value=&quot;Device1|Device2&quot; /&gt;    
+    &lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;
+    &lt;add key=&quot;HueBridgeApiKey&quot; value=&quot;APIKey&quot; /&gt;
+    &lt;add key=&quot;HueBridgeIpAddress&quot; value=&quot;192.168.2.X&quot; /&gt;
+    &lt;add key=&quot;LightNameToTurnOn&quot; value=&quot;LightName&quot; /&gt;   
+    &lt;add key=&quot;CheckIntervalInSeconds&quot; value=&quot;5&quot; /&gt;
+    &lt;add key=&quot;PingTimeoutInSeconds&quot; value=&quot;1000&quot; /&gt;    
+    &lt;add key=&quot;RetryNumber&quot; value=&quot;3&quot; /&gt;
+    &lt;add key=&quot;RetryIntervalInSeconds&quot; value=&quot;60&quot; /&gt; 
+    &lt;!-- Active hours in a day, value can be 0 to 23 --&gt;
+    &lt;add key=&quot;ActiveHours&quot; value=&quot;20,21,22,23&quot; /&gt;
+    &lt;!-- Log file name will be appended with date --&gt;
+    &lt;add key=&quot;LogFileName&quot; value=&quot;Scanlog&quot; /&gt;
+    &lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;
+    &lt;add key=&quot;ScanStartIp&quot; value=&quot;0&quot; /&gt;
+    &lt;add key=&quot;ScanEndIp&quot; value=&quot;254&quot; /&gt;
+</code></pre>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
