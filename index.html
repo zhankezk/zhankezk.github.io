@@ -42,17 +42,17 @@
 			</div>
 			<div id="content">
 				<ul class="posts">
-    
-        <li>
-            <div class="idea">
-                
-                    <h1><a href="/2016/03/05/New-Back-Engine-For-Blog.html">A New Back Engine for Blog</a></h1>
-                    <div class="postdate"> 5 March, 2016
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>In order to stick to my previous post which states that I will not change the blog platform anymore but focus on writing content. I came up with an idea that to create an Asp.Net website to edit markdown files, generates the html site, then use git to commit to Github.</p>
+<pre><code>	&lt;li&gt;
+		&lt;div class=&quot;idea&quot;&gt;
+			
+				&lt;h1&gt;&lt;a href=&quot;/2016/03/05/New-Back-Engine-For-Blog.html&quot;&gt;A New Back Engine for Blog&lt;/a&gt;&lt;/h1&gt;
+				&lt;div class=&quot;postdate&quot;&gt; 5 March, 2016
+					&lt;ul&gt;
+					
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;p&gt;In order to stick to my previous post which states that I will not change the blog platform anymore but focus on writing content. I came up with an idea that to create an Asp.Net website to edit markdown files, generates the html site, then use git to commit to Github.&lt;/p&gt;
+</code></pre>
 <p>I know, kind of ridiculous. Why do I bother? Just setup a dynamic blog!</p>
 <p>But you know, we, developers, always do stuff just because... we can...</p>
 <p>Of course there're more genuine reasons:</p>
@@ -67,22 +67,22 @@
 <li>pretzel - static html site generator in C sharp - https://github.com/Code52/pretzel</li>
 </ol>
 <p>And a online markdown editor and file management definitely exist.</p>
-                    <br />
-                    <a href="/2016/03/05/New-Back-Engine-For-Blog.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a></h2>
-                    <div class="postdate">29 January, 2016
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.</p>
+					<br />
+					<a href="/2016/03/05/New-Back-Engine-For-Blog.html#disqus_thread">Comments</a>
+<pre><code>		&lt;/div&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;div class=&quot;idea&quot;&gt;
+			
+				&lt;h2&gt;&lt;a class=&quot;postlink&quot; href=&quot;/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html&quot;&gt;AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;postdate&quot;&gt;29 January, 2016
+					&lt;ul&gt;
+					
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;p&gt;Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.&lt;/p&gt;
+</code></pre>
 <p>Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it's designed for single people who lives along :( Because Siri can't be shared between different Apple ID and Geo Fencing only works for a single device.</p>
 <p>Siri issue can be resolved by setting up an iOS device at home only for home automation with &quot;Hey Siri&quot; enabled. But Geo Fencing is pretty much useless for me.</p>
 <p>So I wrote a Windows Console Application that pings mine and my wife's iPhone every few seconds and turn the lights off or on accordingly.</p>
@@ -103,39 +103,39 @@
 <li>Can set retry numbers and retry waiting period</li>
 </ul>
 <p>Below is the web.config setting, hopefully can help you understands what are configurable for the app.</p>
-<pre><code class="language-xml">    &lt;!-- Device names to be monitored--&gt;
-    &lt;add key=&quot;DeviceNamesByPipes&quot; value=&quot;Device1|Device2&quot; /&gt;    
-    &lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;
+<pre><code class="language-xml">	&lt;!-- Device names to be monitored--&gt;
+    &lt;add key=&quot;DeviceNamesByPipes&quot; value=&quot;Device1|Device2&quot; /&gt;	
+	&lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;
     &lt;add key=&quot;HueBridgeApiKey&quot; value=&quot;APIKey&quot; /&gt;
     &lt;add key=&quot;HueBridgeIpAddress&quot; value=&quot;192.168.2.X&quot; /&gt;
-    &lt;add key=&quot;LightNameToTurnOn&quot; value=&quot;LightName&quot; /&gt;   
+	&lt;add key=&quot;LightNameToTurnOn&quot; value=&quot;LightName&quot; /&gt;	
     &lt;add key=&quot;CheckIntervalInSeconds&quot; value=&quot;5&quot; /&gt;
     &lt;add key=&quot;PingTimeoutInSeconds&quot; value=&quot;1000&quot; /&gt;    
     &lt;add key=&quot;RetryNumber&quot; value=&quot;3&quot; /&gt;
-    &lt;add key=&quot;RetryIntervalInSeconds&quot; value=&quot;60&quot; /&gt; 
-    &lt;!-- Active hours in a day, value can be 0 to 23 --&gt;
+    &lt;add key=&quot;RetryIntervalInSeconds&quot; value=&quot;60&quot; /&gt;	
+	&lt;!-- Active hours in a day, value can be 0 to 23 --&gt;
     &lt;add key=&quot;ActiveHours&quot; value=&quot;20,21,22,23&quot; /&gt;
-    &lt;!-- Log file name will be appended with date --&gt;
+	&lt;!-- Log file name will be appended with date --&gt;
     &lt;add key=&quot;LogFileName&quot; value=&quot;Scanlog&quot; /&gt;
-    &lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;
+	&lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;
     &lt;add key=&quot;ScanStartIp&quot; value=&quot;0&quot; /&gt;
     &lt;add key=&quot;ScanEndIp&quot; value=&quot;254&quot; /&gt;
 </code></pre>
-                    <a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a></h2>
-                    <div class="postdate"> 7 January, 2016
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>For an IOS app with Chinese names, the names have to be sorted via Pinyin(it's like phonetic words), or people can barely locate anyone.</p>
+					<a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html#disqus_thread">Comments</a>
+<pre><code>		&lt;/div&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;div class=&quot;idea&quot;&gt;
+			
+				&lt;h2&gt;&lt;a class=&quot;postlink&quot; href=&quot;/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html&quot;&gt;Converting Chinese to Pinyin/Quanpin in Xamarin IOS development&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;postdate&quot;&gt; 7 January, 2016
+					&lt;ul&gt;
+					
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;p&gt;For an IOS app with Chinese names, the names have to be sorted via Pinyin(it's like phonetic words), or people can barely locate anyone.&lt;/p&gt;
+</code></pre>
 <p>And there are lots of solutions on the internet about how to sort Chinese in Object-C, Swift or C#. However I couldn't find any on how to do it in Xamarin IOS using C#. All the C# way won't work in the Xamarin IOS app althought it compiles happily. My understanding it's that Xamarin is just a mapping(I may put it too simple here) between languages, so whatever the .Net framework is doing based on the language do not get carried over to IOS.</p>
 <p>Luickly I found the mapping that Xamarin specificliy created just for the sake of mapping libraries in Object-C: <a href="https://developer.xamarin.com/api/type/Foundation.NSMutableString/">Foundation.NSMutableString</a> and its method:</p>
 <pre><code class="language-cssharp">ApplyTransform(NSStringTransform, Boolean, NSRange, out NSRange) : Boolean
@@ -144,14 +144,14 @@
 <p>To note here I tried to created this as a property as part of the database model however since it's inside of a portable class library so it doesn't have the Foundation namespace so I couldn't, hence the extension.</p>
 <pre><code class="language-csharp">using Foundation;
 ...
-        public static string GetPinyin (this string input)
-        {
-            var output = new NSMutableString ();
-            output.SetString (new NSString (input));
-            var dumy = new NSRange ();
-            output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
-            return output.ToString ();
-        }
+		public static string GetPinyin (this string input)
+		{
+			var output = new NSMutableString ();
+			output.SetString (new NSString (input));
+			var dumy = new NSRange ();
+			output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
+			return output.ToString ();
+		}
 </code></pre>
 <p>觉得这篇尤其需要堆积一点中文来提高SEO。</p>
 <p>基本上问题就是中文通讯录的排序，在纯 IOS 和 C# 的开发环境里这都是很普通的事情，因为 Google 里搜下一大堆的。可是在 Xamarin 里用 C# 写 IOS 就不大一样了。 Object-C 和 Swift 都不能直接用，C# 的虽然可以写出来可以编译，但到了IOS那边是失效的因为框架里的功能是完全不一样的。</p>
@@ -159,65 +159,65 @@
 <p>用了这个可以把中文全部转换成拼音并且还包括音调，不过对不住没找到怎么是不包括音调了。但是有了这个东西后，至少排序不成问题了。</p>
 <p>我的感觉是肯定还有更好的办法，不过暂时就先这样吧。</p>
 <p>My feeling is that this is not the best way, but for now, it works.</p>
-                    <a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html">Get Sitecore Item SiteInfo</a></h2>
-                    <div class="postdate">11 October, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p>Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.</p>
+					<a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html#disqus_thread">Comments</a>
+<pre><code>		&lt;/div&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;div class=&quot;idea&quot;&gt;
+			
+				&lt;h2&gt;&lt;a class=&quot;postlink&quot; href=&quot;/2015/10/11/Get-Sitecore-Item-SiteInfo.html&quot;&gt;Get Sitecore Item SiteInfo&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;postdate&quot;&gt;11 October, 2015
+					&lt;ul&gt;
+					
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;p&gt;Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.&lt;/p&gt;
+</code></pre>
 <p>I got the idea from a post in <a href="http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated">stackoverflow</a>, however improved it a bit so it matches the site more accurately.</p>
 <pre><code class="language-csharp">public static SiteInfo GetSite(this Item item)
 {
-    var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
-
-    SiteInfo currentSiteinfo = null;
-    var matchLength = 0;
-    foreach (var siteInfo in siteInfoList)
-    {
-        if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
-        {
-            matchLength = siteInfo.RootPath.Length;
-            currentSiteinfo = siteInfo;
-        }
-    }
-
-    return currentSiteinfo;
+	var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+<pre><code>SiteInfo currentSiteinfo = null;
+var matchLength = 0;
+foreach (var siteInfo in siteInfoList)
+{
+	if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;amp;&amp;amp; siteInfo.RootPath.Length &amp;gt; matchLength)
+	{
+		matchLength = siteInfo.RootPath.Length;
+		currentSiteinfo = siteInfo;
+	}
 }
+
+return currentSiteinfo;
 </code></pre>
+<p>}
+</code></pre></p>
 <p>Then you can use urlOption with Sitecore LinkManager to generate urls:</p>
 <pre><code class="language-csharp">var urlOptions = UrlOptions.DefaultOptions;
 var siteInfo = item.GetSite();
 if (siteInfo != null)
 {
-    urlOptions.Site = new SiteContext(siteInfo);
+	urlOptions.Site = new SiteContext(siteInfo);
 }
 var url = LinkManager.GetItemUrl(item, urlOptions);
 </code></pre>
-                    <a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
-        <li>
-            <div class="idea">
-                
-                    <h2><a class="postlink" href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a></h2>
-                    <div class="postdate"> 4 June, 2015
-                        <ul>
-                        
-                        </ul>
-                    </div>
-                    <p><em>Your phone, your risk, I don't take any responsibilities.</em></p>
-<h2>Shortcut to purpose of this post</h2>
+					<a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html#disqus_thread">Comments</a>
+<pre><code>		&lt;/div&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;div class=&quot;idea&quot;&gt;
+			
+				&lt;h2&gt;&lt;a class=&quot;postlink&quot; href=&quot;/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html&quot;&gt;Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1&lt;/a&gt;&lt;/h2&gt;
+				&lt;div class=&quot;postdate&quot;&gt; 4 June, 2015
+					&lt;ul&gt;
+					
+					&lt;/ul&gt;
+				&lt;/div&gt;
+				&lt;p&gt;&lt;em&gt;Your phone, your risk, I don't take any responsibilities.&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+<p><h2>Shortcut to purpose of this post</h2></p>
 <p>Current version of CF-Auto-Root for N910G is for android 4.4.4, however it works for 5.0.1. Key thing is to use a more latest version of Odin.</p>
 <h2>Phone Info</h2>
 <p>Samsung Galaxy Note 4 (N910G) Android Lollipop 5.0.1 which was rolled out on 3rd June 2015
@@ -234,87 +234,85 @@ This is a Vodafone phone in Australia</p>
 <li>Click &quot;Start&quot;</li>
 <li>It should just do it things and reboot</li>
 </ul>
-                    <a href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html#disqus_thread">Comments</a>
-                
-            </div>
-        </li>
-    
+					<a href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html#disqus_thread">Comments</a>
+<pre><code>		&lt;/div&gt;
+	&lt;/li&gt;
+</code></pre>
 </ul>
-<h3>OLDER</h3>
+<p><h3>OLDER</h3></p>
 <ul class="postArchive">
+<pre><code>&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 28 Apr &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html&quot;&gt;Input Method On Galaxy Note 4 Keep Reverting Back To Default&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 28 Apr </span> <a class="postlink" href="/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html">Input Method On Galaxy Note 4 Keep Reverting Back To Default</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 14 Apr &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html&quot;&gt;Onda v820w flash os - Booting to droidboot.img failed&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 14 Apr </span> <a class="postlink" href="/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html">Onda v820w flash os - Booting to droidboot.img failed</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 24 Mar &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html&quot;&gt;Sitecore session expires(timeout) quickly(1 min) when not logged in&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 24 Mar </span> <a class="postlink" href="/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html">Sitecore session expires(timeout) quickly(1 min) when not logged in</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 19 Mar &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/03/19/Chrome-request-page-twice.html&quot;&gt;Browser requests page twice&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 19 Mar </span> <a class="postlink" href="/2015/03/19/Chrome-request-page-twice.html">Browser requests page twice</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 15 Mar &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/03/15/From-mobile.html&quot;&gt;From mobile&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 15 Mar </span> <a class="postlink" href="/2015/03/15/From-mobile.html">From mobile</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 14 Mar &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/03/14/focusing-on-content.html&quot;&gt;Focusing on content&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 14 Mar </span> <a class="postlink" href="/2015/03/14/focusing-on-content.html">Focusing on content</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 13 Jan &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html&quot;&gt;Section references in Sitecore config files with ref attribute&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 13 Jan </span> <a class="postlink" href="/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html">Section references in Sitecore config files with ref attribute</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 11 Jan &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/01/11/Powerline-Ethernet-Adapters.html&quot;&gt;Powerline Ethernet Adapters&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 11 Jan </span> <a class="postlink" href="/2015/01/11/Powerline-Ethernet-Adapters.html">Powerline Ethernet Adapters</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 06 Jan &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html&quot;&gt;TDS project build fail in Teamcity with VS 2012 runner&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 06 Jan </span> <a class="postlink" href="/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html">TDS project build fail in Teamcity with VS 2012 runner</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 18 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html&quot;&gt;Sonos with Airsonos on Windows and Mac&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 18 Dec </span> <a class="postlink" href="/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html">Sonos with Airsonos on Windows and Mac</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 17 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html&quot;&gt;Google Tag Manager causing placeholder issues in IE 8&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 17 Dec </span> <a class="postlink" href="/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html">Google Tag Manager causing placeholder issues in IE 8</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 13 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/13/IIS-Http-error-500.19-with-web.config.html&quot;&gt;IIS Http error 500.19 with web.config&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 13 Dec </span> <a class="postlink" href="/2014/12/13/IIS-Http-error-500.19-with-web.config.html">IIS Http error 500.19 with web.config</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 13 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/13/Must-have-softwares-after-reinstalling-windows.html&quot;&gt;Must have softwares after reinstalling windows&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 13 Dec </span> <a class="postlink" href="/2014/12/13/Must-have-softwares-after-reinstalling-windows.html">Must have softwares after reinstalling windows</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 11 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/11/Multi-Site-solution-deployments-in-Azure.html&quot;&gt;Multi-Site solution deployments in Azure&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 11 Dec </span> <a class="postlink" href="/2014/12/11/Multi-Site-solution-deployments-in-Azure.html">Multi-Site solution deployments in Azure</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 08 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html&quot;&gt;IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 08 Dec </span> <a class="postlink" href="/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html">IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 08 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html&quot;&gt;Schedule tasks not running on CDS in Sitecore&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 08 Dec </span> <a class="postlink" href="/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html">Schedule tasks not running on CDS in Sitecore</a>
-    </li>
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 07 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/07/Sitecore-Redirect-Manager.html&quot;&gt;Sitecore Redirect Manager&lt;/a&gt;
+&lt;/li&gt;
 
-    <li>
-        <span class="olderpostdate"> 07 Dec </span> <a class="postlink" href="/2014/12/07/Sitecore-Redirect-Manager.html">Sitecore Redirect Manager</a>
-    </li>
-
-    <li>
-        <span class="olderpostdate"> 04 Dec </span> <a class="postlink" href="/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html">Sitecore Indexes media url with /sitecore/shell</a>
-    </li>
-
+&lt;li&gt;
+	&lt;span class=&quot;olderpostdate&quot;&gt; 04 Dec &lt;/span&gt; &lt;a class=&quot;postlink&quot; href=&quot;/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html&quot;&gt;Sitecore Indexes media url with /sitecore/shell&lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
 </ul>
 <script type="text/javascript">
 //<![CDATA[

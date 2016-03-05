@@ -56,14 +56,14 @@
 <p>To note here I tried to created this as a property as part of the database model however since it's inside of a portable class library so it doesn't have the Foundation namespace so I couldn't, hence the extension.</p>
 <pre><code class="language-csharp">using Foundation;
 ...
-        public static string GetPinyin (this string input)
-        {
-            var output = new NSMutableString ();
-            output.SetString (new NSString (input));
-            var dumy = new NSRange ();
-            output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
-            return output.ToString ();
-        }
+		public static string GetPinyin (this string input)
+		{
+			var output = new NSMutableString ();
+			output.SetString (new NSString (input));
+			var dumy = new NSRange ();
+			output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
+			return output.ToString ();
+		}
 </code></pre>
 <p>觉得这篇尤其需要堆积一点中文来提高SEO。</p>
 <p>基本上问题就是中文通讯录的排序，在纯 IOS 和 C# 的开发环境里这都是很普通的事情，因为 Google 里搜下一大堆的。可是在 Xamarin 里用 C# 写 IOS 就不大一样了。 Object-C 和 Swift 都不能直接用，C# 的虽然可以写出来可以编译，但到了IOS那边是失效的因为框架里的功能是完全不一样的。</p>
@@ -74,8 +74,8 @@
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  </div> 
-	<div class="right">  </div> 
+	<div class="left">  <a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html" title="Previous Post: Get Sitecore Item SiteInfo">&larr; Get Sitecore Item SiteInfo</a>  </div> 
+	<div class="right">  <a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html" title="next Post: AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 
