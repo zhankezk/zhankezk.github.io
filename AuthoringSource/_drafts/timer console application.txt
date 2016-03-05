@@ -1,1 +1,0 @@
-timer in console application with release build only run one. Optimize code enabled in Windows home server 2011, from MS docs, nothing is ref it, it will be gabarge collected!

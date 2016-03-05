@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-05T22:49:42.5782235+11:00</updated>
+  <updated>2016-03-06T01:32:46.0943761+11:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -67,21 +67,21 @@
 &lt;li&gt;Can set retry numbers and retry waiting period&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Below is the web.config setting, hopefully can help you understands what are configurable for the app.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;    &amp;lt;!-- Device names to be monitored--&amp;gt;
-    &amp;lt;add key=&amp;quot;DeviceNamesByPipes&amp;quot; value=&amp;quot;Device1|Device2&amp;quot; /&amp;gt;    
-    &amp;lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&amp;gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;	&amp;lt;!-- Device names to be monitored--&amp;gt;
+    &amp;lt;add key=&amp;quot;DeviceNamesByPipes&amp;quot; value=&amp;quot;Device1|Device2&amp;quot; /&amp;gt;	
+	&amp;lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&amp;gt;
     &amp;lt;add key=&amp;quot;HueBridgeApiKey&amp;quot; value=&amp;quot;APIKey&amp;quot; /&amp;gt;
     &amp;lt;add key=&amp;quot;HueBridgeIpAddress&amp;quot; value=&amp;quot;192.168.2.X&amp;quot; /&amp;gt;
-    &amp;lt;add key=&amp;quot;LightNameToTurnOn&amp;quot; value=&amp;quot;LightName&amp;quot; /&amp;gt;   
+	&amp;lt;add key=&amp;quot;LightNameToTurnOn&amp;quot; value=&amp;quot;LightName&amp;quot; /&amp;gt;	
     &amp;lt;add key=&amp;quot;CheckIntervalInSeconds&amp;quot; value=&amp;quot;5&amp;quot; /&amp;gt;
     &amp;lt;add key=&amp;quot;PingTimeoutInSeconds&amp;quot; value=&amp;quot;1000&amp;quot; /&amp;gt;    
     &amp;lt;add key=&amp;quot;RetryNumber&amp;quot; value=&amp;quot;3&amp;quot; /&amp;gt;
-    &amp;lt;add key=&amp;quot;RetryIntervalInSeconds&amp;quot; value=&amp;quot;60&amp;quot; /&amp;gt; 
-    &amp;lt;!-- Active hours in a day, value can be 0 to 23 --&amp;gt;
+    &amp;lt;add key=&amp;quot;RetryIntervalInSeconds&amp;quot; value=&amp;quot;60&amp;quot; /&amp;gt;	
+	&amp;lt;!-- Active hours in a day, value can be 0 to 23 --&amp;gt;
     &amp;lt;add key=&amp;quot;ActiveHours&amp;quot; value=&amp;quot;20,21,22,23&amp;quot; /&amp;gt;
-    &amp;lt;!-- Log file name will be appended with date --&amp;gt;
+	&amp;lt;!-- Log file name will be appended with date --&amp;gt;
     &amp;lt;add key=&amp;quot;LogFileName&amp;quot; value=&amp;quot;Scanlog&amp;quot; /&amp;gt;
-    &amp;lt;!-- Only supports /24 subnet, value can be 0 to 254 --&amp;gt;
+	&amp;lt;!-- Only supports /24 subnet, value can be 0 to 254 --&amp;gt;
     &amp;lt;add key=&amp;quot;ScanStartIp&amp;quot; value=&amp;quot;0&amp;quot; /&amp;gt;
     &amp;lt;add key=&amp;quot;ScanEndIp&amp;quot; value=&amp;quot;254&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</content>
@@ -105,14 +105,14 @@
 &lt;p&gt;To note here I tried to created this as a property as part of the database model however since it&apos;s inside of a portable class library so it doesn&apos;t have the Foundation namespace so I couldn&apos;t, hence the extension.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;using Foundation;
 ...
-        public static string GetPinyin (this string input)
-        {
-            var output = new NSMutableString ();
-            output.SetString (new NSString (input));
-            var dumy = new NSRange ();
-            output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
-            return output.ToString ();
-        }
+		public static string GetPinyin (this string input)
+		{
+			var output = new NSMutableString ();
+			output.SetString (new NSString (input));
+			var dumy = new NSRange ();
+			output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
+			return output.ToString ();
+		}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;觉得这篇尤其需要堆积一点中文来提高SEO。&lt;/p&gt;
 &lt;p&gt;基本上问题就是中文通讯录的排序，在纯 IOS 和 C# 的开发环境里这都是很普通的事情，因为 Google 里搜下一大堆的。可是在 Xamarin 里用 C# 写 IOS 就不大一样了。 Object-C 和 Swift 都不能直接用，C# 的虽然可以写出来可以编译，但到了IOS那边是失效的因为框架里的功能是完全不一样的。&lt;/p&gt;
@@ -135,20 +135,20 @@
 &lt;p&gt;I got the idea from a post in &lt;a href=&quot;http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated&quot;&gt;stackoverflow&lt;/a&gt;, however improved it a bit so it matches the site more accurately.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;public static SiteInfo GetSite(this Item item)
 {
-    var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+	var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
 
-    SiteInfo currentSiteinfo = null;
-    var matchLength = 0;
-    foreach (var siteInfo in siteInfoList)
-    {
-        if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;amp;&amp;amp; siteInfo.RootPath.Length &amp;gt; matchLength)
-        {
-            matchLength = siteInfo.RootPath.Length;
-            currentSiteinfo = siteInfo;
-        }
-    }
+	SiteInfo currentSiteinfo = null;
+	var matchLength = 0;
+	foreach (var siteInfo in siteInfoList)
+	{
+		if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;amp;&amp;amp; siteInfo.RootPath.Length &amp;gt; matchLength)
+		{
+			matchLength = siteInfo.RootPath.Length;
+			currentSiteinfo = siteInfo;
+		}
+	}
 
-    return currentSiteinfo;
+	return currentSiteinfo;
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then you can use urlOption with Sitecore LinkManager to generate urls:&lt;/p&gt;
@@ -156,7 +156,7 @@
 var siteInfo = item.GetSite();
 if (siteInfo != null)
 {
-    urlOptions.Site = new SiteContext(siteInfo);
+	urlOptions.Site = new SiteContext(siteInfo);
 }
 var url = LinkManager.GetItemUrl(item, urlOptions);
 &lt;/code&gt;&lt;/pre&gt;</content>
@@ -554,16 +554,16 @@ The requested page cannot be accessed because the related configuration data for
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Detailed Error Information:
-Module     IIS Web Core
-Notification       Unknown
-Handler    Not yet determined
-Error Code     0x8007000d
-Config Error&lt;br /&gt;
-Config File    \?\X:\kb\web.config
-Requested URL      http://kb/
-Physical Path&lt;br /&gt;
-Logon Method       Not yet determined
-Logon User     Not yet determined&lt;/p&gt;
+Module	   IIS Web Core
+Notification	   Unknown
+Handler	   Not yet determined
+Error Code	   0x8007000d
+Config Error	&lt;br /&gt;
+Config File	   \?\X:\kb\web.config
+Requested URL	   http://kb/
+Physical Path	&lt;br /&gt;
+Logon Method	   Not yet determined
+Logon User	   Not yet determined&lt;/p&gt;
 &lt;/blockquote&gt;</content>
   </entry>
   

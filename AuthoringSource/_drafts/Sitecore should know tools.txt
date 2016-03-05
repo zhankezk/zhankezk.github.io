@@ -1,7 +1,0 @@
-Sitecore instance manager
-Sitecore log analyzer
-Luke
-https://chrome.google.com/webstore/detail/sitecore-developer-tool/cmbppbejihcnbngefandoljljdppnlda
-Glass Mapper
-TDS
-Sitecore Rocks
