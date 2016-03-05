@@ -1,4 +1,4 @@
-# zzzgo.com
+# kezhan.info
 
 Just a blog
 
