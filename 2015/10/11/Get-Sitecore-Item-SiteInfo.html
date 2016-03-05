@@ -51,20 +51,20 @@
 <p>I got the idea from a post in <a href="http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated">stackoverflow</a>, however improved it a bit so it matches the site more accurately.</p>
 <pre><code class="language-csharp">public static SiteInfo GetSite(this Item item)
 {
-	var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+    var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
 
-	SiteInfo currentSiteinfo = null;
-	var matchLength = 0;
-	foreach (var siteInfo in siteInfoList)
-	{
-		if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
-		{
-			matchLength = siteInfo.RootPath.Length;
-			currentSiteinfo = siteInfo;
-		}
-	}
+    SiteInfo currentSiteinfo = null;
+    var matchLength = 0;
+    foreach (var siteInfo in siteInfoList)
+    {
+        if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
+        {
+            matchLength = siteInfo.RootPath.Length;
+            currentSiteinfo = siteInfo;
+        }
+    }
 
-	return currentSiteinfo;
+    return currentSiteinfo;
 }
 </code></pre>
 <p>Then you can use urlOption with Sitecore LinkManager to generate urls:</p>
@@ -72,15 +72,15 @@
 var siteInfo = item.GetSite();
 if (siteInfo != null)
 {
-	urlOptions.Site = new SiteContext(siteInfo);
+    urlOptions.Site = new SiteContext(siteInfo);
 }
 var url = LinkManager.GetItemUrl(item, urlOptions);
 </code></pre>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html" title="Previous Post: Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1">&larr; Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a>  </div> 
-	<div class="right">  <a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html" title="next Post: Converting Chinese to Pinyin/Quanpin in Xamarin IOS development">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development &rarr; </a>  </div> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 
