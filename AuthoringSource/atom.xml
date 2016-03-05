@@ -1,0 +1,29 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kb Feed</title>
+  <link href="http://kezhan.info/"/>
+  <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://kezhan.info/</id>
+  <author>
+    <name>Ke</name>
+    <email>Nope</email>
+  </author>
+
+  {% for post in site.posts %}
+  <entry>
+    <id>http://kezhan.info{{ post.url }}</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info{{ post.url }}"/>
+    <title>{{ post.title | xml_escape }}</title>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>
