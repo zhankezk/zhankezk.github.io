@@ -49,7 +49,7 @@ li
 	margin-left:10px; 
 	list-style-type:circle;
 }
-#hometext a { font-size: 2em; margin-left: 5px; margin-right:10px; display: none; color: #41B1E1; font-weight: normal;  }
+#hometext a { font-size: 2em; margin-left: 5px; margin-right:10px; color: #41B1E1; font-weight: normal;  }
 #home:hover 
 { 
 	background:none; 
