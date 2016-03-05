@@ -6,15 +6,38 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 29 Jan 2016 23:52:03 %z</pubDate>
-    <lastBuildDate>Fri, 29 Jan 2016 23:52:03 %z</lastBuildDate>
+    <pubDate>Sat, 05 Mar 2016 20:04:00 %z</pubDate>
+    <lastBuildDate>Sat, 05 Mar 2016 20:04:00 %z</lastBuildDate>
+    
+    <item>
+      <title>A New Back Engine for Blog</title>
+      <link>http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html</link>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html</guid>
+      <description>&lt;p&gt;In order to stick to my previous post which states that I will not change the blog platform anymore but focus on writing content. I came up with an idea that to create an Asp.Net website to edit markdown files, generates the html site, then use git to commit to Github.&lt;/p&gt;
+&lt;p&gt;I know, kind of ridiculous. Why do I bother? Just setup a dynamic blog!&lt;/p&gt;
+&lt;p&gt;But you know, we, developers, always do stuff just because... we can...&lt;/p&gt;
+&lt;p&gt;Of course there&apos;re more genuine reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tiered of changing blog platform, will try to keep it as static html site from now on.&lt;/li&gt;
+&lt;li&gt;Can utilize Github Page and Azure free App Service. Not saying hosting a website is too much money, just don&apos;t feel it&apos;s worth the money for me.&lt;/li&gt;
+&lt;li&gt;As a practice for Asp.Net 5(or Core 1?)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Did a quick research, this is achievable with the following libraries/tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;libgit2sharp - git api in C sharp - https://github.com/libgit2/libgit2sharp/&lt;/li&gt;
+&lt;li&gt;pretzel - static html site generator in C sharp - https://github.com/Code52/pretzel&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And a online markdown editor and file management definitely exist.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
-      <link>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</link>
+      <link>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html</link>
       <pubDate>Fri, 29 Jan 2016 00:00:00 %z</pubDate>
       <author>Ke</author>
-      <guid>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</guid>
+      <guid>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html</guid>
       <description>&lt;p&gt;Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can&apos;t just use the wall switch now XD.&lt;/p&gt;
 &lt;p&gt;Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it&apos;s designed for single people who lives along :( Because Siri can&apos;t be shared between different Apple ID and Geo Fencing only works for a single device.&lt;/p&gt;
 &lt;p&gt;Siri issue can be resolved by setting up an iOS device at home only for home automation with &amp;quot;Hey Siri&amp;quot; enabled. But Geo Fencing is pretty much useless for me.&lt;/p&gt;

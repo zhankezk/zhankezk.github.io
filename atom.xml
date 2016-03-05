@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-01-29T23:52:03.455184+11:00</updated>
+  <updated>2016-03-05T20:04:00.4896879+11:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -12,8 +12,34 @@
 
   
   <entry>
-    <id>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</id>
-    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html"/>
+    <id>http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html"/>
+    <title>A New Back Engine for Blog</title>
+    <updated>2016-03-05T00:00:00+11:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;p&gt;In order to stick to my previous post which states that I will not change the blog platform anymore but focus on writing content. I came up with an idea that to create an Asp.Net website to edit markdown files, generates the html site, then use git to commit to Github.&lt;/p&gt;
+&lt;p&gt;I know, kind of ridiculous. Why do I bother? Just setup a dynamic blog!&lt;/p&gt;
+&lt;p&gt;But you know, we, developers, always do stuff just because... we can...&lt;/p&gt;
+&lt;p&gt;Of course there&apos;re more genuine reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Tiered of changing blog platform, will try to keep it as static html site from now on.&lt;/li&gt;
+&lt;li&gt;Can utilize Github Page and Azure free App Service. Not saying hosting a website is too much money, just don&apos;t feel it&apos;s worth the money for me.&lt;/li&gt;
+&lt;li&gt;As a practice for Asp.Net 5(or Core 1?)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Did a quick research, this is achievable with the following libraries/tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;libgit2sharp - git api in C sharp - https://github.com/libgit2/libgit2sharp/&lt;/li&gt;
+&lt;li&gt;pretzel - static html site generator in C sharp - https://github.com/Code52/pretzel&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And a online markdown editor and file management definitely exist.&lt;/p&gt;</content>
+  </entry>
+  
+  <entry>
+    <id>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling - 副本.html"/>
     <title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
     <updated>2016-01-29T00:00:00+11:00</updated>
     <author>
