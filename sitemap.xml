@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2016/03/06/Hello-From-Engine.html</loc>
+    <lastmod>2016-03-06T00:00:00+11:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html</loc>
     <lastmod>2016-03-05T00:00:00+11:00</lastmod>
     <changefreq>daily</changefreq>

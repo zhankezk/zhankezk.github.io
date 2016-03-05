@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>A New Back Engine for Blog</title>
+		<title>Hello From Engine</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -42,30 +42,57 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> A New Back Engine for Blog </h1>
-		<span class="postdate"> 5 March, 2016
+		<h1> Hello From Engine </h1>
+		<span class="postdate"> 6 March, 2016
 			
 		</span>
-		<p>In order to stick to my previous post which states that I will not change the blog platform anymore but focus on writing content. I came up with an idea that to create an Asp.Net website to edit markdown files, generates the html site, then use git to commit to Github.</p>
-<p>I know, kind of ridiculous. Why do I bother? Just setup a dynamic blog!</p>
-<p>But you know, we, developers, always do stuff just because... we can...</p>
-<p>Of course there're more genuine reasons:</p>
-<ol>
-<li>Tiered of changing blog platform, will try to keep it as static html site from now on.</li>
-<li>Can utilize Github Page and Azure free App Service. Not saying hosting a website is too much money, just don't feel it's worth the money for me.</li>
-<li>As a practice for Asp.Net 5(or Core 1?)</li>
-</ol>
-<p>Did a quick research, this is achievable with the following libraries/tools:</p>
-<ol>
-<li>libgit2sharp - git api in C sharp - https://github.com/libgit2/libgit2sharp/</li>
-<li>pretzel - static html site generator in C sharp - https://github.com/Code52/pretzel</li>
-</ol>
-<p>And a online markdown editor and file management definitely exist.</p>
+		<p>This is the first test from the engine. Markdown file still added manually. But generating static site and git actions are all done automatically by web application.</p>
+<p>And basically those are all the code (Configuration is a copy from Pretzel library since it's internal):</p>
+<pre><code class="language-c">            var path = Server.MapPath(&quot;~/Yard/In&quot;);
+            var destPath = Server.MapPath(&quot;~/Yard/Out&quot;);
+
+            var fileSystem = new FileSystem();
+            var contextGenerator = new SiteContextGenerator(fileSystem, new LinkHelper(), new BLL.Configuration(fileSystem, path));
+            var siteContext = contextGenerator.BuildContext(path, destPath, false);
+            var transforms = new List&lt;ITransform&gt;();
+            transforms.Add(new LessTransform(fileSystem));
+            transforms.Add(new VirtualDirectorySupport(fileSystem));
+            var engine = new LiquidEngine();
+            engine.FileSystem = fileSystem;
+            engine.Initialize();
+            engine.Process(siteContext);
+            foreach (var t in transforms){
+                t.Transform(siteContext);
+            }
+            engine.CompressSitemap(siteContext, fileSystem);
+
+            using (var repo = new Repository(destPath))
+            {
+                repo.Stage(&quot;*&quot;);
+                var author = new Signature(&quot;xxx&quot;, &quot;@xxxx&quot;, DateTime.Now);
+                var committer = author;
+                try
+                {
+                    var commit = repo.Commit(&quot;xxxxxx&quot;, author, committer);
+                }
+                catch (Exception ex)
+                {
+                    //do sth later
+                }
+
+                var remote = repo.Network.Remotes[&quot;origin&quot;];
+                var options = new PushOptions();
+                options.CredentialsProvider = (_url, _user, _cred) =&gt;
+                    new UsernamePasswordCredentials { Username = &quot;xxxxx&quot;, Password = &quot;xxxx&quot; };
+                repo.Network.Push(remote, @&quot;refs/heads/master&quot;, options);
+            }
+</code></pre>
+<p>It's very basic though. But good to know that this can work.</p>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html" title="Previous Post: AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling">&larr; AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a>  </div> 
-	<div class="right">  <a href="/2016/03/06/Hello-From-Engine.html" title="next Post: Hello From Engine">Hello From Engine &rarr; </a>  </div> 
+	<div class="left">  <a href="/2016/03/05/New-Back-Engine-For-Blog.html" title="Previous Post: A New Back Engine for Blog">&larr; A New Back Engine for Blog</a>  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 
