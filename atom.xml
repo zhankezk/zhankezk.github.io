@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-06T03:43:45.7892436+00:00</updated>
+  <updated>2016-03-06T15:01:14.7067266+11:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -15,7 +15,7 @@
     <id>http://kezhan.info/2016/03/06/Hello-From-The-Engine.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2016/03/06/Hello-From-The-Engine.html"/>
     <title>Hello From The Engine</title>
-    <updated>2016-03-06T00:00:00+00:00</updated>
+    <updated>2016-03-06T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -63,16 +63,14 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It&apos;s very basic though. But good to know that this works.&lt;/p&gt;
 &lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
-&lt;p&gt;This is from the page editor now. All up and running.&lt;/p&gt;
-&lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
-&lt;p&gt;This is from deployed version. Test.&lt;/p&gt;</content>
+&lt;p&gt;This is from the page editor now. All up and running.&lt;/p&gt;</content>
   </entry>
   
   <entry>
     <id>http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2016/03/05/New-Back-Engine-For-Blog.html"/>
     <title>A New Back Engine for Blog</title>
-    <updated>2016-03-05T00:00:00+00:00</updated>
+    <updated>2016-03-05T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -98,7 +96,7 @@
     <id>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html"/>
     <title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
-    <updated>2016-01-29T00:00:00+00:00</updated>
+    <updated>2016-01-29T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -148,7 +146,7 @@
     <id>http://kezhan.info/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html"/>
     <title>Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</title>
-    <updated>2016-01-07T00:00:00+00:00</updated>
+    <updated>2016-01-07T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -183,7 +181,7 @@
     <id>http://kezhan.info/2015/10/11/Get-Sitecore-Item-SiteInfo.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/10/11/Get-Sitecore-Item-SiteInfo.html"/>
     <title>Get Sitecore Item SiteInfo</title>
-    <updated>2015-10-11T00:00:00+00:00</updated>
+    <updated>2015-10-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -223,7 +221,7 @@ var url = LinkManager.GetItemUrl(item, urlOptions);
     <id>http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html"/>
     <title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</title>
-    <updated>2015-06-04T00:00:00+00:00</updated>
+    <updated>2015-06-04T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -252,7 +250,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html"/>
     <title>Input Method On Galaxy Note 4 Keep Reverting Back To Default</title>
-    <updated>2015-04-28T00:00:00+00:00</updated>
+    <updated>2015-04-28T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -269,7 +267,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html"/>
     <title>Onda v820w flash os - Booting to droidboot.img failed</title>
-    <updated>2015-04-14T00:00:00+00:00</updated>
+    <updated>2015-04-14T00:00:00+10:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -347,7 +345,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html"/>
     <title>Sitecore session expires(timeout) quickly(1 min) when not logged in</title>
-    <updated>2015-03-24T00:00:00+00:00</updated>
+    <updated>2015-03-24T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -387,7 +385,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/03/19/Chrome-request-page-twice.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/19/Chrome-request-page-twice.html"/>
     <title>Browser requests page twice</title>
-    <updated>2015-03-19T00:00:00+00:00</updated>
+    <updated>2015-03-19T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -422,7 +420,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/03/15/From-mobile.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/15/From-mobile.html"/>
     <title>From mobile</title>
-    <updated>2015-03-15T00:00:00+00:00</updated>
+    <updated>2015-03-15T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -434,7 +432,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/03/14/focusing-on-content.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/03/14/focusing-on-content.html"/>
     <title>Focusing on content</title>
-    <updated>2015-03-14T00:00:00+00:00</updated>
+    <updated>2015-03-14T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -451,7 +449,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
     <id>http://kezhan.info/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/13/Section-references-in-Sitecore-config-files-with-ref-attribute.html"/>
     <title>Section references in Sitecore config files with ref attribute</title>
-    <updated>2015-01-13T00:00:00+00:00</updated>
+    <updated>2015-01-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -492,7 +490,7 @@ and:
     <id>http://kezhan.info/2015/01/11/Powerline-Ethernet-Adapters.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/11/Powerline-Ethernet-Adapters.html"/>
     <title>Powerline Ethernet Adapters</title>
-    <updated>2015-01-11T00:00:00+00:00</updated>
+    <updated>2015-01-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -510,7 +508,7 @@ and:
     <id>http://kezhan.info/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2015/01/06/TDS-project-build-fail-in-Teamcity-with-VS-2012-runner.html"/>
     <title>TDS project build fail in Teamcity with VS 2012 runner</title>
-    <updated>2015-01-06T00:00:00+00:00</updated>
+    <updated>2015-01-06T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -545,7 +543,7 @@ and:
     <id>http://kezhan.info/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/18/Sonos-with-Airsonos-on-Windows-and-Mac.html"/>
     <title>Sonos with Airsonos on Windows and Mac</title>
-    <updated>2014-12-18T00:00:00+00:00</updated>
+    <updated>2014-12-18T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -576,7 +574,7 @@ and:
     <id>http://kezhan.info/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/17/Google-Tag-Manager-causing-placeholder-issues-in-IE-8.html"/>
     <title>Google Tag Manager causing placeholder issues in IE 8</title>
-    <updated>2014-12-17T00:00:00+00:00</updated>
+    <updated>2014-12-17T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -599,7 +597,7 @@ Remove the incorrect rule, issues are gone.&lt;/p&gt;</content>
     <id>http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html"/>
     <title>IIS Http error 500.19 with web.config</title>
-    <updated>2014-12-13T00:00:00+00:00</updated>
+    <updated>2014-12-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -628,7 +626,7 @@ Logon User	   Not yet determined&lt;/p&gt;
     <id>http://kezhan.info/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/13/Must-have-softwares-after-reinstalling-windows.html"/>
     <title>Must have softwares after reinstalling windows</title>
-    <updated>2014-12-13T00:00:00+00:00</updated>
+    <updated>2014-12-13T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -684,7 +682,7 @@ Logon User	   Not yet determined&lt;/p&gt;
     <id>http://kezhan.info/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/11/Multi-Site-solution-deployments-in-Azure.html"/>
     <title>Multi-Site solution deployments in Azure</title>
-    <updated>2014-12-11T00:00:00+00:00</updated>
+    <updated>2014-12-11T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -707,7 +705,7 @@ Logon User	   Not yet determined&lt;/p&gt;
     <id>http://kezhan.info/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/08/IncludeTemplates-and-ExcludeTemplates-warning-for-custom-index-of-Sitecore.html"/>
     <title>IncludeTemplates and ExcludeTemplates warning for custom index of Sitecore</title>
-    <updated>2014-12-08T00:00:00+00:00</updated>
+    <updated>2014-12-08T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -756,7 +754,7 @@ This setting allows you to exclude items that are based on a specific template.-
     <id>http://kezhan.info/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html"/>
     <title>Schedule tasks not running on CDS in Sitecore</title>
-    <updated>2014-12-08T00:00:00+00:00</updated>
+    <updated>2014-12-08T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -771,7 +769,7 @@ This setting allows you to exclude items that are based on a specific template.-
     <id>http://kezhan.info/2014/12/07/Sitecore-Redirect-Manager.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/07/Sitecore-Redirect-Manager.html"/>
     <title>Sitecore Redirect Manager</title>
-    <updated>2014-12-07T00:00:00+00:00</updated>
+    <updated>2014-12-07T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
@@ -786,7 +784,7 @@ This setting allows you to exclude items that are based on a specific template.-
     <id>http://kezhan.info/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</id>
     <link type="text/html" rel="alternate" href="http://kezhan.info/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html"/>
     <title>Sitecore Indexes media url with /sitecore/shell</title>
-    <updated>2014-12-04T00:00:00+00:00</updated>
+    <updated>2014-12-04T00:00:00+11:00</updated>
     <author>
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
