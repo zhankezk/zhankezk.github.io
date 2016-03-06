@@ -102,6 +102,64 @@
 		<li>
 			<div class="idea">
 				
+					<h2><a class="postlink" href="/2016/03/06/Hello-From-The-Engine.html">Hello From The Engine</a></h2>
+					<div class="postdate"> 6 March, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<p>This is the first test from the engine. Markdown file are still added manually. But generating static site and git actions are all done automatically by web application.</p>
+<p>And basically those are all the code (Configuration is a copy from Pretzel library since it's internal):</p>
+<pre><code class="language-c">            var path = Server.MapPath(&quot;~/Yard/In&quot;);
+            var destPath = Server.MapPath(&quot;~/Yard/Out&quot;);
+
+            var fileSystem = new FileSystem();
+            var contextGenerator = new SiteContextGenerator(fileSystem, new LinkHelper(), new BLL.Configuration(fileSystem, path));
+            var siteContext = contextGenerator.BuildContext(path, destPath, false);
+            var transforms = new List&lt;ITransform&gt;();
+            transforms.Add(new LessTransform(fileSystem));
+            transforms.Add(new VirtualDirectorySupport(fileSystem));
+            var engine = new LiquidEngine();
+            engine.FileSystem = fileSystem;
+            engine.Initialize();
+            engine.Process(siteContext);
+            foreach (var t in transforms){
+                t.Transform(siteContext);
+            }
+            engine.CompressSitemap(siteContext, fileSystem);
+
+            using (var repo = new Repository(destPath))
+            {
+                repo.Stage(&quot;*&quot;);
+                var author = new Signature(&quot;xxx&quot;, &quot;@xxxx&quot;, DateTime.Now);
+                var committer = author;
+                try
+                {
+                    var commit = repo.Commit(&quot;xxxxxx&quot;, author, committer);
+                }
+                catch (Exception ex)
+                {
+                    //do sth later
+                }
+
+                var remote = repo.Network.Remotes[&quot;origin&quot;];
+                var options = new PushOptions();
+                options.CredentialsProvider = (_url, _user, _cred) =&gt;
+                    new UsernamePasswordCredentials { Username = &quot;xxxxx&quot;, Password = &quot;xxxx&quot; };
+                repo.Network.Push(remote, @&quot;refs/heads/master&quot;, options);
+            }
+</code></pre>
+<p>It's very basic though. But good to know that this works.</p>
+<p>-------------Update 06/03/2016-------------------</p>
+<p>This is from the page editor now. All up and running.</p>
+					<a href="/2016/03/06/Hello-From-The-Engine.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
 					<h2><a class="postlink" href="/2016/03/05/New-Back-Engine-For-Blog.html">A New Back Engine for Blog</a></h2>
 					<div class="postdate"> 5 March, 2016
 						<ul>
@@ -219,53 +277,14 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html">Get Sitecore Item SiteInfo</a></h2>
-					<div class="postdate">11 October, 2015
-						<ul>
-						
-						</ul>
-					</div>
-					<p>Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.</p>
-<p>I got the idea from a post in <a href="http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated">stackoverflow</a>, however improved it a bit so it matches the site more accurately.</p>
-<pre><code class="language-csharp">public static SiteInfo GetSite(this Item item)
-{
-	var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
-
-	SiteInfo currentSiteinfo = null;
-	var matchLength = 0;
-	foreach (var siteInfo in siteInfoList)
-	{
-		if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
-		{
-			matchLength = siteInfo.RootPath.Length;
-			currentSiteinfo = siteInfo;
-		}
-	}
-
-	return currentSiteinfo;
-}
-</code></pre>
-<p>Then you can use urlOption with Sitecore LinkManager to generate urls:</p>
-<pre><code class="language-csharp">var urlOptions = UrlOptions.DefaultOptions;
-var siteInfo = item.GetSite();
-if (siteInfo != null)
-{
-	urlOptions.Site = new SiteContext(siteInfo);
-}
-var url = LinkManager.GetItemUrl(item, urlOptions);
-</code></pre>
-					<a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 11 Oct </span> <a class="postlink" href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html">Get Sitecore Item SiteInfo</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 04 Jun </span> <a class="postlink" href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a>
