@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-06T15:01:14.7067266+11:00</updated>
+  <updated>2016-03-06T15:02:25.1868952+11:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -63,7 +63,9 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;It&apos;s very basic though. But good to know that this works.&lt;/p&gt;
 &lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
-&lt;p&gt;This is from the page editor now. All up and running.&lt;/p&gt;</content>
+&lt;p&gt;This is from the page editor now. All up and running.&lt;/p&gt;
+&lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
+&lt;p&gt;This is from deployed version. Test.&lt;/p&gt;</content>
   </entry>
   
   <entry>
