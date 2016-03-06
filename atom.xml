@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-06T04:45:46.538866+00:00</updated>
+  <updated>2016-03-06T08:27:24.341645+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -22,7 +22,7 @@
     </author>
     <content type="html">&lt;p&gt;This is the first test from the engine. Markdown file are still added manually. But generating static site and git actions are all done automatically by web application.&lt;/p&gt;
 &lt;p&gt;And basically those are all the code (Configuration is a copy from Pretzel library since it&apos;s internal):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;            var path = Server.MapPath(&amp;quot;~/Yard/In&amp;quot;);
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;            var path = Server.MapPath(&amp;quot;~/Yard/In&amp;quot;);
             var destPath = Server.MapPath(&amp;quot;~/Yard/Out&amp;quot;);
 
             var fileSystem = new FileSystem();

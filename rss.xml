@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 06 Mar 2016 04:45:46 %z</pubDate>
-    <lastBuildDate>Sun, 06 Mar 2016 04:45:46 %z</lastBuildDate>
+    <pubDate>Sun, 06 Mar 2016 08:27:24 %z</pubDate>
+    <lastBuildDate>Sun, 06 Mar 2016 08:27:24 %z</lastBuildDate>
     
     <item>
       <title>Hello From The Engine</title>
@@ -17,7 +17,7 @@
       <guid>http://kezhan.info/2016/03/06/Hello-From-The-Engine.html</guid>
       <description>&lt;p&gt;This is the first test from the engine. Markdown file are still added manually. But generating static site and git actions are all done automatically by web application.&lt;/p&gt;
 &lt;p&gt;And basically those are all the code (Configuration is a copy from Pretzel library since it&apos;s internal):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;            var path = Server.MapPath(&amp;quot;~/Yard/In&amp;quot;);
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;            var path = Server.MapPath(&amp;quot;~/Yard/In&amp;quot;);
             var destPath = Server.MapPath(&amp;quot;~/Yard/Out&amp;quot;);
 
             var fileSystem = new FileSystem();
