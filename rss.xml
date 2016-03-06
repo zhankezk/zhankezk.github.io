@@ -6,58 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 06 Mar 2016 14:06:06 %z</pubDate>
-    <lastBuildDate>Sun, 06 Mar 2016 14:06:06 %z</lastBuildDate>
-    
-    <item>
-      <title>Hello From Engine</title>
-      <link>http://kezhan.info/2016/03/06/Hello-From-Engine.html</link>
-      <pubDate>Sun, 06 Mar 2016 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://kezhan.info/2016/03/06/Hello-From-Engine.html</guid>
-      <description>&lt;p&gt;This is the first test from the engine. Markdown file still added manually. But generating static site and git actions are all done automatically by web application.&lt;/p&gt;
-&lt;p&gt;And basically those are all the code (Configuration is a copy from Pretzel library since it&apos;s internal):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-c&quot;&gt;            var path = Server.MapPath(&amp;quot;~/Yard/In&amp;quot;);
-            var destPath = Server.MapPath(&amp;quot;~/Yard/Out&amp;quot;);
-
-            var fileSystem = new FileSystem();
-            var contextGenerator = new SiteContextGenerator(fileSystem, new LinkHelper(), new BLL.Configuration(fileSystem, path));
-            var siteContext = contextGenerator.BuildContext(path, destPath, false);
-            var transforms = new List&amp;lt;ITransform&amp;gt;();
-            transforms.Add(new LessTransform(fileSystem));
-            transforms.Add(new VirtualDirectorySupport(fileSystem));
-            var engine = new LiquidEngine();
-            engine.FileSystem = fileSystem;
-            engine.Initialize();
-            engine.Process(siteContext);
-            foreach (var t in transforms){
-                t.Transform(siteContext);
-            }
-            engine.CompressSitemap(siteContext, fileSystem);
-
-            using (var repo = new Repository(destPath))
-            {
-                repo.Stage(&amp;quot;*&amp;quot;);
-                var author = new Signature(&amp;quot;xxx&amp;quot;, &amp;quot;@xxxx&amp;quot;, DateTime.Now);
-                var committer = author;
-                try
-                {
-                    var commit = repo.Commit(&amp;quot;xxxxxx&amp;quot;, author, committer);
-                }
-                catch (Exception ex)
-                {
-                    //do sth later
-                }
-
-                var remote = repo.Network.Remotes[&amp;quot;origin&amp;quot;];
-                var options = new PushOptions();
-                options.CredentialsProvider = (_url, _user, _cred) =&amp;gt;
-                    new UsernamePasswordCredentials { Username = &amp;quot;xxxxx&amp;quot;, Password = &amp;quot;xxxx&amp;quot; };
-                repo.Network.Push(remote, @&amp;quot;refs/heads/master&amp;quot;, options);
-            }
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It&apos;s very basic though. But good to know that this works.&lt;/p&gt;</description>
-    </item>
+    <pubDate>Sun, 06 Mar 2016 14:11:56 %z</pubDate>
+    <lastBuildDate>Sun, 06 Mar 2016 14:11:56 %z</lastBuildDate>
     
     <item>
       <title>Hello From The Engine</title>
