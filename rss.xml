@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 06 Mar 2016 08:27:24 %z</pubDate>
-    <lastBuildDate>Sun, 06 Mar 2016 08:27:24 %z</lastBuildDate>
+    <pubDate>Sun, 06 Mar 2016 09:54:19 %z</pubDate>
+    <lastBuildDate>Sun, 06 Mar 2016 09:54:19 %z</lastBuildDate>
     
     <item>
       <title>Hello From The Engine</title>
@@ -60,7 +60,7 @@
 &lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
 &lt;p&gt;This is from the page editor now. All up and running.&lt;/p&gt;
 &lt;p&gt;-------------Update 06/03/2016-------------------&lt;/p&gt;
-&lt;p&gt;This is from deployed version. Test.Test.&lt;/p&gt;</description>
+&lt;p&gt;This is from deployed version. Test.Test.Final test, full version done.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -543,32 +543,6 @@ Remove the incorrect rule, issues are gone.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>IIS Http error 500.19 with web.config</title>
-      <link>http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html</link>
-      <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://kezhan.info/2014/12/13/IIS-Http-error-500.19-with-web.config.html</guid>
-      <description>&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;HTTP Error 500.19 - Internal Server Error
-The requested page cannot be accessed because the related configuration data for the page is invalid.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Detailed Error Information:
-Module	   IIS Web Core
-Notification	   Unknown
-Handler	   Not yet determined
-Error Code	   0x8007000d
-Config Error	&lt;br /&gt;
-Config File	   \?\X:\kb\web.config
-Requested URL	   http://kb/
-Physical Path	&lt;br /&gt;
-Logon Method	   Not yet determined
-Logon User	   Not yet determined&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    
-    <item>
       <title>Must have softwares after reinstalling windows</title>
       <link>http://kezhan.info/2014/12/13/Must-have-softwares-after-reinstalling-windows.html</link>
       <pubDate>Sat, 13 Dec 2014 00:00:00 %z</pubDate>
@@ -731,6 +705,32 @@ This setting allows you to exclude items that are based on a specific template.-
 &lt;p&gt;Of course there&apos;s another solution is to create your own computeredField to override the logic for media item. However I agree with Sitecore, it feels more right to remove this field from the index.&lt;/p&gt;
 &lt;p&gt;On top of all that, the initial reason for using the urlLink field was to drop the need for querying Sitecore completely while doing a Search. All the content are coming from Index&apos;s stored fields value. But on the other hand, pagination is normally being used for search results, so even there&apos;re requests to Sitecore, it shouldn&apos;t be a lot.&lt;/p&gt;
 &lt;p&gt;That&apos;d be all for now, happy to see more opinions and to discuss, thanks!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>IIS Http error 500.19 with web.config</title>
+      <link>http://kezhan.info/2014/10/12/IIS-Http-error-50019-with-webconfig.html</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2014/10/12/IIS-Http-error-50019-with-webconfig.html</guid>
+      <description>&lt;p&gt;Got this error again and again, always takes about half hour to remember that it&apos;s the IIS missing &amp;quot;Url rewrite&amp;quot; module!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;HTTP Error 500.19 - Internal Server Error
+The requested page cannot be accessed because the related configuration data for the page is invalid.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Detailed Error Information:
+Module	   IIS Web Core
+Notification	   Unknown
+Handler	   Not yet determined
+Error Code	   0x8007000d
+Config Error	&lt;br /&gt;
+Config File	   \?\X:\kb\web.config
+Requested URL	   http://kb/
+Physical Path	&lt;br /&gt;
+Logon Method	   Not yet determined
+Logon User	   Not yet determined&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
   </channel> 
