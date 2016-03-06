@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 06 Mar 2016 03:01:46 %z</pubDate>
-    <lastBuildDate>Sun, 06 Mar 2016 03:01:46 %z</lastBuildDate>
+    <pubDate>Sun, 06 Mar 2016 14:02:23 %z</pubDate>
+    <lastBuildDate>Sun, 06 Mar 2016 14:02:23 %z</lastBuildDate>
     
     <item>
       <title>Hello From Engine</title>
@@ -56,7 +56,7 @@
                 repo.Network.Push(remote, @&amp;quot;refs/heads/master&amp;quot;, options);
             }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It&apos;s very basic though. But good to know that this can work.&lt;/p&gt;</description>
+&lt;p&gt;It&apos;s very basic though. But good to know that this works.&lt;/p&gt;</description>
     </item>
     
     <item>

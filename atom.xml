@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-06T03:01:46.7815164+11:00</updated>
+  <updated>2016-03-06T14:02:23.2814673+11:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -61,7 +61,7 @@
                 repo.Network.Push(remote, @&amp;quot;refs/heads/master&amp;quot;, options);
             }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;It&apos;s very basic though. But good to know that this can work.&lt;/p&gt;</content>
+&lt;p&gt;It&apos;s very basic though. But good to know that this works.&lt;/p&gt;</content>
   </entry>
   
   <entry>
