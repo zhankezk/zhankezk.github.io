@@ -3,13 +3,56 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-06T10:00:52.8592898+00:00</updated>
+  <updated>2016-03-07T03:47:12.8769033+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html"/>
+    <title>Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</title>
+    <updated>2016-03-07T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;h2&gt;Issues:&lt;/h2&gt;
+&lt;p&gt;On development instance of Sitecore. While creating page tests or content tests in Sitecore(A/B tests are working fine), got 404 errors for urls like:&lt;/p&gt;
+&lt;p&gt;https://website.com/sitecore/shell/api/ct/Query/GetItems?query=*&amp;amp;database=core&amp;amp;root=%7Bxxxxxx-xxxxx-xxxxx-xxxxxxx%7D&amp;amp;_=1234567890&lt;/p&gt;
+&lt;p&gt;On different instance, when accessing the url directly and there&apos;s no 404 error, 403 errors are being returned.&lt;/p&gt;
+&lt;h2&gt;Causes and Solutions:&lt;/h2&gt;
+&lt;p&gt;There are these lines in only Development Sitecore Instance configuration, I believe the purpose was to speed up dev Sitecore instance start up time:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;initialize&amp;gt;
+    &amp;lt;processor type=&amp;quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Clientpro&amp;quot;&amp;gt;
+        &amp;lt;patch:delete/&amp;gt;
+    &amp;lt;/processor&amp;gt;
+    &amp;lt;processor type=&amp;quot;Sitecore.ContentTesting.Pipelines.Initialize.RegisterContentTestingCommandRoute, Sitecore.ContentTesting&amp;quot;&amp;gt;
+        &amp;lt;patch:delete/&amp;gt;
+    &amp;lt;/processor&amp;gt;
+    &amp;lt;processor type=&amp;quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Client&amp;quot; use=&amp;quot;ContentTesting&amp;quot;&amp;gt;
+        &amp;lt;patch:delete/&amp;gt;
+    &amp;lt;/processor&amp;gt;
+&amp;lt;/initialize&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The issue is the second processor rule, original rule actually registers the necessary routing for Sitecore content testing web API. Therefore the solution is to remove the second processor rule.&lt;/p&gt;
+&lt;p&gt;403 error is because simply it&apos;s not authorized, it&apos;s not meant for direct access without providing login credentials.&lt;/p&gt;
+&lt;h2&gt;Background:&lt;/h2&gt;
+&lt;p&gt;The main purpose of the configurations were to disable some actions that Sitecore normally does during startup which are not really necessary for developers in order to speed up development time. I have done some research online, found following links which have information on how to speed up Sitecore Dev instance, officially or unofficially:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sitecore.net/learn/blogs/technical-blogs/john-west-sitecore-blog/posts/2015/02/maximize-sitecore-developer-productivity.aspx&quot;&gt;Maximize Sitecore Developer Productivity | John West&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kb.sitecore.net/articles/296641&quot;&gt;How to use Sitecore XP 8.0 without xDB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kb.sitecore.net/articles/672774&quot;&gt;Experience Editor and other SPEAK applications may take long time to load&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://community.sitecore.net/developers/f/9/t/246&quot;&gt;What is the best way to disable Analytics on Sitecore 7.2?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The safe ones to follow would be item 1 to 3 since they are from Sitecore. The configuration file from item 4 makes a lot of senses, however I couldn&apos;t find where it&apos;s come from, so use with cautions.&lt;/p&gt;
+&lt;p&gt;I also found some other configuration examples just for references: &lt;a href=&quot;https://gist.github.com/kamsar/8c9efc80e72e6ada8304&quot;&gt;Some Dev Config Examples&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here: &lt;a href=&quot;https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;amp;cd=1&amp;amp;hl=en&amp;amp;ct=clnk&amp;amp;gl=au&quot;&gt;Potential source of issue&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And finally, here is the link where helped identifying the issue: &lt;a href=&quot;http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404&quot;&gt;Sitecore 8 shell controller returning IIS 404&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2016/03/06/Hello-From-The-Engine.html</id>

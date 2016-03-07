@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests </h1>
+		<span class="postdate"> 7 March, 2016
+			
+		</span>
+		<h2>Issues:</h2>
+<p>On development instance of Sitecore. While creating page tests or content tests in Sitecore(A/B tests are working fine), got 404 errors for urls like:</p>
+<p>https://website.com/sitecore/shell/api/ct/Query/GetItems?query=*&amp;database=core&amp;root=%7Bxxxxxx-xxxxx-xxxxx-xxxxxxx%7D&amp;_=1234567890</p>
+<p>On different instance, when accessing the url directly and there's no 404 error, 403 errors are being returned.</p>
+<h2>Causes and Solutions:</h2>
+<p>There are these lines in only Development Sitecore Instance configuration, I believe the purpose was to speed up dev Sitecore instance start up time:</p>
+<pre><code>&lt;initialize&gt;
+    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Clientpro&quot;&gt;
+        &lt;patch:delete/&gt;
+    &lt;/processor&gt;
+    &lt;processor type=&quot;Sitecore.ContentTesting.Pipelines.Initialize.RegisterContentTestingCommandRoute, Sitecore.ContentTesting&quot;&gt;
+        &lt;patch:delete/&gt;
+    &lt;/processor&gt;
+    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Client&quot; use=&quot;ContentTesting&quot;&gt;
+        &lt;patch:delete/&gt;
+    &lt;/processor&gt;
+&lt;/initialize&gt;
+</code></pre>
+<p>The issue is the second processor rule, original rule actually registers the necessary routing for Sitecore content testing web API. Therefore the solution is to remove the second processor rule.</p>
+<p>403 error is because simply it's not authorized, it's not meant for direct access without providing login credentials.</p>
+<h2>Background:</h2>
+<p>The main purpose of the configurations were to disable some actions that Sitecore normally does during startup which are not really necessary for developers in order to speed up development time. I have done some research online, found following links which have information on how to speed up Sitecore Dev instance, officially or unofficially:</p>
+<ol>
+<li><a href="http://www.sitecore.net/learn/blogs/technical-blogs/john-west-sitecore-blog/posts/2015/02/maximize-sitecore-developer-productivity.aspx">Maximize Sitecore Developer Productivity | John West</a></li>
+<li><a href="https://kb.sitecore.net/articles/296641">How to use Sitecore XP 8.0 without xDB</a></li>
+<li><a href="https://kb.sitecore.net/articles/672774">Experience Editor and other SPEAK applications may take long time to load</a></li>
+<li><a href="https://community.sitecore.net/developers/f/9/t/246">What is the best way to disable Analytics on Sitecore 7.2?</a></li>
+</ol>
+<p>The safe ones to follow would be item 1 to 3 since they are from Sitecore. The configuration file from item 4 makes a lot of senses, however I couldn't find where it's come from, so use with cautions.</p>
+<p>I also found some other configuration examples just for references: <a href="https://gist.github.com/kamsar/8c9efc80e72e6ada8304">Some Dev Config Examples</a></p>
+<p>And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here: <a href="https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=au">Potential source of issue</a></p>
+<p>And finally, here is the link where helped identifying the issue: <a href="http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404">Sitecore 8 shell controller returning IIS 404</a></p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/03/06/Hello-From-The-Engine.html" title="Previous Post: Hello From The Engine">&larr; Hello From The Engine</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
