@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 07 Mar 2016 03:47:12 %z</pubDate>
-    <lastBuildDate>Mon, 07 Mar 2016 03:47:12 %z</lastBuildDate>
+    <pubDate>Tue, 15 Mar 2016 09:39:17 %z</pubDate>
+    <lastBuildDate>Tue, 15 Mar 2016 09:39:17 %z</lastBuildDate>
     
     <item>
       <title>Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</title>
