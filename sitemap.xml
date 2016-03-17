@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html</loc>
+    <lastmod>2016-03-16T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html</loc>
     <lastmod>2016-03-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>

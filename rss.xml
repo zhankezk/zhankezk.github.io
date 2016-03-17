@@ -6,8 +6,117 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 15 Mar 2016 09:39:17 %z</pubDate>
-    <lastBuildDate>Tue, 15 Mar 2016 09:39:17 %z</lastBuildDate>
+    <pubDate>Thu, 17 Mar 2016 04:33:11 %z</pubDate>
+    <lastBuildDate>Thu, 17 Mar 2016 04:33:11 %z</lastBuildDate>
+    
+    <item>
+      <title>Sitecore web.config include patching sub-folder orders</title>
+      <link>http://kezhan.info/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html</link>
+      <pubDate>Wed, 16 Mar 2016 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html</guid>
+      <description>&lt;p&gt;For Sitecore, we all love the web.config include patching functionality, made the whole configuration management much easier. However easier today it took a bit of time to figure out when I tried to overwrite a patch with another patch.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In Include folder, there&apos;s a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it&apos;s applied after Patch A is applied.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I placed patch B inside zzz folder, it didn&apos;t work. I expect this, it&apos;s fine.&lt;/li&gt;
+&lt;li&gt;I placed patch B inside zzz_WebsiteName folder, it worked. I expect this, all good.&lt;/li&gt;
+&lt;li&gt;I placed patch B inside zzzz folder, it didn&apos;t work. Not good.&lt;/li&gt;
+&lt;li&gt;I placed patch B inside ZZZZ folder, didn&apos;t work either.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So I went ahead and checked the source code where Sitecore looks for the config files in Include folder:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private static void LoadAutoIncludeFiles(ConfigPatcher patcher, string folder)
+    {
+      Assert.ArgumentNotNull((object) patcher, &amp;quot;patcher&amp;quot;);
+      Assert.ArgumentNotNull((object) folder, &amp;quot;folder&amp;quot;);
+      try
+      {
+        if (!Directory.Exists(folder))
+          return;
+        foreach (string str in Directory.GetFiles(folder, &amp;quot;*.config&amp;quot;))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp;amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              patcher.ApplyPatch(str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &amp;quot;Could not load configuration file: &amp;quot;,
+              (object) str,
+              (object) &amp;quot;: &amp;quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+        foreach (string str in Directory.GetDirectories(folder))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp;amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              Factory.LoadAutoIncludeFiles(patcher, str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &amp;quot;Could not scan configuration folder &amp;quot;,
+              (object) str,
+              (object) &amp;quot; for files: &amp;quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        Log.Error(string.Concat(new object[4]
+        {
+          (object) &amp;quot;Could not scan configuration folder &amp;quot;,
+          (object) folder,
+          (object) &amp;quot; for files: &amp;quot;,
+          (object) ex
+        }), typeof (Factory));
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Actually all looks fine, so it process files in Include folder first, then go through every folder in order.&lt;/p&gt;
+&lt;p&gt;However I know the key thing here is this line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Directory.GetDirectories(folder)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When I ran it on my machine, it returned this(I created some folder to test):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Sitecore\sc80rev150621\Website\App_Config\Include\Channel 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ContentTesting 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceAnalytics 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceProfile 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\FXM 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ListManagement 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\Social 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\XdbCloud 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzzzzzzzz 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ZZZZZZZZZZZ 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_WebsiteName 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_z 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Yes, based on this result, zzz_WebsiteName is behind other folders, so it shouldn&apos;t work when I put the files in zzzz or ZZZZ folder. However here is what we see in Windows Exploer:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zzz_WebsiteName
+zzz_z  
+zzzzzzzzz  
+ZZZZZZZZZZZ  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;It&apos;s different!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then I ran dir command in CMD:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;05/02/2016  03:36 PM &amp;lt;DIR&amp;gt; zzzzzzzzz  
+16/03/2016  12:43 PM &amp;lt;DIR&amp;gt; ZZZZZZZZZZZ  
+16/03/2016  12:40 PM &amp;lt;DIR&amp;gt; zzz_WebsiteName  
+16/03/2016  12:43 PM &amp;lt;DIR&amp;gt; zzz_z  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now this time it&apos;s the same as what the code returns.&lt;/p&gt;
+&lt;p&gt;After Googling a bit, found this reference:&lt;a href=&quot;https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293&quot;&gt;Why do NTFS and Explorer disagree on filename sorting?&lt;/a&gt;. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true.&lt;/p&gt;
+&lt;p&gt;Remember to verify the order using CMD in the future...&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</title>

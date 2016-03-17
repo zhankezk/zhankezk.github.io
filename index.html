@@ -47,7 +47,123 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html">Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a></h1>
+					<h1><a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a></h1>
+					<div class="postdate">16 March, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<p>For Sitecore, we all love the web.config include patching functionality, made the whole configuration management much easier. However easier today it took a bit of time to figure out when I tried to overwrite a patch with another patch.</p>
+<p><strong>Scenario:</strong></p>
+<p>In Include folder, there's a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it's applied after Patch A is applied.</p>
+<ul>
+<li>I placed patch B inside zzz folder, it didn't work. I expect this, it's fine.</li>
+<li>I placed patch B inside zzz_WebsiteName folder, it worked. I expect this, all good.</li>
+<li>I placed patch B inside zzzz folder, it didn't work. Not good.</li>
+<li>I placed patch B inside ZZZZ folder, didn't work either.</li>
+</ul>
+<p>So I went ahead and checked the source code where Sitecore looks for the config files in Include folder:</p>
+<pre><code>private static void LoadAutoIncludeFiles(ConfigPatcher patcher, string folder)
+    {
+      Assert.ArgumentNotNull((object) patcher, &quot;patcher&quot;);
+      Assert.ArgumentNotNull((object) folder, &quot;folder&quot;);
+      try
+      {
+        if (!Directory.Exists(folder))
+          return;
+        foreach (string str in Directory.GetFiles(folder, &quot;*.config&quot;))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              patcher.ApplyPatch(str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &quot;Could not load configuration file: &quot;,
+              (object) str,
+              (object) &quot;: &quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+        foreach (string str in Directory.GetDirectories(folder))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              Factory.LoadAutoIncludeFiles(patcher, str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &quot;Could not scan configuration folder &quot;,
+              (object) str,
+              (object) &quot; for files: &quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        Log.Error(string.Concat(new object[4]
+        {
+          (object) &quot;Could not scan configuration folder &quot;,
+          (object) folder,
+          (object) &quot; for files: &quot;,
+          (object) ex
+        }), typeof (Factory));
+      }
+    }
+</code></pre>
+<p>Actually all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
+<p>However I know the key thing here is this line:</p>
+<pre><code>Directory.GetDirectories(folder)
+</code></pre>
+<p>When I ran it on my machine, it returned this(I created some folder to test):</p>
+<pre><code>C:\Sitecore\sc80rev150621\Website\App_Config\Include\Channel 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ContentTesting 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceAnalytics 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceProfile 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\FXM 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ListManagement 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\Social 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\XdbCloud 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzzzzzzzz 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ZZZZZZZZZZZ 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_WebsiteName 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_z 
+</code></pre>
+<p>Yes, based on this result, zzz_WebsiteName is behind other folders, so it shouldn't work when I put the files in zzzz or ZZZZ folder. However here is what we see in Windows Exploer:</p>
+<pre><code>zzz_WebsiteName
+zzz_z  
+zzzzzzzzz  
+ZZZZZZZZZZZ  
+</code></pre>
+<p><strong>It's different!</strong></p>
+<p>Then I ran dir command in CMD:</p>
+<pre><code>05/02/2016  03:36 PM &lt;DIR&gt; zzzzzzzzz  
+16/03/2016  12:43 PM &lt;DIR&gt; ZZZZZZZZZZZ  
+16/03/2016  12:40 PM &lt;DIR&gt; zzz_WebsiteName  
+16/03/2016  12:43 PM &lt;DIR&gt; zzz_z  
+</code></pre>
+<p>Now this time it's the same as what the code returns.</p>
+<p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true.</p>
+<p>Remember to verify the order using CMD in the future...</p>
+					<br />
+					<a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html">Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a></h2>
 					<div class="postdate"> 7 March, 2016
 						<ul>
 						
@@ -85,7 +201,6 @@
 <p>I also found some other configuration examples just for references: <a href="https://gist.github.com/kamsar/8c9efc80e72e6ada8304">Some Dev Config Examples</a></p>
 <p>And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here: <a href="https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=au">Potential source of issue</a></p>
 <p>And finally, here is the link where helped identifying the issue: <a href="http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404">Sitecore 8 shell controller returning IIS 404</a></p>
-					<br />
 					<a href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -233,48 +348,14 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a></h2>
-					<div class="postdate"> 7 January, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>For an IOS app with Chinese names, the names have to be sorted via Pinyin(it's like phonetic words), or people can barely locate anyone.</p>
-<p>And there are lots of solutions on the internet about how to sort Chinese in Object-C, Swift or C#. However I couldn't find any on how to do it in Xamarin IOS using C#. All the C# way won't work in the Xamarin IOS app althought it compiles happily. My understanding it's that Xamarin is just a mapping(I may put it too simple here) between languages, so whatever the .Net framework is doing based on the language do not get carried over to IOS.</p>
-<p>Luickly I found the mapping that Xamarin specificliy created just for the sake of mapping libraries in Object-C: <a href="https://developer.xamarin.com/api/type/Foundation.NSMutableString/">Foundation.NSMutableString</a> and its method:</p>
-<pre><code class="language-cssharp">ApplyTransform(NSStringTransform, Boolean, NSRange, out NSRange) : Boolean
-</code></pre>
-<p>The method converts Chinese into Pinyin with tones like this &quot;zhōng wén&quot;. In my code I created an extension to sort by, however I think creating a field in the database to hold Pinyin would be more ideal.</p>
-<p>To note here I tried to created this as a property as part of the database model however since it's inside of a portable class library so it doesn't have the Foundation namespace so I couldn't, hence the extension.</p>
-<pre><code class="language-csharp">using Foundation;
-...
-		public static string GetPinyin (this string input)
-		{
-			var output = new NSMutableString ();
-			output.SetString (new NSString (input));
-			var dumy = new NSRange ();
-			output.ApplyTransform (NSStringTransform.MandarinToLatin, false, new NSRange (0, output.Length), out dumy);
-			return output.ToString ();
-		}
-</code></pre>
-<p>觉得这篇尤其需要堆积一点中文来提高SEO。</p>
-<p>基本上问题就是中文通讯录的排序，在纯 IOS 和 C# 的开发环境里这都是很普通的事情，因为 Google 里搜下一大堆的。可是在 Xamarin 里用 C# 写 IOS 就不大一样了。 Object-C 和 Swift 都不能直接用，C# 的虽然可以写出来可以编译，但到了IOS那边是失效的因为框架里的功能是完全不一样的。</p>
-<p>所幸 Xamarin 的人真的就写了几个纯粹为了对应的类，这里要用的是这个： <a href="https://developer.xamarin.com/api/type/Foundation.NSMutableString/">Foundation.NSMutableString</a>。</p>
-<p>用了这个可以把中文全部转换成拼音并且还包括音调，不过对不住没找到怎么是不包括音调了。但是有了这个东西后，至少排序不成问题了。</p>
-<p>我的感觉是肯定还有更好的办法，不过暂时就先这样吧。</p>
-<p>My feeling is that this is not the best way, but for now, it works.</p>
-					<a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 07 Jan </span> <a class="postlink" href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 11 Oct </span> <a class="postlink" href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html">Get Sitecore Item SiteInfo</a>

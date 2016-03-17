@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Sitecore web.config include patching sub-folder orders</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Sitecore web.config include patching sub-folder orders </h1>
+		<span class="postdate">16 March, 2016
+			
+		</span>
+		<p>For Sitecore, we all love the web.config include patching functionality, made the whole configuration management much easier. However easier today it took a bit of time to figure out when I tried to overwrite a patch with another patch.</p>
+<p><strong>Scenario:</strong></p>
+<p>In Include folder, there's a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it's applied after Patch A is applied.</p>
+<ul>
+<li>I placed patch B inside zzz folder, it didn't work. I expect this, it's fine.</li>
+<li>I placed patch B inside zzz_WebsiteName folder, it worked. I expect this, all good.</li>
+<li>I placed patch B inside zzzz folder, it didn't work. Not good.</li>
+<li>I placed patch B inside ZZZZ folder, didn't work either.</li>
+</ul>
+<p>So I went ahead and checked the source code where Sitecore looks for the config files in Include folder:</p>
+<pre><code>private static void LoadAutoIncludeFiles(ConfigPatcher patcher, string folder)
+    {
+      Assert.ArgumentNotNull((object) patcher, &quot;patcher&quot;);
+      Assert.ArgumentNotNull((object) folder, &quot;folder&quot;);
+      try
+      {
+        if (!Directory.Exists(folder))
+          return;
+        foreach (string str in Directory.GetFiles(folder, &quot;*.config&quot;))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              patcher.ApplyPatch(str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &quot;Could not load configuration file: &quot;,
+              (object) str,
+              (object) &quot;: &quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+        foreach (string str in Directory.GetDirectories(folder))
+        {
+          try
+          {
+            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+              Factory.LoadAutoIncludeFiles(patcher, str);
+          }
+          catch (Exception ex)
+          {
+            Log.Error(string.Concat(new object[4]
+            {
+              (object) &quot;Could not scan configuration folder &quot;,
+              (object) str,
+              (object) &quot; for files: &quot;,
+              (object) ex
+            }), typeof (Factory));
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        Log.Error(string.Concat(new object[4]
+        {
+          (object) &quot;Could not scan configuration folder &quot;,
+          (object) folder,
+          (object) &quot; for files: &quot;,
+          (object) ex
+        }), typeof (Factory));
+      }
+    }
+</code></pre>
+<p>Actually all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
+<p>However I know the key thing here is this line:</p>
+<pre><code>Directory.GetDirectories(folder)
+</code></pre>
+<p>When I ran it on my machine, it returned this(I created some folder to test):</p>
+<pre><code>C:\Sitecore\sc80rev150621\Website\App_Config\Include\Channel 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ContentTesting 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceAnalytics 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceProfile 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\FXM 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ListManagement 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\Social 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\XdbCloud 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzzzzzzzz 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\ZZZZZZZZZZZ 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_WebsiteName 
+C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_z 
+</code></pre>
+<p>Yes, based on this result, zzz_WebsiteName is behind other folders, so it shouldn't work when I put the files in zzzz or ZZZZ folder. However here is what we see in Windows Exploer:</p>
+<pre><code>zzz_WebsiteName
+zzz_z  
+zzzzzzzzz  
+ZZZZZZZZZZZ  
+</code></pre>
+<p><strong>It's different!</strong></p>
+<p>Then I ran dir command in CMD:</p>
+<pre><code>05/02/2016  03:36 PM &lt;DIR&gt; zzzzzzzzz  
+16/03/2016  12:43 PM &lt;DIR&gt; ZZZZZZZZZZZ  
+16/03/2016  12:40 PM &lt;DIR&gt; zzz_WebsiteName  
+16/03/2016  12:43 PM &lt;DIR&gt; zzz_z  
+</code></pre>
+<p>Now this time it's the same as what the code returns.</p>
+<p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true.</p>
+<p>Remember to verify the order using CMD in the future...</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html" title="Previous Post: Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests">&larr; Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
