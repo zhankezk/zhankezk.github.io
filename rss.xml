@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 25 Mar 2016 10:03:13 %z</pubDate>
-    <lastBuildDate>Fri, 25 Mar 2016 10:03:13 %z</lastBuildDate>
+    <pubDate>Sun, 27 Mar 2016 07:46:01 %z</pubDate>
+    <lastBuildDate>Sun, 27 Mar 2016 07:46:01 %z</lastBuildDate>
     
     <item>
       <title>Sitecore web.config include patching sub-folder orders</title>
@@ -352,24 +352,24 @@ var url = LinkManager.GetItemUrl(item, urlOptions);
     </item>
     
     <item>
-      <title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</title>
-      <link>http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</link>
+      <title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.*</title>
+      <link>http://kezhan.info/2015/06/04/Root-Australia-Vodafone-Samsung-Galaxy-Note-4N910G-Android-Lollipop-5.html</link>
       <pubDate>Thu, 04 Jun 2015 00:00:00 %z</pubDate>
       <author>Ke</author>
-      <guid>http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</guid>
+      <guid>http://kezhan.info/2015/06/04/Root-Australia-Vodafone-Samsung-Galaxy-Note-4N910G-Android-Lollipop-5.html</guid>
       <description>&lt;p&gt;&lt;em&gt;Your phone, your risk, I don&apos;t take any responsibilities.&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;Shortcut to purpose of this post&lt;/h2&gt;
-&lt;p&gt;Current version of CF-Auto-Root for N910G is for android 4.4.4, however it works for 5.0.1. Key thing is to use a more latest version of Odin.&lt;/p&gt;
+&lt;p&gt;Current version of CF-Auto-Root for N910G is for android &lt;s&gt;4.4.4&lt;/s&gt; 5.0.1, however it works for &lt;s&gt;5.0.1&lt;/s&gt; 5.1.1. Key thing is to use a more latest version of Odin.&lt;/p&gt;
 &lt;h2&gt;Phone Info&lt;/h2&gt;
-&lt;p&gt;Samsung Galaxy Note 4 (N910G) Android Lollipop 5.0.1 which was rolled out on 3rd June 2015
+&lt;p&gt;Samsung Galaxy Note 4 (N910G) Android Lollipop &lt;s&gt;5.0.1&lt;/s&gt; 5.1.1 which was rolled out on Dec 2015
 This is a Vodafone phone in Australia&lt;/p&gt;
 &lt;h2&gt;Do Backup!!!&lt;/h2&gt;
 &lt;p&gt;Please do!&lt;/p&gt;
 &lt;h2&gt;Required:&lt;/h2&gt;
-&lt;p&gt;Odin Latest Version (v3.10.6): Download from &lt;a href=&quot;http://forum.xda-developers.com/showthread.php?t=2711451&quot;&gt;http://forum.xda-developers.com/showthread.php?t=2711451&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CF-Auto-Root: Download from &lt;a href=&quot;https://download.chainfire.eu/576/CF-Root1/CF-Auto-Root-trlte-trltedt-smn910g.zip&quot;&gt;https://download.chainfire.eu/576/CF-Root1/CF-Auto-Root-trlte-trltedt-smn910g.zip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Odin Latest Version (v3.10.6): It&apos;s included int he CF zip file below.&lt;/p&gt;
+&lt;p&gt;CF-Auto-Root: Download from &lt;a href=&quot;https://download.chainfire.eu/576/CF-Root/CF-Auto-Root/CF-Auto-Root-trlte-trltedt-smn910g.zip&quot;&gt;https://download.chainfire.eu/576/CF-Root/CF-Auto-Root/CF-Auto-Root-trlte-trltedt-smn910g.zip&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Use Vollumn down + power button + home to get in to download mode&lt;/li&gt;
+&lt;li&gt;Use Volumn down + power button + home to get in to download mode, then press Volum Up&lt;/li&gt;
 &lt;li&gt;Run Odin as Administrator&lt;/li&gt;
 &lt;li&gt;Click on &amp;quot;AP&amp;quot; to select &amp;quot;CF-Auto-Root-trlte-trltedt-smn910g.tar.md5&amp;quot;&lt;/li&gt;
 &lt;li&gt;Click &amp;quot;Start&amp;quot;&lt;/li&gt;

@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Get Sitecore Item SiteInfo</title>
+		<title>Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.*</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -44,44 +44,33 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Get Sitecore Item SiteInfo </h1>
-		<span class="postdate">11 October, 2015
+		<h1> Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.* </h1>
+		<span class="postdate"> 4 June, 2015
 			
 		</span>
-		<p>Problem rises when the site index contains items from multiple sites and they need to have accurate urls gengerated for the items returned. And in this case, one site is a descendant of another site in Sitecore content tree.</p>
-<p>I got the idea from a post in <a href="http://stackoverflow.com/questions/14200864/how-to-find-out-with-which-sitecore-site-an-item-is-associated">stackoverflow</a>, however improved it a bit so it matches the site more accurately.</p>
-<pre><code class="language-csharp">public static SiteInfo GetSite(this Item item)
-{
-	var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
-
-	SiteInfo currentSiteinfo = null;
-	var matchLength = 0;
-	foreach (var siteInfo in siteInfoList)
-	{
-		if (item.Paths.FullPath.StartsWith(siteInfo.RootPath, StringComparison.OrdinalIgnoreCase) &amp;&amp; siteInfo.RootPath.Length &gt; matchLength)
-		{
-			matchLength = siteInfo.RootPath.Length;
-			currentSiteinfo = siteInfo;
-		}
-	}
-
-	return currentSiteinfo;
-}
-</code></pre>
-<p>Then you can use urlOption with Sitecore LinkManager to generate urls:</p>
-<pre><code class="language-csharp">var urlOptions = UrlOptions.DefaultOptions;
-var siteInfo = item.GetSite();
-if (siteInfo != null)
-{
-	urlOptions.Site = new SiteContext(siteInfo);
-}
-var url = LinkManager.GetItemUrl(item, urlOptions);
-</code></pre>
+		<p><em>Your phone, your risk, I don't take any responsibilities.</em></p>
+<h2>Shortcut to purpose of this post</h2>
+<p>Current version of CF-Auto-Root for N910G is for android <s>4.4.4</s> 5.0.1, however it works for <s>5.0.1</s> 5.1.1. Key thing is to use a more latest version of Odin.</p>
+<h2>Phone Info</h2>
+<p>Samsung Galaxy Note 4 (N910G) Android Lollipop <s>5.0.1</s> 5.1.1 which was rolled out on Dec 2015
+This is a Vodafone phone in Australia</p>
+<h2>Do Backup!!!</h2>
+<p>Please do!</p>
+<h2>Required:</h2>
+<p>Odin Latest Version (v3.10.6): It's included int he CF zip file below.</p>
+<p>CF-Auto-Root: Download from <a href="https://download.chainfire.eu/576/CF-Root/CF-Auto-Root/CF-Auto-Root-trlte-trltedt-smn910g.zip">https://download.chainfire.eu/576/CF-Root/CF-Auto-Root/CF-Auto-Root-trlte-trltedt-smn910g.zip</a></p>
+<ul>
+<li>Use Volumn down + power button + home to get in to download mode, then press Volum Up</li>
+<li>Run Odin as Administrator</li>
+<li>Click on &quot;AP&quot; to select &quot;CF-Auto-Root-trlte-trltedt-smn910g.tar.md5&quot;</li>
+<li>Click &quot;Start&quot;</li>
+<li>It should just do it things and reboot</li>
+</ul>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2015/06/04/Root-Australia-Vodafone-Samsung-Galaxy-Note-4N910G-Android-Lollipop-5.html" title="Previous Post: Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.*">&larr; Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.*</a>  </div> 
-	<div class="right">  <a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html" title="next Post: Converting Chinese to Pinyin/Quanpin in Xamarin IOS development">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development &rarr; </a>  </div> 
+	<div class="left">  <a href="/2015/04/28/Input-Method-On-Galaxy-Note-4-Keep-Reverting-Back-To-Default.html" title="Previous Post: Input Method On Galaxy Note 4 Keep Reverting Back To Default">&larr; Input Method On Galaxy Note 4 Keep Reverting Back To Default</a>  </div> 
+	<div class="right">  <a href="/2015/10/11/Get-Sitecore-Item-SiteInfo.html" title="next Post: Get Sitecore Item SiteInfo">Get Sitecore Item SiteInfo &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 
