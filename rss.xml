@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 28 Mar 2016 08:22:46 %z</pubDate>
-    <lastBuildDate>Mon, 28 Mar 2016 08:22:46 %z</lastBuildDate>
+    <pubDate>Mon, 28 Mar 2016 08:24:04 %z</pubDate>
+    <lastBuildDate>Mon, 28 Mar 2016 08:24:04 %z</lastBuildDate>
     
     <item>
       <title>Sitecore web.config include patching sub-folder orders</title>
