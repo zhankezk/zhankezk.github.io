@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-03-27T12:15:22.9183804+00:00</updated>
+  <updated>2016-03-28T08:22:46.7267094+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -20,7 +20,7 @@
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
     </author>
-    <content type="html">&lt;p&gt;For Sitecore, we all love the web.config include patching functionality, made the whole configuration management much easier. However easier today it took a bit of time to figure out when I tried to overwrite a patch with another patch.&lt;/p&gt;
+    <content type="html">&lt;p&gt;For Sitecore, we all love the web.config include patching functionality, which makes the whole configuration management much easier. However earlier today it took me a bit of time to figure out an issue when I tried to overwrite a patch with another patch.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In Include folder, there&apos;s a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it&apos;s applied after Patch A is applied.&lt;/p&gt;
 &lt;ul&gt;
@@ -87,8 +87,8 @@
       }
     }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Actually all looks fine, so it process files in Include folder first, then go through every folder in order.&lt;/p&gt;
-&lt;p&gt;However I know the key thing here is this line:&lt;/p&gt;
+&lt;p&gt;Actually it all looks fine, so it process files in Include folder first, then go through every folder in order.&lt;/p&gt;
+&lt;p&gt;However the key thing here is this line:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Directory.GetDirectories(folder)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;When I ran it on my machine, it returned this(I created some folder to test):&lt;/p&gt;
@@ -118,8 +118,8 @@ ZZZZZZZZZZZ
 16/03/2016  12:40 PM &amp;lt;DIR&amp;gt; zzz_WebsiteName  
 16/03/2016  12:43 PM &amp;lt;DIR&amp;gt; zzz_z  
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now this time it&apos;s the same as what the code returns.&lt;/p&gt;
-&lt;p&gt;After Googling a bit, found this reference:&lt;a href=&quot;https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293&quot;&gt;Why do NTFS and Explorer disagree on filename sorting?&lt;/a&gt;. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true.&lt;/p&gt;
+&lt;p&gt;This time it&apos;s the same as what the code returns.&lt;/p&gt;
+&lt;p&gt;After Googling a bit, found this reference:&lt;a href=&quot;https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293&quot;&gt;Why do NTFS and Explorer disagree on filename sorting?&lt;/a&gt;. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true when Sitecore executes the logic.&lt;/p&gt;
 &lt;p&gt;Remember to verify the order using CMD in the future...&lt;/p&gt;</content>
   </entry>
   
@@ -611,7 +611,7 @@ This is a Vodafone phone in Australia&lt;/p&gt;
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
     </author>
-    <content type="html">&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config file. But I wanted to do more and couldn&apos;t find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Have seem a lot of usages with &amp;quot;ref&amp;quot; attributes when setting up Sitecore Lucene Indexes. Normally it&apos;s used to refer to another section of the config files. But I wanted to do more and couldn&apos;t find any information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Attribute &amp;quot;ref&amp;quot; can be used to refer to another section of the configuration files in Sitecore.&lt;/li&gt;
 &lt;li&gt;The value of attribute &amp;quot;ref&amp;quot; is using Xpath.&lt;/li&gt;
@@ -624,9 +624,9 @@ This is a Vodafone phone in Australia&lt;/p&gt;
 &lt;li&gt;When obj is still null, it returns the value as string.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So this is always being used to create a obj to assign to a property of the parent node.&lt;/p&gt;
-&lt;p&gt;when a node has &apos;hint=&amp;quot;list:xxx&amp;quot;&apos;, it means it&apos;s mapping to a method of the parent node&apos;s type(&amp;quot;type&amp;quot; atttibute). (please ref to this &lt;a href=&quot;http://www.sitecore.net/Learn/Blogs/Technical-Blogs/John-West-Sitecore-Blog/Posts/2011/02/The-Sitecore-ASPNET-CMS-Configuration-Factory.aspx&quot;&gt;Sitecore configuration factory and dependency injection&lt;/a&gt; article on Sitecore Blog for more details)
-Hope that helped you. Now if you still have time, you can keep reading to learn my story.&lt;/p&gt;
-&lt;p&gt;First, when setting up Sitecore 7 Lucene Index, you must have come across this line in the config:&lt;/p&gt;
+&lt;p&gt;When a node has &apos;hint=&amp;quot;list:xxx&amp;quot;&apos;, it means it&apos;s mapped to a method of the parent node&apos;s type(&amp;quot;type&amp;quot; atttibute). (please ref to this &lt;a href=&quot;http://www.sitecore.net/Learn/Blogs/Technical-Blogs/John-West-Sitecore-Blog/Posts/2011/02/The-Sitecore-ASPNET-CMS-Configuration-Factory.aspx&quot;&gt;Sitecore configuration factory and dependency injection&lt;/a&gt; article on Sitecore Blog for more details)
+Hope that helps. Now if you still have time, you can keep reading to learn my story.&lt;/p&gt;
+&lt;p&gt;First, when setting up Sitecore 7 Lucene Index, you must have came across this line in the config:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;Analyzer ref=&amp;quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/analyzer&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This works great, but I wanted to use it for &amp;quot;ExcludeField&amp;quot; fields as well to keep my custom index configuration clean. The default configuration looks like this:&lt;/p&gt;
@@ -634,12 +634,12 @@ Hope that helped you. Now if you still have time, you can keep reading to learn 
 &amp;lt;__display_name&amp;gt;{B5E02AD9-D56F-4C41-A065-A133DB87BDEB}&amp;lt;/__display_name&amp;gt;
 &amp;lt;/exclude&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;So I have tried to do this:&lt;/p&gt;
+&lt;p&gt;So I have tried to do:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;exclude ref=&amp;quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint=&apos;list:ExcludeField&apos;]&amp;quot; /&amp;gt;
 and:
 &amp;lt;exclude hint=&amp;quot;list:ExcludeField&amp;quot; ref=&amp;quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint=&apos;list:ExcludeField&apos;]&amp;quot; /&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;None of them worked. Though the xpath is correct, but &amp;quot;ExcludeField&amp;quot; is a method and when you use &amp;quot;ref&amp;quot;, it tries to create an object as a property, so it fails.&lt;/p&gt;
+&lt;p&gt;None of them worked. Though the xPath is correct, but &amp;quot;ExcludeField&amp;quot; is a method and when you use &amp;quot;ref&amp;quot;, it tries to create an object as a property, so it fails.&lt;/p&gt;
 &lt;p&gt;Therefore my conclusion is that you can&apos;t use &amp;quot;ref&amp;quot; in configuration files for referencing methods. This is bad news for my clean configuration initiative, I still need to do more digging on this, will post it in another post which will focus on Sitecore Custom Lucene Indexes.&lt;/p&gt;</content>
   </entry>
   

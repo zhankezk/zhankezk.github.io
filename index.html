@@ -53,7 +53,7 @@
 						
 						</ul>
 					</div>
-					<p>For Sitecore, we all love the web.config include patching functionality, made the whole configuration management much easier. However easier today it took a bit of time to figure out when I tried to overwrite a patch with another patch.</p>
+					<p>For Sitecore, we all love the web.config include patching functionality, which makes the whole configuration management much easier. However earlier today it took me a bit of time to figure out an issue when I tried to overwrite a patch with another patch.</p>
 <p><strong>Scenario:</strong></p>
 <p>In Include folder, there's a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it's applied after Patch A is applied.</p>
 <ul>
@@ -120,8 +120,8 @@
       }
     }
 </code></pre>
-<p>Actually all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
-<p>However I know the key thing here is this line:</p>
+<p>Actually it all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
+<p>However the key thing here is this line:</p>
 <pre><code>Directory.GetDirectories(folder)
 </code></pre>
 <p>When I ran it on my machine, it returned this(I created some folder to test):</p>
@@ -151,8 +151,8 @@ ZZZZZZZZZZZ
 16/03/2016  12:40 PM &lt;DIR&gt; zzz_WebsiteName  
 16/03/2016  12:43 PM &lt;DIR&gt; zzz_z  
 </code></pre>
-<p>Now this time it's the same as what the code returns.</p>
-<p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true.</p>
+<p>This time it's the same as what the code returns.</p>
+<p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true when Sitecore executes the logic.</p>
 <p>Remember to verify the order using CMD in the future...</p>
 					<br />
 					<a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html#disqus_thread">Comments</a>
