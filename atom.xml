@@ -3,13 +3,90 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-04-12T14:00:47.7374081+00:00</updated>
+  <updated>2016-04-19T08:09:46.0179252+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html"/>
+    <title>1 MB file upload size limit for WFFM on CD instance</title>
+    <updated>2016-04-19T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Sitecore Version:&lt;/strong&gt; 8.0 Update 4&lt;br /&gt;
+&lt;strong&gt;WFFM Version:&lt;/strong&gt; 8.0 Update 4&lt;/p&gt;
+&lt;h3&gt;Issues:&lt;/h3&gt;
+&lt;p&gt;When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn&apos;t be submitted and got error on the page:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We experienced a technical difficulty while processing your request. Your data may not have been correctly saved.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;From the logs, got this warning:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;9320 17:56:54 WARN  Posted files size exceeds limit&lt;br /&gt;
+Parameter name: Posted files size&lt;br /&gt;
+Exception: System.ArgumentException&lt;br /&gt;
+Message: Posted files size exceeds limit&lt;br /&gt;
+Parameter name: Posted files size&lt;br /&gt;
+Source: Sitecore.Kernel&lt;br /&gt;
+    at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)&lt;br /&gt;
+    at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)&lt;br /&gt;
+    at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)&lt;br /&gt;
+    at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)&lt;/p&gt;
+&lt;p&gt;9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit&lt;br /&gt;
+Parameter name: Posted files size has occured while trying to execute an action.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Investigations:&lt;/h3&gt;
+&lt;p&gt;When checked Sitecore source code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; private static void ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)
+    {
+      if (Context.Site.DisplayMode != DisplayMode.Normal &amp;amp;&amp;amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(&amp;quot;sc_debug&amp;quot;, (string) null) != null)
+        return;
+      if (Settings.IsRemoteActions)
+      {
+        EventManager.QueueEvent&amp;lt;WffmActionEvent&amp;gt;(new WffmActionEvent()
+        {
+          ...
+          Fields = Enumerable.ToArray&amp;lt;ControlResult&amp;gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&amp;lt;ControlResult&amp;gt;) fields)),
+          ...
+        });
+       ...
+      }
+      else
+      {
+        ...
+      }
+    }
+
+    private static IEnumerable&amp;lt;ControlResult&amp;gt; GetSerializableControlResults(IEnumerable&amp;lt;ControlResult&amp;gt; fields)
+    {
+      Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &amp;lt; 1000000L, &amp;quot;Posted files size&amp;quot;, &amp;quot;Posted files size exceeds limit&amp;quot;);
+      return ...
+    }
+
+    private static long GetUploadedSizeOfAllFiles(IEnumerable&amp;lt;ControlResult&amp;gt; fields)
+    {
+      long num = 0;
+      foreach (ControlResult controlResult in fields)
+      {
+        PostedFile postedFile = controlResult.Value as PostedFile;
+        if (postedFile != null &amp;amp;&amp;amp; postedFile.Data != null)
+          num += (long) postedFile.Data.Length;
+      }
+      return num;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So when it&apos;s a &amp;quot;remoteAction&amp;quot;(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.&lt;/p&gt;
+&lt;p&gt;1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it&apos;s hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.&lt;/p&gt;
+&lt;h3&gt;Solutions:&lt;/h3&gt;
+&lt;p&gt;Contacted with Sitecore on this one, Sitecore confirmed that it&apos;s a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it&apos;s publicly available.&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html</id>

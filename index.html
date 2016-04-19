@@ -47,7 +47,88 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a></h1>
+					<h1><a href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html">1 MB file upload size limit for WFFM on CD instance</a></h1>
+					<div class="postdate">19 April, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<p><strong>Sitecore Version:</strong> 8.0 Update 4<br />
+<strong>WFFM Version:</strong> 8.0 Update 4</p>
+<h3>Issues:</h3>
+<p>When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn't be submitted and got error on the page:</p>
+<blockquote>
+<p>We experienced a technical difficulty while processing your request. Your data may not have been correctly saved.</p>
+</blockquote>
+<p>From the logs, got this warning:</p>
+<blockquote>
+<p>9320 17:56:54 WARN  Posted files size exceeds limit<br />
+Parameter name: Posted files size<br />
+Exception: System.ArgumentException<br />
+Message: Posted files size exceeds limit<br />
+Parameter name: Posted files size<br />
+Source: Sitecore.Kernel<br />
+    at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br />
+    at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br />
+    at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br />
+    at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
+<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br />
+Parameter name: Posted files size has occured while trying to execute an action.</p>
+</blockquote>
+<h3>Investigations:</h3>
+<p>When checked Sitecore source code:</p>
+<pre><code> private static void ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)
+    {
+      if (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(&quot;sc_debug&quot;, (string) null) != null)
+        return;
+      if (Settings.IsRemoteActions)
+      {
+        EventManager.QueueEvent&lt;WffmActionEvent&gt;(new WffmActionEvent()
+        {
+          ...
+          Fields = Enumerable.ToArray&lt;ControlResult&gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&lt;ControlResult&gt;) fields)),
+          ...
+        });
+       ...
+      }
+      else
+      {
+        ...
+      }
+    }
+
+    private static IEnumerable&lt;ControlResult&gt; GetSerializableControlResults(IEnumerable&lt;ControlResult&gt; fields)
+    {
+      Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &lt; 1000000L, &quot;Posted files size&quot;, &quot;Posted files size exceeds limit&quot;);
+      return ...
+    }
+
+    private static long GetUploadedSizeOfAllFiles(IEnumerable&lt;ControlResult&gt; fields)
+    {
+      long num = 0;
+      foreach (ControlResult controlResult in fields)
+      {
+        PostedFile postedFile = controlResult.Value as PostedFile;
+        if (postedFile != null &amp;&amp; postedFile.Data != null)
+          num += (long) postedFile.Data.Length;
+      }
+      return num;
+    }
+</code></pre>
+<p>So when it's a &quot;remoteAction&quot;(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
+<p>1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it's hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.</p>
+<h3>Solutions:</h3>
+<p>Contacted with Sitecore on this one, Sitecore confirmed that it's a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it's publicly available.</p>
+					<br />
+					<a href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a></h2>
 					<div class="postdate">16 March, 2016
 						<ul>
 						
@@ -154,7 +235,6 @@ ZZZZZZZZZZZ
 <p>This time it's the same as what the code returns.</p>
 <p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true when Sitecore executes the logic.</p>
 <p>Remember to verify the order using CMD in the future...</p>
-					<br />
 					<a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -295,63 +375,14 @@ ZZZZZZZZZZZ
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a></h2>
-					<div class="postdate">29 January, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.</p>
-<p>Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it's designed for single people who lives along :( Because Siri can't be shared between different Apple ID and Geo Fencing only works for a single device.</p>
-<p>Siri issue can be resolved by setting up an iOS device at home only for home automation with &quot;Hey Siri&quot; enabled. But Geo Fencing is pretty much useless for me.</p>
-<p>So I wrote a Windows Console Application that pings mine and my wife's iPhone every few seconds and turn the lights off or on accordingly.</p>
-<p>Few things before we continue:</p>
-<ul>
-<li>It runs on windows, you need to have a windows machine that is always on when you want it to do the work.</li>
-<li>You need to know your Bridge IP address and device names of the devices you want to monitor.</li>
-<li>You need to follow Philips Developer Guide to setup API Key for your local Bridge.</li>
-</ul>
-<p>UI and non-tech people friendly version will come, but not much free time at the moment, will try.</p>
-<h3>App Name: Anyone Hue ?</h3>
-<p>Download Link: <a href="/files/AnyoneHue_Console_v1.0.zip">Direct</a></p>
-<p>Main functionalities:</p>
-<ul>
-<li>Check multiple devices presence in local network and turn off all lights when none is connected (It's like GEO fencing for multiple people, but instead of using location, it uses wifi)</li>
-<li>If any device comes back online, turn on a pre-defined light to full brightness</li>
-<li>Can stop monitoring for particular hours defined in config, it enters sleep mode for those hours.</li>
-<li>Can set retry numbers and retry waiting period</li>
-</ul>
-<p>Below is the web.config setting, hopefully can help you understands what are configurable for the app.</p>
-<pre><code class="language-xml">	&lt;!-- Device names to be monitored--&gt;
-    &lt;add key=&quot;DeviceNamesByPipes&quot; value=&quot;Device1|Device2&quot; /&gt;	
-	&lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;
-    &lt;add key=&quot;HueBridgeApiKey&quot; value=&quot;APIKey&quot; /&gt;
-    &lt;add key=&quot;HueBridgeIpAddress&quot; value=&quot;192.168.2.X&quot; /&gt;
-	&lt;add key=&quot;LightNameToTurnOn&quot; value=&quot;LightName&quot; /&gt;	
-    &lt;add key=&quot;CheckIntervalInSeconds&quot; value=&quot;5&quot; /&gt;
-    &lt;add key=&quot;PingTimeoutInSeconds&quot; value=&quot;1000&quot; /&gt;    
-    &lt;add key=&quot;RetryNumber&quot; value=&quot;3&quot; /&gt;
-    &lt;add key=&quot;RetryIntervalInSeconds&quot; value=&quot;60&quot; /&gt;	
-	&lt;!-- Active hours in a day, value can be 0 to 23 --&gt;
-    &lt;add key=&quot;ActiveHours&quot; value=&quot;20,21,22,23&quot; /&gt;
-	&lt;!-- Log file name will be appended with date --&gt;
-    &lt;add key=&quot;LogFileName&quot; value=&quot;Scanlog&quot; /&gt;
-	&lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;
-    &lt;add key=&quot;ScanStartIp&quot; value=&quot;0&quot; /&gt;
-    &lt;add key=&quot;ScanEndIp&quot; value=&quot;254&quot; /&gt;
-</code></pre>
-					<a href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 29 Jan </span> <a class="postlink" href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 07 Jan </span> <a class="postlink" href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html">Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a>
