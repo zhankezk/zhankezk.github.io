@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>西瓜跟踪/Siigaa Tracker</title>
+		<title>HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -42,37 +42,39 @@
 				</div>
 			</div>
 			<div id="content">
-				<h1>西瓜跟踪/Siigaa Tracker v1.3</h1>
-<p><a href="https://geo.itunes.apple.com/au/app/siigaa-tracker/id1061930282?mt=8"><img src="/img/posts/siigaa/logo.png" alt="Siigaa 西瓜！" title="西瓜跟踪" /></a></p>
-<p>澳洲快递查询助手 iOS App</p>
-<p>中国应用商店：<a href="https://geo.itunes.apple.com/au/app/siigaa-tracker/id1061930282?mt=8" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg) no-repeat;width:165px;height:40px;"></a> Australia App Store: <a href="https://geo.itunes.apple.com/cn/app/xi-gua-gen-zong/id1061930282?mt=8" style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg) no-repeat;width:165px;height:40px;"></a></p>
-<h3>Android version coming in July!</h3>
-<p>The app aim to be your everyday helper for your DaiGou business. It supports shipment receipt barcode auto-scanning, automatic tracking and consignee management. Supports 14 major couriers at the moment, more will come.</p>
-<p>旨在成为澳洲代购朋友们的快递小助手，支持手机相机自动扫描运单号条形码和自动查询跟踪记录，且具备收件人管理功能，方便归档和查询收件人运单。目前支持14 家快递公司，更多的后续还会添加。</p>
-<p>澳德 www.auod.com.au<br />
-新干线 www.expressplus.com.au<br />
-澳邮 www.auexpress.com.au<br />
-EWE www.ewe.com.au<br />
-中邮速递 www.30post.cn<br />
-AOL www.aol-au.com<br />
-捷记方舟 www.ajexpress.com.au<br />
-澳速物流 www.au-speed.com<br />
-澳世速递 www.aus-express.com<br />
-EFS快递 www.efspost.com<br />
-PCA Express www.pcaexpress.com.au<br />
-中环快递 www.zhexpress.com.au<br />
-中邮快递 www.cnpex.com.au<br />
-先锋快递 www.xfexpress.com.au</p>
-<p>有任何建议或者意见，欢迎在页面下方留言！</p>
-<p>App 截图</p>
-<p><img src="/img/posts/siigaa/scan.jpg" alt="Siigaa 西瓜！" title="扫描" style="width:250px !important">
-<img src="/img/posts/siigaa/tracking.jpg" alt="Siigaa 西瓜！" title="跟踪查询" style="width:250px !important">
-<img src="/img/posts/siigaa/shipments.jpg" alt="Siigaa 西瓜！" title="运单" style="width:250px !important">
-<img src="/img/posts/siigaa/consignees.jpg" alt="Siigaa 西瓜！" title="收件人" style="width:250px !important">
-<img src="/img/posts/siigaa/consigneedetails.jpg" alt="Siigaa 西瓜！" title="收件人运单" style="width:250px !important"></p>
-<p>*** App uses icons made by Freepik from www.flaticon.com and Tahsin Tahil from www.iconfinder.com/tahsintahil</p>
-<h2>Privacy Policy</h2>
-<p>App does not collect any kind of personal information, only collected information are used for app development and diagnostic.</p>
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights </h1>
+		<span class="postdate"> 2 May, 2016
+			
+		</span>
+		<p>Started to build a Xamarin iOS app a few months back, added Visual Studio Application Insights as analytics service to the app and setup events stuff. The analytics dashboard doesn't exactly fit what I need but it's good enough.</p>
+<p>Then came the news that Application Insights for mobile will be migrated to HockeyApp. And Application Insights will no longer support mobile platforms.</p>
+<p>A lot of complaints in that announcement and I did have some confusion as well. Since HockeyApp basically doesn't have any statics functionalities. Wouldn't I lost all the tracking stuff and data?</p>
+<p>Anyway, was googling and researching. Found this <a href="http://download.microsoft.com/download/3/E/7/3E717903-C905-4CB0-AF48-05BC47957BB4/Microsoft%20MADP%20Whitepaper.pdf">Microsoft platform and tools for mobile application development White paper</a>, everything became clear after reading relevant sections in there.</p>
+<p>Okay, from Microsoft point of view, their vision for your mobile development should require all 3 services they provide:</p>
+<ol>
+<li>HockeyApp</li>
+<li>Azure Mobile Engagement</li>
+<li>Visual Studio Application Insights</li>
+</ol>
+<p>HockeyApp is for testing and distribution.</p>
+<p>Azure Mobile Engagement is for analytics and marketing features.</p>
+<p>Visual Studio Application Insights is for monitoring service side application if your app has one.</p>
+<p>I have finished the migration and am using HockeyApp and Azure Mobile Engagement now, it was not complicate, only a few hours for my simple app.</p>
+<p>HockeyApp is pretty much Microsoft's TestFlight comparing to Apple. I don't have much say on it since my simple app doesn't require much DevOps stuff.</p>
+<p>Azure Mobile Engagement, on the other hand, interfaces are quite ancient I have to say, at least not matching Azure's style. And it's a different url at the moment outside Azure, I believe it will be emended into Azure someday. The analytics functionalities are more focused on mobile apps and I particularly like &quot;User Path&quot; which is a dynamic diagram showing you how users navigate through you app.</p>
+<p>Still just a few days I released the new version, will see how it goes. But with the speed Microsoft is having now on updating Azure products, I think this post will be outdated soon.</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html" title="Previous Post: 1 MB file upload size limit for WFFM on CD instance">&larr; 1 MB file upload size limit for WFFM on CD instance</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'kezblog'; 
@@ -84,6 +86,7 @@ PCA Express www.pcaexpress.com.au<br />
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
 			</div>
 		</div>
 		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>

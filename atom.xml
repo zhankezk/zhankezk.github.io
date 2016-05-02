@@ -3,13 +3,41 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-04-19T08:09:46.0179252+00:00</updated>
+  <updated>2016-05-02T06:45:53.9474275+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html"/>
+    <title>HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</title>
+    <updated>2016-05-02T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Started to build a Xamarin iOS app a few months back, added Visual Studio Application Insights as analytics service to the app and setup events stuff. The analytics dashboard doesn&apos;t exactly fit what I need but it&apos;s good enough.&lt;/p&gt;
+&lt;p&gt;Then came the news that Application Insights for mobile will be migrated to HockeyApp. And Application Insights will no longer support mobile platforms.&lt;/p&gt;
+&lt;p&gt;A lot of complaints in that announcement and I did have some confusion as well. Since HockeyApp basically doesn&apos;t have any statics functionalities. Wouldn&apos;t I lost all the tracking stuff and data?&lt;/p&gt;
+&lt;p&gt;Anyway, was googling and researching. Found this &lt;a href=&quot;http://download.microsoft.com/download/3/E/7/3E717903-C905-4CB0-AF48-05BC47957BB4/Microsoft%20MADP%20Whitepaper.pdf&quot;&gt;Microsoft platform and tools for mobile application development White paper&lt;/a&gt;, everything became clear after reading relevant sections in there.&lt;/p&gt;
+&lt;p&gt;Okay, from Microsoft point of view, their vision for your mobile development should require all 3 services they provide:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;HockeyApp&lt;/li&gt;
+&lt;li&gt;Azure Mobile Engagement&lt;/li&gt;
+&lt;li&gt;Visual Studio Application Insights&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;HockeyApp is for testing and distribution.&lt;/p&gt;
+&lt;p&gt;Azure Mobile Engagement is for analytics and marketing features.&lt;/p&gt;
+&lt;p&gt;Visual Studio Application Insights is for monitoring service side application if your app has one.&lt;/p&gt;
+&lt;p&gt;I have finished the migration and am using HockeyApp and Azure Mobile Engagement now, it was not complicate, only a few hours for my simple app.&lt;/p&gt;
+&lt;p&gt;HockeyApp is pretty much Microsoft&apos;s TestFlight comparing to Apple. I don&apos;t have much say on it since my simple app doesn&apos;t require much DevOps stuff.&lt;/p&gt;
+&lt;p&gt;Azure Mobile Engagement, on the other hand, interfaces are quite ancient I have to say, at least not matching Azure&apos;s style. And it&apos;s a different url at the moment outside Azure, I believe it will be emended into Azure someday. The analytics functionalities are more focused on mobile apps and I particularly like &amp;quot;User Path&amp;quot; which is a dynamic diagram showing you how users navigate through you app.&lt;/p&gt;
+&lt;p&gt;Still just a few days I released the new version, will see how it goes. But with the speed Microsoft is having now on updating Azure products, I think this post will be outdated soon.&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html</id>
