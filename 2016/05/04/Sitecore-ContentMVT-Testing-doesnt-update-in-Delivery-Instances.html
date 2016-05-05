@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Sitecore Content/MVT Testing doesn't update in Delivery Instances</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Sitecore Content/MVT Testing doesn't update in Delivery Instances </h1>
+		<span class="postdate"> 4 May, 2016
+			
+		</span>
+		<h3>Sitecore Version:</h3>
+<p>8.0 rev. 150621 (8.0 Update-4)</p>
+<h3>Issues:</h3>
+<p>There were actually 2 issues.</p>
+<ul>
+<li>There was once user removed a page test from homepage on authoring server. After a while, the homepage on delivery instance went down and was giving 500 errors with this exception in the logs:</li>
+</ul>
+<pre><code>7092 2016:05:03 18:12:32 ERROR Application error.
+Exception: System.Web.HttpUnhandledException
+Message: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: System.Web
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)
+
+Nested Exception
+
+Exception: System.InvalidOperationException
+Message: The specified variable does not exist in the test set
+Source: Sitecore.Analytics
+   at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`1 renderings, RenderingReference rendering, Item contextItem, Item variableItem)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Layouts.PageContext.BuildControlTree(Object sender, EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+</code></pre>
+<p>          The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.</p>
+<ul>
+<li>Recently users found that A/B testing(or MVT testing) doesn't work on the website. After they set it up in Authoring instance, you can see the tests from authoring urls, but on delivery instance urls, nothing happens, and after about a day, they started to work on delivery instances.(Which I think it must be the cache was cleared for some reason, maybe app pool scheduled recycle.)</li>
+</ul>
+<h3>Causes</h3>
+<p>In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for &quot;publish:end&quot; event but not &quot;publish:end:remote&quot;:</p>
+<pre><code>&lt;event name=&quot;publish:end&quot;&gt;
+    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
+&lt;/event&gt;
+</code></pre>
+<h3>Solution</h3>
+<p>Add the handler to &quot;publish:end:remote&quot; to Sitecore.ContentTesting.config:</p>
+<pre><code>&lt;event name=&quot;publish:end:remote&quot;&gt;
+    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
+&lt;/event&gt;
+</code></pre>
+<h3>More</h3>
+<p>Keep reading if you want to know more about my experience on this one.</p>
+<p>To me this felt like a big issue because delivery instance would always face issues with testing. So I checked and make sure this is issue with Sitecore out-of-box configurations, which is 8.0 rev. 150621 (8.0 Update-4). Then I checked few more version, the issue has been fixed starting from Sitecore 8.0 rev. 151127. And in the latest 8.1 versions, comments are added as well for more clarity.</p>
+<p>Found a good cache debugging plugin while investigating: <a href="https://marketplace.sitecore.net/en/Modules/Sitecore_Cache_Admin.aspx">Sitecore Cache Admin</a>, it shows all the cache and you can clear individual ones.</p>
+<p>May the force be with you!</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html" title="Previous Post: HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights">&larr; HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>

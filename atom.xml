@@ -3,13 +3,82 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-05-02T06:45:53.9474275+00:00</updated>
+  <updated>2016-05-05T00:03:58.8371082+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html"/>
+    <title>Sitecore Content/MVT Testing doesn&apos;t update in Delivery Instances</title>
+    <updated>2016-05-04T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;h3&gt;Sitecore Version:&lt;/h3&gt;
+&lt;p&gt;8.0 rev. 150621 (8.0 Update-4)&lt;/p&gt;
+&lt;h3&gt;Issues:&lt;/h3&gt;
+&lt;p&gt;There were actually 2 issues.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There was once user removed a page test from homepage on authoring server. After a while, the homepage on delivery instance went down and was giving 500 errors with this exception in the logs:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;7092 2016:05:03 18:12:32 ERROR Application error.
+Exception: System.Web.HttpUnhandledException
+Message: Exception of type &apos;System.Web.HttpUnhandledException&apos; was thrown.
+Source: System.Web
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp;amp; completedSynchronously)
+
+Nested Exception
+
+Exception: System.InvalidOperationException
+Message: The specified variable does not exist in the test set
+Source: Sitecore.Analytics
+   at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`1 renderings, RenderingReference rendering, Item contextItem, Item variableItem)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Layouts.PageContext.BuildControlTree(Object sender, EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;          The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Recently users found that A/B testing(or MVT testing) doesn&apos;t work on the website. After they set it up in Authoring instance, you can see the tests from authoring urls, but on delivery instance urls, nothing happens, and after about a day, they started to work on delivery instances.(Which I think it must be the cache was cleared for some reason, maybe app pool scheduled recycle.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Causes&lt;/h3&gt;
+&lt;p&gt;In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for &amp;quot;publish:end&amp;quot; event but not &amp;quot;publish:end:remote&amp;quot;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;event name=&amp;quot;publish:end&amp;quot;&amp;gt;
+    &amp;lt;handler type=&amp;quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&amp;quot; method=&amp;quot;Process&amp;quot;/&amp;gt;
+&amp;lt;/event&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Add the handler to &amp;quot;publish:end:remote&amp;quot; to Sitecore.ContentTesting.config:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;event name=&amp;quot;publish:end:remote&amp;quot;&amp;gt;
+    &amp;lt;handler type=&amp;quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&amp;quot; method=&amp;quot;Process&amp;quot;/&amp;gt;
+&amp;lt;/event&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;More&lt;/h3&gt;
+&lt;p&gt;Keep reading if you want to know more about my experience on this one.&lt;/p&gt;
+&lt;p&gt;To me this felt like a big issue because delivery instance would always face issues with testing. So I checked and make sure this is issue with Sitecore out-of-box configurations, which is 8.0 rev. 150621 (8.0 Update-4). Then I checked few more version, the issue has been fixed starting from Sitecore 8.0 rev. 151127. And in the latest 8.1 versions, comments are added as well for more clarity.&lt;/p&gt;
+&lt;p&gt;Found a good cache debugging plugin while investigating: &lt;a href=&quot;https://marketplace.sitecore.net/en/Modules/Sitecore_Cache_Admin.aspx&quot;&gt;Sitecore Cache Admin&lt;/a&gt;, it shows all the cache and you can clear individual ones.&lt;/p&gt;
+&lt;p&gt;May the force be with you!&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html</id>

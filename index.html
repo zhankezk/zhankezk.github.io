@@ -47,7 +47,80 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html">HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</a></h1>
+					<h1><a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a></h1>
+					<div class="postdate"> 4 May, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<h3>Sitecore Version:</h3>
+<p>8.0 rev. 150621 (8.0 Update-4)</p>
+<h3>Issues:</h3>
+<p>There were actually 2 issues.</p>
+<ul>
+<li>There was once user removed a page test from homepage on authoring server. After a while, the homepage on delivery instance went down and was giving 500 errors with this exception in the logs:</li>
+</ul>
+<pre><code>7092 2016:05:03 18:12:32 ERROR Application error.
+Exception: System.Web.HttpUnhandledException
+Message: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Source: System.Web
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)
+
+Nested Exception
+
+Exception: System.InvalidOperationException
+Message: The specified variable does not exist in the test set
+Source: Sitecore.Analytics
+   at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`1 renderings, RenderingReference rendering, Item contextItem, Item variableItem)
+   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Layouts.PageContext.BuildControlTree(Object sender, EventArgs e)
+   at System.Web.UI.Page.PerformPreInit()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+</code></pre>
+<p>          The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.</p>
+<ul>
+<li>Recently users found that A/B testing(or MVT testing) doesn't work on the website. After they set it up in Authoring instance, you can see the tests from authoring urls, but on delivery instance urls, nothing happens, and after about a day, they started to work on delivery instances.(Which I think it must be the cache was cleared for some reason, maybe app pool scheduled recycle.)</li>
+</ul>
+<h3>Causes</h3>
+<p>In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for &quot;publish:end&quot; event but not &quot;publish:end:remote&quot;:</p>
+<pre><code>&lt;event name=&quot;publish:end&quot;&gt;
+    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
+&lt;/event&gt;
+</code></pre>
+<h3>Solution</h3>
+<p>Add the handler to &quot;publish:end:remote&quot; to Sitecore.ContentTesting.config:</p>
+<pre><code>&lt;event name=&quot;publish:end:remote&quot;&gt;
+    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
+&lt;/event&gt;
+</code></pre>
+<h3>More</h3>
+<p>Keep reading if you want to know more about my experience on this one.</p>
+<p>To me this felt like a big issue because delivery instance would always face issues with testing. So I checked and make sure this is issue with Sitecore out-of-box configurations, which is 8.0 rev. 150621 (8.0 Update-4). Then I checked few more version, the issue has been fixed starting from Sitecore 8.0 rev. 151127. And in the latest 8.1 versions, comments are added as well for more clarity.</p>
+<p>Found a good cache debugging plugin while investigating: <a href="https://marketplace.sitecore.net/en/Modules/Sitecore_Cache_Admin.aspx">Sitecore Cache Admin</a>, it shows all the cache and you can clear individual ones.</p>
+<p>May the force be with you!</p>
+					<br />
+					<a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html">HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</a></h2>
 					<div class="postdate"> 2 May, 2016
 						<ul>
 						
@@ -70,7 +143,6 @@
 <p>HockeyApp is pretty much Microsoft's TestFlight comparing to Apple. I don't have much say on it since my simple app doesn't require much DevOps stuff.</p>
 <p>Azure Mobile Engagement, on the other hand, interfaces are quite ancient I have to say, at least not matching Azure's style. And it's a different url at the moment outside Azure, I believe it will be emended into Azure someday. The analytics functionalities are more focused on mobile apps and I particularly like &quot;User Path&quot; which is a dynamic diagram showing you how users navigate through you app.</p>
 <p>Still just a few days I released the new version, will see how it goes. But with the speed Microsoft is having now on updating Azure products, I think this post will be outdated soon.</p>
-					<br />
 					<a href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -317,70 +389,14 @@ ZZZZZZZZZZZ
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/03/06/Hello-From-The-Engine.html">Hello From The Engine</a></h2>
-					<div class="postdate"> 6 March, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>This is the first test from the engine. Markdown file are still added manually. But generating static site and git actions are all done automatically by web application.</p>
-<p>And basically those are all the code (Configuration is a copy from Pretzel library since it's internal):</p>
-<pre><code class="language-csharp">            var path = Server.MapPath(&quot;~/Yard/In&quot;);
-            var destPath = Server.MapPath(&quot;~/Yard/Out&quot;);
-
-            var fileSystem = new FileSystem();
-            var contextGenerator = new SiteContextGenerator(fileSystem, new LinkHelper(), new BLL.Configuration(fileSystem, path));
-            var siteContext = contextGenerator.BuildContext(path, destPath, false);
-            var transforms = new List&lt;ITransform&gt;();
-            transforms.Add(new LessTransform(fileSystem));
-            transforms.Add(new VirtualDirectorySupport(fileSystem));
-            var engine = new LiquidEngine();
-            engine.FileSystem = fileSystem;
-            engine.Initialize();
-            engine.Process(siteContext);
-            foreach (var t in transforms){
-                t.Transform(siteContext);
-            }
-            engine.CompressSitemap(siteContext, fileSystem);
-
-            using (var repo = new Repository(destPath))
-            {
-                repo.Stage(&quot;*&quot;);
-                var author = new Signature(&quot;xxx&quot;, &quot;@xxxx&quot;, DateTime.Now);
-                var committer = author;
-                try
-                {
-                    var commit = repo.Commit(&quot;xxxxxx&quot;, author, committer);
-                }
-                catch (Exception ex)
-                {
-                    //do sth later
-                }
-
-                var remote = repo.Network.Remotes[&quot;origin&quot;];
-                var options = new PushOptions();
-                options.CredentialsProvider = (_url, _user, _cred) =&gt;
-                    new UsernamePasswordCredentials { Username = &quot;xxxxx&quot;, Password = &quot;xxxx&quot; };
-                repo.Network.Push(remote, @&quot;refs/heads/master&quot;, options);
-            }
-</code></pre>
-<p>It's very basic though. But good to know that this works.</p>
-<p>-------------Update 06/03/2016-------------------</p>
-<p>This is from the page editor now. All up and running.</p>
-<p>-------------Update 06/03/2016-------------------</p>
-<p>This is from deployed version. Test.Test.Final test, full version done.</p>
-					<a href="/2016/03/06/Hello-From-The-Engine.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 06 Mar </span> <a class="postlink" href="/2016/03/06/Hello-From-The-Engine.html">Hello From The Engine</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 05 Mar </span> <a class="postlink" href="/2016/03/05/New-Back-Engine-For-Blog.html">A New Back Engine for Blog</a>
