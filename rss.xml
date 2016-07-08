@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 08 Jul 2016 05:11:45 %z</pubDate>
-    <lastBuildDate>Fri, 08 Jul 2016 05:11:45 %z</lastBuildDate>
+    <pubDate>Fri, 08 Jul 2016 05:13:41 %z</pubDate>
+    <lastBuildDate>Fri, 08 Jul 2016 05:13:41 %z</lastBuildDate>
     
     <item>
       <title>Warning in Sitecore Media Library Folder Grid View</title>
@@ -17,7 +17,7 @@
       <guid>http://kezhan.info/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html</guid>
       <description>&lt;p&gt;Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don&apos;t ask).&lt;/p&gt;
 &lt;p&gt;I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &amp;quot;1 warning&amp;quot;, it says &amp;quot;The Alt field is empty.&amp;quot;&lt;/p&gt;
-&lt;p&gt;![Missing Alt field in Sitecore Media Library](/img/media warning.png &amp;quot;1 warning&amp;quot;)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/media_warning.png&quot; alt=&quot;Missing Alt field in Sitecore Media Library&quot; title=&quot;1 warning&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;After some digging, I found that this validation is defined in web.config under this path:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator&lt;/p&gt;
