@@ -6,8 +6,84 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 20 Jun 2016 14:03:34 %z</pubDate>
-    <lastBuildDate>Mon, 20 Jun 2016 14:03:34 %z</lastBuildDate>
+    <pubDate>Fri, 08 Jul 2016 05:11:45 %z</pubDate>
+    <lastBuildDate>Fri, 08 Jul 2016 05:11:45 %z</lastBuildDate>
+    
+    <item>
+      <title>Warning in Sitecore Media Library Folder Grid View</title>
+      <link>http://kezhan.info/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html</link>
+      <pubDate>Fri, 08 Jul 2016 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html</guid>
+      <description>&lt;p&gt;Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don&apos;t ask).&lt;/p&gt;
+&lt;p&gt;I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &amp;quot;1 warning&amp;quot;, it says &amp;quot;The Alt field is empty.&amp;quot;&lt;/p&gt;
+&lt;p&gt;![Missing Alt field in Sitecore Media Library](/img/media warning.png &amp;quot;1 warning&amp;quot;)&lt;/p&gt;
+&lt;p&gt;After some digging, I found that this validation is defined in web.config under this path:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is where it&apos;s defined for JPEG images:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;         &amp;lt;mediaType name=&amp;quot;JPEG image&amp;quot; extensions=&amp;quot;jpg, jpeg, jpe, jfif&amp;quot;&amp;gt;
+          &amp;lt;mimeType&amp;gt;image/jpeg&amp;lt;/mimeType&amp;gt;
+          &amp;lt;forceDownload&amp;gt;false&amp;lt;/forceDownload&amp;gt;
+          &amp;lt;sharedTemplate&amp;gt;system/media/unversioned/jpeg&amp;lt;/sharedTemplate&amp;gt;
+          &amp;lt;versionedTemplate&amp;gt;system/media/versioned/jpeg&amp;lt;/versionedTemplate&amp;gt;
+          &amp;lt;mediaValidator type=&amp;quot;Sitecore.Resources.Media.ImageValidator&amp;quot;/&amp;gt;
+          &amp;lt;thumbnails&amp;gt;
+            &amp;lt;generator type=&amp;quot;Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel&amp;quot;&amp;gt;
+              &amp;lt;extension&amp;gt;png&amp;lt;/extension&amp;gt;
+            &amp;lt;/generator&amp;gt;
+            &amp;lt;width&amp;gt;150&amp;lt;/width&amp;gt;
+            &amp;lt;height&amp;gt;150&amp;lt;/height&amp;gt;
+            &amp;lt;backgroundColor&amp;gt;#FFFFFF&amp;lt;/backgroundColor&amp;gt;
+          &amp;lt;/thumbnails&amp;gt;
+          &amp;lt;prototypes&amp;gt;
+            &amp;lt;media type=&amp;quot;Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel&amp;quot;/&amp;gt;
+          &amp;lt;/prototypes&amp;gt;
+        &amp;lt;/mediaType&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;using Sitecore.Configuration;
+using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
+
+namespace Sitecore.Resources.Media
+{
+  /// &amp;lt;summary&amp;gt;Represents a Media Validator.&amp;lt;/summary&amp;gt;
+  public class ImageValidator : MediaValidator
+  {
+    /// &amp;lt;summary&amp;gt;Validates the specified output.&amp;lt;/summary&amp;gt;
+    /// &amp;lt;param name=&amp;quot;item&amp;quot;&amp;gt;The item.&amp;lt;/param&amp;gt;
+    /// &amp;lt;param name=&amp;quot;results&amp;quot;&amp;gt;The warnings.&amp;lt;/param&amp;gt;
+    protected override void ValidateItem(MediaItem item, MediaValidatorResult results)
+    {
+      Assert.ArgumentNotNull((object) item, &amp;quot;item&amp;quot;);
+      Assert.ArgumentNotNull((object) results, &amp;quot;results&amp;quot;);
+      base.ValidateItem(item, results);
+      if (item.Size &amp;gt;= Settings.Media.MaxSizeInMemory)
+        results.Warnings.Add(&amp;quot;This image is too big to be resized.&amp;quot;);
+      if (string.IsNullOrEmpty(item.Alt))
+        results.Warnings.Add(&amp;quot;The Alt field is empty.&amp;quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&amp;quot;Width&amp;quot;]))
+        results.Warnings.Add(&amp;quot;The Width field is empty.&amp;quot;);
+      else if (MainUtil.GetInt(item.InnerItem[&amp;quot;Width&amp;quot;], -1) == -1)
+        results.Warnings.Add(&amp;quot;The Width field does not contain an integer.&amp;quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&amp;quot;Height&amp;quot;]))
+      {
+        results.Warnings.Add(&amp;quot;The Height field is empty.&amp;quot;);
+      }
+      else
+      {
+        if (MainUtil.GetInt(item.InnerItem[&amp;quot;Height&amp;quot;], -1) != -1)
+          return;
+        results.Warnings.Add(&amp;quot;The Height field does not contain an integer.&amp;quot;);
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So the solution is just to make a custom type that&apos;s similar to this but without the alt text validations.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Sitecore Content/MVT Testing doesn&apos;t update in Delivery Instances</title>

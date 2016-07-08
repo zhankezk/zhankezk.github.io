@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Warning in Sitecore Media Library Folder Grid View</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Warning in Sitecore Media Library Folder Grid View </h1>
+		<span class="postdate"> 8 July, 2016
+			
+		</span>
+		<p>Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don't ask).</p>
+<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &quot;1 warning&quot;, it says &quot;The Alt field is empty.&quot;</p>
+<p>![Missing Alt field in Sitecore Media Library](/img/media warning.png &quot;1 warning&quot;)</p>
+<p>After some digging, I found that this validation is defined in web.config under this path:</p>
+<blockquote>
+<p>/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator</p>
+</blockquote>
+<p>This is where it's defined for JPEG images:</p>
+<pre><code class="language-xml">         &lt;mediaType name=&quot;JPEG image&quot; extensions=&quot;jpg, jpeg, jpe, jfif&quot;&gt;
+          &lt;mimeType&gt;image/jpeg&lt;/mimeType&gt;
+          &lt;forceDownload&gt;false&lt;/forceDownload&gt;
+          &lt;sharedTemplate&gt;system/media/unversioned/jpeg&lt;/sharedTemplate&gt;
+          &lt;versionedTemplate&gt;system/media/versioned/jpeg&lt;/versionedTemplate&gt;
+          &lt;mediaValidator type=&quot;Sitecore.Resources.Media.ImageValidator&quot;/&gt;
+          &lt;thumbnails&gt;
+            &lt;generator type=&quot;Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel&quot;&gt;
+              &lt;extension&gt;png&lt;/extension&gt;
+            &lt;/generator&gt;
+            &lt;width&gt;150&lt;/width&gt;
+            &lt;height&gt;150&lt;/height&gt;
+            &lt;backgroundColor&gt;#FFFFFF&lt;/backgroundColor&gt;
+          &lt;/thumbnails&gt;
+          &lt;prototypes&gt;
+            &lt;media type=&quot;Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel&quot;/&gt;
+          &lt;/prototypes&gt;
+        &lt;/mediaType&gt;
+</code></pre>
+<p>And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:</p>
+<pre><code class="language-csharp">using Sitecore.Configuration;
+using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
+
+namespace Sitecore.Resources.Media
+{
+  /// &lt;summary&gt;Represents a Media Validator.&lt;/summary&gt;
+  public class ImageValidator : MediaValidator
+  {
+    /// &lt;summary&gt;Validates the specified output.&lt;/summary&gt;
+    /// &lt;param name=&quot;item&quot;&gt;The item.&lt;/param&gt;
+    /// &lt;param name=&quot;results&quot;&gt;The warnings.&lt;/param&gt;
+    protected override void ValidateItem(MediaItem item, MediaValidatorResult results)
+    {
+      Assert.ArgumentNotNull((object) item, &quot;item&quot;);
+      Assert.ArgumentNotNull((object) results, &quot;results&quot;);
+      base.ValidateItem(item, results);
+      if (item.Size &gt;= Settings.Media.MaxSizeInMemory)
+        results.Warnings.Add(&quot;This image is too big to be resized.&quot;);
+      if (string.IsNullOrEmpty(item.Alt))
+        results.Warnings.Add(&quot;The Alt field is empty.&quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&quot;Width&quot;]))
+        results.Warnings.Add(&quot;The Width field is empty.&quot;);
+      else if (MainUtil.GetInt(item.InnerItem[&quot;Width&quot;], -1) == -1)
+        results.Warnings.Add(&quot;The Width field does not contain an integer.&quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&quot;Height&quot;]))
+      {
+        results.Warnings.Add(&quot;The Height field is empty.&quot;);
+      }
+      else
+      {
+        if (MainUtil.GetInt(item.InnerItem[&quot;Height&quot;], -1) != -1)
+          return;
+        results.Warnings.Add(&quot;The Height field does not contain an integer.&quot;);
+      }
+    }
+  }
+}
+</code></pre>
+<p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html" title="Previous Post: Sitecore Content/MVT Testing doesn't update in Delivery Instances">&larr; Sitecore Content/MVT Testing doesn't update in Delivery Instances</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>

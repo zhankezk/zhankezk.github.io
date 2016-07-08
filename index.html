@@ -47,7 +47,90 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a></h1>
+					<h1><a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a></h1>
+					<div class="postdate"> 8 July, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<p>Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don't ask).</p>
+<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &quot;1 warning&quot;, it says &quot;The Alt field is empty.&quot;</p>
+<p>![Missing Alt field in Sitecore Media Library](/img/media warning.png &quot;1 warning&quot;)</p>
+<p>After some digging, I found that this validation is defined in web.config under this path:</p>
+<blockquote>
+<p>/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator</p>
+</blockquote>
+<p>This is where it's defined for JPEG images:</p>
+<pre><code class="language-xml">         &lt;mediaType name=&quot;JPEG image&quot; extensions=&quot;jpg, jpeg, jpe, jfif&quot;&gt;
+          &lt;mimeType&gt;image/jpeg&lt;/mimeType&gt;
+          &lt;forceDownload&gt;false&lt;/forceDownload&gt;
+          &lt;sharedTemplate&gt;system/media/unversioned/jpeg&lt;/sharedTemplate&gt;
+          &lt;versionedTemplate&gt;system/media/versioned/jpeg&lt;/versionedTemplate&gt;
+          &lt;mediaValidator type=&quot;Sitecore.Resources.Media.ImageValidator&quot;/&gt;
+          &lt;thumbnails&gt;
+            &lt;generator type=&quot;Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel&quot;&gt;
+              &lt;extension&gt;png&lt;/extension&gt;
+            &lt;/generator&gt;
+            &lt;width&gt;150&lt;/width&gt;
+            &lt;height&gt;150&lt;/height&gt;
+            &lt;backgroundColor&gt;#FFFFFF&lt;/backgroundColor&gt;
+          &lt;/thumbnails&gt;
+          &lt;prototypes&gt;
+            &lt;media type=&quot;Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel&quot;/&gt;
+          &lt;/prototypes&gt;
+        &lt;/mediaType&gt;
+</code></pre>
+<p>And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:</p>
+<pre><code class="language-csharp">using Sitecore.Configuration;
+using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
+
+namespace Sitecore.Resources.Media
+{
+  /// &lt;summary&gt;Represents a Media Validator.&lt;/summary&gt;
+  public class ImageValidator : MediaValidator
+  {
+    /// &lt;summary&gt;Validates the specified output.&lt;/summary&gt;
+    /// &lt;param name=&quot;item&quot;&gt;The item.&lt;/param&gt;
+    /// &lt;param name=&quot;results&quot;&gt;The warnings.&lt;/param&gt;
+    protected override void ValidateItem(MediaItem item, MediaValidatorResult results)
+    {
+      Assert.ArgumentNotNull((object) item, &quot;item&quot;);
+      Assert.ArgumentNotNull((object) results, &quot;results&quot;);
+      base.ValidateItem(item, results);
+      if (item.Size &gt;= Settings.Media.MaxSizeInMemory)
+        results.Warnings.Add(&quot;This image is too big to be resized.&quot;);
+      if (string.IsNullOrEmpty(item.Alt))
+        results.Warnings.Add(&quot;The Alt field is empty.&quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&quot;Width&quot;]))
+        results.Warnings.Add(&quot;The Width field is empty.&quot;);
+      else if (MainUtil.GetInt(item.InnerItem[&quot;Width&quot;], -1) == -1)
+        results.Warnings.Add(&quot;The Width field does not contain an integer.&quot;);
+      if (string.IsNullOrEmpty(item.InnerItem[&quot;Height&quot;]))
+      {
+        results.Warnings.Add(&quot;The Height field is empty.&quot;);
+      }
+      else
+      {
+        if (MainUtil.GetInt(item.InnerItem[&quot;Height&quot;], -1) != -1)
+          return;
+        results.Warnings.Add(&quot;The Height field does not contain an integer.&quot;);
+      }
+    }
+  }
+}
+</code></pre>
+<p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
+					<br />
+					<a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a></h2>
 					<div class="postdate"> 4 May, 2016
 						<ul>
 						
@@ -111,7 +194,6 @@ Source: Sitecore.Analytics
 <p>To me this felt like a big issue because delivery instance would always face issues with testing. So I checked and make sure this is issue with Sitecore out-of-box configurations, which is 8.0 rev. 150621 (8.0 Update-4). Then I checked few more version, the issue has been fixed starting from Sitecore 8.0 rev. 151127. And in the latest 8.1 versions, comments are added as well for more clarity.</p>
 <p>Found a good cache debugging plugin while investigating: <a href="https://marketplace.sitecore.net/en/Modules/Sitecore_Cache_Admin.aspx">Sitecore Cache Admin</a>, it shows all the cache and you can clear individual ones.</p>
 <p>May the force be with you!</p>
-					<br />
 					<a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -343,56 +425,14 @@ ZZZZZZZZZZZ
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html">Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a></h2>
-					<div class="postdate"> 7 March, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<h2>Issues:</h2>
-<p>On development instance of Sitecore. While creating page tests or content tests in Sitecore(A/B tests are working fine), got 404 errors for urls like:</p>
-<p>https://website.com/sitecore/shell/api/ct/Query/GetItems?query=*&amp;database=core&amp;root=%7Bxxxxxx-xxxxx-xxxxx-xxxxxxx%7D&amp;_=1234567890</p>
-<p>On different instance, when accessing the url directly and there's no 404 error, 403 errors are being returned.</p>
-<h2>Causes and Solutions:</h2>
-<p>There are these lines in only Development Sitecore Instance configuration, I believe the purpose was to speed up dev Sitecore instance start up time:</p>
-<pre><code>&lt;initialize&gt;
-    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Clientpro&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-    &lt;processor type=&quot;Sitecore.ContentTesting.Pipelines.Initialize.RegisterContentTestingCommandRoute, Sitecore.ContentTesting&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Client&quot; use=&quot;ContentTesting&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-&lt;/initialize&gt;
-</code></pre>
-<p>The issue is the second processor rule, original rule actually registers the necessary routing for Sitecore content testing web API. Therefore the solution is to remove the second processor rule.</p>
-<p>403 error is because simply it's not authorized, it's not meant for direct access without providing login credentials.</p>
-<h2>Background:</h2>
-<p>The main purpose of the configurations were to disable some actions that Sitecore normally does during startup which are not really necessary for developers in order to speed up development time. I have done some research online, found following links which have information on how to speed up Sitecore Dev instance, officially or unofficially:</p>
-<ol>
-<li><a href="http://www.sitecore.net/learn/blogs/technical-blogs/john-west-sitecore-blog/posts/2015/02/maximize-sitecore-developer-productivity.aspx">Maximize Sitecore Developer Productivity | John West</a></li>
-<li><a href="https://kb.sitecore.net/articles/296641">How to use Sitecore XP 8.0 without xDB</a></li>
-<li><a href="https://kb.sitecore.net/articles/672774">Experience Editor and other SPEAK applications may take long time to load</a></li>
-<li><a href="https://community.sitecore.net/developers/f/9/t/246">What is the best way to disable Analytics on Sitecore 7.2?</a></li>
-</ol>
-<p>The safe ones to follow would be item 1 to 3 since they are from Sitecore. The configuration file from item 4 makes a lot of senses, however I couldn't find where it's come from, so use with cautions.</p>
-<p>I also found some other configuration examples just for references: <a href="https://gist.github.com/kamsar/8c9efc80e72e6ada8304">Some Dev Config Examples</a></p>
-<p>And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here: <a href="https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=au">Potential source of issue</a></p>
-<p>And finally, here is the link where helped identifying the issue: <a href="http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404">Sitecore 8 shell controller returning IIS 404</a></p>
-					<a href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 07 Mar </span> <a class="postlink" href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html">Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 06 Mar </span> <a class="postlink" href="/2016/03/06/Hello-From-The-Engine.html">Hello From The Engine</a>

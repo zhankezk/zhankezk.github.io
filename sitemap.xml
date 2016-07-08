@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html</loc>
+    <lastmod>2016-07-08T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html</loc>
     <lastmod>2016-05-04T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -257,8 +264,6 @@
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
-	
-  
 	
   
 	
