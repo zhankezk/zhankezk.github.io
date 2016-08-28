@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps </h1>
+		<span class="postdate">28 August, 2016
+			
+		</span>
+		<p>As an one-man casual mobile developer for a bascially-no-one-uses iOS app. Developing the app is fun but the tasks that're required to release the app are always so tedious.</p>
+<p>I developed the app using Xamarin.iOS and luckily Visual Studio Team Services(VSTS) just releases an Apple App Store extension which can automate the processes. Spent some time to set the whole thing up, was going to do a step-by-step tutorial, but thought why creating redundant stuff so just gonna share some issues I encountered along the way.</p>
+<p>The goal to achieve after setting this up should be:</p>
+<blockquote>
+<h2>Develop the code and check in, queue a build in VSTS. That's it.</h2>
+</blockquote>
+<h3>Tutorials I followed</h3>
+<ul>
+<li><a href="https://blog.xamarin.com/continuous-integration-for-ios-apps-with-visual-studio-team-services/">Continuous Integration for iOS Apps with Visual Studio Team Services</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/visualstudioalm/2016/08/25/continuous-delivery-of-ios-applications-with-team-services/">Continuous Delivery of iOS Applications with Visual Studio Team Services</a></li>
+</ul>
+<p>They plus the links they references pretty much covers all setups required.</p>
+<h3>Will start on issues now</h3>
+<ol>
+<li><strong>While trying to export P12 certificate in Xcode, &quot;Export&quot; is greyed out.</strong></li>
+</ol>
+<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &quot;1 identity imported.&quot; then &quot;0 valid identities found&quot;.</p>
+<p>Solution Link: <a href="http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv">This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”</a></p>
+<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, &quot;Export&quot; in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
+<ol start="2">
+<li><strong>IPA build output folder has a &quot;name date time&quot; format makes it hard to define the IPA path in following build steps.</strong></li>
+</ol>
+<p>I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.</p>
+<p>Solution Link: <a href="http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder">Xamarin cycle 7 IOS IPA output now in a datetime folder</a></p>
+<p>After applying the changes, I also defined &quot;Package Name&quot; in &quot;iOS IPA Options&quot; tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
+<p>In this case, the output IPA always has the path: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa&quot;. Much easier for later setups.</p>
+<ol start="3">
+<li><strong>How to setup Metadata structure for &quot;App Store Release&quot; build step.</strong></li>
+</ol>
+<p>The &quot;App Store Release&quot; build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran &quot;deliver init&quot; in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
+<p>After that, I just added &quot;description.txt&quot;, &quot;keywords.txt&quot; and &quot;release_notes.txt&quot; into the solution, so I can update all information needed right in Xamarin Studio.</p>
+<p>Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...</p>
+<ol start="4">
+<li><strong>Got error while installing Fastlane: &quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&quot;.</strong></li>
+</ol>
+<p>Use this command: &quot;sudo gem install -n /usr/local/bin fastlane&quot;</p>
+<p>Reference: <a href="https://github.com/fastlane/fastlane/issues/1392">Problem when install fastlane</a></p>
+<ol start="5">
+<li><strong>App doesn't get submitted for review although log says &quot;Successfully submitted the app for review!&quot;</strong></li>
+</ol>
+<p>The reason is &quot;submission_information&quot; is not set for fastlane.</p>
+<p>In your &quot;fastlane&quot; folder, there should be a file &quot;Deliverfile&quot;, the content should look like this:</p>
+<pre><code>   app_identifier &quot;xx.xxx&quot; # The bundle identifier of your app
+   username &quot;xx@xxx.xx&quot; # your Apple ID user
+   submission_information({
+     	add_id_info_uses_idfa: false,
+	      export_compliance_encryption_updated: false
+
+   })
+</code></pre>
+<p>submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
+Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information">submission_information</a></p>
+<ol start="6">
+<li><strong>[Unresolved] &quot;Copy files&quot; build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></li>
+</ol>
+<p>So in the &quot;Copy files&quot; task, you define &quot;Source Folder&quot;, &quot;Contents&quot; and &quot;Target Folder&quot;. In &quot;Contents&quot; you normally use &quot;**/*.ipa&quot; to match the ipa files. But when I use &quot;**/*.dSYM&quot;, it doesn't copy the file, always says &quot;matched 0 files&quot;.</p>
+<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use &quot;**&quot;, it's copied across. When I use &quot;**/*.config&quot;, config files get copied.</p>
+<p>I don't get it...</p>
+<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&quot;) to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
+<p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
+<p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html" title="Previous Post: Warning in Sitecore Media Library Folder Grid View">&larr; Warning in Sitecore Media Library Folder Grid View</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>

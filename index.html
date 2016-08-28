@@ -47,7 +47,83 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a></h1>
+					<h1><a href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html">Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</a></h1>
+					<div class="postdate">28 August, 2016
+						<ul>
+						
+						</ul>
+					</div>
+					<p>As an one-man casual mobile developer for a bascially-no-one-uses iOS app. Developing the app is fun but the tasks that're required to release the app are always so tedious.</p>
+<p>I developed the app using Xamarin.iOS and luckily Visual Studio Team Services(VSTS) just releases an Apple App Store extension which can automate the processes. Spent some time to set the whole thing up, was going to do a step-by-step tutorial, but thought why creating redundant stuff so just gonna share some issues I encountered along the way.</p>
+<p>The goal to achieve after setting this up should be:</p>
+<blockquote>
+<h2>Develop the code and check in, queue a build in VSTS. That's it.</h2>
+</blockquote>
+<h3>Tutorials I followed</h3>
+<ul>
+<li><a href="https://blog.xamarin.com/continuous-integration-for-ios-apps-with-visual-studio-team-services/">Continuous Integration for iOS Apps with Visual Studio Team Services</a></li>
+<li><a href="https://blogs.msdn.microsoft.com/visualstudioalm/2016/08/25/continuous-delivery-of-ios-applications-with-team-services/">Continuous Delivery of iOS Applications with Visual Studio Team Services</a></li>
+</ul>
+<p>They plus the links they references pretty much covers all setups required.</p>
+<h3>Will start on issues now</h3>
+<ol>
+<li><strong>While trying to export P12 certificate in Xcode, &quot;Export&quot; is greyed out.</strong></li>
+</ol>
+<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &quot;1 identity imported.&quot; then &quot;0 valid identities found&quot;.</p>
+<p>Solution Link: <a href="http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv">This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”</a></p>
+<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, &quot;Export&quot; in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
+<ol start="2">
+<li><strong>IPA build output folder has a &quot;name date time&quot; format makes it hard to define the IPA path in following build steps.</strong></li>
+</ol>
+<p>I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.</p>
+<p>Solution Link: <a href="http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder">Xamarin cycle 7 IOS IPA output now in a datetime folder</a></p>
+<p>After applying the changes, I also defined &quot;Package Name&quot; in &quot;iOS IPA Options&quot; tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
+<p>In this case, the output IPA always has the path: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa&quot;. Much easier for later setups.</p>
+<ol start="3">
+<li><strong>How to setup Metadata structure for &quot;App Store Release&quot; build step.</strong></li>
+</ol>
+<p>The &quot;App Store Release&quot; build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran &quot;deliver init&quot; in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
+<p>After that, I just added &quot;description.txt&quot;, &quot;keywords.txt&quot; and &quot;release_notes.txt&quot; into the solution, so I can update all information needed right in Xamarin Studio.</p>
+<p>Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...</p>
+<ol start="4">
+<li><strong>Got error while installing Fastlane: &quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&quot;.</strong></li>
+</ol>
+<p>Use this command: &quot;sudo gem install -n /usr/local/bin fastlane&quot;</p>
+<p>Reference: <a href="https://github.com/fastlane/fastlane/issues/1392">Problem when install fastlane</a></p>
+<ol start="5">
+<li><strong>App doesn't get submitted for review although log says &quot;Successfully submitted the app for review!&quot;</strong></li>
+</ol>
+<p>The reason is &quot;submission_information&quot; is not set for fastlane.</p>
+<p>In your &quot;fastlane&quot; folder, there should be a file &quot;Deliverfile&quot;, the content should look like this:</p>
+<pre><code>   app_identifier &quot;xx.xxx&quot; # The bundle identifier of your app
+   username &quot;xx@xxx.xx&quot; # your Apple ID user
+   submission_information({
+     	add_id_info_uses_idfa: false,
+	      export_compliance_encryption_updated: false
+
+   })
+</code></pre>
+<p>submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
+Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information">submission_information</a></p>
+<ol start="6">
+<li><strong>[Unresolved] &quot;Copy files&quot; build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></li>
+</ol>
+<p>So in the &quot;Copy files&quot; task, you define &quot;Source Folder&quot;, &quot;Contents&quot; and &quot;Target Folder&quot;. In &quot;Contents&quot; you normally use &quot;**/*.ipa&quot; to match the ipa files. But when I use &quot;**/*.dSYM&quot;, it doesn't copy the file, always says &quot;matched 0 files&quot;.</p>
+<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use &quot;**&quot;, it's copied across. When I use &quot;**/*.config&quot;, config files get copied.</p>
+<p>I don't get it...</p>
+<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&quot;) to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
+<p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
+<p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>
+					<br />
+					<a href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a></h2>
 					<div class="postdate"> 8 July, 2016
 						<ul>
 						
@@ -121,7 +197,6 @@ namespace Sitecore.Resources.Media
 }
 </code></pre>
 <p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
-					<br />
 					<a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -310,125 +385,14 @@ Parameter name: Posted files size has occured while trying to execute an action.
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a></h2>
-					<div class="postdate">16 March, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>For Sitecore, we all love the web.config include patching functionality, which makes the whole configuration management much easier. However earlier today it took me a bit of time to figure out an issue when I tried to overwrite a patch with another patch.</p>
-<p><strong>Scenario:</strong></p>
-<p>In Include folder, there's a zzz_WebsiteName folder and a zzz folder. Patch A is inside of zzz_WebsiteName, I created another patch B which is to remove part of what Patch A applied. So this means patch B only works when it's applied after Patch A is applied.</p>
-<ul>
-<li>I placed patch B inside zzz folder, it didn't work. I expect this, it's fine.</li>
-<li>I placed patch B inside zzz_WebsiteName folder, it worked. I expect this, all good.</li>
-<li>I placed patch B inside zzzz folder, it didn't work. Not good.</li>
-<li>I placed patch B inside ZZZZ folder, didn't work either.</li>
-</ul>
-<p>So I went ahead and checked the source code where Sitecore looks for the config files in Include folder:</p>
-<pre><code>private static void LoadAutoIncludeFiles(ConfigPatcher patcher, string folder)
-    {
-      Assert.ArgumentNotNull((object) patcher, &quot;patcher&quot;);
-      Assert.ArgumentNotNull((object) folder, &quot;folder&quot;);
-      try
-      {
-        if (!Directory.Exists(folder))
-          return;
-        foreach (string str in Directory.GetFiles(folder, &quot;*.config&quot;))
-        {
-          try
-          {
-            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
-              patcher.ApplyPatch(str);
-          }
-          catch (Exception ex)
-          {
-            Log.Error(string.Concat(new object[4]
-            {
-              (object) &quot;Could not load configuration file: &quot;,
-              (object) str,
-              (object) &quot;: &quot;,
-              (object) ex
-            }), typeof (Factory));
-          }
-        }
-        foreach (string str in Directory.GetDirectories(folder))
-        {
-          try
-          {
-            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
-              Factory.LoadAutoIncludeFiles(patcher, str);
-          }
-          catch (Exception ex)
-          {
-            Log.Error(string.Concat(new object[4]
-            {
-              (object) &quot;Could not scan configuration folder &quot;,
-              (object) str,
-              (object) &quot; for files: &quot;,
-              (object) ex
-            }), typeof (Factory));
-          }
-        }
-      }
-      catch (Exception ex)
-      {
-        Log.Error(string.Concat(new object[4]
-        {
-          (object) &quot;Could not scan configuration folder &quot;,
-          (object) folder,
-          (object) &quot; for files: &quot;,
-          (object) ex
-        }), typeof (Factory));
-      }
-    }
-</code></pre>
-<p>Actually it all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
-<p>However the key thing here is this line:</p>
-<pre><code>Directory.GetDirectories(folder)
-</code></pre>
-<p>When I ran it on my machine, it returned this(I created some folder to test):</p>
-<pre><code>C:\Sitecore\sc80rev150621\Website\App_Config\Include\Channel 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ContentTesting 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceAnalytics 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceProfile 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\FXM 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ListManagement 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\Social 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\XdbCloud 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzzzzzzzz 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ZZZZZZZZZZZ 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_WebsiteName 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_z 
-</code></pre>
-<p>Yes, based on this result, zzz_WebsiteName is behind other folders, so it shouldn't work when I put the files in zzzz or ZZZZ folder. However here is what we see in Windows Exploer:</p>
-<pre><code>zzz_WebsiteName
-zzz_z  
-zzzzzzzzz  
-ZZZZZZZZZZZ  
-</code></pre>
-<p><strong>It's different!</strong></p>
-<p>Then I ran dir command in CMD:</p>
-<pre><code>05/02/2016  03:36 PM &lt;DIR&gt; zzzzzzzzz  
-16/03/2016  12:43 PM &lt;DIR&gt; ZZZZZZZZZZZ  
-16/03/2016  12:40 PM &lt;DIR&gt; zzz_WebsiteName  
-16/03/2016  12:43 PM &lt;DIR&gt; zzz_z  
-</code></pre>
-<p>This time it's the same as what the code returns.</p>
-<p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true when Sitecore executes the logic.</p>
-<p>Remember to verify the order using CMD in the future...</p>
-					<a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 16 Mar </span> <a class="postlink" href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 07 Mar </span> <a class="postlink" href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html">Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a>
