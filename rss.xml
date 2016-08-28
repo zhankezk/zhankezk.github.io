@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 28 Aug 2016 10:54:06 %z</pubDate>
-    <lastBuildDate>Sun, 28 Aug 2016 10:54:06 %z</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 10:57:11 %z</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 10:57:11 %z</lastBuildDate>
     
     <item>
       <title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>
