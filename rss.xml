@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 28 Aug 2016 09:05:38 %z</pubDate>
-    <lastBuildDate>Sun, 28 Aug 2016 09:05:38 %z</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 09:07:00 %z</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 09:07:00 %z</lastBuildDate>
     
     <item>
       <title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>
@@ -27,7 +27,7 @@
 &lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/visualstudioalm/2016/08/25/continuous-delivery-of-ios-applications-with-team-services/&quot;&gt;Continuous Delivery of iOS Applications with Visual Studio Team Services&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;They plus the links they references pretty much covers all setups required.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Will start on issues now&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Will start on issues now.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1. While trying to export P12 certificate in Xcode, &amp;quot;Export&amp;quot; is greyed out.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &amp;quot;1 identity imported.&amp;quot; then &amp;quot;0 valid identities found&amp;quot;.&lt;/p&gt;
 &lt;p&gt;Solution Link: &lt;a href=&quot;http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv&quot;&gt;This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”&lt;/a&gt;&lt;/p&gt;
