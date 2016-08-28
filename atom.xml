@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-08-28T09:03:11.4284982+00:00</updated>
+  <updated>2016-08-28T09:05:38.9742411+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -33,33 +33,23 @@
 &lt;/ul&gt;
 &lt;p&gt;They plus the links they references pretty much covers all setups required.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Will start on issues now&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;While trying to export P12 certificate in Xcode, &amp;quot;Export&amp;quot; is greyed out.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;1. While trying to export P12 certificate in Xcode, &amp;quot;Export&amp;quot; is greyed out.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &amp;quot;1 identity imported.&amp;quot; then &amp;quot;0 valid identities found&amp;quot;.&lt;/p&gt;
 &lt;p&gt;Solution Link: &lt;a href=&quot;http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv&quot;&gt;This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, &amp;quot;Export&amp;quot; in Xcode will be available and certificate exported from Keychain will be valid as well.&lt;/p&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;&lt;strong&gt;IPA build output folder has a &amp;quot;name date time&amp;quot; format makes it hard to define the IPA path in following build steps.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;2. IPA build output folder has a &amp;quot;name date time&amp;quot; format makes it hard to define the IPA path in following build steps.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.&lt;/p&gt;
 &lt;p&gt;Solution Link: &lt;a href=&quot;http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder&quot;&gt;Xamarin cycle 7 IOS IPA output now in a datetime folder&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After applying the changes, I also defined &amp;quot;Package Name&amp;quot; in &amp;quot;iOS IPA Options&amp;quot; tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn&apos;t matter anyway.&lt;/p&gt;
 &lt;p&gt;In this case, the output IPA always has the path: &amp;quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa&amp;quot;. Much easier for later setups.&lt;/p&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;&lt;strong&gt;How to setup Metadata structure for &amp;quot;App Store Release&amp;quot; build step.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;3. How to setup Metadata structure for &amp;quot;App Store Release&amp;quot; build step.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The &amp;quot;App Store Release&amp;quot; build step only accepts a path for metadata folder. For someone who hasn&apos;t used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran &amp;quot;deliver init&amp;quot; in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.&lt;/p&gt;
 &lt;p&gt;After that, I just added &amp;quot;description.txt&amp;quot;, &amp;quot;keywords.txt&amp;quot; and &amp;quot;release_notes.txt&amp;quot; into the solution, so I can update all information needed right in Xamarin Studio.&lt;/p&gt;
 &lt;p&gt;Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...&lt;/p&gt;
-&lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;&lt;strong&gt;Got error while installing Fastlane: &amp;quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&amp;quot;.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;4. Got error while installing Fastlane: &amp;quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&amp;quot;.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Use this command: &amp;quot;sudo gem install -n /usr/local/bin fastlane&amp;quot;&lt;/p&gt;
 &lt;p&gt;Reference: &lt;a href=&quot;https://github.com/fastlane/fastlane/issues/1392&quot;&gt;Problem when install fastlane&lt;/a&gt;&lt;/p&gt;
-&lt;ol start=&quot;5&quot;&gt;
-&lt;li&gt;&lt;strong&gt;App doesn&apos;t get submitted for review although log says &amp;quot;Successfully submitted the app for review!&amp;quot;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;5. App doesn&apos;t get submitted for review although log says &amp;quot;Successfully submitted the app for review!&amp;quot;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The reason is &amp;quot;submission_information&amp;quot; is not set for fastlane.&lt;/p&gt;
 &lt;p&gt;In your &amp;quot;fastlane&amp;quot; folder, there should be a file &amp;quot;Deliverfile&amp;quot;, the content should look like this:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   app_identifier &amp;quot;xx.xxx&amp;quot; # The bundle identifier of your app
@@ -72,9 +62,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
 Offical Doc: &lt;a href=&quot;https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information&quot;&gt;submission_information&lt;/a&gt;&lt;/p&gt;
-&lt;ol start=&quot;6&quot;&gt;
-&lt;li&gt;&lt;strong&gt;[Unresolved] &amp;quot;Copy files&amp;quot; build task doesn&apos;t copy .dSYM files when it&apos;s a more exact pattern match.&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;6. [Unresolved] &amp;quot;Copy files&amp;quot; build task doesn&apos;t copy .dSYM files when it&apos;s a more exact pattern match.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;So in the &amp;quot;Copy files&amp;quot; task, you define &amp;quot;Source Folder&amp;quot;, &amp;quot;Contents&amp;quot; and &amp;quot;Target Folder&amp;quot;. In &amp;quot;Contents&amp;quot; you normally use &amp;quot;**/*.ipa&amp;quot; to match the ipa files. But when I use &amp;quot;**/*.dSYM&amp;quot;, it doesn&apos;t copy the file, always says &amp;quot;matched 0 files&amp;quot;.&lt;/p&gt;
 &lt;p&gt;I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use &amp;quot;**&amp;quot;, it&apos;s copied across. When I use &amp;quot;**/*.config&amp;quot;, config files get copied.&lt;/p&gt;
 &lt;p&gt;I don&apos;t get it...&lt;/p&gt;
