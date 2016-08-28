@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2016-08-28T09:07:00.2468321+00:00</updated>
+  <updated>2016-08-28T09:08:33.3127042+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -68,6 +68,7 @@ Offical Doc: &lt;a href=&quot;https://github.com/fastlane/fastlane/blob/master/d
 &lt;p&gt;I don&apos;t get it...&lt;/p&gt;
 &lt;p&gt;Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &amp;quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&amp;quot;) to the build bin folder when uploading it to HockeyApp. So for now, it&apos;s not a big issue. But this bother me so bad...&lt;/p&gt;
 &lt;p&gt;I posted a question in StackOverflow as well: &lt;a href=&quot;http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files&quot;&gt;Copy Files in VSTS just doesn&apos;t work from dSYM files&lt;/a&gt;. Hopefully someone can help out.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;That&apos;s all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)&lt;/p&gt;</content>
   </entry>
   

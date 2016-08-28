@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 28 Aug 2016 09:07:00 %z</pubDate>
-    <lastBuildDate>Sun, 28 Aug 2016 09:07:00 %z</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 09:08:33 %z</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 09:08:33 %z</lastBuildDate>
     
     <item>
       <title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>
@@ -63,6 +63,7 @@ Offical Doc: &lt;a href=&quot;https://github.com/fastlane/fastlane/blob/master/d
 &lt;p&gt;I don&apos;t get it...&lt;/p&gt;
 &lt;p&gt;Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &amp;quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&amp;quot;) to the build bin folder when uploading it to HockeyApp. So for now, it&apos;s not a big issue. But this bother me so bad...&lt;/p&gt;
 &lt;p&gt;I posted a question in StackOverflow as well: &lt;a href=&quot;http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files&quot;&gt;Copy Files in VSTS just doesn&apos;t work from dSYM files&lt;/a&gt;. Hopefully someone can help out.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;That&apos;s all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)&lt;/p&gt;</description>
     </item>
     
