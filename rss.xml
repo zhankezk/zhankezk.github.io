@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 28 Aug 2016 08:57:48 %z</pubDate>
-    <lastBuildDate>Sun, 28 Aug 2016 08:57:48 %z</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 09:03:11 %z</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 09:03:11 %z</lastBuildDate>
     
     <item>
       <title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>
@@ -21,13 +21,13 @@
 &lt;blockquote&gt;
 &lt;h2&gt;Develop the code and check in, queue a build in VSTS. That&apos;s it.&lt;/h2&gt;
 &lt;/blockquote&gt;
-&lt;h3&gt;Tutorials I followed&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Tutorials I followed&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.xamarin.com/continuous-integration-for-ios-apps-with-visual-studio-team-services/&quot;&gt;Continuous Integration for iOS Apps with Visual Studio Team Services&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blogs.msdn.microsoft.com/visualstudioalm/2016/08/25/continuous-delivery-of-ios-applications-with-team-services/&quot;&gt;Continuous Delivery of iOS Applications with Visual Studio Team Services&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;They plus the links they references pretty much covers all setups required.&lt;/p&gt;
-&lt;h3&gt;Will start on issues now&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Will start on issues now&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;While trying to export P12 certificate in Xcode, &amp;quot;Export&amp;quot; is greyed out.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
