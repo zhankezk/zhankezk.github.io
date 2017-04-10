@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2017-04-10T13:45:28.0395523+00:00</updated>
+  <updated>2017-04-10T13:51:07.1443526+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html"/>
+    <title>Sitecore Consulting in the most down-to-earth way</title>
+    <updated>2017-04-10T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C82n9VlUMAA_dHS.jpg&quot; alt=&quot;Sitecore Consulting in the most down-to-earth way&quot; title=&quot;Sitecore Consulting in the most down-to-earth way&quot; /&gt;&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html</id>

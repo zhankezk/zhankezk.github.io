@@ -6,8 +6,17 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 10 Apr 2017 13:45:28 %z</pubDate>
-    <lastBuildDate>Mon, 10 Apr 2017 13:45:28 %z</lastBuildDate>
+    <pubDate>Mon, 10 Apr 2017 13:51:07 %z</pubDate>
+    <lastBuildDate>Mon, 10 Apr 2017 13:51:07 %z</lastBuildDate>
+    
+    <item>
+      <title>Sitecore Consulting in the most down-to-earth way</title>
+      <link>http://kezhan.info/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html</guid>
+      <description>&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C82n9VlUMAA_dHS.jpg&quot; alt=&quot;Sitecore Consulting in the most down-to-earth way&quot; title=&quot;Sitecore Consulting in the most down-to-earth way&quot; /&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</title>

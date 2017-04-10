@@ -47,7 +47,23 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html">Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</a></h1>
+					<h1><a href="/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html">Sitecore Consulting in the most down-to-earth way</a></h1>
+					<div class="postdate">10 April, 2017
+						<ul>
+						
+						</ul>
+					</div>
+					<p><img src="https://pbs.twimg.com/media/C82n9VlUMAA_dHS.jpg" alt="Sitecore Consulting in the most down-to-earth way" title="Sitecore Consulting in the most down-to-earth way" /></p>
+					<br />
+					<a href="/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html">Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</a></h2>
 					<div class="postdate">28 August, 2016
 						<ul>
 						
@@ -102,7 +118,6 @@ Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/D
 <p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
 <p><br><br></p>
 <p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>
-					<br />
 					<a href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -289,90 +304,14 @@ at System.Web.UI.Page.ProcessRequestMain(<span class="hljs-built_in">Boolean</sp
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html">1 MB file upload size limit for WFFM on CD instance</a></h2>
-					<div class="postdate">19 April, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p><strong>Sitecore Version:</strong> 8.0 Update 4<br>
-<strong>WFFM Version:</strong> 8.0 Update 4</p>
-<h3>Issues:</h3>
-<p>When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn't be submitted and got error on the page:</p>
-<blockquote>
-<p>We experienced a technical difficulty while processing your request. Your data may not have been correctly saved.</p>
-</blockquote>
-<p>From the logs, got this warning:</p>
-<blockquote>
-<p>9320 17:56:54 WARN  Posted files size exceeds limit<br>
-Parameter name: Posted files size<br>
-Exception: System.ArgumentException<br>
-Message: Posted files size exceeds limit<br>
-Parameter name: Posted files size<br>
-Source: Sitecore.Kernel<br>
-&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
-<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br>
-Parameter name: Posted files size has occured while trying to execute an action.</p>
-</blockquote>
-<h3>Investigations:</h3>
-<p>When checked Sitecore source code:</p>
-<pre><code class="hljs cs"> <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ExecuteSaveActions</span><span class="hljs-params">(ID formId, ControlResult[] fields, ActionDefinition[] actions)</span>
-    </span>{
-      <span class="hljs-keyword">if</span> (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(<span class="hljs-string">"sc_debug"</span>, (<span class="hljs-keyword">string</span>) <span class="hljs-keyword">null</span>) != <span class="hljs-keyword">null</span>)
-        <span class="hljs-keyword">return</span>;
-      <span class="hljs-keyword">if</span> (Settings.IsRemoteActions)
-      {
-        EventManager.QueueEvent&lt;WffmActionEvent&gt;(<span class="hljs-keyword">new</span> WffmActionEvent()
-        {
-          ...
-          Fields = Enumerable.ToArray&lt;ControlResult&gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&lt;ControlResult&gt;) fields)),
-          ...
-        });
-       ...
-      }
-      <span class="hljs-keyword">else</span>
-      {
-        ...
-      }
-    }
-<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; IEnumerable&amp;lt;ControlResult&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;GetSerializableControlResults&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
-&lt;/span&gt;{
-  Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;L, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size exceeds limit&quot;&lt;/span&gt;);
-  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; ...
-}
-
-&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;GetUploadedSizeOfAllFiles&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
-&lt;/span&gt;{
-  &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
-  &lt;span class=&quot;hljs-keyword&quot;&gt;foreach&lt;/span&gt; (ControlResult controlResult &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; fields)
-  {
-    PostedFile postedFile = controlResult.Value &lt;span class=&quot;hljs-keyword&quot;&gt;as&lt;/span&gt; PostedFile;
-    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (postedFile != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; postedFile.Data != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
-      num += (&lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt;) postedFile.Data.Length;
-  }
-  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; num;
-}
-</code></pre>
-<p></code></pre></p>
-<p>So when it's a "remoteAction"(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
-<p>1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it's hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.</p>
-<h3>Solutions:</h3>
-<p>Contacted with Sitecore on this one, Sitecore confirmed that it's a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it's publicly available.</p>
-					<a href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 19 Apr </span> <a class="postlink" href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html">1 MB file upload size limit for WFFM on CD instance</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 25 Mar </span> <a class="postlink" href="/2016/03/25/Xamarin-on-sdfsdfs.html">Xamarin on sdfsdfs</a>
