@@ -48,8 +48,7 @@
 		<span class="postdate"> 4 December, 2014
 			
 		</span>
-		<pre><code>	&lt;p&gt;&quot;urllink&quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
-</code></pre>
+		<p>"urllink" is a ComputedIndexField in Sitecore indexs.</p>
 <p>For media items, if I rebuild the indexs, the urls that gets stored into index start with "/~/media/...", which is correct.</p>
 <p>But if the index strategy is onPublishEndSync, and I do republish on my media items, the urls start with "/sitecore/shell/~/media/...".</p>
 <p>I've checked Sitecore source code, the difference is Context.Site. it's null when rebuilding the index, so it uses "/" as prefix. but it's "Sitecore shell" when doing publishing. Therefore it's using Context.Site.VirtualFolder of Sitecore Shell, which is "/sitecore/shell".</p>

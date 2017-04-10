@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2017-04-10T13:51:07.1443526+00:00</updated>
+  <updated>2017-04-10T13:53:22.5526183+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -1326,8 +1326,7 @@ This setting allows you to exclude items that are based on a specific template.-
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
     </author>
-    <content type="html">&lt;pre&gt;&lt;code&gt;	&amp;lt;p&amp;gt;&amp;quot;urllink&amp;quot; is a ComputedIndexField in Sitecore indexs.&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+    <content type="html">&lt;p&gt;&quot;urllink&quot; is a ComputedIndexField in Sitecore indexs.&lt;/p&gt;
 &lt;p&gt;For media items, if I rebuild the indexs, the urls that gets stored into index start with &quot;/~/media/...&quot;, which is correct.&lt;/p&gt;
 &lt;p&gt;But if the index strategy is onPublishEndSync, and I do republish on my media items, the urls start with &quot;/sitecore/shell/~/media/...&quot;.&lt;/p&gt;
 &lt;p&gt;I&apos;ve checked Sitecore source code, the difference is Context.Site. it&apos;s null when rebuilding the index, so it uses &quot;/&quot; as prefix. but it&apos;s &quot;Sitecore shell&quot; when doing publishing. Therefore it&apos;s using Context.Site.VirtualFolder of Sitecore Shell, which is &quot;/sitecore/shell&quot;.&lt;/p&gt;
