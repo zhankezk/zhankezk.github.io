@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 10 Apr 2017 13:53:22 %z</pubDate>
-    <lastBuildDate>Mon, 10 Apr 2017 13:53:22 %z</lastBuildDate>
+    <pubDate>Mon, 10 Apr 2017 13:55:00 %z</pubDate>
+    <lastBuildDate>Mon, 10 Apr 2017 13:55:00 %z</lastBuildDate>
     
     <item>
       <title>Sitecore Consulting in the most down-to-earth way</title>
@@ -310,21 +310,6 @@ Parameter name: Posted files size has occured while trying to execute an action.
 &lt;p&gt;1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it&apos;s hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.&lt;/p&gt;
 &lt;h3&gt;Solutions:&lt;/h3&gt;
 &lt;p&gt;Contacted with Sitecore on this one, Sitecore confirmed that it&apos;s a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it&apos;s publicly available.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Xamarin on sdfsdfs</title>
-      <link>http://kezhan.info/2016/03/25/Xamarin-on-sdfsdfs.html</link>
-      <pubDate>Fri, 25 Mar 2016 00:00:00 %z</pubDate>
-      <author>Ke</author>
-      <guid>http://kezhan.info/2016/03/25/Xamarin-on-sdfsdfs.html</guid>
-      <description>&lt;ol&gt;
-&lt;li&gt;MCS no command - Create folder usr/local/bin&lt;/li&gt;
-&lt;li&gt;Run sudo on Xamarin Studio.app/xxxxxxxx&lt;/li&gt;
-&lt;li&gt;web.config update mvc.dll version
-sdfsfdsf
-sdfsdfsdfdsf&lt;/li&gt;
-&lt;/ol&gt;</description>
     </item>
     
     <item>
