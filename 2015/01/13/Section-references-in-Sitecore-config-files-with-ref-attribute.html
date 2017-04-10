@@ -48,7 +48,7 @@
 		<span class="postdate">13 January, 2015
 			
 		</span>
-		<p>Have seem a lot of usages with &quot;ref&quot; attributes when setting up Sitecore Lucene Indexes. Normally it's used to refer to another section of the config files. But I wanted to do more and couldn't find any information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.</p>
+		<p>Have seem a lot of usages with &quot;ref&quot; attributes when setting up Sitecore Lucene Indexes. Normally it's used to refer to another section of the config file. But I wanted to do more and couldn't find any more information about it. After some guessing and decompiling of Sitecore Dlls, here are some information I got.</p>
 <ul>
 <li>Attribute &quot;ref&quot; can be used to refer to another section of the configuration files in Sitecore.</li>
 <li>The value of attribute &quot;ref&quot; is using Xpath.</li>
@@ -61,9 +61,9 @@
 <li>When obj is still null, it returns the value as string.</li>
 </ul>
 <p>So this is always being used to create a obj to assign to a property of the parent node.</p>
-<p>When a node has 'hint=&quot;list:xxx&quot;', it means it's mapped to a method of the parent node's type(&quot;type&quot; atttibute). (please ref to this <a href="http://www.sitecore.net/Learn/Blogs/Technical-Blogs/John-West-Sitecore-Blog/Posts/2011/02/The-Sitecore-ASPNET-CMS-Configuration-Factory.aspx">Sitecore configuration factory and dependency injection</a> article on Sitecore Blog for more details)
-Hope that helps. Now if you still have time, you can keep reading to learn my story.</p>
-<p>First, when setting up Sitecore 7 Lucene Index, you must have came across this line in the config:</p>
+<p>when a node has 'hint=&quot;list:xxx&quot;', it means it's mapping to a method of the parent node's type(&quot;type&quot; atttibute). (please ref to this <a href="http://www.sitecore.net/Learn/Blogs/Technical-Blogs/John-West-Sitecore-Blog/Posts/2011/02/The-Sitecore-ASPNET-CMS-Configuration-Factory.aspx">Sitecore configuration factory and dependency injection</a> article on Sitecore Blog for more details)
+Hope that helped you. Now if you still have time, you can keep reading to learn my story.</p>
+<p>First, when setting up Sitecore 7 Lucene Index, you must have come across this line in the config:</p>
 <pre><code class="language-xml">&lt;Analyzer ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/analyzer&quot; /&gt;
 </code></pre>
 <p>This works great, but I wanted to use it for &quot;ExcludeField&quot; fields as well to keep my custom index configuration clean. The default configuration looks like this:</p>
@@ -71,12 +71,12 @@ Hope that helps. Now if you still have time, you can keep reading to learn my st
 &lt;__display_name&gt;{B5E02AD9-D56F-4C41-A065-A133DB87BDEB}&lt;/__display_name&gt;
 &lt;/exclude&gt;
 </code></pre>
-<p>So I have tried to do:</p>
+<p>So I have tried to do this:</p>
 <pre><code class="language-xml">&lt;exclude ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint='list:ExcludeField']&quot; /&gt;
 and:
 &lt;exclude hint=&quot;list:ExcludeField&quot; ref=&quot;contentSearch/indexConfigurations/defaultLuceneIndexConfiguration/exclude[@hint='list:ExcludeField']&quot; /&gt;
 </code></pre>
-<p>None of them worked. Though the xPath is correct, but &quot;ExcludeField&quot; is a method and when you use &quot;ref&quot;, it tries to create an object as a property, so it fails.</p>
+<p>None of them worked. Though the xpath is correct, but &quot;ExcludeField&quot; is a method and when you use &quot;ref&quot;, it tries to create an object as a property, so it fails.</p>
 <p>Therefore my conclusion is that you can't use &quot;ref&quot; in configuration files for referencing methods. This is bad news for my clean configuration initiative, I still need to do more digging on this, will post it in another post which will focus on Sitecore Custom Lucene Indexes.</p>
 	</div>
 </div>

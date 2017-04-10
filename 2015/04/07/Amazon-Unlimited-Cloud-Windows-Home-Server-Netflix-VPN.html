@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Sitecore Redirect Manager</title>
+		<title>Amazon Unlimited Cloud, Windows Home Server, Netflix and VPN</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -44,19 +44,74 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Sitecore Redirect Manager </h1>
-		<span class="postdate"> 7 December, 2014
+		<h1> Amazon Unlimited Cloud, Windows Home Server, Netflix and VPN </h1>
+		<span class="postdate"> 7 April, 2015
 			
 		</span>
-		<p>Installed a Redirect manager module for some client's sitecore, but it doesn't handle multiple sites so I had to customize it to support multiple sites.</p>
-<p>After that, local and testing deployments went well, everything were working perfectly . But then it doesn't redirect at all on one of the sites when I deployed to Staging.</p>
-<p>After some digging, I found that the module is using HttpContext.Current.Cache, which can't be shared across different App Domain. And this sitecore instance has 2 sites. On local and testing, they share the same app domain, however on Staging it's using different ones, and on production there's even one more app domain only for sitecore client.</p>
-<p>So I have updated the code to use System.Runtime.Cahcing, solved the problem. Lots of examples online, I won't bother about showing code here. It's just 2 things I want to point out. First, use MemoryCahce.Default, Second, Don't use Add, it doesn't override. use Set.</p>
+		<h2><strong>Previously:</strong></h2>
+<ul>
+<li>
+<p><strong>Hardwares:</strong></p>
+<ul>
+<li>HP Proliant N54L + Windows Home Server 2011 + 3 x 1T hard drives</li>
+</ul>
+</li>
+<li>
+<p><strong>Softwares:</strong></p>
+<ul>
+<li><a href="https://stablebit.com/">DrivePool</a>(For software RAID) + PS3 media server + Thunder(Download software)</li>
+</ul>
+</li>
+<li>
+<p><strong>Usages:</strong></p>
+<ul>
+<li>Server runs 24x7, Windows remote desktop into server everyday to download</li>
+<li><a href="http://www.ps3mediaserver.org/">PS3 media server</a> and Windows Share stream the videos to other devices</li>
+<li>Store all videos and pictures in RAID drive, about 200 GB</li>
+<li><a href="http://webecoz.com/">PhotoSync</a> uploads images to Flickr for <strong>1.</strong> a second backup and <strong>2.</strong> easy viewing from everywhere</li>
+<li>Google Drive 80GB $20 Per year plan with about 65% used.</li>
+</ul>
+</li>
+</ul>
+<h2><strong>Recently:</strong></h2>
+<p>Made some moves</p>
+<ul>
+<li>Bought Amazon Unlimited Cloud Storage</li>
+<li>Bought Netflix Australia</li>
+<li>Bought <a href="https://www.privateinternetaccess.com/">PrivateInternetAccess</a>(PIA)</li>
+<li>Tuned off Windows home server</li>
+</ul>
+<h2><strong>Data and Thinking</strong></h2>
+<p><strong>Problems with existing setup for backup</strong></p>
+<ul>
+<li>Upload of photos needs to be done manually every time for PhotoSync</li>
+<li>Flickr's iPhone app doesn't do auto-upload very well, this is quite important since it's much harder to organise photos taken by phones compare to by cameras(it's more time-frame/event related)</li>
+<li>Flickr's space is 1T, will run out one day</li>
+<li>The cost for running the server per year is some where between AUD$70 to AUD$170</li>
+</ul>
+<p><strong>Problems with existing setup for watching movies and TVs</strong></p>
+<ul>
+<li>With Netflix Australia, there's too limited content, really want to keep it but can't find many shows to watch</li>
+<li>With home server I can watch latest shows but it needs manual operation every time something new is available</li>
+</ul>
+<p><strong>New</strong></p>
+<ul>
+<li>Amazon Cloud's iPhone App does auto-upload pretty well and easy to navigate all old photos without taking too much space on the phones, the cost is only $59.99</li>
+<li>PIA with a deal atm is $59.95 for 2 years,</li>
+</ul>
+<h2><strong>Future Plans</strong></h2>
+<p>Will do the following</p>
+<ul>
+<li>Keep Amazon Cloud Storage</li>
+<li>Keep Windows Home Server off</li>
+<li>Keep PrivateInternetAccess</li>
+<li>Cancel Netflix</li>
+</ul>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2014/12/04/Sitecore-Indexes-media-url-with-sitecoreshell.html" title="Previous Post: Sitecore Indexes media url with /sitecore/shell">&larr; Sitecore Indexes media url with /sitecore/shell</a>  </div> 
-	<div class="right">  <a href="/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html" title="next Post: Schedule tasks not running on CDS in Sitecore">Schedule tasks not running on CDS in Sitecore &rarr; </a>  </div> 
+	<div class="left">  <a href="/2015/03/24/Sitecore-session-timeout-quickly-1-min-when-not-logged-in.html" title="Previous Post: Sitecore session expires(timeout) quickly(1 min) when not logged in">&larr; Sitecore session expires(timeout) quickly(1 min) when not logged in</a>  </div> 
+	<div class="right">  <a href="/2015/04/14/Onda-v820w-flash-os--Booting-to-droidbootimg-failed.html" title="next Post: Onda v820w flash os - Booting to droidboot.img failed">Onda v820w flash os - Booting to droidboot.img failed &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

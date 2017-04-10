@@ -48,7 +48,7 @@
 		<span class="postdate">19 April, 2016
 			
 		</span>
-		<p><strong>Sitecore Version:</strong> 8.0 Update 4<br />
+		<p><strong>Sitecore Version:</strong> 8.0 Update 4<br>
 <strong>WFFM Version:</strong> 8.0 Update 4</p>
 <h3>Issues:</h3>
 <p>When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn't be submitted and got error on the page:</p>
@@ -57,28 +57,28 @@
 </blockquote>
 <p>From the logs, got this warning:</p>
 <blockquote>
-<p>9320 17:56:54 WARN  Posted files size exceeds limit<br />
-Parameter name: Posted files size<br />
-Exception: System.ArgumentException<br />
-Message: Posted files size exceeds limit<br />
-Parameter name: Posted files size<br />
-Source: Sitecore.Kernel<br />
-    at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br />
-    at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br />
-    at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br />
-    at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
-<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br />
+<p>9320 17:56:54 WARN  Posted files size exceeds limit<br>
+Parameter name: Posted files size<br>
+Exception: System.ArgumentException<br>
+Message: Posted files size exceeds limit<br>
+Parameter name: Posted files size<br>
+Source: Sitecore.Kernel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
+<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br>
 Parameter name: Posted files size has occured while trying to execute an action.</p>
 </blockquote>
 <h3>Investigations:</h3>
 <p>When checked Sitecore source code:</p>
-<pre><code> private static void ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)
-    {
-      if (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(&quot;sc_debug&quot;, (string) null) != null)
-        return;
-      if (Settings.IsRemoteActions)
+<pre><code class="hljs cs"> <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ExecuteSaveActions</span><span class="hljs-params">(ID formId, ControlResult[] fields, ActionDefinition[] actions)</span>
+    </span>{
+      <span class="hljs-keyword">if</span> (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(<span class="hljs-string">"sc_debug"</span>, (<span class="hljs-keyword">string</span>) <span class="hljs-keyword">null</span>) != <span class="hljs-keyword">null</span>)
+        <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">if</span> (Settings.IsRemoteActions)
       {
-        EventManager.QueueEvent&lt;WffmActionEvent&gt;(new WffmActionEvent()
+        EventManager.QueueEvent&lt;WffmActionEvent&gt;(<span class="hljs-keyword">new</span> WffmActionEvent()
         {
           ...
           Fields = Enumerable.ToArray&lt;ControlResult&gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&lt;ControlResult&gt;) fields)),
@@ -86,38 +86,38 @@ Parameter name: Posted files size has occured while trying to execute an action.
         });
        ...
       }
-      else
+      <span class="hljs-keyword">else</span>
       {
         ...
       }
     }
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; IEnumerable&amp;lt;ControlResult&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;GetSerializableControlResults&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
+&lt;/span&gt;{
+  Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;L, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size exceeds limit&quot;&lt;/span&gt;);
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; ...
+}
 
-    private static IEnumerable&lt;ControlResult&gt; GetSerializableControlResults(IEnumerable&lt;ControlResult&gt; fields)
-    {
-      Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &lt; 1000000L, &quot;Posted files size&quot;, &quot;Posted files size exceeds limit&quot;);
-      return ...
-    }
-
-    private static long GetUploadedSizeOfAllFiles(IEnumerable&lt;ControlResult&gt; fields)
-    {
-      long num = 0;
-      foreach (ControlResult controlResult in fields)
-      {
-        PostedFile postedFile = controlResult.Value as PostedFile;
-        if (postedFile != null &amp;&amp; postedFile.Data != null)
-          num += (long) postedFile.Data.Length;
-      }
-      return num;
-    }
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;GetUploadedSizeOfAllFiles&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
+&lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;foreach&lt;/span&gt; (ControlResult controlResult &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; fields)
+  {
+    PostedFile postedFile = controlResult.Value &lt;span class=&quot;hljs-keyword&quot;&gt;as&lt;/span&gt; PostedFile;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (postedFile != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; postedFile.Data != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+      num += (&lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt;) postedFile.Data.Length;
+  }
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; num;
+}
 </code></pre>
-<p>So when it's a &quot;remoteAction&quot;(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
+<p></code></pre></p>
+<p>So when it's a "remoteAction"(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
 <p>1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it's hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.</p>
 <h3>Solutions:</h3>
 <p>Contacted with Sitecore on this one, Sitecore confirmed that it's a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it's publicly available.</p>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html" title="Previous Post: Sitecore web.config include patching sub-folder orders">&larr; Sitecore web.config include patching sub-folder orders</a>  </div> 
+	<div class="left">  <a href="/2016/03/25/Xamarin-on-sdfsdfs.html" title="Previous Post: Xamarin on sdfsdfs">&larr; Xamarin on sdfsdfs</a>  </div> 
 	<div class="right">  <a href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html" title="next Post: HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights">HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 

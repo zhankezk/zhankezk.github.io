@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪<br/>Siigaa Tracker</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling </h1>
+		<span class="postdate">29 January, 2016
+			
+		</span>
+		<p>Quite happy with Philips Hue 2nd Generation I recently bought (From Amazon Us, not available in Australia yet). Especially with Siri, although my wife is not very impressed because she can't just use the wall switch now XD.</p>
+<p>Anyway, pretty good stuff for first step into Smart Home Automation, however it does give me a feeling that it's designed for single people who lives along :( Because Siri can't be shared between different Apple ID and Geo Fencing only works for a single device.</p>
+<p>Siri issue can be resolved by setting up an iOS device at home only for home automation with "Hey Siri" enabled. But Geo Fencing is pretty much useless for me.</p>
+<p>So I wrote a Windows Console Application that pings mine and my wife's iPhone every few seconds and turn the lights off or on accordingly.</p>
+<p>Few things before we continue:</p>
+<ul>
+<li>It runs on windows, you need to have a windows machine that is always on when you want it to do the work.</li>
+<li>You need to know your Bridge IP address and device names of the devices you want to monitor.</li>
+<li>You need to follow Philips Developer Guide to setup API Key for your local Bridge.</li>
+</ul>
+<p>UI and non-tech people friendly version will come, but not much free time at the moment, will try.</p>
+<h3>App Name: Anyone Hue ?</h3>
+<p>Download Link: <a href="/files/AnyoneHue_Console_v1.0.zip">Direct</a></p>
+<p>Main functionalities:</p>
+<ul>
+<li>Check multiple devices presence in local network and turn off all lights when none is connected (It's like GEO fencing for multiple people, but instead of using location, it uses wifi)</li>
+<li>If any device comes back online, turn on a pre-defined light to full brightness</li>
+<li>Can stop monitoring for particular hours defined in config, it enters sleep mode for those hours.</li>
+<li>Can set retry numbers and retry waiting period</li>
+</ul>
+<p>Below is the web.config setting, hopefully can help you understands what are configurable for the app.</p>
+<pre><code class="language-xml hljs">	<span class="hljs-comment">&lt;!-- Device names to be monitored--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"DeviceNamesByPipes"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Device1|Device2"</span> /&gt;</span>	
+	<span class="hljs-comment">&lt;!-- Ref to http://www.developers.meethue.com/documentation/getting-started to get an API key from your bridge --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"HueBridgeApiKey"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"APIKey"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"HueBridgeIpAddress"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"192.168.2.X"</span> /&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"LightNameToTurnOn"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"LightName"</span> /&gt;</span>	
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"CheckIntervalInSeconds"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"5"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"PingTimeoutInSeconds"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"1000"</span> /&gt;</span>    
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"RetryNumber"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"3"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"RetryIntervalInSeconds"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"60"</span> /&gt;</span>	
+	<span class="hljs-comment">&lt;!-- Active hours in a day, value can be 0 to 23 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"ActiveHours"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"20,21,22,23"</span> /&gt;</span>
+	<span class="hljs-comment">&lt;!-- Log file name will be appended with date --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"LogFileName"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Scanlog"</span> /&gt;</span>
+	<span class="hljs-comment">&lt;!-- Only supports /24 subnet, value can be 0 to 254 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"ScanStartIp"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"0"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">add</span> <span class="hljs-attribute">key</span>=<span class="hljs-value">"ScanEndIp"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"254"</span> /&gt;</span>
+</code></pre>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/01/07/Converting-Chinese-to-Pinyin-in-Xamarin-IOS.html" title="Previous Post: Converting Chinese to Pinyin/Quanpin in Xamarin IOS development">&larr; Converting Chinese to Pinyin/Quanpin in Xamarin IOS development</a>  </div> 
+	<div class="right">  <a href="/2016/03/05/New-Back-Engine-For-Blog.html" title="next Post: A New Back Engine for Blog">A New Back Engine for Blog &rarr; </a>  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>

@@ -66,40 +66,39 @@
 </ul>
 <p>They plus the links they references pretty much covers all setups required.</p>
 <p>Will start on issues now.</p>
-<p><strong>1. While trying to export P12 certificate in Xcode, &quot;Export&quot; is greyed out.</strong></p>
-<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &quot;1 identity imported.&quot; then &quot;0 valid identities found&quot;.</p>
+<p><strong>1. While trying to export P12 certificate in Xcode, "Export" is greyed out.</strong></p>
+<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error "1 identity imported." then "0 valid identities found".</p>
 <p>Solution Link: <a href="http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv">This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”</a></p>
-<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, &quot;Export&quot; in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
-<p><strong>2. IPA build output folder has a &quot;name date time&quot; format makes it hard to define the IPA path in following build steps.</strong></p>
+<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, "Export" in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
+<p><strong>2. IPA build output folder has a "name date time" format makes it hard to define the IPA path in following build steps.</strong></p>
 <p>I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.</p>
 <p>Solution Link: <a href="http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder">Xamarin cycle 7 IOS IPA output now in a datetime folder</a></p>
-<p>After applying the changes, I also defined &quot;Package Name&quot; in &quot;iOS IPA Options&quot; tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
-<p>In this case, the output IPA always has the path: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa&quot;. Much easier for later setups.</p>
-<p><strong>3. How to setup Metadata structure for &quot;App Store Release&quot; build step.</strong></p>
-<p>The &quot;App Store Release&quot; build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran &quot;deliver init&quot; in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
-<p>After that, I just added &quot;description.txt&quot;, &quot;keywords.txt&quot; and &quot;release_notes.txt&quot; into the solution, so I can update all information needed right in Xamarin Studio.</p>
+<p>After applying the changes, I also defined "Package Name" in "iOS IPA Options" tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
+<p>In this case, the output IPA always has the path: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa". Much easier for later setups.</p>
+<p><strong>3. How to setup Metadata structure for "App Store Release" build step.</strong></p>
+<p>The "App Store Release" build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran "deliver init" in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
+<p>After that, I just added "description.txt", "keywords.txt" and "release_notes.txt" into the solution, so I can update all information needed right in Xamarin Studio.</p>
 <p>Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...</p>
-<p><strong>4. Got error while installing Fastlane: &quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&quot;.</strong></p>
-<p>Use this command: &quot;sudo gem install -n /usr/local/bin fastlane&quot;</p>
+<p><strong>4. Got error while installing Fastlane: "ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander".</strong></p>
+<p>Use this command: "sudo gem install -n /usr/local/bin fastlane"</p>
 <p>Reference: <a href="https://github.com/fastlane/fastlane/issues/1392">Problem when install fastlane</a></p>
-<p><strong>5. App doesn't get submitted for review although log says &quot;Successfully submitted the app for review!&quot;</strong></p>
-<p>The reason is &quot;submission_information&quot; is not set for fastlane.</p>
-<p>In your &quot;fastlane&quot; folder, there should be a file &quot;Deliverfile&quot;, the content should look like this:</p>
-<pre><code>   app_identifier &quot;xx.xxx&quot; # The bundle identifier of your app
-   username &quot;xx@xxx.xx&quot; # your Apple ID user
+<p><strong>5. App doesn't get submitted for review although log says "Successfully submitted the app for review!"</strong></p>
+<p>The reason is "submission_information" is not set for fastlane.</p>
+<p>In your "fastlane" folder, there should be a file "Deliverfile", the content should look like this:</p>
+<pre><code class="hljs bash">   app_identifier <span class="hljs-string">"xx.xxx"</span> <span class="hljs-comment"># The bundle identifier of your app</span>
+   username <span class="hljs-string">"xx@xxx.xx"</span> <span class="hljs-comment"># your Apple ID user</span>
    submission_information({
-     	add_id_info_uses_idfa: false,
-	      export_compliance_encryption_updated: false
-
-   })
-</code></pre>
+     	add_id_info_uses_idfa: <span class="hljs-literal">false</span>,
+	      <span class="hljs-built_in">export</span>_compliance_encryption_updated: <span class="hljs-literal">false</span>
+<p>})
+</code></pre></p>
 <p>submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
 Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information">submission_information</a></p>
-<p><strong>6. [Unresolved] &quot;Copy files&quot; build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></p>
-<p>So in the &quot;Copy files&quot; task, you define &quot;Source Folder&quot;, &quot;Contents&quot; and &quot;Target Folder&quot;. In &quot;Contents&quot; you normally use &quot;**/*.ipa&quot; to match the ipa files. But when I use &quot;**/*.dSYM&quot;, it doesn't copy the file, always says &quot;matched 0 files&quot;.</p>
-<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use &quot;**&quot;, it's copied across. When I use &quot;**/*.config&quot;, config files get copied.</p>
+<p><strong>6. [Unresolved] "Copy files" build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></p>
+<p>So in the "Copy files" task, you define "Source Folder", "Contents" and "Target Folder". In "Contents" you normally use "**/*.ipa" to match the ipa files. But when I use "**/*.dSYM", it doesn't copy the file, always says "matched 0 files".</p>
+<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use "**", it's copied across. When I use "**/*.config", config files get copied.</p>
 <p>I don't get it...</p>
-<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&quot;) to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
+<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM") to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
 <p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
 <p><br><br></p>
 <p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>
@@ -119,72 +118,71 @@ Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/D
 						</ul>
 					</div>
 					<p>Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don't ask).</p>
-<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &quot;1 warning&quot;, it says &quot;The Alt field is empty.&quot;</p>
-<p><img src="/img/media_warning.png" alt="Missing Alt field in Sitecore Media Library" title="1 warning" /></p>
+<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over "1 warning", it says "The Alt field is empty."</p>
+<p><img src="/img/media_warning.png" alt="Missing Alt field in Sitecore Media Library" title="1 warning"></p>
 <p>After some digging, I found that this validation is defined in web.config under this path:</p>
 <blockquote>
 <p>/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator</p>
 </blockquote>
 <p>This is where it's defined for JPEG images:</p>
-<pre><code class="language-xml">         &lt;mediaType name=&quot;JPEG image&quot; extensions=&quot;jpg, jpeg, jpe, jfif&quot;&gt;
-          &lt;mimeType&gt;image/jpeg&lt;/mimeType&gt;
-          &lt;forceDownload&gt;false&lt;/forceDownload&gt;
-          &lt;sharedTemplate&gt;system/media/unversioned/jpeg&lt;/sharedTemplate&gt;
-          &lt;versionedTemplate&gt;system/media/versioned/jpeg&lt;/versionedTemplate&gt;
-          &lt;mediaValidator type=&quot;Sitecore.Resources.Media.ImageValidator&quot;/&gt;
-          &lt;thumbnails&gt;
-            &lt;generator type=&quot;Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel&quot;&gt;
-              &lt;extension&gt;png&lt;/extension&gt;
-            &lt;/generator&gt;
-            &lt;width&gt;150&lt;/width&gt;
-            &lt;height&gt;150&lt;/height&gt;
-            &lt;backgroundColor&gt;#FFFFFF&lt;/backgroundColor&gt;
-          &lt;/thumbnails&gt;
-          &lt;prototypes&gt;
-            &lt;media type=&quot;Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel&quot;/&gt;
-          &lt;/prototypes&gt;
-        &lt;/mediaType&gt;
+<pre><code class="language-xml hljs">         <span class="hljs-tag">&lt;<span class="hljs-title">mediaType</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"JPEG image"</span> <span class="hljs-attribute">extensions</span>=<span class="hljs-value">"jpg, jpeg, jpe, jfif"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mimeType</span>&gt;</span>image/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">mimeType</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">forceDownload</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-title">forceDownload</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">sharedTemplate</span>&gt;</span>system/media/unversioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">sharedTemplate</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">versionedTemplate</span>&gt;</span>system/media/versioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">versionedTemplate</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mediaValidator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageValidator"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">thumbnails</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">generator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">extension</span>&gt;</span>png<span class="hljs-tag">&lt;/<span class="hljs-title">extension</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">generator</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">width</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">width</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">height</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">height</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">backgroundColor</span>&gt;</span>#FFFFFF<span class="hljs-tag">&lt;/<span class="hljs-title">backgroundColor</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">thumbnails</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">prototypes</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">media</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">prototypes</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">mediaType</span>&gt;</span>
 </code></pre>
 <p>And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:</p>
-<pre><code class="language-csharp">using Sitecore.Configuration;
-using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
-
-namespace Sitecore.Resources.Media
+<pre><code class="language-csharp hljs cs"><span class="hljs-keyword">using</span> Sitecore.Configuration;
+<span class="hljs-keyword">using</span> Sitecore.Data.Items;
+<span class="hljs-keyword">using</span> Sitecore.Diagnostics;
+<p><span class="hljs-keyword">namespace</span> <span class="hljs-title">Sitecore</span>.<span class="hljs-title">Resources</span>.<span class="hljs-title">Media</span>
 {
-  /// &lt;summary&gt;Represents a Media Validator.&lt;/summary&gt;
-  public class ImageValidator : MediaValidator
-  {
-    /// &lt;summary&gt;Validates the specified output.&lt;/summary&gt;
-    /// &lt;param name=&quot;item&quot;&gt;The item.&lt;/param&gt;
-    /// &lt;param name=&quot;results&quot;&gt;The warnings.&lt;/param&gt;
-    protected override void ValidateItem(MediaItem item, MediaValidatorResult results)
-    {
-      Assert.ArgumentNotNull((object) item, &quot;item&quot;);
-      Assert.ArgumentNotNull((object) results, &quot;results&quot;);
-      base.ValidateItem(item, results);
-      if (item.Size &gt;= Settings.Media.MaxSizeInMemory)
-        results.Warnings.Add(&quot;This image is too big to be resized.&quot;);
-      if (string.IsNullOrEmpty(item.Alt))
-        results.Warnings.Add(&quot;The Alt field is empty.&quot;);
-      if (string.IsNullOrEmpty(item.InnerItem[&quot;Width&quot;]))
-        results.Warnings.Add(&quot;The Width field is empty.&quot;);
-      else if (MainUtil.GetInt(item.InnerItem[&quot;Width&quot;], -1) == -1)
-        results.Warnings.Add(&quot;The Width field does not contain an integer.&quot;);
-      if (string.IsNullOrEmpty(item.InnerItem[&quot;Height&quot;]))
-      {
-        results.Warnings.Add(&quot;The Height field is empty.&quot;);
-      }
-      else
-      {
-        if (MainUtil.GetInt(item.InnerItem[&quot;Height&quot;], -1) != -1)
-          return;
-        results.Warnings.Add(&quot;The Height field does not contain an integer.&quot;);
-      }
-    }
-  }
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Represents a Media Validator.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ImageValidator</span> : <span class="hljs-title">MediaValidator</span>
+{
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Validates the specified output.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;item&quot;&gt;</span>The item.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;results&quot;&gt;</span>The warnings.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ValidateItem</span><span class="hljs-params">(MediaItem item, MediaValidatorResult results)</span>
+</span>{
+Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) item, <span class="hljs-string">&quot;item&quot;</span>);
+Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) results, <span class="hljs-string">&quot;results&quot;</span>);
+<span class="hljs-keyword">base</span>.ValidateItem(item, results);
+<span class="hljs-keyword">if</span> (item.Size &gt;= Settings.Media.MaxSizeInMemory)
+results.Warnings.Add(<span class="hljs-string">&quot;This image is too big to be resized.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.Alt))
+results.Warnings.Add(<span class="hljs-string">&quot;The Alt field is empty.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>]))
+results.Warnings.Add(<span class="hljs-string">&quot;The Width field is empty.&quot;</span>);
+<span class="hljs-function"><span class="hljs-keyword">else</span> <span class="hljs-title">if</span> <span class="hljs-params">(MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>], -<span class="hljs-number">1</span>)</span> </span>== -<span class="hljs-number">1</span>)
+results.Warnings.Add(<span class="hljs-string">&quot;The Width field does not contain an integer.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>]))
+{
+results.Warnings.Add(<span class="hljs-string">&quot;The Height field is empty.&quot;</span>);
 }
-</code></pre>
+<span class="hljs-keyword">else</span>
+{
+<span class="hljs-keyword">if</span> (MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>], -<span class="hljs-number">1</span>) != -<span class="hljs-number">1</span>)
+<span class="hljs-keyword">return</span>;
+results.Warnings.Add(<span class="hljs-string">&quot;The Height field does not contain an integer.&quot;</span>);
+}
+}
+}
+}
+</code></pre></p>
 <p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
 					<a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html#disqus_thread">Comments</a>
 				
@@ -200,58 +198,55 @@ namespace Sitecore.Resources.Media
 						
 						</ul>
 					</div>
-					<h3>Sitecore Version:</h3>
+					<p><h3>Sitecore Version:</h3></p>
 <p>8.0 rev. 150621 (8.0 Update-4)</p>
 <h3>Issues:</h3>
 <p>There were actually 2 issues.</p>
 <ul>
 <li>There was once user removed a page test from homepage on authoring server. After a while, the homepage on delivery instance went down and was giving 500 errors with this exception in the logs:</li>
 </ul>
-<pre><code>7092 2016:05:03 18:12:32 ERROR Application error.
+<pre><code class="hljs javascript"><span class="hljs-number">7092</span> <span class="hljs-number">2016</span>:<span class="hljs-number">05</span>:<span class="hljs-number">03</span> <span class="hljs-number">18</span>:<span class="hljs-number">12</span>:<span class="hljs-number">32</span> ERROR Application error.
 Exception: System.Web.HttpUnhandledException
-Message: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+Message: Exception of type <span class="hljs-string">'System.Web.HttpUnhandledException'</span> was thrown.
 Source: System.Web
    at System.Web.UI.Page.HandleError(Exception e)
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
-   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequestMain(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)
    at System.Web.UI.Page.ProcessRequest()
    at System.Web.UI.Page.ProcessRequest(HttpContext context)
    at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)
-
-Nested Exception
-
-Exception: System.InvalidOperationException
-Message: The specified variable does not exist in the test set
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, <span class="hljs-built_in">Boolean</span>&amp; completedSynchronously)
+<p>Nested Exception</p>
+<p>Exception: System.InvalidOperationException
+Message: The specified variable does not exist <span class="hljs-keyword">in</span> the test set
 Source: Sitecore.Analytics
-   at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
-   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`1 renderings, RenderingReference rendering, Item contextItem, Item variableItem)
-   at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
-   at (Object , Object[] )
-   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
-   at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
-   at (Object , Object[] )
-   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
-   at Sitecore.Layouts.PageContext.BuildControlTree(Object sender, EventArgs e)
-   at System.Web.UI.Page.PerformPreInit()
-   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
-
-</code></pre>
-<p>          The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.</p>
+at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
+at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`<span class="hljs-number">1</span> renderings, RenderingReference rendering, Item contextItem, Item variableItem)
+at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
+at (<span class="hljs-built_in">Object</span> , <span class="hljs-built_in">Object</span>[] )
+at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
+at (<span class="hljs-built_in">Object</span> , <span class="hljs-built_in">Object</span>[] )
+at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+at Sitecore.Layouts.PageContext.BuildControlTree(<span class="hljs-built_in">Object</span> sender, EventArgs e)
+at System.Web.UI.Page.PerformPreInit()
+at System.Web.UI.Page.ProcessRequestMain(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)</p>
+<p></code></pre></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.</p>
 <ul>
 <li>Recently users found that A/B testing(or MVT testing) doesn't work on the website. After they set it up in Authoring instance, you can see the tests from authoring urls, but on delivery instance urls, nothing happens, and after about a day, they started to work on delivery instances.(Which I think it must be the cache was cleared for some reason, maybe app pool scheduled recycle.)</li>
 </ul>
 <h3>Causes</h3>
-<p>In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for &quot;publish:end&quot; event but not &quot;publish:end:remote&quot;:</p>
-<pre><code>&lt;event name=&quot;publish:end&quot;&gt;
-    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
-&lt;/event&gt;
+<p>In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for "publish:end" event but not "publish:end:remote":</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">event</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"publish:end"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">handler</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"Process"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">event</span>&gt;</span>
 </code></pre>
 <h3>Solution</h3>
-<p>Add the handler to &quot;publish:end:remote&quot; to Sitecore.ContentTesting.config:</p>
-<pre><code>&lt;event name=&quot;publish:end:remote&quot;&gt;
-    &lt;handler type=&quot;Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting&quot; method=&quot;Process&quot;/&gt;
-&lt;/event&gt;
+<p>Add the handler to "publish:end:remote" to Sitecore.ContentTesting.config:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">event</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"publish:end:remote"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">handler</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"Process"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">event</span>&gt;</span>
 </code></pre>
 <h3>More</h3>
 <p>Keep reading if you want to know more about my experience on this one.</p>
@@ -287,7 +282,7 @@ Source: Sitecore.Analytics
 <p>Visual Studio Application Insights is for monitoring service side application if your app has one.</p>
 <p>I have finished the migration and am using HockeyApp and Azure Mobile Engagement now, it was not complicate, only a few hours for my simple app.</p>
 <p>HockeyApp is pretty much Microsoft's TestFlight comparing to Apple. I don't have much say on it since my simple app doesn't require much DevOps stuff.</p>
-<p>Azure Mobile Engagement, on the other hand, interfaces are quite ancient I have to say, at least not matching Azure's style. And it's a different url at the moment outside Azure, I believe it will be emended into Azure someday. The analytics functionalities are more focused on mobile apps and I particularly like &quot;User Path&quot; which is a dynamic diagram showing you how users navigate through you app.</p>
+<p>Azure Mobile Engagement, on the other hand, interfaces are quite ancient I have to say, at least not matching Azure's style. And it's a different url at the moment outside Azure, I believe it will be emended into Azure someday. The analytics functionalities are more focused on mobile apps and I particularly like "User Path" which is a dynamic diagram showing you how users navigate through you app.</p>
 <p>Still just a few days I released the new version, will see how it goes. But with the speed Microsoft is having now on updating Azure products, I think this post will be outdated soon.</p>
 					<a href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html#disqus_thread">Comments</a>
 				
@@ -303,7 +298,7 @@ Source: Sitecore.Analytics
 						
 						</ul>
 					</div>
-					<p><strong>Sitecore Version:</strong> 8.0 Update 4<br />
+					<p><strong>Sitecore Version:</strong> 8.0 Update 4<br>
 <strong>WFFM Version:</strong> 8.0 Update 4</p>
 <h3>Issues:</h3>
 <p>When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn't be submitted and got error on the page:</p>
@@ -312,28 +307,28 @@ Source: Sitecore.Analytics
 </blockquote>
 <p>From the logs, got this warning:</p>
 <blockquote>
-<p>9320 17:56:54 WARN  Posted files size exceeds limit<br />
-Parameter name: Posted files size<br />
-Exception: System.ArgumentException<br />
-Message: Posted files size exceeds limit<br />
-Parameter name: Posted files size<br />
-Source: Sitecore.Kernel<br />
-    at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br />
-    at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br />
-    at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br />
-    at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
-<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br />
+<p>9320 17:56:54 WARN  Posted files size exceeds limit<br>
+Parameter name: Posted files size<br>
+Exception: System.ArgumentException<br>
+Message: Posted files size exceeds limit<br>
+Parameter name: Posted files size<br>
+Source: Sitecore.Kernel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</p>
+<p>9320 17:56:54 WARN  Web Forms for Marketers: an exception: Posted files size exceeds limit<br>
 Parameter name: Posted files size has occured while trying to execute an action.</p>
 </blockquote>
 <h3>Investigations:</h3>
 <p>When checked Sitecore source code:</p>
-<pre><code> private static void ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)
-    {
-      if (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(&quot;sc_debug&quot;, (string) null) != null)
-        return;
-      if (Settings.IsRemoteActions)
+<pre><code class="hljs cs"> <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ExecuteSaveActions</span><span class="hljs-params">(ID formId, ControlResult[] fields, ActionDefinition[] actions)</span>
+    </span>{
+      <span class="hljs-keyword">if</span> (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString(<span class="hljs-string">"sc_debug"</span>, (<span class="hljs-keyword">string</span>) <span class="hljs-keyword">null</span>) != <span class="hljs-keyword">null</span>)
+        <span class="hljs-keyword">return</span>;
+      <span class="hljs-keyword">if</span> (Settings.IsRemoteActions)
       {
-        EventManager.QueueEvent&lt;WffmActionEvent&gt;(new WffmActionEvent()
+        EventManager.QueueEvent&lt;WffmActionEvent&gt;(<span class="hljs-keyword">new</span> WffmActionEvent()
         {
           ...
           Fields = Enumerable.ToArray&lt;ControlResult&gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&lt;ControlResult&gt;) fields)),
@@ -341,31 +336,31 @@ Parameter name: Posted files size has occured while trying to execute an action.
         });
        ...
       }
-      else
+      <span class="hljs-keyword">else</span>
       {
         ...
       }
     }
+<pre><code>&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; IEnumerable&amp;lt;ControlResult&amp;gt; &lt;span class=&quot;hljs-title&quot;&gt;GetSerializableControlResults&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
+&lt;/span&gt;{
+  Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;L, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Posted files size exceeds limit&quot;&lt;/span&gt;);
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; ...
+}
 
-    private static IEnumerable&lt;ControlResult&gt; GetSerializableControlResults(IEnumerable&lt;ControlResult&gt; fields)
-    {
-      Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &lt; 1000000L, &quot;Posted files size&quot;, &quot;Posted files size exceeds limit&quot;);
-      return ...
-    }
-
-    private static long GetUploadedSizeOfAllFiles(IEnumerable&lt;ControlResult&gt; fields)
-    {
-      long num = 0;
-      foreach (ControlResult controlResult in fields)
-      {
-        PostedFile postedFile = controlResult.Value as PostedFile;
-        if (postedFile != null &amp;&amp; postedFile.Data != null)
-          num += (long) postedFile.Data.Length;
-      }
-      return num;
-    }
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;GetUploadedSizeOfAllFiles&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;
+&lt;/span&gt;{
+  &lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;foreach&lt;/span&gt; (ControlResult controlResult &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; fields)
+  {
+    PostedFile postedFile = controlResult.Value &lt;span class=&quot;hljs-keyword&quot;&gt;as&lt;/span&gt; PostedFile;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (postedFile != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; &amp;amp;&amp;amp; postedFile.Data != &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt;)
+      num += (&lt;span class=&quot;hljs-keyword&quot;&gt;long&lt;/span&gt;) postedFile.Data.Length;
+  }
+  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; num;
+}
 </code></pre>
-<p>So when it's a &quot;remoteAction&quot;(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
+<p></code></pre></p>
+<p>So when it's a "remoteAction"(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</p>
 <p>1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it's hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.</p>
 <h3>Solutions:</h3>
 <p>Contacted with Sitecore on this one, Sitecore confirmed that it's a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it's publicly available.</p>
@@ -378,6 +373,10 @@ Parameter name: Posted files size has occured while trying to execute an action.
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 25 Mar </span> <a class="postlink" href="/2016/03/25/Xamarin-on-sdfsdfs.html">Xamarin on sdfsdfs</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 16 Mar </span> <a class="postlink" href="/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html">Sitecore web.config include patching sub-folder orders</a>
@@ -396,7 +395,7 @@ Parameter name: Posted files size has occured while trying to execute an action.
 	</li>
 
 	<li>
-		<span class="olderpostdate"> 29 Jan </span> <a class="postlink" href="/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a>
+		<span class="olderpostdate"> 29 Jan </span> <a class="postlink" href="/2016/01/29/AnyoneHue--Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html">AnyoneHue? - Monitor multiple people with WIFI for Philips Hue controlling</a>
 	</li>
 
 	<li>
@@ -408,7 +407,7 @@ Parameter name: Posted files size has occured while trying to execute an action.
 	</li>
 
 	<li>
-		<span class="olderpostdate"> 04 Jun </span> <a class="postlink" href="/2015/06/04/Root-Australia-Vodafone-Samsung-Galaxy-Note-4N910G-Android-Lollipop-5.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.*.*</a>
+		<span class="olderpostdate"> 04 Jun </span> <a class="postlink" href="/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html">Root Australia Vodafone Samsung Galaxy Note 4(N910G) Android Lollipop 5.0.1</a>
 	</li>
 
 	<li>
@@ -416,7 +415,11 @@ Parameter name: Posted files size has occured while trying to execute an action.
 	</li>
 
 	<li>
-		<span class="olderpostdate"> 14 Apr </span> <a class="postlink" href="/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html">Onda v820w flash os - Booting to droidboot.img failed</a>
+		<span class="olderpostdate"> 14 Apr </span> <a class="postlink" href="/2015/04/14/Onda-v820w-flash-os--Booting-to-droidbootimg-failed.html">Onda v820w flash os - Booting to droidboot.img failed</a>
+	</li>
+
+	<li>
+		<span class="olderpostdate"> 07 Apr </span> <a class="postlink" href="/2015/04/07/Amazon-Unlimited-Cloud-Windows-Home-Server-Netflix-VPN.html">Amazon Unlimited Cloud, Windows Home Server, Netflix and VPN</a>
 	</li>
 
 	<li>
@@ -460,7 +463,7 @@ Parameter name: Posted files size has occured while trying to execute an action.
 	</li>
 
 	<li>
-		<span class="olderpostdate"> 11 Dec </span> <a class="postlink" href="/2014/12/11/Multi-Site-solution-deployments-in-Azure.html">Multi-Site solution deployments in Azure</a>
+		<span class="olderpostdate"> 11 Dec </span> <a class="postlink" href="/2014/12/11/MultiSite-solution-deployments-in-Azure.html">Multi-Site solution deployments in Azure</a>
 	</li>
 
 	<li>
@@ -476,7 +479,7 @@ Parameter name: Posted files size has occured while trying to execute an action.
 	</li>
 
 	<li>
-		<span class="olderpostdate"> 04 Dec </span> <a class="postlink" href="/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html">Sitecore Indexes media url with /sitecore/shell</a>
+		<span class="olderpostdate"> 04 Dec </span> <a class="postlink" href="/2014/12/04/Sitecore-Indexes-media-url-with-sitecoreshell.html">Sitecore Indexes media url with /sitecore/shell</a>
 	</li>
 
 	<li>

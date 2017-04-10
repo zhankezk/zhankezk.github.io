@@ -49,40 +49,40 @@
 			
 		</span>
 		<p>It all started with those lines in defaultIndexConfiguration from Sitecore.ContentSearch.Lucene.DefaultIndexConfiguration.config:</p>
-<pre><code class="language-xml">&lt;!-- If no configuration is specified for an index, it uses the default configuration. The configurations are not merged if the index also has a configuration. The system uses either the default configuration or the index configuration. --&gt;
-&lt;!-- GLOBALLY EXCLUDE TEMPLATES FROM BEING INDEXED
-This setting allows you to exclude items that are based on a specific template.--&gt;
-&lt;exclude hint=&quot;list:ExcludeTemplate&quot;&gt;
-      &lt;bucketfoldertemplate&gt;{ADB6CA4F-03EF-4F47-B9AC-9CE2BA53FF97}&lt;/bucketfoldertemplate&gt;
-&lt;/exclude&gt;
+<pre><code class="language-xml hljs"><span class="hljs-comment">&lt;!-- If no configuration is specified for an index, it uses the default configuration. The configurations are not merged if the index also has a configuration. The system uses either the default configuration or the index configuration. --&gt;</span>
+<span class="hljs-comment">&lt;!-- GLOBALLY EXCLUDE TEMPLATES FROM BEING INDEXED
+This setting allows you to exclude items that are based on a specific template.--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">exclude</span> <span class="hljs-attribute">hint</span>=<span class="hljs-value">"list:ExcludeTemplate"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">bucketfoldertemplate</span>&gt;</span>{ADB6CA4F-03EF-4F47-B9AC-9CE2BA53FF97}<span class="hljs-tag">&lt;/<span class="hljs-title">bucketfoldertemplate</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">exclude</span>&gt;</span>
 </code></pre>
 <p>So when I setup custom index for Sitecore, I created a new index configuration like this:</p>
-<pre><code class="language-xml">&lt;configuration xmlns:patch=&quot;http://www.sitecore.net/xmlconfig/&quot;&gt;
-  &lt;sitecore&gt;
-    &lt;primary&gt;
-        &lt;primaryluceneconfiguration type=&quot;Sitecore.ContentSearch.LuceneProvider.LuceneIndexConfiguration, Sitecore.ContentSearch.LuceneProvider&quot;&gt;
-          &lt;include hint=&quot;list:IncludeTemplate&quot;&gt;
-            &lt;sometemplate&gt;{00000-000-0000-0000-0000000000&lt;/sometemplate&gt;
-          &lt;/include&gt;
+<pre><code class="language-xml hljs"><span class="hljs-tag">&lt;<span class="hljs-title">configuration</span> <span class="hljs-attribute">xmlns:patch</span>=<span class="hljs-value">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sitecore</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">primary</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">primaryluceneconfiguration</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentSearch.LuceneProvider.LuceneIndexConfiguration, Sitecore.ContentSearch.LuceneProvider"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">hint</span>=<span class="hljs-value">"list:IncludeTemplate"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">sometemplate</span>&gt;</span>{00000-000-0000-0000-0000000000<span class="hljs-tag">&lt;/<span class="hljs-title">sometemplate</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">include</span>&gt;</span>
 </code></pre>
 <p>Then I set this configuration for our index:</p>
-<pre><code class="language-xml">&lt;configuration xmlns:patch=&quot;http://www.sitecore.net/xmlconfig/&quot;&gt;
-  &lt;sitecore&gt;
-    &lt;contentsearch&gt;
-      &lt;configuration type=&quot;Sitecore.ContentSearch.LuceneProvider.LuceneSearchConfiguration, Sitecore.ContentSearch.LuceneProvider&quot;&gt;
-        &lt;indexes hint=&quot;list:AddIndex&quot;&gt;
-          &lt;index id=&quot;Primary Site Search&quot; type=&quot;Sitecore.ContentSearch.LuceneProvider.LuceneIndex, Sitecore.ContentSearch.LuceneProvider&quot;&gt;
-            &lt;param desc=&quot;name&quot;&gt;$(id)&lt;/param&gt;
-            &lt;param desc=&quot;folder&quot;&gt;$(id)&lt;/param&gt;
-            &lt;param desc=&quot;propertyStore&quot; ref=&quot;contentSearch/databasePropertyStore&quot; param1=&quot;$(id)&quot; /&gt;
-            &lt;configuration ref=&quot;primary/PrimaryLuceneConfiguration&quot; /&gt;
+<pre><code class="language-xml hljs"><span class="hljs-tag">&lt;<span class="hljs-title">configuration</span> <span class="hljs-attribute">xmlns:patch</span>=<span class="hljs-value">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">sitecore</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">contentsearch</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentSearch.LuceneProvider.LuceneSearchConfiguration, Sitecore.ContentSearch.LuceneProvider"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">indexes</span> <span class="hljs-attribute">hint</span>=<span class="hljs-value">"list:AddIndex"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">index</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"Primary Site Search"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentSearch.LuceneProvider.LuceneIndex, Sitecore.ContentSearch.LuceneProvider"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">desc</span>=<span class="hljs-value">"name"</span>&gt;</span>$(id)<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">desc</span>=<span class="hljs-value">"folder"</span>&gt;</span>$(id)<span class="hljs-tag">&lt;/<span class="hljs-title">param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">param</span> <span class="hljs-attribute">desc</span>=<span class="hljs-value">"propertyStore"</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"contentSearch/databasePropertyStore"</span> <span class="hljs-attribute">param1</span>=<span class="hljs-value">"$(id)"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">configuration</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"primary/PrimaryLuceneConfiguration"</span> /&gt;</span>
 </code></pre>
 <p>Everything works fine, but here comes the issue, in Crawling.log.xxxx.txt log files. I got this warning</p>
 <blockquote>
-<p>&quot;XXXX 22:05:53 WARN You have specified both IncludeTemplates and ExcludeTemplates. This logic is not supported. Exclude templates will be ignored.&quot;</p>
+<p>"XXXX 22:05:53 WARN You have specified both IncludeTemplates and ExcludeTemplates. This logic is not supported. Exclude templates will be ignored."</p>
 </blockquote>
 <p>for every item that it indexes.</p>
-<p>If I remove the node <code>&lt;exclude hint=&quot;list:ExcludeTemplate&quot;&gt;</code> from the defaultIndexConfiguration, the warnings are gone.</p>
+<p>If I remove the node <code>&lt;exclude hint="list:ExcludeTemplate"&gt;</code> from the defaultIndexConfiguration, the warnings are gone.</p>
 <p>Just don't understand why the excludes from the defaultconfiguration still affects my custom index when I have a complete different new index configuration.</p>
 <p>Anyway, still trying to figure out what's wrong, will update if I have new findings.</p>
 <p>Sitecore version: Sitecore.NET 7.1 (rev. 140324)</p>
@@ -90,7 +90,7 @@ This setting allows you to exclude items that are based on a specific template.-
 </div>
 <div id="page-navigation"> 
 	<div class="left">  <a href="/2014/12/08/Schedule-tasks-not-running-on-CDS-in-Sitecore.html" title="Previous Post: Schedule tasks not running on CDS in Sitecore">&larr; Schedule tasks not running on CDS in Sitecore</a>  </div> 
-	<div class="right">  <a href="/2014/12/11/Multi-Site-solution-deployments-in-Azure.html" title="next Post: Multi-Site solution deployments in Azure">Multi-Site solution deployments in Azure &rarr; </a>  </div> 
+	<div class="right">  <a href="/2014/12/11/MultiSite-solution-deployments-in-Azure.html" title="next Post: Multi-Site solution deployments in Azure">Multi-Site solution deployments in Azure &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

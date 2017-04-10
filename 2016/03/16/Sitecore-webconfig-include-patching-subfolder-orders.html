@@ -58,93 +58,93 @@
 <li>I placed patch B inside ZZZZ folder, didn't work either.</li>
 </ul>
 <p>So I went ahead and checked the source code where Sitecore looks for the config files in Include folder:</p>
-<pre><code>private static void LoadAutoIncludeFiles(ConfigPatcher patcher, string folder)
-    {
-      Assert.ArgumentNotNull((object) patcher, &quot;patcher&quot;);
-      Assert.ArgumentNotNull((object) folder, &quot;folder&quot;);
-      try
+<pre><code class="hljs cs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LoadAutoIncludeFiles</span><span class="hljs-params">(ConfigPatcher patcher, <span class="hljs-keyword">string</span> folder)</span>
+    </span>{
+      Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) patcher, <span class="hljs-string">"patcher"</span>);
+      Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) folder, <span class="hljs-string">"folder"</span>);
+      <span class="hljs-keyword">try</span>
       {
-        if (!Directory.Exists(folder))
-          return;
-        foreach (string str in Directory.GetFiles(folder, &quot;*.config&quot;))
+        <span class="hljs-keyword">if</span> (!Directory.Exists(folder))
+          <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">string</span> str <span class="hljs-keyword">in</span> Directory.GetFiles(folder, <span class="hljs-string">"*.config"</span>))
         {
-          try
+          <span class="hljs-keyword">try</span>
           {
-            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+            <span class="hljs-keyword">if</span> ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) <span class="hljs-number">0</span>)
               patcher.ApplyPatch(str);
           }
-          catch (Exception ex)
+          <span class="hljs-keyword">catch</span> (Exception ex)
           {
-            Log.Error(string.Concat(new object[4]
+            Log.Error(<span class="hljs-keyword">string</span>.Concat(<span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>[<span class="hljs-number">4</span>]
             {
-              (object) &quot;Could not load configuration file: &quot;,
-              (object) str,
-              (object) &quot;: &quot;,
-              (object) ex
-            }), typeof (Factory));
+              (<span class="hljs-keyword">object</span>) <span class="hljs-string">"Could not load configuration file: "</span>,
+              (<span class="hljs-keyword">object</span>) str,
+              (<span class="hljs-keyword">object</span>) <span class="hljs-string">": "</span>,
+              (<span class="hljs-keyword">object</span>) ex
+            }), <span class="hljs-keyword">typeof</span> (Factory));
           }
         }
-        foreach (string str in Directory.GetDirectories(folder))
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">string</span> str <span class="hljs-keyword">in</span> Directory.GetDirectories(folder))
         {
-          try
+          <span class="hljs-keyword">try</span>
           {
-            if ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) 0)
+            <span class="hljs-keyword">if</span> ((File.GetAttributes(str) &amp; FileAttributes.Hidden) == (FileAttributes) <span class="hljs-number">0</span>)
               Factory.LoadAutoIncludeFiles(patcher, str);
           }
-          catch (Exception ex)
+          <span class="hljs-keyword">catch</span> (Exception ex)
           {
-            Log.Error(string.Concat(new object[4]
+            Log.Error(<span class="hljs-keyword">string</span>.Concat(<span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>[<span class="hljs-number">4</span>]
             {
-              (object) &quot;Could not scan configuration folder &quot;,
-              (object) str,
-              (object) &quot; for files: &quot;,
-              (object) ex
-            }), typeof (Factory));
+              (<span class="hljs-keyword">object</span>) <span class="hljs-string">"Could not scan configuration folder "</span>,
+              (<span class="hljs-keyword">object</span>) str,
+              (<span class="hljs-keyword">object</span>) <span class="hljs-string">" for files: "</span>,
+              (<span class="hljs-keyword">object</span>) ex
+            }), <span class="hljs-keyword">typeof</span> (Factory));
           }
         }
       }
-      catch (Exception ex)
+      <span class="hljs-keyword">catch</span> (Exception ex)
       {
-        Log.Error(string.Concat(new object[4]
+        Log.Error(<span class="hljs-keyword">string</span>.Concat(<span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>[<span class="hljs-number">4</span>]
         {
-          (object) &quot;Could not scan configuration folder &quot;,
-          (object) folder,
-          (object) &quot; for files: &quot;,
-          (object) ex
-        }), typeof (Factory));
+          (<span class="hljs-keyword">object</span>) <span class="hljs-string">"Could not scan configuration folder "</span>,
+          (<span class="hljs-keyword">object</span>) folder,
+          (<span class="hljs-keyword">object</span>) <span class="hljs-string">" for files: "</span>,
+          (<span class="hljs-keyword">object</span>) ex
+        }), <span class="hljs-keyword">typeof</span> (Factory));
       }
     }
 </code></pre>
 <p>Actually it all looks fine, so it process files in Include folder first, then go through every folder in order.</p>
 <p>However the key thing here is this line:</p>
-<pre><code>Directory.GetDirectories(folder)
+<pre><code class="hljs">Directory.GetDirectories(folder)
 </code></pre>
 <p>When I ran it on my machine, it returned this(I created some folder to test):</p>
-<pre><code>C:\Sitecore\sc80rev150621\Website\App_Config\Include\Channel 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ContentTesting 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceAnalytics 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ExperienceProfile 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\FXM 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ListManagement 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\Social 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\XdbCloud 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzzzzzzzz 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\ZZZZZZZZZZZ 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_WebsiteName 
-C:\Sitecore\sc80rev150621\Website\App_Config\Include\zzz_z 
+<pre><code class="hljs php">C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\Channel 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\ContentTesting 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\ExperienceAnalytics 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\ExperienceProfile 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\FXM 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\ListManagement 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\Social 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\XdbCloud 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\zzzzzzzzz 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\ZZZZZZZZZZZ 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\zzz_WebsiteName 
+C:\Sitecore\sc80rev150621\Website\App_Config\<span class="hljs-keyword">Include</span>\zzz_z 
 </code></pre>
 <p>Yes, based on this result, zzz_WebsiteName is behind other folders, so it shouldn't work when I put the files in zzzz or ZZZZ folder. However here is what we see in Windows Exploer:</p>
-<pre><code>zzz_WebsiteName
+<pre><code class="hljs nginx"><span class="hljs-title">zzz_WebsiteName</span>
 zzz_z  
 zzzzzzzzz  
 ZZZZZZZZZZZ  
 </code></pre>
 <p><strong>It's different!</strong></p>
 <p>Then I ran dir command in CMD:</p>
-<pre><code>05/02/2016  03:36 PM &lt;DIR&gt; zzzzzzzzz  
-16/03/2016  12:43 PM &lt;DIR&gt; ZZZZZZZZZZZ  
-16/03/2016  12:40 PM &lt;DIR&gt; zzz_WebsiteName  
-16/03/2016  12:43 PM &lt;DIR&gt; zzz_z  
+<pre><code class="hljs xml">05/02/2016  03:36 PM <span class="hljs-tag">&lt;<span class="hljs-title">DIR</span>&gt;</span> zzzzzzzzz  
+16/03/2016  12:43 PM <span class="hljs-tag">&lt;<span class="hljs-title">DIR</span>&gt;</span> ZZZZZZZZZZZ  
+16/03/2016  12:40 PM <span class="hljs-tag">&lt;<span class="hljs-title">DIR</span>&gt;</span> zzz_WebsiteName  
+16/03/2016  12:43 PM <span class="hljs-tag">&lt;<span class="hljs-title">DIR</span>&gt;</span> zzz_z  
 </code></pre>
 <p>This time it's the same as what the code returns.</p>
 <p>After Googling a bit, found this reference:<a href="https://blogs.msdn.microsoft.com/oldnewthing/20050617-10/?p=35293">Why do NTFS and Explorer disagree on filename sorting?</a>. Basically the ordering algorithm from the file system is different from Windows Explorer. So the order we thought we arranged is not actually true when Sitecore executes the logic.</p>
@@ -153,7 +153,7 @@ ZZZZZZZZZZZ
 </div>
 <div id="page-navigation"> 
 	<div class="left">  <a href="/2016/03/07/Sitecore-Shell-Content-Testing-Web-API-returns-404403-error-while-creating-page-testscontent-tests.html" title="Previous Post: Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests">&larr; Sitecore Shell Content Testing Web API returns 404/403 error while creating page tests/content tests</a>  </div> 
-	<div class="right">  <a href="/2016/04/19/1-MB-file-upload-size-limit-for-WFFM-on-CD-instance.html" title="next Post: 1 MB file upload size limit for WFFM on CD instance">1 MB file upload size limit for WFFM on CD instance &rarr; </a>  </div> 
+	<div class="right">  <a href="/2016/03/25/Xamarin-on-sdfsdfs.html" title="next Post: Xamarin on sdfsdfs">Xamarin on sdfsdfs &rarr; </a>  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

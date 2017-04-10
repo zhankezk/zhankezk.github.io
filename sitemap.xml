@@ -42,6 +42,13 @@
   </url>
   
   <url>
+    <loc>http://kezhan.info/2016/03/25/Xamarin-on-sdfsdfs.html</loc>
+    <lastmod>2016-03-25T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2016/03/16/Sitecore-webconfig-include-patching-subfolder-orders.html</loc>
     <lastmod>2016-03-16T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -70,7 +77,7 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2016/01/29/AnyoneHue-Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</loc>
+    <loc>http://kezhan.info/2016/01/29/AnyoneHue--Monitor-multiple-people-with-WIFI-for-Philips-Hue-controlling.html</loc>
     <lastmod>2016-01-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -91,7 +98,7 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2015/06/04/Root-Australia-Vodafone-Samsung-Galaxy-Note-4N910G-Android-Lollipop-5.html</loc>
+    <loc>http://kezhan.info/2015/06/04/Root-Note-4-Android-Lollipop-5.0.1-Vodafone-Au.html</loc>
     <lastmod>2015-06-04T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -105,8 +112,15 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2015/04/14/Onda-v820w-Dual-Os-flashing-android-Booting-to-droidboot-img-failed.html</loc>
+    <loc>http://kezhan.info/2015/04/14/Onda-v820w-flash-os--Booting-to-droidbootimg-failed.html</loc>
     <lastmod>2015-04-14T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
+    <loc>http://kezhan.info/2015/04/07/Amazon-Unlimited-Cloud-Windows-Home-Server-Netflix-VPN.html</loc>
+    <lastmod>2015-04-07T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
@@ -182,7 +196,7 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2014/12/11/Multi-Site-solution-deployments-in-Azure.html</loc>
+    <loc>http://kezhan.info/2014/12/11/MultiSite-solution-deployments-in-Azure.html</loc>
     <lastmod>2014-12-11T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -210,7 +224,7 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2014/12/04/Sitecore-indexes-media-url-with-sitecore-shell.html</loc>
+    <loc>http://kezhan.info/2014/12/04/Sitecore-Indexes-media-url-with-sitecoreshell.html</loc>
     <lastmod>2014-12-04T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -271,22 +285,6 @@
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
 	
   
 	

@@ -61,40 +61,39 @@
 </ul>
 <p>They plus the links they references pretty much covers all setups required.</p>
 <p>Will start on issues now.</p>
-<p><strong>1. While trying to export P12 certificate in Xcode, &quot;Export&quot; is greyed out.</strong></p>
-<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error &quot;1 identity imported.&quot; then &quot;0 valid identities found&quot;.</p>
+<p><strong>1. While trying to export P12 certificate in Xcode, "Export" is greyed out.</strong></p>
+<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error "1 identity imported." then "0 valid identities found".</p>
 <p>Solution Link: <a href="http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv">This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”</a></p>
-<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, &quot;Export&quot; in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
-<p><strong>2. IPA build output folder has a &quot;name date time&quot; format makes it hard to define the IPA path in following build steps.</strong></p>
+<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, "Export" in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
+<p><strong>2. IPA build output folder has a "name date time" format makes it hard to define the IPA path in following build steps.</strong></p>
 <p>I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.</p>
 <p>Solution Link: <a href="http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder">Xamarin cycle 7 IOS IPA output now in a datetime folder</a></p>
-<p>After applying the changes, I also defined &quot;Package Name&quot; in &quot;iOS IPA Options&quot; tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
-<p>In this case, the output IPA always has the path: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa&quot;. Much easier for later setups.</p>
-<p><strong>3. How to setup Metadata structure for &quot;App Store Release&quot; build step.</strong></p>
-<p>The &quot;App Store Release&quot; build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran &quot;deliver init&quot; in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
-<p>After that, I just added &quot;description.txt&quot;, &quot;keywords.txt&quot; and &quot;release_notes.txt&quot; into the solution, so I can update all information needed right in Xamarin Studio.</p>
+<p>After applying the changes, I also defined "Package Name" in "iOS IPA Options" tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
+<p>In this case, the output IPA always has the path: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa". Much easier for later setups.</p>
+<p><strong>3. How to setup Metadata structure for "App Store Release" build step.</strong></p>
+<p>The "App Store Release" build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran "deliver init" in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
+<p>After that, I just added "description.txt", "keywords.txt" and "release_notes.txt" into the solution, so I can update all information needed right in Xamarin Studio.</p>
 <p>Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...</p>
-<p><strong>4. Got error while installing Fastlane: &quot;ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander&quot;.</strong></p>
-<p>Use this command: &quot;sudo gem install -n /usr/local/bin fastlane&quot;</p>
+<p><strong>4. Got error while installing Fastlane: "ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander".</strong></p>
+<p>Use this command: "sudo gem install -n /usr/local/bin fastlane"</p>
 <p>Reference: <a href="https://github.com/fastlane/fastlane/issues/1392">Problem when install fastlane</a></p>
-<p><strong>5. App doesn't get submitted for review although log says &quot;Successfully submitted the app for review!&quot;</strong></p>
-<p>The reason is &quot;submission_information&quot; is not set for fastlane.</p>
-<p>In your &quot;fastlane&quot; folder, there should be a file &quot;Deliverfile&quot;, the content should look like this:</p>
-<pre><code>   app_identifier &quot;xx.xxx&quot; # The bundle identifier of your app
-   username &quot;xx@xxx.xx&quot; # your Apple ID user
+<p><strong>5. App doesn't get submitted for review although log says "Successfully submitted the app for review!"</strong></p>
+<p>The reason is "submission_information" is not set for fastlane.</p>
+<p>In your "fastlane" folder, there should be a file "Deliverfile", the content should look like this:</p>
+<pre><code class="hljs bash">   app_identifier <span class="hljs-string">"xx.xxx"</span> <span class="hljs-comment"># The bundle identifier of your app</span>
+   username <span class="hljs-string">"xx@xxx.xx"</span> <span class="hljs-comment"># your Apple ID user</span>
    submission_information({
-     	add_id_info_uses_idfa: false,
-	      export_compliance_encryption_updated: false
-
-   })
-</code></pre>
+     	add_id_info_uses_idfa: <span class="hljs-literal">false</span>,
+	      <span class="hljs-built_in">export</span>_compliance_encryption_updated: <span class="hljs-literal">false</span>
+<p>})
+</code></pre></p>
 <p>submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
 Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information">submission_information</a></p>
-<p><strong>6. [Unresolved] &quot;Copy files&quot; build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></p>
-<p>So in the &quot;Copy files&quot; task, you define &quot;Source Folder&quot;, &quot;Contents&quot; and &quot;Target Folder&quot;. In &quot;Contents&quot; you normally use &quot;**/*.ipa&quot; to match the ipa files. But when I use &quot;**/*.dSYM&quot;, it doesn't copy the file, always says &quot;matched 0 files&quot;.</p>
-<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use &quot;**&quot;, it's copied across. When I use &quot;**/*.config&quot;, config files get copied.</p>
+<p><strong>6. [Unresolved] "Copy files" build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></p>
+<p>So in the "Copy files" task, you define "Source Folder", "Contents" and "Target Folder". In "Contents" you normally use "**/*.ipa" to match the ipa files. But when I use "**/*.dSYM", it doesn't copy the file, always says "matched 0 files".</p>
+<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use "**", it's copied across. When I use "**/*.config", config files get copied.</p>
 <p>I don't get it...</p>
-<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: &quot;AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM&quot;) to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
+<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM") to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
 <p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
 <p><br><br></p>
 <p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>

@@ -48,23 +48,23 @@
 		<span class="postdate"> 7 March, 2016
 			
 		</span>
-		<h2>Issues:</h2>
+		<p><h2>Issues:</h2></p>
 <p>On development instance of Sitecore. While creating page tests or content tests in Sitecore(A/B tests are working fine), got 404 errors for urls like:</p>
 <p>https://website.com/sitecore/shell/api/ct/Query/GetItems?query=*&amp;database=core&amp;root=%7Bxxxxxx-xxxxx-xxxxx-xxxxxxx%7D&amp;_=1234567890</p>
 <p>On different instance, when accessing the url directly and there's no 404 error, 403 errors are being returned.</p>
 <h2>Causes and Solutions:</h2>
 <p>There are these lines in only Development Sitecore Instance configuration, I believe the purpose was to speed up dev Sitecore instance start up time:</p>
-<pre><code>&lt;initialize&gt;
-    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Clientpro&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-    &lt;processor type=&quot;Sitecore.ContentTesting.Pipelines.Initialize.RegisterContentTestingCommandRoute, Sitecore.ContentTesting&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-    &lt;processor type=&quot;Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Client&quot; use=&quot;ContentTesting&quot;&gt;
-        &lt;patch:delete/&gt;
-    &lt;/processor&gt;
-&lt;/initialize&gt;
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">initialize</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">processor</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Clientpro"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">patch:delete</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">processor</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">processor</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentTesting.Pipelines.Initialize.RegisterContentTestingCommandRoute, Sitecore.ContentTesting"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">patch:delete</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">processor</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">processor</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Pipelines.Initialize.PrecompileSpeakViews, Sitecore.Speak.Client"</span> <span class="hljs-attribute">use</span>=<span class="hljs-value">"ContentTesting"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">patch:delete</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">processor</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">initialize</span>&gt;</span>
 </code></pre>
 <p>The issue is the second processor rule, original rule actually registers the necessary routing for Sitecore content testing web API. Therefore the solution is to remove the second processor rule.</p>
 <p>403 error is because simply it's not authorized, it's not meant for direct access without providing login credentials.</p>
@@ -77,9 +77,9 @@
 <li><a href="https://community.sitecore.net/developers/f/9/t/246">What is the best way to disable Analytics on Sitecore 7.2?</a></li>
 </ol>
 <p>The safe ones to follow would be item 1 to 3 since they are from Sitecore. The configuration file from item 4 makes a lot of senses, however I couldn't find where it's come from, so use with cautions.</p>
-<p>I also found some other configuration examples just for references: <a href="https://gist.github.com/kamsar/8c9efc80e72e6ada8304">Some Dev Config Examples</a></p>
-<p>And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here: <a href="https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=au">Potential source of issue</a></p>
-<p>And finally, here is the link where helped identifying the issue: <a href="http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404">Sitecore 8 shell controller returning IIS 404</a></p>
+<p>I also found some other configuration examples just for references:&nbsp;<a href="https://gist.github.com/kamsar/8c9efc80e72e6ada8304">Some Dev Config Examples</a></p>
+<p>And for the cause of this issue I tried to see where did it come from, so far I can only find one link which provides the issue configuration, but the website is down for some reasons, please see cached page here:&nbsp;<a href="https://webcache.googleusercontent.com/search?q=cache:rqRvv5ZEK7YJ:https://jaredmeredith.wordpress.com/2015/08/13/sluggish-sitecore-development-environment-heres-an-easy-method-to-disable-sitecore-analytics/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=au">Potential source of issue</a></p>
+<p>And finally, here is the link where helped identifying the issue:&nbsp;<a href="http://stackoverflow.com/questions/34902276/sitecore-8-shell-controller-returning-iis-404">Sitecore 8 shell controller returning IIS 404</a></p>
 	</div>
 </div>
 <div id="page-navigation"> 

@@ -49,72 +49,71 @@
 			
 		</span>
 		<p>Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don't ask).</p>
-<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &quot;1 warning&quot;, it says &quot;The Alt field is empty.&quot;</p>
-<p><img src="/img/media_warning.png" alt="Missing Alt field in Sitecore Media Library" title="1 warning" /></p>
+<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over "1 warning", it says "The Alt field is empty."</p>
+<p><img src="/img/media_warning.png" alt="Missing Alt field in Sitecore Media Library" title="1 warning"></p>
 <p>After some digging, I found that this validation is defined in web.config under this path:</p>
 <blockquote>
 <p>/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator</p>
 </blockquote>
 <p>This is where it's defined for JPEG images:</p>
-<pre><code class="language-xml">         &lt;mediaType name=&quot;JPEG image&quot; extensions=&quot;jpg, jpeg, jpe, jfif&quot;&gt;
-          &lt;mimeType&gt;image/jpeg&lt;/mimeType&gt;
-          &lt;forceDownload&gt;false&lt;/forceDownload&gt;
-          &lt;sharedTemplate&gt;system/media/unversioned/jpeg&lt;/sharedTemplate&gt;
-          &lt;versionedTemplate&gt;system/media/versioned/jpeg&lt;/versionedTemplate&gt;
-          &lt;mediaValidator type=&quot;Sitecore.Resources.Media.ImageValidator&quot;/&gt;
-          &lt;thumbnails&gt;
-            &lt;generator type=&quot;Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel&quot;&gt;
-              &lt;extension&gt;png&lt;/extension&gt;
-            &lt;/generator&gt;
-            &lt;width&gt;150&lt;/width&gt;
-            &lt;height&gt;150&lt;/height&gt;
-            &lt;backgroundColor&gt;#FFFFFF&lt;/backgroundColor&gt;
-          &lt;/thumbnails&gt;
-          &lt;prototypes&gt;
-            &lt;media type=&quot;Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel&quot;/&gt;
-          &lt;/prototypes&gt;
-        &lt;/mediaType&gt;
+<pre><code class="language-xml hljs">         <span class="hljs-tag">&lt;<span class="hljs-title">mediaType</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"JPEG image"</span> <span class="hljs-attribute">extensions</span>=<span class="hljs-value">"jpg, jpeg, jpe, jfif"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mimeType</span>&gt;</span>image/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">mimeType</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">forceDownload</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-title">forceDownload</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">sharedTemplate</span>&gt;</span>system/media/unversioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">sharedTemplate</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">versionedTemplate</span>&gt;</span>system/media/versioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">versionedTemplate</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">mediaValidator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageValidator"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">thumbnails</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">generator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-title">extension</span>&gt;</span>png<span class="hljs-tag">&lt;/<span class="hljs-title">extension</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">generator</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">width</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">width</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">height</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">height</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">backgroundColor</span>&gt;</span>#FFFFFF<span class="hljs-tag">&lt;/<span class="hljs-title">backgroundColor</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">thumbnails</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">prototypes</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">media</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-title">prototypes</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">mediaType</span>&gt;</span>
 </code></pre>
 <p>And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:</p>
-<pre><code class="language-csharp">using Sitecore.Configuration;
-using Sitecore.Data.Items;
-using Sitecore.Diagnostics;
-
-namespace Sitecore.Resources.Media
+<pre><code class="language-csharp hljs cs"><span class="hljs-keyword">using</span> Sitecore.Configuration;
+<span class="hljs-keyword">using</span> Sitecore.Data.Items;
+<span class="hljs-keyword">using</span> Sitecore.Diagnostics;
+<p><span class="hljs-keyword">namespace</span> <span class="hljs-title">Sitecore</span>.<span class="hljs-title">Resources</span>.<span class="hljs-title">Media</span>
 {
-  /// &lt;summary&gt;Represents a Media Validator.&lt;/summary&gt;
-  public class ImageValidator : MediaValidator
-  {
-    /// &lt;summary&gt;Validates the specified output.&lt;/summary&gt;
-    /// &lt;param name=&quot;item&quot;&gt;The item.&lt;/param&gt;
-    /// &lt;param name=&quot;results&quot;&gt;The warnings.&lt;/param&gt;
-    protected override void ValidateItem(MediaItem item, MediaValidatorResult results)
-    {
-      Assert.ArgumentNotNull((object) item, &quot;item&quot;);
-      Assert.ArgumentNotNull((object) results, &quot;results&quot;);
-      base.ValidateItem(item, results);
-      if (item.Size &gt;= Settings.Media.MaxSizeInMemory)
-        results.Warnings.Add(&quot;This image is too big to be resized.&quot;);
-      if (string.IsNullOrEmpty(item.Alt))
-        results.Warnings.Add(&quot;The Alt field is empty.&quot;);
-      if (string.IsNullOrEmpty(item.InnerItem[&quot;Width&quot;]))
-        results.Warnings.Add(&quot;The Width field is empty.&quot;);
-      else if (MainUtil.GetInt(item.InnerItem[&quot;Width&quot;], -1) == -1)
-        results.Warnings.Add(&quot;The Width field does not contain an integer.&quot;);
-      if (string.IsNullOrEmpty(item.InnerItem[&quot;Height&quot;]))
-      {
-        results.Warnings.Add(&quot;The Height field is empty.&quot;);
-      }
-      else
-      {
-        if (MainUtil.GetInt(item.InnerItem[&quot;Height&quot;], -1) != -1)
-          return;
-        results.Warnings.Add(&quot;The Height field does not contain an integer.&quot;);
-      }
-    }
-  }
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Represents a Media Validator.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ImageValidator</span> : <span class="hljs-title">MediaValidator</span>
+{
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Validates the specified output.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;item&quot;&gt;</span>The item.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
+<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;results&quot;&gt;</span>The warnings.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ValidateItem</span><span class="hljs-params">(MediaItem item, MediaValidatorResult results)</span>
+</span>{
+Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) item, <span class="hljs-string">&quot;item&quot;</span>);
+Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) results, <span class="hljs-string">&quot;results&quot;</span>);
+<span class="hljs-keyword">base</span>.ValidateItem(item, results);
+<span class="hljs-keyword">if</span> (item.Size &gt;= Settings.Media.MaxSizeInMemory)
+results.Warnings.Add(<span class="hljs-string">&quot;This image is too big to be resized.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.Alt))
+results.Warnings.Add(<span class="hljs-string">&quot;The Alt field is empty.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>]))
+results.Warnings.Add(<span class="hljs-string">&quot;The Width field is empty.&quot;</span>);
+<span class="hljs-function"><span class="hljs-keyword">else</span> <span class="hljs-title">if</span> <span class="hljs-params">(MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>], -<span class="hljs-number">1</span>)</span> </span>== -<span class="hljs-number">1</span>)
+results.Warnings.Add(<span class="hljs-string">&quot;The Width field does not contain an integer.&quot;</span>);
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>]))
+{
+results.Warnings.Add(<span class="hljs-string">&quot;The Height field is empty.&quot;</span>);
 }
-</code></pre>
+<span class="hljs-keyword">else</span>
+{
+<span class="hljs-keyword">if</span> (MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>], -<span class="hljs-number">1</span>) != -<span class="hljs-number">1</span>)
+<span class="hljs-keyword">return</span>;
+results.Warnings.Add(<span class="hljs-string">&quot;The Height field does not contain an integer.&quot;</span>);
+}
+}
+}
+}
+</code></pre></p>
 <p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
 	</div>
 </div>
