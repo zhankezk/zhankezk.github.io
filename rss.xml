@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 10 Apr 2017 13:55:00 %z</pubDate>
-    <lastBuildDate>Mon, 10 Apr 2017 13:55:00 %z</lastBuildDate>
+    <pubDate>Tue, 11 Apr 2017 13:16:23 %z</pubDate>
+    <lastBuildDate>Tue, 11 Apr 2017 13:16:23 %z</lastBuildDate>
     
     <item>
       <title>Sitecore Consulting in the most down-to-earth way</title>
@@ -15,7 +15,7 @@
       <pubDate>Mon, 10 Apr 2017 00:00:00 %z</pubDate>
       <author>Ke</author>
       <guid>http://kezhan.info/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html</guid>
-      <description>&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/C82n9VlUMAA_dHS.jpg&quot; alt=&quot;Sitecore Consulting in the most down-to-earth way&quot; title=&quot;Sitecore Consulting in the most down-to-earth way&quot; /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&quot;/files/C82n9VlUMAA_dHS.jpg&quot; alt=&quot;Sitecore Consulting in the most down-to-earth way&quot; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -83,7 +83,7 @@ Offical Doc: &lt;a href=&quot;https://github.com/fastlane/fastlane/blob/master/d
       <guid>http://kezhan.info/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html</guid>
       <description>&lt;p&gt;Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don&apos;t ask).&lt;/p&gt;
 &lt;p&gt;I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over &quot;1 warning&quot;, it says &quot;The Alt field is empty.&quot;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/img/media_warning.png&quot; alt=&quot;Missing Alt field in Sitecore Media Library&quot; title=&quot;1 warning&quot;&gt;&lt;/p&gt;
+![Missing Alt field in Sitecore Media Library](/files/media_warning.png)
 &lt;p&gt;After some digging, I found that this validation is defined in web.config under this path:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator&lt;/p&gt;
