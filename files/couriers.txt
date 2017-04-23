@@ -1,11 +1,12 @@
 	{
-	    "version": 201704248,
+	    "version": 201704232355,
 	    "couriers": [{
 	        "courierName": "AOL",
 	        "prefixes": [
 	            "AL",
 	            "TD",
-	            "AT"
+	            "AT",
+		    "HI"
 	        ]
 	    }, {
 	        "courierName": "CqZh",
