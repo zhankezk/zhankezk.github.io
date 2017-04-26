@@ -84,7 +84,8 @@
 	        "prefixes": [
 	            "SD",
 	            "SS",
-	            "BM"
+	            "BM",
+		    "BS"
 	        ]
 	    }, {
 	        "courierName": "ChnExp",
