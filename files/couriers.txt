@@ -1,5 +1,5 @@
 	{
-	    "version": 2017042620055,
+	    "version": 2017042820055,
 	    "couriers": [{
 	        "courierName": "AOL",
 	        "prefixes": [
@@ -67,12 +67,8 @@
 	        "courierName": "Auod",
 	        "prefixes": [
 	            "OD",
-	            "200"
-	        ]
-	    }, {
-	        "courierName": "Ubonex",
-	        "prefixes": [
-	            "UB"
+	            "200",
+		    "UB"
 	        ]
 	    }, {
 	        "courierName": "AusExpress",
