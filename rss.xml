@@ -6,8 +6,20 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 30 Apr 2017 06:41:02 %z</pubDate>
-    <lastBuildDate>Sun, 30 Apr 2017 06:41:02 %z</lastBuildDate>
+    <pubDate>Thu, 29 Jun 2017 06:37:55 %z</pubDate>
+    <lastBuildDate>Thu, 29 Jun 2017 06:37:55 %z</lastBuildDate>
+    
+    <item>
+      <title>Thoughts on Sitecore Experience Accelerator</title>
+      <link>http://kezhan.info/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html</link>
+      <pubDate>Thu, 29 Jun 2017 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html</guid>
+      <description>&lt;p&gt;Sitecore Experience Accelerator uses pre-build renderings and data model. The export and import for frontend styling plus content populating process that can start at the same time are good, but based on my understanding, if the modules your webisite use are complicate, then the &amp;quot;wireframe&amp;quot; website will be far off from the final website you want to build, also all renderings and data models need to be rebuild or pre-build even before UX plays with SXA.&lt;/p&gt;
+&lt;p&gt;So looks like there&apos;s not much point to use SXA for big website build except for small or sub-branding sites.&lt;/p&gt;
+&lt;p&gt;However with tennants setup, it allows creating websites and bind domains all within CMSs and the whole new strucuture that SXA uses to orginaze websites and assets are looking very clean. So would be make sense to only use SXA shell to build a global solution, but for modules, all build them in traditional ways?&lt;/p&gt;
+&lt;p&gt;Just a brain dump... Something to think about...&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Sitecore Consulting in the most down-to-earth way</title>
