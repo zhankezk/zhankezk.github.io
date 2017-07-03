@@ -55,17 +55,21 @@
 					</div>
 					<p>Was using Phillipe Hue before, later changed to Xiaomi products.</p>
 <p>Got Xiaomi Smart Home Suite including</p>
-<p>1.Smart Human Body Sensor
-2.Smart Door and Window Sensor
-3.Smart Wireless Switch
-4.Smart Gateway</p>
+<ol>
+<li>Smart Human Body Sensor</li>
+<li>Smart Door and Window Sensor</li>
+<li>Smart Wireless Switch</li>
+<li>Smart Gateway</li>
+</ol>
 <p>Plus</p>
-<p>5.Smart Temperature and Humidity Sensors
-6.Yeelights
-7.Smart Wifi Sockets
-8.Smart Wifi Sockets Zigbee version</p>
+<ol start="5">
+<li>Smart Temperature and Humidity Sensors</li>
+<li>Yeelights</li>
+<li>Smart Wifi Sockets</li>
+<li>Smart Wifi Sockets Zigbee version</li>
+</ol>
 <p>Automation are done via Smart Gateway using Mi Home iOS app.</p>
-<p>Also runs a Homebridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.</p>
+<p>Also runs a HomeBridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.</p>
 <p>However, was not happy that having to use iPhone for Siri, but wrongly bought an Apple TV thought it would allow constant-listen mode for voice commands. Obviously, it can't...Kind of stupid, but Apple just released a new product, of course...</p>
 <p>Anyway, since Google Home will be released in Australia soon, so bought a Google Home in hope of achieving always-on-hands-free voice command for home automation.</p>
 <p>But...after setting it up, realised that it doesn't support Xiaomi product out of box. Support Phillipe Hue, but I don't want to switch back now as the wireless switch is working quite well, even my wife likes to use it.</p>
@@ -79,10 +83,11 @@
 </li>
 </ol>
 <p>With a developer mind, my thoughts were: fine, I will just write some APIs to integrate them.</p>
-<p>Good thing is that something already can: <a href="https://home-assistant.io/">Home Assistant</a> and <a href="https://github.com/lazcad/homeassistant">HomeAssistant Xiaomi Hub Component by Rave (Lazcad)</a> !</p>
+<p><strong>Good thing is that something already can:</strong> <a href="https://home-assistant.io/">Home Assistant</a> and <a href="https://github.com/lazcad/homeassistant">HomeAssistant Xiaomi Hub Component by Rave (Lazcad)</a> !</p>
 <p>With the custom component, Home assistant supports Xiaomi Smart Gateway with all the Zigbee devices plus Yeelights. It can also integrate with IFTTT via RESTful Service calls.</p>
 <p>Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!</p>
 <p>With Home Assistant, there are heaps more that can be done, but that's up to you now...</p>
+<p>BTW, got an error which says something like something is also listen on some ports or addresses. It turns to be Home Assistant Xiaomi Component was conflicting with HomeBridge which uses the same library. Just need to kill HomeBridge, the issue should be gone.</p>
 					<br />
 					<a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html#disqus_thread">Comments</a>
 				

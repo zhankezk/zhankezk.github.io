@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 03 Jul 2017 11:47:55 %z</pubDate>
-    <lastBuildDate>Mon, 03 Jul 2017 11:47:55 %z</lastBuildDate>
+    <pubDate>Mon, 03 Jul 2017 11:53:08 %z</pubDate>
+    <lastBuildDate>Mon, 03 Jul 2017 11:53:08 %z</lastBuildDate>
     
     <item>
       <title>Google Home working with Yeelight with Xiaomi Smart Wireless Switch</title>
@@ -17,17 +17,21 @@
       <guid>http://kezhan.info/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html</guid>
       <description>&lt;p&gt;Was using Phillipe Hue before, later changed to Xiaomi products.&lt;/p&gt;
 &lt;p&gt;Got Xiaomi Smart Home Suite including&lt;/p&gt;
-&lt;p&gt;1.Smart Human Body Sensor
-2.Smart Door and Window Sensor
-3.Smart Wireless Switch
-4.Smart Gateway&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Smart Human Body Sensor&lt;/li&gt;
+&lt;li&gt;Smart Door and Window Sensor&lt;/li&gt;
+&lt;li&gt;Smart Wireless Switch&lt;/li&gt;
+&lt;li&gt;Smart Gateway&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Plus&lt;/p&gt;
-&lt;p&gt;5.Smart Temperature and Humidity Sensors
-6.Yeelights
-7.Smart Wifi Sockets
-8.Smart Wifi Sockets Zigbee version&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Smart Temperature and Humidity Sensors&lt;/li&gt;
+&lt;li&gt;Yeelights&lt;/li&gt;
+&lt;li&gt;Smart Wifi Sockets&lt;/li&gt;
+&lt;li&gt;Smart Wifi Sockets Zigbee version&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Automation are done via Smart Gateway using Mi Home iOS app.&lt;/p&gt;
-&lt;p&gt;Also runs a Homebridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.&lt;/p&gt;
+&lt;p&gt;Also runs a HomeBridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.&lt;/p&gt;
 &lt;p&gt;However, was not happy that having to use iPhone for Siri, but wrongly bought an Apple TV thought it would allow constant-listen mode for voice commands. Obviously, it can&apos;t...Kind of stupid, but Apple just released a new product, of course...&lt;/p&gt;
 &lt;p&gt;Anyway, since Google Home will be released in Australia soon, so bought a Google Home in hope of achieving always-on-hands-free voice command for home automation.&lt;/p&gt;
 &lt;p&gt;But...after setting it up, realised that it doesn&apos;t support Xiaomi product out of box. Support Phillipe Hue, but I don&apos;t want to switch back now as the wireless switch is working quite well, even my wife likes to use it.&lt;/p&gt;
@@ -41,10 +45,11 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;With a developer mind, my thoughts were: fine, I will just write some APIs to integrate them.&lt;/p&gt;
-&lt;p&gt;Good thing is that something already can: &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; and &lt;a href=&quot;https://github.com/lazcad/homeassistant&quot;&gt;HomeAssistant Xiaomi Hub Component by Rave (Lazcad)&lt;/a&gt; !&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Good thing is that something already can:&lt;/strong&gt; &lt;a href=&quot;https://home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; and &lt;a href=&quot;https://github.com/lazcad/homeassistant&quot;&gt;HomeAssistant Xiaomi Hub Component by Rave (Lazcad)&lt;/a&gt; !&lt;/p&gt;
 &lt;p&gt;With the custom component, Home assistant supports Xiaomi Smart Gateway with all the Zigbee devices plus Yeelights. It can also integrate with IFTTT via RESTful Service calls.&lt;/p&gt;
 &lt;p&gt;Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!&lt;/p&gt;
-&lt;p&gt;With Home Assistant, there are heaps more that can be done, but that&apos;s up to you now...&lt;/p&gt;</description>
+&lt;p&gt;With Home Assistant, there are heaps more that can be done, but that&apos;s up to you now...&lt;/p&gt;
+&lt;p&gt;BTW, got an error which says something like something is also listen on some ports or addresses. It turns to be Home Assistant Xiaomi Component was conflicting with HomeBridge which uses the same library. Just need to kill HomeBridge, the issue should be gone.&lt;/p&gt;</description>
     </item>
     
     <item>
