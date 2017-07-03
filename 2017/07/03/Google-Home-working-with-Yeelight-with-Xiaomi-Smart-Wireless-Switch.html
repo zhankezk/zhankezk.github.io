@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Thoughts on Sitecore Experience Accelerator</title>
+		<title>Google Home working with Yeelight with Xiaomi Smart Wireless Switch</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -44,19 +44,45 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Thoughts on Sitecore Experience Accelerator </h1>
-		<span class="postdate">29 June, 2017
+		<h1> Google Home working with Yeelight with Xiaomi Smart Wireless Switch </h1>
+		<span class="postdate"> 3 July, 2017
 			
 		</span>
-		<p>Sitecore Experience Accelerator uses pre-build renderings and data model. The export and import for frontend styling plus content populating process that can start at the same time are good, but based on my understanding, if the modules your webisite use are complicate, then the &quot;wireframe&quot; website will be far off from the final website you want to build, also all renderings and data models need to be rebuild or pre-build even before UX plays with SXA.</p>
-<p>So looks like there's not much point to use SXA for big website build except for small or sub-branding sites.</p>
-<p>However with tennants setup, it allows creating websites and bind domains all within CMSs and the whole new strucuture that SXA uses to orginaze websites and assets are looking very clean. So would be make sense to only use SXA shell to build a global solution, but for modules, all build them in traditional ways?</p>
-<p>Just a brain dump... Something to think about...</p>
+		<p>Was using Phillipe Hue before, later changed to Xiaomi products.</p>
+<p>Got Xiaomi Smart Home Suite including</p>
+<p>1.Smart Human Body Sensor
+2.Smart Door and Window Sensor
+3.Smart Wireless Switch
+4.Smart Gateway</p>
+<p>Plus</p>
+<p>5.Smart Temperature and Humidity Sensors
+6.Yeelights
+7.Smart Wifi Sockets
+8.Smart Wifi Sockets Zigbee version</p>
+<p>Automation are done via Smart Gateway using Mi Home iOS app.</p>
+<p>Also runs a Homebridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.</p>
+<p>However, was not happy that having to use iPhone for Siri, but wrongly bought an Apple TV thought it would allow constant-listen mode for voice commands. Obviously, it can't...Kind of stupid, but Apple just released a new product, of course...</p>
+<p>Anyway, since Google Home will be released in Australia soon, so bought a Google Home in hope of achieving always-on-hands-free voice command for home automation.</p>
+<p>But...after setting it up, realised that it doesn't support Xiaomi product out of box. Support Phillipe Hue, but I don't want to switch back now as the wireless switch is working quite well, even my wife likes to use it.</p>
+<p>So the paradoxes are:</p>
+<ol>
+<li>
+<p>Google Home works with IFTTT which has a Yeelight channel, however it only works with Xiaomi account in Singapore region. But, Xiaomi account in Singapore region doesn't have full automation capability in Mi Home App...All the automation will stop working if I went ahead.</p>
+</li>
+<li>
+<p>On the other hand, if I use Phillipe Hue bulb with Google Home, Xiaomi Wireless Switch won't be able to control it anymore and automation won't work as well.</p>
+</li>
+</ol>
+<p>With a developer mind, my thoughts were: fine, I will just write some APIs to integrate them.</p>
+<p>Good thing is that something already can: <a href="https://home-assistant.io/">Home Assistant</a> and <a href="https://github.com/lazcad/homeassistant">HomeAssistant Xiaomi Hub Component by Rave (Lazcad)</a> !</p>
+<p>With the custom component, Home assistant supports Xiaomi Smart Gateway with all the Zigbee devices plus Yeelights. It can also integrate with IFTTT via RESTful Service calls.</p>
+<p>Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!</p>
+<p>With Home Assistant, there are heaps more that can be done, but that's up to you now...</p>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2017/04/10/Sitecore-Consulting-in-the-most-downtoearth-way.html" title="Previous Post: Sitecore Consulting in the most down-to-earth way">&larr; Sitecore Consulting in the most down-to-earth way</a>  </div> 
-	<div class="right">  <a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html" title="next Post: Google Home working with Yeelight with Xiaomi Smart Wireless Switch">Google Home working with Yeelight with Xiaomi Smart Wireless Switch &rarr; </a>  </div> 
+	<div class="left">  <a href="/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html" title="Previous Post: Thoughts on Sitecore Experience Accelerator">&larr; Thoughts on Sitecore Experience Accelerator</a>  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

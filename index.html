@@ -47,7 +47,52 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html">Thoughts on Sitecore Experience Accelerator</a></h1>
+					<h1><a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html">Google Home working with Yeelight with Xiaomi Smart Wireless Switch</a></h1>
+					<div class="postdate"> 3 July, 2017
+						<ul>
+						
+						</ul>
+					</div>
+					<p>Was using Phillipe Hue before, later changed to Xiaomi products.</p>
+<p>Got Xiaomi Smart Home Suite including</p>
+<p>1.Smart Human Body Sensor
+2.Smart Door and Window Sensor
+3.Smart Wireless Switch
+4.Smart Gateway</p>
+<p>Plus</p>
+<p>5.Smart Temperature and Humidity Sensors
+6.Yeelights
+7.Smart Wifi Sockets
+8.Smart Wifi Sockets Zigbee version</p>
+<p>Automation are done via Smart Gateway using Mi Home iOS app.</p>
+<p>Also runs a Homebridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.</p>
+<p>However, was not happy that having to use iPhone for Siri, but wrongly bought an Apple TV thought it would allow constant-listen mode for voice commands. Obviously, it can't...Kind of stupid, but Apple just released a new product, of course...</p>
+<p>Anyway, since Google Home will be released in Australia soon, so bought a Google Home in hope of achieving always-on-hands-free voice command for home automation.</p>
+<p>But...after setting it up, realised that it doesn't support Xiaomi product out of box. Support Phillipe Hue, but I don't want to switch back now as the wireless switch is working quite well, even my wife likes to use it.</p>
+<p>So the paradoxes are:</p>
+<ol>
+<li>
+<p>Google Home works with IFTTT which has a Yeelight channel, however it only works with Xiaomi account in Singapore region. But, Xiaomi account in Singapore region doesn't have full automation capability in Mi Home App...All the automation will stop working if I went ahead.</p>
+</li>
+<li>
+<p>On the other hand, if I use Phillipe Hue bulb with Google Home, Xiaomi Wireless Switch won't be able to control it anymore and automation won't work as well.</p>
+</li>
+</ol>
+<p>With a developer mind, my thoughts were: fine, I will just write some APIs to integrate them.</p>
+<p>Good thing is that something already can: <a href="https://home-assistant.io/">Home Assistant</a> and <a href="https://github.com/lazcad/homeassistant">HomeAssistant Xiaomi Hub Component by Rave (Lazcad)</a> !</p>
+<p>With the custom component, Home assistant supports Xiaomi Smart Gateway with all the Zigbee devices plus Yeelights. It can also integrate with IFTTT via RESTful Service calls.</p>
+<p>Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!</p>
+<p>With Home Assistant, there are heaps more that can be done, but that's up to you now...</p>
+					<br />
+					<a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html">Thoughts on Sitecore Experience Accelerator</a></h2>
 					<div class="postdate">29 June, 2017
 						<ul>
 						
@@ -57,7 +102,6 @@
 <p>So looks like there's not much point to use SXA for big website build except for small or sub-branding sites.</p>
 <p>However with tennants setup, it allows creating websites and bind domains all within CMSs and the whole new strucuture that SXA uses to orginaze websites and assets are looking very clean. So would be make sense to only use SXA shell to build a global solution, but for modules, all build them in traditional ways?</p>
 <p>Just a brain dump... Something to think about...</p>
-					<br />
 					<a href="/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -222,79 +266,14 @@ results.Warnings.Add(<span class="hljs-string">&quot;The Height field does not c
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a></h2>
-					<div class="postdate"> 4 May, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p><h3>Sitecore Version:</h3></p>
-<p>8.0 rev. 150621 (8.0 Update-4)</p>
-<h3>Issues:</h3>
-<p>There were actually 2 issues.</p>
-<ul>
-<li>There was once user removed a page test from homepage on authoring server. After a while, the homepage on delivery instance went down and was giving 500 errors with this exception in the logs:</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-number">7092</span> <span class="hljs-number">2016</span>:<span class="hljs-number">05</span>:<span class="hljs-number">03</span> <span class="hljs-number">18</span>:<span class="hljs-number">12</span>:<span class="hljs-number">32</span> ERROR Application error.
-Exception: System.Web.HttpUnhandledException
-Message: Exception of type <span class="hljs-string">'System.Web.HttpUnhandledException'</span> was thrown.
-Source: System.Web
-   at System.Web.UI.Page.HandleError(Exception e)
-   at System.Web.UI.Page.ProcessRequestMain(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)
-   at System.Web.UI.Page.ProcessRequest(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)
-   at System.Web.UI.Page.ProcessRequest()
-   at System.Web.UI.Page.ProcessRequest(HttpContext context)
-   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, <span class="hljs-built_in">Boolean</span>&amp; completedSynchronously)
-<p>Nested Exception</p>
-<p>Exception: System.InvalidOperationException
-Message: The specified variable does not exist <span class="hljs-keyword">in</span> the test set
-Source: Sitecore.Analytics
-at Sitecore.Analytics.Testing.TestCombination.GetValue(Guid variableId)
-at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Test(List`<span class="hljs-number">1</span> renderings, RenderingReference rendering, Item contextItem, Item variableItem)
-at Sitecore.Analytics.Pipelines.InsertRenderings.Testing.Evaluate(InsertRenderingsArgs args, Item contextItem)
-at (<span class="hljs-built_in">Object</span> , <span class="hljs-built_in">Object</span>[] )
-at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
-at Sitecore.Pipelines.RenderLayout.InsertRenderings.Process(RenderLayoutArgs args)
-at (<span class="hljs-built_in">Object</span> , <span class="hljs-built_in">Object</span>[] )
-at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
-at Sitecore.Layouts.PageContext.BuildControlTree(<span class="hljs-built_in">Object</span> sender, EventArgs e)
-at System.Web.UI.Page.PerformPreInit()
-at System.Web.UI.Page.ProcessRequestMain(<span class="hljs-built_in">Boolean</span> includeStagesBeforeAsyncPoint, <span class="hljs-built_in">Boolean</span> includeStagesAfterAsyncPoint)</p>
-<p></code></pre></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The issue was later resolved when app pool was restarted and never happened since, so nobody dug into it.</p>
-<ul>
-<li>Recently users found that A/B testing(or MVT testing) doesn't work on the website. After they set it up in Authoring instance, you can see the tests from authoring urls, but on delivery instance urls, nothing happens, and after about a day, they started to work on delivery instances.(Which I think it must be the cache was cleared for some reason, maybe app pool scheduled recycle.)</li>
-</ul>
-<h3>Causes</h3>
-<p>In short, the cache ActiveTests is not being cleared on Delivery instance. In Sitecore.ContentTesting.config. ActiveTestCacheClearer handler is defined to clear cache for "publish:end" event but not "publish:end:remote":</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">event</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"publish:end"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">handler</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"Process"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">event</span>&gt;</span>
-</code></pre>
-<h3>Solution</h3>
-<p>Add the handler to "publish:end:remote" to Sitecore.ContentTesting.config:</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-title">event</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"publish:end:remote"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">handler</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.ContentTesting.Events.ActiveTestCacheClearer, Sitecore.ContentTesting"</span> <span class="hljs-attribute">method</span>=<span class="hljs-value">"Process"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">event</span>&gt;</span>
-</code></pre>
-<h3>More</h3>
-<p>Keep reading if you want to know more about my experience on this one.</p>
-<p>To me this felt like a big issue because delivery instance would always face issues with testing. So I checked and make sure this is issue with Sitecore out-of-box configurations, which is 8.0 rev. 150621 (8.0 Update-4). Then I checked few more version, the issue has been fixed starting from Sitecore 8.0 rev. 151127. And in the latest 8.1 versions, comments are added as well for more clarity.</p>
-<p>Found a good cache debugging plugin while investigating: <a href="https://marketplace.sitecore.net/en/Modules/Sitecore_Cache_Admin.aspx">Sitecore Cache Admin</a>, it shows all the cache and you can clear individual ones.</p>
-<p>May the force be with you!</p>
-					<a href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 04 May </span> <a class="postlink" href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 02 May </span> <a class="postlink" href="/2016/05/02/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html">HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights</a>
