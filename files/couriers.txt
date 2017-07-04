@@ -1,5 +1,5 @@
 {
-   "version":2017070321360,
+   "version":2017070321370,
    "couriers":[
       {
          "courierName":"AOL",
@@ -77,7 +77,8 @@
          "prefixes":[
             "7700",
             "A4",
-            "ZA"
+            "ZA",
+	    "ZH"
          ]
       },
       {
