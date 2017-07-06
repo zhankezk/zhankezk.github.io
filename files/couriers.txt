@@ -1,5 +1,5 @@
 {
-   "version":2017070321370,
+   "version":2017070421370,
    "couriers":[
       {
          "courierName":"AOL",
@@ -154,7 +154,8 @@
 	  {
 	  	"courierName":"Starex",
 		  "prefixes":[
-		  	"SE"
+		  	"SE",
+			"SY"
 		  ]
 	  },
 	  {
