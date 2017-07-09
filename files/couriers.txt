@@ -1,5 +1,5 @@
 {
-   "version":2017070421370,
+   "version":2017070921372,
    "couriers":[
       {
          "courierName":"AOL",
@@ -163,6 +163,25 @@
 		  "prefixes":[
 		  	"ZY"
 		  ]
-	  }
+	  },
+        {
+            "courierName":"BigExpress",
+		  "prefixes":[
+		  	"BE"
+		  ]
+        },
+        {
+            "courierName":"Freakyquick",
+		  "prefixes":[
+		  	"FQ"
+		  ]
+        }
+        ,
+        {
+            "courierName":"Surpassgo",
+		  "prefixes":[
+		  	"SL"
+		  ]
+        }
    ]
 }
