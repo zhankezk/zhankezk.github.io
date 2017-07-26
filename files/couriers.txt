@@ -1,5 +1,5 @@
 {
-   "version":2017070921372,
+   "version":2017072621372,
    "couriers":[
       {
          "courierName":"AOL",
@@ -37,7 +37,8 @@
          "courierName":"GiantPost",
          "prefixes":[
             "GT",
-            "M04"
+            "M04",
+	    "ADE"
          ]
       },
       {
