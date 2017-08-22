@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Google Home working with Yeelight with Xiaomi Smart Wireless Switch</title>
+		<title>Deploy Sitecore Azure AppService Packages on Local IIS</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -44,50 +44,29 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Google Home working with Yeelight with Xiaomi Smart Wireless Switch </h1>
-		<span class="postdate"> 3 July, 2017
+		<h1> Deploy Sitecore Azure AppService Packages on Local IIS </h1>
+		<span class="postdate">22 August, 2017
 			
 		</span>
-		<p>Was using Phillipe Hue before, later changed to Xiaomi products.</p>
-<p>Got Xiaomi Smart Home Suite including</p>
-<ol>
-<li>Smart Human Body Sensor</li>
-<li>Smart Door and Window Sensor</li>
-<li>Smart Wireless Switch</li>
-<li>Smart Gateway</li>
-</ol>
-<p>Plus</p>
-<ol start="5">
-<li>Smart Temperature and Humidity Sensors</li>
-<li>Yeelights</li>
-<li>Smart Wifi Sockets</li>
-<li>Smart Wifi Sockets Zigbee version</li>
-</ol>
-<p>Automation are done via Smart Gateway using Mi Home iOS app.</p>
-<p>Also runs a HomeBridge instance so Yeelights and Zigbee Wifi Sockets can be controlled by Siri on iOS devices.</p>
-<p>However, was not happy that having to use iPhone for Siri, but wrongly bought an Apple TV thought it would allow constant-listen mode for voice commands. Obviously, it can't...Kind of stupid, but Apple just released a new product, of course...</p>
-<p>Anyway, since Google Home will be released in Australia soon, so bought a Google Home in hope of achieving always-on-hands-free voice command for home automation.</p>
-<p>But...after setting it up, realised that it doesn't support Xiaomi product out of box. Support Phillipe Hue, but I don't want to switch back now as the wireless switch is working quite well, even my wife likes to use it.</p>
-<p>So the paradoxes are:</p>
-<ol>
-<li>
-<p>Google Home works with IFTTT which has a Yeelight channel, however it only works with Xiaomi account in Singapore region. But, Xiaomi account in Singapore region doesn't have full automation capability in Mi Home App...All the automation will stop working if I went ahead.</p>
-</li>
-<li>
-<p>On the other hand, if I use Phillipe Hue bulb with Google Home, Xiaomi Wireless Switch won't be able to control it anymore and automation won't work as well.</p>
-</li>
-</ol>
-<p>With a developer mind, my thoughts were: fine, I will just write some APIs to integrate them.</p>
-<p><strong>Good thing is that something already can:</strong> <a href="https://home-assistant.io/">Home Assistant</a> and <a href="https://github.com/lazcad/homeassistant">HomeAssistant Xiaomi Hub Component by Rave (Lazcad)</a> !</p>
-<p>With the custom component, Home assistant supports Xiaomi Smart Gateway with all the Zigbee devices plus Yeelights. It can also integrate with IFTTT via RESTful Service calls.</p>
-<p>Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!</p>
-<p>With Home Assistant, there are heaps more that can be done, but that's up to you now...</p>
-<p>BTW, got an error which says something like something is also listen on some ports or addresses. It turns to be Home Assistant Xiaomi Component was conflicting with HomeBridge which uses the same library. Just need to kill HomeBridge, the issue should be gone.</p>
+		<p>Before moving to a complete Azure environment for Sitecore. Our current work are on-premise, however in order to keep a consistent deployment method. We are looking to use WebDeploy for local deployment as well. Since Sitecore provides pre-built WebDeploy packages for Azure, I was trying to test them out in local so we could potentially borrow it for local setup. But of course it requires some configuration changes since it's setup to use Azure services like Application Insights and search indexes stuff.</p>
+<p>Package I used is Sitecore 8.2 rev. 170614_single.scwdp.zip.</p>
+<p>It requires a SetParameters.xml file based on the parameters.xml inside of the package. Of course I can manually create it, but being lazy, I copied the parameters.xml into a project in Visual Studio and generated a WebDeploy package, which generate the SetParameters.xml for me automatically.</p>
+<p>Then just call the commands from command prompt:</p>
+<pre><code>&quot;C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe&quot; -source:package='C:\xxx\Sitecore 8.2 rev. 170614_singlenew.scwdp.zip' -dest:auto,includeAcls=&quot;False&quot; -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:&quot;C:\xxx\Sitecore 8.2 rev. 170614_single.scwdp.SetParameters.xml&quot;
+</code></pre>
+<p>However keep getting the SQL error while it's creating database users:</p>
+<pre><code>You can only create a user with a password in a contained database
+</code></pre>
+<p>Turns out it could a bug with the version of SQL management studio was used to generate dacpac files. I had to import the dacpac files manually into a SQL server and Update all database options &quot;Containment Type&quot; to &quot;Partial&quot;:</p>
+<p><img src="/files/Image.png" alt="Containment Type" /></p>
+<p>Then use Visual Studio to extract them again to dacpac files and repackage the WebDeploy package.</p>
+<p>After that, the SQL error was gone and the package was able to install successfully.</p>
+<p>Will create a post in the future for all the configuration changes required.</p>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2017/06/29/Thoughts-on-Sitecore-Experience-Accelerator.html" title="Previous Post: Thoughts on Sitecore Experience Accelerator">&larr; Thoughts on Sitecore Experience Accelerator</a>  </div> 
-	<div class="right">  <a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html" title="next Post: Deploy Sitecore Azure AppService Packages on Local IIS">Deploy Sitecore Azure AppService Packages on Local IIS &rarr; </a>  </div> 
+	<div class="left">  <a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html" title="Previous Post: Google Home working with Yeelight with Xiaomi Smart Wireless Switch">&larr; Google Home working with Yeelight with Xiaomi Smart Wireless Switch</a>  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

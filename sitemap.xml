@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html</loc>
     <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -299,6 +306,8 @@
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
+	
+  
 	
   
 	

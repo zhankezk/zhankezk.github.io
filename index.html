@@ -47,7 +47,36 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html">Google Home working with Yeelight with Xiaomi Smart Wireless Switch</a></h1>
+					<h1><a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html">Deploy Sitecore Azure AppService Packages on Local IIS</a></h1>
+					<div class="postdate">22 August, 2017
+						<ul>
+						
+						</ul>
+					</div>
+					<p>Before moving to a complete Azure environment for Sitecore. Our current work are on-premise, however in order to keep a consistent deployment method. We are looking to use WebDeploy for local deployment as well. Since Sitecore provides pre-built WebDeploy packages for Azure, I was trying to test them out in local so we could potentially borrow it for local setup. But of course it requires some configuration changes since it's setup to use Azure services like Application Insights and search indexes stuff.</p>
+<p>Package I used is Sitecore 8.2 rev. 170614_single.scwdp.zip.</p>
+<p>It requires a SetParameters.xml file based on the parameters.xml inside of the package. Of course I can manually create it, but being lazy, I copied the parameters.xml into a project in Visual Studio and generated a WebDeploy package, which generate the SetParameters.xml for me automatically.</p>
+<p>Then just call the commands from command prompt:</p>
+<pre><code>&quot;C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe&quot; -source:package='C:\xxx\Sitecore 8.2 rev. 170614_singlenew.scwdp.zip' -dest:auto,includeAcls=&quot;False&quot; -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:&quot;C:\xxx\Sitecore 8.2 rev. 170614_single.scwdp.SetParameters.xml&quot;
+</code></pre>
+<p>However keep getting the SQL error while it's creating database users:</p>
+<pre><code>You can only create a user with a password in a contained database
+</code></pre>
+<p>Turns out it could a bug with the version of SQL management studio was used to generate dacpac files. I had to import the dacpac files manually into a SQL server and Update all database options &quot;Containment Type&quot; to &quot;Partial&quot;:</p>
+<p><img src="/files/Image.png" alt="Containment Type" /></p>
+<p>Then use Visual Studio to extract them again to dacpac files and repackage the WebDeploy package.</p>
+<p>After that, the SQL error was gone and the package was able to install successfully.</p>
+<p>Will create a post in the future for all the configuration changes required.</p>
+					<br />
+					<a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html">Google Home working with Yeelight with Xiaomi Smart Wireless Switch</a></h2>
 					<div class="postdate"> 3 July, 2017
 						<ul>
 						
@@ -88,7 +117,6 @@
 <p>Together with the Google Assistant channel in IFTTT, finally I can just customize a command and turn on the Yeelight that are also being controlled by the smart switch without losing any existing automations!</p>
 <p>With Home Assistant, there are heaps more that can be done, but that's up to you now...</p>
 <p>BTW, got an error which says something like something is also listen on some ports or addresses. It turns to be Home Assistant Xiaomi Component was conflicting with HomeBridge which uses the same library. Just need to kill HomeBridge, the issue should be gone.</p>
-					<br />
 					<a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -190,91 +218,14 @@ Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/D
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a></h2>
-					<div class="postdate"> 8 July, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>Due to client request, I have to remove all the warnings about missing alt text on images in Sitecore(I know, don't ask).</p>
-<p>I was able to do that for every where except in the folder view in Media Library, where you see all the thumbnails of images and folders. It displays warnings beneath the image and if you mouse over "1 warning", it says "The Alt field is empty."</p>
-<p><img src="/files/media_warning.png" alt="Missing Alt field in Sitecore Media Library" /></p>
-<p>After some digging, I found that this validation is defined in web.config under this path:</p>
-<blockquote>
-<p>/configuration/sitecore/mediaLibrary/mediaTypes/mediaType/mediaValidator</p>
-</blockquote>
-<p>This is where it's defined for JPEG images:</p>
-<pre><code class="language-xml hljs">         <span class="hljs-tag">&lt;<span class="hljs-title">mediaType</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"JPEG image"</span> <span class="hljs-attribute">extensions</span>=<span class="hljs-value">"jpg, jpeg, jpe, jfif"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">mimeType</span>&gt;</span>image/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">mimeType</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">forceDownload</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-title">forceDownload</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">sharedTemplate</span>&gt;</span>system/media/unversioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">sharedTemplate</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">versionedTemplate</span>&gt;</span>system/media/versioned/jpeg<span class="hljs-tag">&lt;/<span class="hljs-title">versionedTemplate</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">mediaValidator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageValidator"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">thumbnails</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">generator</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.ImageThumbnailGenerator, Sitecore.Kernel"</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-title">extension</span>&gt;</span>png<span class="hljs-tag">&lt;/<span class="hljs-title">extension</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-title">generator</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">width</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">width</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">height</span>&gt;</span>150<span class="hljs-tag">&lt;/<span class="hljs-title">height</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">backgroundColor</span>&gt;</span>#FFFFFF<span class="hljs-tag">&lt;/<span class="hljs-title">backgroundColor</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-title">thumbnails</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-title">prototypes</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-title">media</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"Sitecore.Resources.Media.JpegMedia, Sitecore.Kernel"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-title">prototypes</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-title">mediaType</span>&gt;</span>
-</code></pre>
-<p>And in Sitecore.Resources.Media.ImageValidator, all the validation and messages are hard-coded:</p>
-<pre><code class="language-csharp hljs cs"><span class="hljs-keyword">using</span> Sitecore.Configuration;
-<span class="hljs-keyword">using</span> Sitecore.Data.Items;
-<span class="hljs-keyword">using</span> Sitecore.Diagnostics;
-<p><span class="hljs-keyword">namespace</span> <span class="hljs-title">Sitecore</span>.<span class="hljs-title">Resources</span>.<span class="hljs-title">Media</span>
-{
-<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Represents a Media Validator.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ImageValidator</span> : <span class="hljs-title">MediaValidator</span>
-{
-<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;summary&gt;</span>Validates the specified output.<span class="hljs-xmlDocTag">&lt;/summary&gt;</span></span>
-<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;item&quot;&gt;</span>The item.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
-<span class="hljs-comment"><span class="hljs-xmlDocTag">///</span> <span class="hljs-xmlDocTag">&lt;param name=&quot;results&quot;&gt;</span>The warnings.<span class="hljs-xmlDocTag">&lt;/param&gt;</span></span>
-<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ValidateItem</span><span class="hljs-params">(MediaItem item, MediaValidatorResult results)</span>
-</span>{
-Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) item, <span class="hljs-string">&quot;item&quot;</span>);
-Assert.ArgumentNotNull((<span class="hljs-keyword">object</span>) results, <span class="hljs-string">&quot;results&quot;</span>);
-<span class="hljs-keyword">base</span>.ValidateItem(item, results);
-<span class="hljs-keyword">if</span> (item.Size &gt;= Settings.Media.MaxSizeInMemory)
-results.Warnings.Add(<span class="hljs-string">&quot;This image is too big to be resized.&quot;</span>);
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.Alt))
-results.Warnings.Add(<span class="hljs-string">&quot;The Alt field is empty.&quot;</span>);
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>]))
-results.Warnings.Add(<span class="hljs-string">&quot;The Width field is empty.&quot;</span>);
-<span class="hljs-function"><span class="hljs-keyword">else</span> <span class="hljs-title">if</span> <span class="hljs-params">(MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Width&quot;</span>], -<span class="hljs-number">1</span>)</span> </span>== -<span class="hljs-number">1</span>)
-results.Warnings.Add(<span class="hljs-string">&quot;The Width field does not contain an integer.&quot;</span>);
-<span class="hljs-keyword">if</span> (<span class="hljs-keyword">string</span>.IsNullOrEmpty(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>]))
-{
-results.Warnings.Add(<span class="hljs-string">&quot;The Height field is empty.&quot;</span>);
-}
-<span class="hljs-keyword">else</span>
-{
-<span class="hljs-keyword">if</span> (MainUtil.GetInt(item.InnerItem[<span class="hljs-string">&quot;Height&quot;</span>], -<span class="hljs-number">1</span>) != -<span class="hljs-number">1</span>)
-<span class="hljs-keyword">return</span>;
-results.Warnings.Add(<span class="hljs-string">&quot;The Height field does not contain an integer.&quot;</span>);
-}
-}
-}
-}
-</code></pre></p>
-<p>So the solution is just to make a custom type that's similar to this but without the alt text validations.</p>
-					<a href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 08 Jul </span> <a class="postlink" href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 04 May </span> <a class="postlink" href="/2016/05/04/Sitecore-ContentMVT-Testing-doesnt-update-in-Delivery-Instances.html">Sitecore Content/MVT Testing doesn't update in Delivery Instances</a>

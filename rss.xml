@@ -6,8 +6,30 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sun, 09 Jul 2017 12:01:12 %z</pubDate>
-    <lastBuildDate>Sun, 09 Jul 2017 12:01:12 %z</lastBuildDate>
+    <pubDate>Tue, 22 Aug 2017 08:03:30 %z</pubDate>
+    <lastBuildDate>Tue, 22 Aug 2017 08:03:30 %z</lastBuildDate>
+    
+    <item>
+      <title>Deploy Sitecore Azure AppService Packages on Local IIS</title>
+      <link>http://kezhan.info/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html</guid>
+      <description>&lt;p&gt;Before moving to a complete Azure environment for Sitecore. Our current work are on-premise, however in order to keep a consistent deployment method. We are looking to use WebDeploy for local deployment as well. Since Sitecore provides pre-built WebDeploy packages for Azure, I was trying to test them out in local so we could potentially borrow it for local setup. But of course it requires some configuration changes since it&apos;s setup to use Azure services like Application Insights and search indexes stuff.&lt;/p&gt;
+&lt;p&gt;Package I used is Sitecore 8.2 rev. 170614_single.scwdp.zip.&lt;/p&gt;
+&lt;p&gt;It requires a SetParameters.xml file based on the parameters.xml inside of the package. Of course I can manually create it, but being lazy, I copied the parameters.xml into a project in Visual Studio and generated a WebDeploy package, which generate the SetParameters.xml for me automatically.&lt;/p&gt;
+&lt;p&gt;Then just call the commands from command prompt:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe&amp;quot; -source:package=&apos;C:\xxx\Sitecore 8.2 rev. 170614_singlenew.scwdp.zip&apos; -dest:auto,includeAcls=&amp;quot;False&amp;quot; -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:&amp;quot;C:\xxx\Sitecore 8.2 rev. 170614_single.scwdp.SetParameters.xml&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However keep getting the SQL error while it&apos;s creating database users:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;You can only create a user with a password in a contained database
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Turns out it could a bug with the version of SQL management studio was used to generate dacpac files. I had to import the dacpac files manually into a SQL server and Update all database options &amp;quot;Containment Type&amp;quot; to &amp;quot;Partial&amp;quot;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/files/Image.png&quot; alt=&quot;Containment Type&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Then use Visual Studio to extract them again to dacpac files and repackage the WebDeploy package.&lt;/p&gt;
+&lt;p&gt;After that, the SQL error was gone and the package was able to install successfully.&lt;/p&gt;
+&lt;p&gt;Will create a post in the future for all the configuration changes required.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Google Home working with Yeelight with Xiaomi Smart Wireless Switch</title>
