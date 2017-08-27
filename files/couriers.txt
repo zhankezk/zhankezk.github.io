@@ -1,104 +1,90 @@
 {
-   "version":2017072621372,
-   "couriers":[
-      {
-         "courierName":"AOL",
-         "prefixes":[
+    "version": 2017082700000,
+    "couriers": [{
+        "courierName": "AOL",
+        "prefixes": [
             "AL",
             "TD",
             "AT"
-         ]
-      },
-      {
-         "courierName":"CqZh",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "CqZh",
+        "prefixes": [
             "900",
             "980"
-         ]
-      },
-      {
-         "courierName":"EfsPOST",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "EfsPOST",
+        "prefixes": [
             "EF",
             "HE"
-         ]
-      },
-      {
-         "courierName":"EWE",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "EWE",
+        "prefixes": [
             "E95",
             "S15",
             "B97",
             "SO",
             "PSD"
-         ]
-      },
-      {
-         "courierName":"GiantPost",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "GiantPost",
+        "prefixes": [
             "GT",
             "M04",
-	    "ADE"
-         ]
-      },
-      {
-         "courierName":"PcaExpress",
-         "prefixes":[
+            "ADE"
+        ]
+    }, {
+        "courierName": "PcaExpress",
+        "prefixes": [
             "PE"
-         ]
-      },
-      {
-         "courierName":"Sto",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "Sto",
+        "prefixes": [
             "553"
-         ]
-      },
-      {
-         "courierName":"30Post",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "30Post",
+        "prefixes": [
             "68",
             "K8",
             "I3"
-         ]
-      },
-      {
-         "courierName":"AjExpress",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "AjExpress",
+        "prefixes": [
             "AJ"
-         ]
-      },
-      {
-         "courierName":"AuSpeed",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "AuSpeed",
+        "prefixes": [
             "ASL"
-         ]
-      },
-      {
-         "courierName":"AuExpress",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "AuExpress",
+        "prefixes": [
             "7700",
             "A4",
             "ZA",
-	    "ZH"
-         ]
-      },
-      {
-         "courierName":"Auod",
-         "prefixes":[
+            "ZH"
+        ]
+    }, {
+        "courierName": "Auod",
+        "prefixes": [
             "OD",
             "200",
             "UB"
-         ]
-      },
-      {
-         "courierName":"AusExpress",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "AusExpress",
+        "prefixes": [
             "AU"
-         ]
-      },
-      {
-         "courierName":"BlueSky",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "BlueSky",
+        "prefixes": [
             "SD",
             "SS",
             "BM",
@@ -106,83 +92,79 @@
             "SQ",
             "TY",
             "BQ"
-         ]
-      },
-      {
-         "courierName":"ChnExp",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "ChnExp",
+        "prefixes": [
             "400"
-         ]
-      },
-      {
-         "courierName":"CnpEx",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "CnpEx",
+        "prefixes": [
             "1100",
             "ZZ"
-         ]
-      },
-      {
-         "courierName":"ExpressPlus",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "ExpressPlus",
+        "prefixes": [
             "141"
-         ]
-      },
-      {
-         "courierName":"XfExpress",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "XfExpress",
+        "prefixes": [
             "4400"
-         ]
-      },
-      {
-         "courierName":"ZhExpress",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "ZhExpress",
+        "prefixes": [
             "6600",
             "ZH"
-         ]
-      },
-      {
-         "courierName":"Topshey",
-         "prefixes":[
+        ]
+    }, {
+        "courierName": "Topshey",
+        "prefixes": [
             "8800"
-         ]
-      },
-	  {
-	  	"courierName":"Rainbow",
-		  "prefixes":[
-		  	"700"
-		  ]
-	  },
-	  {
-	  	"courierName":"Starex",
-		  "prefixes":[
-		  	"SE",
-			"SY"
-		  ]
-	  },
-	  {
-	  	"courierName":"Qexpress",
-		  "prefixes":[
-		  	"ZY"
-		  ]
-	  },
-        {
-            "courierName":"BigExpress",
-		  "prefixes":[
-		  	"BE"
-		  ]
-        },
-        {
-            "courierName":"Freakyquick",
-		  "prefixes":[
-		  	"FQ"
-		  ]
-        }
-        ,
-        {
-            "courierName":"Surpassgo",
-		  "prefixes":[
-		  	"SL"
-		  ]
-        }
-   ]
+        ]
+    }, {
+        "courierName": "Rainbow",
+        "prefixes": [
+            "700"
+        ]
+    }, {
+        "courierName": "Starex",
+        "prefixes": [
+            "SE",
+            "SY"
+        ]
+    }, {
+        "courierName": "Qexpress",
+        "prefixes": [
+            "ZY"
+        ]
+    }, {
+        "courierName": "BigExpress",
+        "prefixes": [
+            "BE"
+        ]
+    }, {
+        "courierName": "Freakyquick",
+        "prefixes": [
+            "FQ"
+        ]
+    }, {
+        "courierName": "Surpassgo",
+        "prefixes": [
+            "SL"
+        ]
+    }, {
+        "courierName": "TurtleExpress",
+        "prefixes": [
+            "TEX"
+        ]
+    }, {
+        "courierName": "Shlexp",
+        "prefixes": [
+            "SCY"
+        ]
+    }]
 }
