@@ -1,5 +1,5 @@
 {
-    "version": 2017082700000,
+    "version": 2017090100000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -165,6 +165,11 @@
         "courierName": "Shlexp",
         "prefixes": [
             "SCY"
+        ]
+    }, {
+        "courierName": "ArkExpress",
+        "prefixes": [
+            "AP"
         ]
     }]
 }
