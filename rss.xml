@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 22 Aug 2017 08:03:30 %z</pubDate>
-    <lastBuildDate>Tue, 22 Aug 2017 08:03:30 %z</lastBuildDate>
+    <pubDate>Sat, 02 Sep 2017 07:42:24 %z</pubDate>
+    <lastBuildDate>Sat, 02 Sep 2017 07:42:24 %z</lastBuildDate>
     
     <item>
       <title>Deploy Sitecore Azure AppService Packages on Local IIS</title>
