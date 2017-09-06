@@ -1,5 +1,5 @@
 {
-    "version": 2017090100000,
+    "version": 201709600000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -38,7 +38,8 @@
     }, {
         "courierName": "PcaExpress",
         "prefixes": [
-            "PE"
+            "PE",
+            "PV"
         ]
     }, {
         "courierName": "Sto",
