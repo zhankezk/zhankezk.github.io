@@ -1,5 +1,5 @@
 {
-    "version": 201709600000,
+    "version": 2017090600000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
