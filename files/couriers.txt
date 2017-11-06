@@ -1,5 +1,5 @@
 {
-    "version": 2017090600000,
+    "version": 2017110700000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -26,7 +26,8 @@
             "S15",
             "B97",
             "SO",
-            "PSD"
+            "PSD",
+            "AGO"
         ]
     }, {
         "courierName": "GiantPost",
