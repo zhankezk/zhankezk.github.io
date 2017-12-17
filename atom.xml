@@ -3,13 +3,31 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2017-09-02T07:42:24.6499057+00:00</updated>
+  <updated>2017-12-17T11:56:04.3869555+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2017/12/17/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2017/12/17/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html"/>
+    <title>TTS with Google Home on Home Assistant stopped working</title>
+    <updated>2017-12-17T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Last month, after upgrading Home Assistant to the latest version. tts.google_say stopped working. Every call to this service takes 3 to 5 secs and nothing happens.&lt;/p&gt;
+&lt;p&gt;To fix this, Google Home needs to be manually added to Home Assistant as a media player.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;media_player:    
+  - platform: cast    
+    host: 192.168.1.xxx    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IP address is your Google Home&apos;s IP address, recommanding setting up fixed IP in your router...&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html</id>

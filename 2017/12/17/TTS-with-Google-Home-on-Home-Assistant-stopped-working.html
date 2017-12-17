@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Deploy Sitecore Azure AppService Packages on Local IIS</title>
+		<title>TTS with Google Home on Home Assistant stopped working</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -44,29 +44,22 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Deploy Sitecore Azure AppService Packages on Local IIS </h1>
-		<span class="postdate">22 August, 2017
+		<h1> TTS with Google Home on Home Assistant stopped working </h1>
+		<span class="postdate">17 December, 2017
 			
 		</span>
-		<p>Before moving to a complete Azure environment for Sitecore. Our current work are on-premise, however in order to keep a consistent deployment method. We are looking to use WebDeploy for local deployment as well. Since Sitecore provides pre-built WebDeploy packages for Azure, I was trying to test them out in local so we could potentially borrow it for local setup. But of course it requires some configuration changes since it's setup to use Azure services like Application Insights and search indexes stuff.</p>
-<p>Package I used is Sitecore 8.2 rev. 170614_single.scwdp.zip.</p>
-<p>It requires a SetParameters.xml file based on the parameters.xml inside of the package. Of course I can manually create it, but being lazy, I copied the parameters.xml into a project in Visual Studio and generated a WebDeploy package, which generate the SetParameters.xml for me automatically.</p>
-<p>Then just call the commands from command prompt:</p>
-<pre><code>&quot;C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe&quot; -source:package='C:\xxx\Sitecore 8.2 rev. 170614_singlenew.scwdp.zip' -dest:auto,includeAcls=&quot;False&quot; -verb:sync -disableLink:AppPoolExtension -disableLink:ContentExtension -disableLink:CertificateExtension -setParamFile:&quot;C:\xxx\Sitecore 8.2 rev. 170614_single.scwdp.SetParameters.xml&quot;
+		<p>Last month, after upgrading Home Assistant to the latest version. tts.google_say stopped working. Every call to this service takes 3 to 5 secs and nothing happens.</p>
+<p>To fix this, Google Home needs to be manually added to Home Assistant as a media player.</p>
+<pre><code>media_player:    
+  - platform: cast    
+    host: 192.168.1.xxx    
 </code></pre>
-<p>However keep getting the SQL error while it's creating database users:</p>
-<pre><code>You can only create a user with a password in a contained database
-</code></pre>
-<p>Turns out it could a bug with the version of SQL management studio was used to generate dacpac files. I had to import the dacpac files manually into a SQL server and Update all database options &quot;Containment Type&quot; to &quot;Partial&quot;:</p>
-<p><img src="/files/Image.png" alt="Containment Type" /></p>
-<p>Then use Visual Studio to extract them again to dacpac files and repackage the WebDeploy package.</p>
-<p>After that, the SQL error was gone and the package was able to install successfully.</p>
-<p>Will create a post in the future for all the configuration changes required.</p>
+<p>IP address is your Google Home's IP address, recommanding setting up fixed IP in your router...</p>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2017/07/03/Google-Home-working-with-Yeelight-with-Xiaomi-Smart-Wireless-Switch.html" title="Previous Post: Google Home working with Yeelight with Xiaomi Smart Wireless Switch">&larr; Google Home working with Yeelight with Xiaomi Smart Wireless Switch</a>  </div> 
-	<div class="right">  <a href="/2017/12/17/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html" title="next Post: TTS with Google Home on Home Assistant stopped working">TTS with Google Home on Home Assistant stopped working &rarr; </a>  </div> 
+	<div class="left">  <a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html" title="Previous Post: Deploy Sitecore Azure AppService Packages on Local IIS">&larr; Deploy Sitecore Azure AppService Packages on Local IIS</a>  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

@@ -47,7 +47,29 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html">Deploy Sitecore Azure AppService Packages on Local IIS</a></h1>
+					<h1><a href="/2017/12/17/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html">TTS with Google Home on Home Assistant stopped working</a></h1>
+					<div class="postdate">17 December, 2017
+						<ul>
+						
+						</ul>
+					</div>
+					<p>Last month, after upgrading Home Assistant to the latest version. tts.google_say stopped working. Every call to this service takes 3 to 5 secs and nothing happens.</p>
+<p>To fix this, Google Home needs to be manually added to Home Assistant as a media player.</p>
+<pre><code>media_player:    
+  - platform: cast    
+    host: 192.168.1.xxx    
+</code></pre>
+<p>IP address is your Google Home's IP address, recommanding setting up fixed IP in your router...</p>
+					<br />
+					<a href="/2017/12/17/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html">Deploy Sitecore Azure AppService Packages on Local IIS</a></h2>
 					<div class="postdate">22 August, 2017
 						<ul>
 						
@@ -67,7 +89,6 @@
 <p>Then use Visual Studio to extract them again to dacpac files and repackage the WebDeploy package.</p>
 <p>After that, the SQL error was gone and the package was able to install successfully.</p>
 <p>Will create a post in the future for all the configuration changes required.</p>
-					<br />
 					<a href="/2017/08/22/Deploy-Sitecore-Azure-AppService-Packages-on-Local-IIS.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -155,73 +176,14 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html">Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</a></h2>
-					<div class="postdate">28 August, 2016
-						<ul>
-						
-						</ul>
-					</div>
-					<p>As an one-man casual mobile developer for a bascially-no-one-uses iOS app. Developing the app is fun but the tasks that're required to release the app are always so tedious.</p>
-<p>I developed the app using Xamarin.iOS and luckily Visual Studio Team Services(VSTS) just releases an Apple App Store extension which can automate the processes. Spent some time to set the whole thing up, was going to do a step-by-step tutorial, but thought why creating redundant stuff so just gonna share some issues I encountered along the way.</p>
-<p>The goal to achieve after setting this up should be:</p>
-<blockquote>
-<h2>Develop the code and check in, queue a build in VSTS. That's it.</h2>
-</blockquote>
-<p><strong>Tutorials I followed</strong></p>
-<ul>
-<li><a href="https://blog.xamarin.com/continuous-integration-for-ios-apps-with-visual-studio-team-services/">Continuous Integration for iOS Apps with Visual Studio Team Services</a></li>
-<li><a href="https://blogs.msdn.microsoft.com/visualstudioalm/2016/08/25/continuous-delivery-of-ios-applications-with-team-services/">Continuous Delivery of iOS Applications with Visual Studio Team Services</a></li>
-</ul>
-<p>They plus the links they references pretty much covers all setups required.</p>
-<p>Will start on issues now.</p>
-<p><strong>1. While trying to export P12 certificate in Xcode, "Export" is greyed out.</strong></p>
-<p>If you managed to export the certificate from KeyChain, when you build in VSTS, it still gives you the error "1 identity imported." then "0 valid identities found".</p>
-<p>Solution Link: <a href="http://stackoverflow.com/questions/35402862/this-certificate-has-an-invalid-issuer-keychain-marks-all-certificates-as-inv">This certificate has an invalid issuer : Keychain marks all certificates as “Invalid Issuer”</a></p>
-<p>After deleting expired certificates and installed the downloaded AppleWWDRCA.cer, "Export" in Xcode will be available and certificate exported from Keychain will be valid as well.</p>
-<p><strong>2. IPA build output folder has a "name date time" format makes it hard to define the IPA path in following build steps.</strong></p>
-<p>I used my Mac as build agent, there is no issue while building using Xamarin but does this while building as a Mac Agent.</p>
-<p>Solution Link: <a href="http://stackoverflow.com/questions/37726925/xamarin-cycle-7-ios-ipa-output-now-in-a-datetime-folder">Xamarin cycle 7 IOS IPA output now in a datetime folder</a></p>
-<p>After applying the changes, I also defined "Package Name" in "iOS IPA Options" tab in Project Options. I set it to a fixed name, pretty sure this is not best practise, but doesn't matter anyway.</p>
-<p>In this case, the output IPA always has the path: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.ipa". Much easier for later setups.</p>
-<p><strong>3. How to setup Metadata structure for "App Store Release" build step.</strong></p>
-<p>The "App Store Release" build step only accepts a path for metadata folder. For someone who hasn't used Fastlane before, I had no idea what to put in the folder. So I installed Fastlane locally and ran "deliver init" in a folder I created in source control. It will prompt questions to connect to iTunesConnect and download all metadata of an existing app and create all files in the folder.</p>
-<p>After that, I just added "description.txt", "keywords.txt" and "release_notes.txt" into the solution, so I can update all information needed right in Xamarin Studio.</p>
-<p>Note: while setting it up I thought about if this is all done by Fastlane, why should I use VSTS? My answer is that VSTS supports more build tasks and in this way I will not be depend on my machine. Plus I just like the feeling of utilizing those cool tools online...</p>
-<p><strong>4. Got error while installing Fastlane: "ERROR: While executing gem ... (Errno::EPERM) Operation not permitted - /usr/bin/commander".</strong></p>
-<p>Use this command: "sudo gem install -n /usr/local/bin fastlane"</p>
-<p>Reference: <a href="https://github.com/fastlane/fastlane/issues/1392">Problem when install fastlane</a></p>
-<p><strong>5. App doesn't get submitted for review although log says "Successfully submitted the app for review!"</strong></p>
-<p>The reason is "submission_information" is not set for fastlane.</p>
-<p>In your "fastlane" folder, there should be a file "Deliverfile", the content should look like this:</p>
-<pre><code class="hljs bash">   app_identifier <span class="hljs-string">"xx.xxx"</span> <span class="hljs-comment"># The bundle identifier of your app</span>
-   username <span class="hljs-string">"xx@xxx.xx"</span> <span class="hljs-comment"># your Apple ID user</span>
-   submission_information({
-     	add_id_info_uses_idfa: <span class="hljs-literal">false</span>,
-	      <span class="hljs-built_in">export</span>_compliance_encryption_updated: <span class="hljs-literal">false</span>
-<p>})
-</code></pre></p>
-<p>submission_information is the bit you should have in the file. The values to set depending on your application. I normally get asked for those 2 questions so I added those 2 in there then the issue is gone. You can view the full official documentation below for all options and use what you need.
-Offical Doc: <a href="https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md#submission_information">submission_information</a></p>
-<p><strong>6. [Unresolved] "Copy files" build task doesn't copy .dSYM files when it's a more exact pattern match.</strong></p>
-<p>So in the "Copy files" task, you define "Source Folder", "Contents" and "Target Folder". In "Contents" you normally use "**/*.ipa" to match the ipa files. But when I use "**/*.dSYM", it doesn't copy the file, always says "matched 0 files".</p>
-<p>I have tried all kinds of combinations for the pattern: only root folder, all folders, exact name match, lower cases and including dots, none worked. But when I use "**", it's copied across. When I use "**/*.config", config files get copied.</p>
-<p>I don't get it...</p>
-<p>Luckily, since everything is done from the agent, so instead of copy the .dSYM files to artifacts folder, I use the direct path (like this one: "AppName.IOS/bin/iPhone/$(BuildConfiguration)/AppNameDefined.app.dSYM") to the build bin folder when uploading it to HockeyApp. So for now, it's not a big issue. But this bother me so bad...</p>
-<p>I posted a question in StackOverflow as well: <a href="http://stackoverflow.com/questions/39188375/copy-files-in-vsts-just-doesnt-work-from-dsym-files">Copy Files in VSTS just doesn't work from dSYM files</a>. Hopefully someone can help out.</p>
-<p><br><br></p>
-<p>That's all the issues I have encountered. Mine might not be best practises and might even be wrong, but for me, as long as it works :-)</p>
-					<a href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 28 Aug </span> <a class="postlink" href="/2016/08/28/Issues-while-setting-up-Continuous-Integration-and-Delivery-with-Visual-Studio-Team-Services-for-XamariniOS-Apps.html">Issues while setting up Continuous Integration and Delivery with Visual Studio Team Services for Xamarin.iOS Apps</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 08 Jul </span> <a class="postlink" href="/2016/07/08/Warning-in-Sitecore-Media-Library-Folder-Grid-View.html">Warning in Sitecore Media Library Folder Grid View</a>
