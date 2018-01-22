@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2017-12-17T11:56:04.3869555+00:00</updated>
+  <updated>2018-01-22T09:51:00.3685116+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -1259,46 +1259,24 @@ Remove the incorrect rule, issues are gone.&lt;/p&gt;</content>
 &lt;li&gt;Chrome&lt;/li&gt;
 &lt;li&gt;Everything&lt;/li&gt;
 &lt;li&gt;Ditto&lt;/li&gt;
-&lt;li&gt;WinSplit&lt;/li&gt;
-&lt;li&gt;Notepad ++&lt;/li&gt;
-&lt;li&gt;FileZilla&lt;/li&gt;
-&lt;li&gt;Beyond Compare&lt;/li&gt;
-&lt;li&gt;Winrar&lt;/li&gt;
-&lt;li&gt;VLC&lt;/li&gt;
-&lt;li&gt;Dropbox&lt;/li&gt;
-&lt;li&gt;Firefox&lt;/li&gt;
-&lt;li&gt;Autoruns&lt;/li&gt;
-&lt;li&gt;Spotify&lt;/li&gt;
-&lt;li&gt;Xunlei&lt;/li&gt;
-&lt;li&gt;Sonos Controller&lt;/li&gt;
-&lt;li&gt;CCleaner&lt;/li&gt;
-&lt;li&gt;WinMerge&lt;/li&gt;
-&lt;li&gt;Adobe Reader&lt;/li&gt;
-&lt;li&gt;Teamviewer&lt;/li&gt;
 &lt;li&gt;EverNote&lt;/li&gt;
+&lt;li&gt;Teamviewer&lt;/li&gt;
+&lt;li&gt;Dropbox&lt;/li&gt;
+&lt;li&gt;Spotify&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;Development:&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Visual Studio&lt;/li&gt;
 &lt;li&gt;SQL Server&lt;/li&gt;
-&lt;li&gt;Resharper&lt;/li&gt;
-&lt;li&gt;TDS&lt;/li&gt;
+&lt;li&gt;Notepad ++&lt;/li&gt;
+&lt;li&gt;WinMerge&lt;/li&gt;
 &lt;li&gt;Dotpeek&lt;/li&gt;
-&lt;li&gt;Smtp4Dev/FakeSMTP&lt;/li&gt;
-&lt;li&gt;Luke&lt;/li&gt;
-&lt;li&gt;Fiddler&lt;/li&gt;
-&lt;li&gt;TortoiseSVN&lt;/li&gt;
-&lt;li&gt;AnkhSVN&lt;/li&gt;
-&lt;li&gt;Selenium IDE&lt;/li&gt;
-&lt;li&gt;Firebug&lt;/li&gt;
 &lt;li&gt;Remote Desktop Connection Manager&lt;/li&gt;
-&lt;li&gt;Office&lt;/li&gt;
-&lt;li&gt;Microsoft Visual Studio Team Foundation Server 2013 Power Tools&lt;/li&gt;
-&lt;li&gt;Java&lt;/li&gt;
-&lt;li&gt;SoapUI&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Update 1 - 11/10/2015&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Added SoapUI and FakeSMTP. Removed versions of Visual Studio and SQL server.&lt;/p&gt;</content>
+&lt;p&gt;Added SoapUI and FakeSMTP. Removed versions of Visual Studio and SQL server.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Update 2 - 22/01/2018&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Got rid of a few things, did not add anything :-(&lt;/p&gt;</content>
   </entry>
   
   <entry>
