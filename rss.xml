@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Mon, 22 Jan 2018 09:51:00 %z</pubDate>
-    <lastBuildDate>Mon, 22 Jan 2018 09:51:00 %z</lastBuildDate>
+    <pubDate>Sat, 03 Feb 2018 11:50:45 %z</pubDate>
+    <lastBuildDate>Sat, 03 Feb 2018 11:50:45 %z</lastBuildDate>
     
     <item>
       <title>TTS with Google Home on Home Assistant stopped working</title>
