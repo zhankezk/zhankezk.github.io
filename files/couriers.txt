@@ -1,5 +1,5 @@
 {
-    "version": 2017110700000,
+    "version": 2018020704000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -93,7 +93,8 @@
             "BS",
             "SQ",
             "TY",
-            "BQ"
+            "BQ",
+            "LNT"
         ]
     }, {
         "courierName": "ChnExp",
