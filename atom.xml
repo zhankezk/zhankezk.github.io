@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2018-02-19T13:26:24.0660879+00:00</updated>
+  <updated>2018-02-19T14:00:26.0642763+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2018/02/19/Blogging-from-Evernote.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2018/02/19/Blogging-from-Evernote.html"/>
+    <title>Blogging from Evernote</title>
+    <updated>2018-02-19T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;This is the first post that’s pulled from Evernote. Since I have started to&amp;nbsp;maximise the use of Evernote, keeping notes of everything I do, so setup to pull content from Evernote directly to generate the website.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The current engine stay the same and can still work independently, which is a static website generator that auto commit to GitHub pages. The new component pulls content from Evernote and transform them into post files and replace all existing posts.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Not perfect yet since it does a full sync every time, will setup web hooks when I am free so it’s smarter.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Most of the time, I am just too lazy to format and upload images again ;-)&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2017/12/16/TTS-with-Google-Home-on-Home-Assistant-stopped-working.html</id>
@@ -20,7 +32,7 @@
       <name>Ke</name>
       <uri>http://kezhan.info/</uri>
     </author>
-    <content type="html">&lt;div&gt;&lt;span style=&apos;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: medium; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; -en-paragraph: true;&apos;&gt;Last month, after upgrading Home Assistant to the latest version. tts.google_say stopped working. Every call to this service takes 3 to 5 secs and nothing happens.&lt;/span&gt;&lt;/div&gt;&lt;div style=&apos;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: medium; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; -en-paragraph: true; margin-top: 1em; margin-bottom: 1em;&apos;&gt;&lt;span style=&apos;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: medium; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; -en-paragraph: true;&apos;&gt;To fix this, Google Home needs to be manually added to Home Assistant as a media player.&lt;/span&gt;&lt;/div&gt;&lt;div style=&apos;color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;&apos;&gt;&lt;div&gt;&lt;span style=&apos;overflow-x: auto; background: rgb(240, 240, 240); text-size-adjust: none; color: rgb(136, 0, 0); font-weight: bold;&apos;&gt;media_player:&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;overflow-x: auto; background: rgb(240, 240, 240); text-size-adjust: none; color: black;&apos;&gt;&amp;nbsp; - platform: cast&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;overflow-x: auto; background: rgb(240, 240, 240); text-size-adjust: none; color: black;&apos;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; host: 192.168.1.xxx&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-size: medium; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; -en-paragraph: true;&apos;&gt;IP address is your Google Home&apos;s IP address, recommanding setting up fixed IP in your router...&lt;/span&gt;&lt;/div&gt;</content>
+    <content type="html">&lt;div&gt;&lt;span style=&apos;font-size: medium; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-variant-caps: normal; font-variant-ligatures: normal;&apos;&gt;Last month, after upgrading Home Assistant to the latest version. tts.google_say stopped working. Every call to this service takes 3 to 5 secs and nothing happens.&lt;/span&gt;&lt;/div&gt;&lt;div style=&apos;font-size: medium; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; margin-top: 1em; margin-bottom: 1em;&apos;&gt;&lt;span style=&apos;font-size: medium; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-variant-caps: normal; font-variant-ligatures: normal;&apos;&gt;To fix this, Google Home needs to be manually added to Home Assistant as a media player.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-weight: bold;&apos;&gt;&lt;i&gt;media_player: &amp;nbsp;&amp;nbsp; &lt;/i&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&amp;nbsp; - platform: cast &amp;nbsp;&amp;nbsp; &lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt; &amp;nbsp;&amp;nbsp; host: 192.168.1.xxx &amp;nbsp;&amp;nbsp; &lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: medium; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI&amp;quot;, sans-serif; font-variant-caps: normal; font-variant-ligatures: normal;&apos;&gt;IP address is your Google Home&apos;s IP address, recommanding setting up fixed IP in your router...&lt;/span&gt;&lt;/div&gt;</content>
   </entry>
   
   <entry>
