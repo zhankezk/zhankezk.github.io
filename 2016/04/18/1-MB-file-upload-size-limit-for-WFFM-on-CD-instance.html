@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>1 MB file upload size limit for WFFM on CD instance</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0296752641130175",
+    enable_page_level_ads: true
+  });
+</script>
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="Kb" alt="Kb">Kb</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/Siigaa.html">西瓜跟踪</a></li>
+						<li>&nbsp;</li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="http://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> 1 MB file upload size limit for WFFM on CD instance </h1>
+		<span class="postdate">18 April, 2016
+			
+		</span>
+		<div><b>Sitecore Version: 8.0 Update 4</b></div><div><b>WFFM Version: 8.0 Update 4</b></div><div><br /></div><div>Issues:</div><div>When uploading files that are roughly larger than 1 MB on WFFM from CD instances. Form couldn't be submitted and got error on the page:</div><div><br /></div><div>We experienced a technical difficulty while processing your request. Your data may not have been correctly saved.</div><div><br /></div><div>From the logs, got this warning:</div><div><br /></div><div>9320 17:56:54 WARN Posted files size exceeds limit</div><div>Parameter name: Posted files size</div><div>Exception: System.ArgumentException</div><div>Message: Posted files size exceeds limit</div><div>Parameter name: Posted files size</div><div>Source: Sitecore.Kernel</div><div>&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Diagnostics.Assert.ArgumentCondition(Boolean condition, String argumentName, String message)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.GetSerializableControlResults(IEnumerable`1 fields)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;at Sitecore.Form.Core.FormDataHandler.ProcessData(ID formID, ControlResult[] fields, ActionDefinition[] actions)</div><div><br /></div><div>9320 17:56:54 WARN Web Forms for Marketers: an exception: Posted files size exceeds limit</div><div>Parameter name: Posted files size has occured while trying to execute an action.</div><div><br /></div><div>Investigations:</div><div>When checked Sitecore source code:</div><div><br /></div><div> private static void ExecuteSaveActions(ID formId, ControlResult[] fields, ActionDefinition[] actions)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Context.Site.DisplayMode != DisplayMode.Normal &amp;&amp; Context.Site.DisplayMode != DisplayMode.Preview || WebUtil.GetQueryString('sc_debug', (string) null) != null)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (Settings.IsRemoteActions)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EventManager.QueueEvent&lt;WffmActionEvent&gt;(new WffmActionEvent()</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fields = Enumerable.ToArray&lt;ControlResult&gt;(FormDataHandler.GetSerializableControlResults((IEnumerable&lt;ControlResult&gt;) fields)),</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&lt;span class='hljs-function'&gt;&lt;span class='hljs-keyword'&gt;private&lt;/span&gt; &lt;span class='hljs-keyword'&gt;static&lt;/span&gt; IEnumerable&amp;lt;ControlResult&amp;gt; &lt;span class='hljs-title'&gt;GetSerializableControlResults&lt;/span&gt;&lt;span class='hljs-params'&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;</div><div>&lt;/span&gt;{</div><div>&nbsp;&nbsp;Assert.ArgumentCondition(FormDataHandler.GetUploadedSizeOfAllFiles(fields) &amp;lt; &lt;span class='hljs-number'&gt;1000000&lt;/span&gt;L, &lt;span class='hljs-string'&gt;'Posted files size'&lt;/span&gt;, &lt;span class='hljs-string'&gt;'Posted files size exceeds limit'&lt;/span&gt;);</div><div>&nbsp;&nbsp;&lt;span class='hljs-keyword'&gt;return&lt;/span&gt; ...</div><div>}</div><div><br /></div><div>&lt;span class='hljs-function'&gt;&lt;span class='hljs-keyword'&gt;private&lt;/span&gt; &lt;span class='hljs-keyword'&gt;static&lt;/span&gt; &lt;span class='hljs-keyword'&gt;long&lt;/span&gt; &lt;span class='hljs-title'&gt;GetUploadedSizeOfAllFiles&lt;/span&gt;&lt;span class='hljs-params'&gt;(IEnumerable&amp;lt;ControlResult&amp;gt; fields)&lt;/span&gt;</div><div>&lt;/span&gt;{</div><div>&nbsp;&nbsp;&lt;span class='hljs-keyword'&gt;long&lt;/span&gt; num = &lt;span class='hljs-number'&gt;0&lt;/span&gt;;</div><div>&nbsp;&nbsp;&lt;span class='hljs-keyword'&gt;foreach&lt;/span&gt; (ControlResult controlResult &lt;span class='hljs-keyword'&gt;in&lt;/span&gt; fields)</div><div>&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;PostedFile postedFile = controlResult.Value &lt;span class='hljs-keyword'&gt;as&lt;/span&gt; PostedFile;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class='hljs-keyword'&gt;if&lt;/span&gt; (postedFile != &lt;span class='hljs-keyword'&gt;null&lt;/span&gt; &amp;amp;&amp;amp; postedFile.Data != &lt;span class='hljs-keyword'&gt;null&lt;/span&gt;)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;num += (&lt;span class='hljs-keyword'&gt;long&lt;/span&gt;) postedFile.Data.Length;</div><div>&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&lt;span class='hljs-keyword'&gt;return&lt;/span&gt; num;</div><div>}</div><div><br /></div><div><br /></div><div>So when it's a 'remoteAction'(IsRemoteActions), which means the form is submitted from delivery instance, it validates the total sizes of all files. Here 1000000L is 1 MB.</div><div><br /></div><div>1 MB seems to be a very small size since nowadays most smartphones take pictures that are mostly 5 MB or even more. And the way it's hard coded in static method make it hard to understand. However I do understand this is due to the consideration of EventQueue table size, but it should be able to be a bit bigger than 1 MB.</div><div><br /></div><div><b>Solutions:</b></div><div>Contacted with Sitecore on this one, Sitecore confirmed that it's a bug. Reference number 67853, however nothing is up yet. They provided us with a patch which makes the file size limit configurable from .config files, we are still testing it. If you have the same issue, please contact Sitecore support for the patch before it's publicly available.</div>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2016/03/15/Sitecore-webconfig-include-patching-sub-folder-orders.html" title="Previous Post: Sitecore web.config include patching sub-folder orders">&larr; Sitecore web.config include patching sub-folder orders</a>  </div> 
+	<div class="right">  <a href="/2016/05/01/HockeyApp-Azure-Mobile-Engagement-and-Visual-Studio-Application-Insights.html" title="next Post: HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights">HockeyApp, Azure Mobile Engagement and Visual Studio Application Insights &rarr; </a>  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
