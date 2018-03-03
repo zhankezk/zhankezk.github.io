@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2018/03/03/Use-the-same-session-database-for-both-Priavte-and-Shared-Session-States-in-Sitecore.html</loc>
+    <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2018/02/26/All-about-SitecoreCloudIntegrationBootload.html</loc>
     <lastmod>2018-02-26T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
