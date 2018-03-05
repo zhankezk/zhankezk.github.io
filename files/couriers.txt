@@ -1,5 +1,5 @@
 {
-    "version": 2018020704000,
+    "version": 2018030505000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -23,11 +23,12 @@
         "courierName": "EWE",
         "prefixes": [
             "E95",
-            "S15",
+            "S1",
             "B97",
             "SO",
             "PSD",
-            "AGO"
+            "AGO",
+            "T1"
         ]
     }, {
         "courierName": "GiantPost",
@@ -162,7 +163,8 @@
     }, {
         "courierName": "TurtleExpress",
         "prefixes": [
-            "TEX"
+            "TEX",
+            "TIE"
         ]
     }, {
         "courierName": "Shlexp",
@@ -173,6 +175,11 @@
         "courierName": "ArkExpress",
         "prefixes": [
             "AP"
+        ]
+    }, {
+        "courierName": "XdExpress",
+        "prefixes": [
+            "XD"
         ]
     }]
 }
