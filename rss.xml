@@ -6,8 +6,8 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Sat, 03 Mar 2018 03:12:33 %z</pubDate>
-    <lastBuildDate>Sat, 03 Mar 2018 03:12:33 %z</lastBuildDate>
+    <pubDate>Mon, 05 Mar 2018 13:08:47 %z</pubDate>
+    <lastBuildDate>Mon, 05 Mar 2018 13:08:47 %z</lastBuildDate>
     
     <item>
       <title>Use the same session database for both Priavte and Shared Session States in Sitecore</title>
