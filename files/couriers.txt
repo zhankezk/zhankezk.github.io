@@ -46,7 +46,9 @@
     }, {
         "courierName": "Sto",
         "prefixes": [
-            "553"
+            "553",
+            "335",
+            "402"
         ]
     }, {
         "courierName": "30Post",
