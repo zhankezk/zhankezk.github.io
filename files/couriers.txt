@@ -1,5 +1,5 @@
 {
-    "version": 2018030505000,
+    "version": 2018030605000,
     "couriers": [{
         "courierName": "AOL",
         "prefixes": [
@@ -182,6 +182,31 @@
         "courierName": "XdExpress",
         "prefixes": [
             "XD"
+        ]
+    }, {
+        "courierName": "Shunfeng",
+        "prefixes": [
+            "460"
+        ]
+    }, {
+        "courierName": "AusPost",
+        "prefixes": [
+            "EY"
+        ]
+    }, {
+        "courierName": "Yunda",
+        "prefixes": [
+            "38"
+        ]
+    }, {
+        "courierName": "YouzhengGuonei",
+        "prefixes": [
+            "989"
+        ]
+    }, {
+        "courierName": "Ems",
+        "prefixes": [
+            "974"
         ]
     }]
 }
