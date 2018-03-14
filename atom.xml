@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2018-03-05T13:08:47.8378452+00:00</updated>
+  <updated>2018-03-14T13:03:05.8611266+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2018/03/14/Delivery-instance-doesnt-clear-cache-with-Sitecore-Publishing-Service.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2018/03/14/Delivery-instance-doesnt-clear-cache-with-Sitecore-Publishing-Service.html"/>
+    <title>Delivery instance doesn&apos;t clear cache with Sitecore Publishing Service</title>
+    <updated>2018-03-14T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;The issue occurs on the Delivery instance that doesn’t share the same Core and Web(default) database with the Authoring instance only.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;This Sitecore architecture has a complete XP1 setup in the first data center with Authoring, 2 Delivery, Processing and Reporting instances. And in a second data center, 2 Delivery instances are setup with their own Core and Web databases but share the same xDB from the first data center.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Publishing target is being used to sync web database in the second data center. However due to high latency issues, Sitecore Publishing Service has been setup to improve publishing speed and it did.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The issue is that after publishing from Authoring instance, only the Delivery instance in the first data center clears cache.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Direct reason&lt;/b&gt; being there is no events raised in either Core or Web database in the second data center so it doesn’t know when to clear.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The reason for this is actually that only setting up Sitecore Publishing Service is not enough. The transitional way of setting up a new Publishing target in Sitecore still needs to be done, meaning adding connection string and database node in configuration. Only after they are both setup, web database in the second data center starts to be populated with events and the cache cleaning after publishing finally starts to working for Delivery instances in both Data centers.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Note that the Sitecore Publishing Module CD components need to be installed on Delivery instance for the clearing cache to work.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The version of Sitecore Publishing Service mentioned above is&amp;nbsp;Sitecore Publishing Service 2.1 Initial Release.&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2018/03/03/Use-the-same-session-database-for-both-Priavte-and-Shared-Session-States-in-Sitecore.html</id>
