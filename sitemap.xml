@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2018/03/22/Fast-Query-return-null-in-Sitecore-instances.html</loc>
+    <lastmod>2018-03-22T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2018/03/20/Sitecore-Campaign-Creator-API-500-error-caused-by-Sitecore-Instance-Manager.html</loc>
     <lastmod>2018-03-20T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
