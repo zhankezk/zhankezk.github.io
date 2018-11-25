@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-    <title>Kb</title>
+    <title>KB</title>
     <link>http://kezhan.info/</link>
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Fri, 05 Oct 2018 08:01:32 %z</pubDate>
-    <lastBuildDate>Fri, 05 Oct 2018 08:01:32 %z</lastBuildDate>
+    <pubDate>Sun, 25 Nov 2018 08:39:37 %z</pubDate>
+    <lastBuildDate>Sun, 25 Nov 2018 08:39:37 %z</lastBuildDate>
     
     <item>
       <title>Setup Postman with Local Sitecore xConnect services</title>
