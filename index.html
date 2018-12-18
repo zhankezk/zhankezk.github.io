@@ -52,14 +52,29 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2018/10/05/Setup-Postman-with-Local-Sitecore-xConnect-services.html">Setup Postman with Local Sitecore xConnect services</a></h1>
+					<h1><a href="/2018/12/18/Whitelist-Hosted-Agent-IP-address-in-AzureDevOps-pipeline-For-Sitecore-Unicorn-Sync.html">Whitelist Hosted Agent IP address in AzureDevOps pipeline (For Sitecore Unicorn Sync)</a></h1>
+					<div class="postdate">18 December, 2018
+						<ul>
+						
+						</ul>
+					</div>
+					<div>Setting up CICD for a Sitecore 9 project on AzureDevOps recently and during the final stage, while trying to setup unicorn sync task, it fails due to the IP restriction on the web app that’s setup to provide the non-production environment to public internet.</div><div><br /></div><div>Found an extension in Marketplace that can add build agent IP however it doesn’t remove:&nbsp;<a target="_blank" href='https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions' style='box-sizing: border-box; background-color: rgb(255, 255, 255); color: rgb(3, 102, 214); outline-width: 0px; font-family: -apple-system, system-ui, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: underline;'>https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions</a></div><div><br /></div><div>After looking at it, it’s just a powershell script, therefore grabbed the code and made some changes so now it can be used to add and remove build agent IP addresses.</div><div><br /></div><div>Powershell script is here:&nbsp;<a target="_blank" href='https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline'>https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline</a></div><div><br /></div><div>In Azure DevOps, use “<span style='color: rgb(0, 0, 0); font-family: &quot;Segoe UI Web (West European)&quot;, &quot;Segoe UI&quot;, -apple-system, system-ui, Roboto, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; --inversion-type-color: simple;'>Run Inline Azure Powershell</span><font face='Segoe UI Web (West European), Segoe UI, -apple-system, system-ui, Roboto, Helvetica Neue, sans-serif'>” with&nbsp;</font>arguments</div><div><br /></div><div>-ResGrpName “xx'&nbsp;&nbsp;-AppName&nbsp;&nbsp;“xxx' -SlotName “xxxxx' -IsAdd $true for adding</div><div><br /></div><div>-ResGrpName “xx'&nbsp;&nbsp;-AppName&nbsp;&nbsp;“xxx' -SlotName “xxxxx' -IsAdd $false for removing</div><div><br /></div><div>Plan is to convert it into an extension as well so it’s easier to use(Not sure about the foundation is from another code, will check on licensing). But for now, it does its job. Keep an eye here for more updates.</div>
+					<br />
+					<a href="/2018/12/18/Whitelist-Hosted-Agent-IP-address-in-AzureDevOps-pipeline-For-Sitecore-Unicorn-Sync.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2018/10/05/Setup-Postman-with-Local-Sitecore-xConnect-services.html">Setup Postman with Local Sitecore xConnect services</a></h2>
 					<div class="postdate"> 5 October, 2018
 						<ul>
 						
 						</ul>
 					</div>
 					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div><div>To understand xConnect more in depth or just simply for future troubleshooting purposes, it&apos;s good to setup an API testing environment for xConnect. I have been using Postman mainly for this purpose, so in this post, I am going through the steps for setting up Postman to talk to xConnect services.</div><div><br/></div><div>The main reason for creating a post for this is due to the client certification authentication requirement for xConnect. Also this is for xConnect on a local machine so I assume you have to deal with certifications yourself.</div><div><br/></div><ol><li><div>Install and setup Postman if not done</div></li><li><div>Export client certificate from your local machine</div></li><ol><li><div>Bring up Microsoft Management Console and load Certificates for Computer Account. Under Personal/Certificates, you should be able to find the certificate used by your local xConnect. For me, it&apos;s called:&nbsp;sc902a.xconnect_client</div></li><li><div>Right click -&gt; All Tasks -&gt; Export</div></li><li><div>Follow the wizard and choose Yes for exporting Private Key and on Security screen, setup password and keep note of the password somewhere. Choose where the pfx file is saved and note the location.</div></li></ol><li><div>Optional - if you want to call xConnect in browsers as well</div></li><ol><li><div>Bring up Microsoft Management Console and load Certificates for My User Account, Under Personal/Certificates, import the pfx file exported from previous step, it should ask you for the password.</div></li><li><div>When this is done, when xConnect domain is accessed in Browser, it should pop up a Window for you to select the certificate to allow the website being accessed. Note the domain being used to access need to match the certificate hostname.</div></li></ol><li><div>Make sure you have openssl</div></li><li><div>Run following commands to extract cert and key files:</div><div>.\openssl.exe pkcs12 -in&nbsp;&quot;sc902a.pfx&quot; -clcerts -nokeys -out&nbsp;&quot;sc902a.cer&quot;</div><div>.\openssl.exe pkcs12 -in&nbsp;&quot;sc902a.pfx&quot;&nbsp;-nocerts -nodes&nbsp;&nbsp;-out&nbsp;-nocerts -nodes -out &quot;sc902a.key&quot;</div></li><li><div>In Postman, Files -&gt; Settings</div></li><li><div>In General tab, turn off &quot;SSL Certificate Verification&quot;</div></li><li><div>In Certificates tab</div></li><ol><li><div>Click Add Certificate</div></li><li><div>Fill in the hostname. Note this needs to be the same as the hostname setup in the certificate</div></li><li><div>Select cer and key file and fill in the password, then click add</div></li></ol><li><div>Now you should be able to make request to your xConnect services, you can test using root path, /odata or /odata/$metadata. Note, the domain used to access must match the hostname in the certificate.</div></li></ol><div><br/></div><div>Enjoy playing!</div><div><br/></div><div><b>Note</b>: if you still getting 403.16 error after all above steps while connecting to xConnect, or it worked initially but stopped working after some time. And you have tried the fix you found from Stackoverflow to remove self-signed root certificates. Try adding a registry key like this:&nbsp;</div><ul><li><div>Location: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL</div></li><li><div>Value name: ClientAuthTrustMode</div></li><li><div>Value type: REG_DWORD</div></li><li><div>Value data: 2</div></li></ul><div>Credit goes to this link:&nbsp;<a target="_blank" href='https://stackoverflow.com/questions/27232340/mutual-certificates-authentication-fails-with-error-403-16/27282889#27282889'>https://stackoverflow.com/questions/27232340/mutual-certificates-authentication-fails-with-error-403-16/27282889#27282889</a><br/></div><div><br/></div></div><div><br/></div>
-					<br />
 					<a href="/2018/10/05/Setup-Postman-with-Local-Sitecore-xConnect-services.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -110,25 +125,14 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2018/03/14/Delivery-instance-doesnt-clear-cache-with-Sitecore-Publishing-Service.html">Delivery instance doesn't clear cache with Sitecore Publishing Service</a></h2>
-					<div class="postdate">14 March, 2018
-						<ul>
-						
-						</ul>
-					</div>
-					<div>The issue occurs on the Delivery instance that doesn’t share the same Core and Web(default) database with the Authoring instance only.</div><div><br /></div><div>This Sitecore architecture has a complete XP1 setup in the first data center with Authoring, 2 Delivery, Processing and Reporting instances. And in a second data center, 2 Delivery instances are setup with their own Core and Web databases but share the same xDB from the first data center.</div><div><br /></div><div>Publishing target is being used to sync web database in the second data center. However due to high latency issues, Sitecore Publishing Service has been setup to improve publishing speed and it did.</div><div><br /></div><div>The issue is that after publishing from Authoring instance, only the Delivery instance in the first data center clears cache.</div><div><br /></div><div><b>Direct reason</b> being there is no events raised in either Core or Web database in the second data center so it doesn’t know when to clear.</div><div><br /></div><div>The reason for this is actually that only setting up Sitecore Publishing Service is not enough. The transitional way of setting up a new Publishing target in Sitecore still needs to be done, meaning adding connection string and database node in configuration. Only after they are both setup, web database in the second data center starts to be populated with events and the cache cleaning after publishing finally starts to working for Delivery instances in both Data centers.</div><div><br /></div><div>Note that the Sitecore Publishing Module CD components need to be installed on Delivery instance for the clearing cache to work.</div><div><br /></div><div>The version of Sitecore Publishing Service mentioned above is&nbsp;Sitecore Publishing Service 2.1 Initial Release.</div>
-					<a href="/2018/03/14/Delivery-instance-doesnt-clear-cache-with-Sitecore-Publishing-Service.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 14 Mar </span> <a class="postlink" href="/2018/03/14/Delivery-instance-doesnt-clear-cache-with-Sitecore-Publishing-Service.html">Delivery instance doesn't clear cache with Sitecore Publishing Service</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 03 Mar </span> <a class="postlink" href="/2018/03/03/Use-the-same-session-database-for-both-Priavte-and-Shared-Session-States-in-Sitecore.html">Use the same session database for both Priavte and Shared Session States in Sitecore</a>

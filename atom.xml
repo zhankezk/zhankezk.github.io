@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2018-11-25T08:39:37.842572+00:00</updated>
+  <updated>2018-12-18T12:15:23.3809764+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2018/12/18/Whitelist-Hosted-Agent-IP-address-in-AzureDevOps-pipeline-For-Sitecore-Unicorn-Sync.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2018/12/18/Whitelist-Hosted-Agent-IP-address-in-AzureDevOps-pipeline-For-Sitecore-Unicorn-Sync.html"/>
+    <title>Whitelist Hosted Agent IP address in AzureDevOps pipeline (For Sitecore Unicorn Sync)</title>
+    <updated>2018-12-18T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;Setting up CICD for a Sitecore 9 project on AzureDevOps recently and during the final stage, while trying to setup unicorn sync task, it fails due to the IP restriction on the web app that’s setup to provide the non-production environment to public internet.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Found an extension in Marketplace that can add build agent IP however it doesn’t remove:&amp;nbsp;&lt;a target=&quot;_blank&quot; href=&apos;https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions&apos; style=&apos;box-sizing: border-box; background-color: rgb(255, 255, 255); color: rgb(3, 102, 214); outline-width: 0px; font-family: -apple-system, system-ui, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 16px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: underline;&apos;&gt;https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;After looking at it, it’s just a powershell script, therefore grabbed the code and made some changes so now it can be used to add and remove build agent IP addresses.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Powershell script is here:&amp;nbsp;&lt;a target=&quot;_blank&quot; href=&apos;https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline&apos;&gt;https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;In Azure DevOps, use “&lt;span style=&apos;color: rgb(0, 0, 0); font-family: &amp;quot;Segoe UI Web (West European)&amp;quot;, &amp;quot;Segoe UI&amp;quot;, -apple-system, system-ui, Roboto, &amp;quot;Helvetica Neue&amp;quot;, sans-serif; font-size: 14px; --inversion-type-color: simple;&apos;&gt;Run Inline Azure Powershell&lt;/span&gt;&lt;font face=&apos;Segoe UI Web (West European), Segoe UI, -apple-system, system-ui, Roboto, Helvetica Neue, sans-serif&apos;&gt;” with&amp;nbsp;&lt;/font&gt;arguments&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;-ResGrpName “xx&apos;&amp;nbsp;&amp;nbsp;-AppName&amp;nbsp;&amp;nbsp;“xxx&apos; -SlotName “xxxxx&apos; -IsAdd $true for adding&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;-ResGrpName “xx&apos;&amp;nbsp;&amp;nbsp;-AppName&amp;nbsp;&amp;nbsp;“xxx&apos; -SlotName “xxxxx&apos; -IsAdd $false for removing&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Plan is to convert it into an extension as well so it’s easier to use(Not sure about the foundation is from another code, will check on licensing). But for now, it does its job. Keep an eye here for more updates.&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2018/10/05/Setup-Postman-with-Local-Sitecore-xConnect-services.html</id>

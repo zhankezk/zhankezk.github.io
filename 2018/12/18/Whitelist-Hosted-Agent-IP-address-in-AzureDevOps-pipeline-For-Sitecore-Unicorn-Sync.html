@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Whitelist Hosted Agent IP address in AzureDevOps pipeline (For Sitecore Unicorn Sync)</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0296752641130175",
+    enable_page_level_ads: true
+  });
+</script>
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="KB" alt="KB">KB</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="https://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Whitelist Hosted Agent IP address in AzureDevOps pipeline (For Sitecore Unicorn Sync) </h1>
+		<span class="postdate">18 December, 2018
+			
+		</span>
+		<div>Setting up CICD for a Sitecore 9 project on AzureDevOps recently and during the final stage, while trying to setup unicorn sync task, it fails due to the IP restriction on the web app that’s setup to provide the non-production environment to public internet.</div><div><br /></div><div>Found an extension in Marketplace that can add build agent IP however it doesn’t remove:&nbsp;<a target="_blank" href='https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions' style='box-sizing: border-box; background-color: rgb(255, 255, 255); color: rgb(3, 102, 214); outline-width: 0px; font-family: -apple-system, system-ui, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: underline;'>https://marketplace.visualstudio.com/items?itemName=MartijnQuekel.AzureAppServiceIPRestrictions</a></div><div><br /></div><div>After looking at it, it’s just a powershell script, therefore grabbed the code and made some changes so now it can be used to add and remove build agent IP addresses.</div><div><br /></div><div>Powershell script is here:&nbsp;<a target="_blank" href='https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline'>https://github.com/zhanke/temporary-whitelist-agent-ip-azureDevops-pipeline</a></div><div><br /></div><div>In Azure DevOps, use “<span style='color: rgb(0, 0, 0); font-family: &quot;Segoe UI Web (West European)&quot;, &quot;Segoe UI&quot;, -apple-system, system-ui, Roboto, &quot;Helvetica Neue&quot;, sans-serif; font-size: 14px; --inversion-type-color: simple;'>Run Inline Azure Powershell</span><font face='Segoe UI Web (West European), Segoe UI, -apple-system, system-ui, Roboto, Helvetica Neue, sans-serif'>” with&nbsp;</font>arguments</div><div><br /></div><div>-ResGrpName “xx'&nbsp;&nbsp;-AppName&nbsp;&nbsp;“xxx' -SlotName “xxxxx' -IsAdd $true for adding</div><div><br /></div><div>-ResGrpName “xx'&nbsp;&nbsp;-AppName&nbsp;&nbsp;“xxx' -SlotName “xxxxx' -IsAdd $false for removing</div><div><br /></div><div>Plan is to convert it into an extension as well so it’s easier to use(Not sure about the foundation is from another code, will check on licensing). But for now, it does its job. Keep an eye here for more updates.</div>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2018/10/05/Setup-Postman-with-Local-Sitecore-xConnect-services.html" title="Previous Post: Setup Postman with Local Sitecore xConnect services">&larr; Setup Postman with Local Sitecore xConnect services</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="//disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
