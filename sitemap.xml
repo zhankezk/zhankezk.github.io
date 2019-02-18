@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2019/02/12/Generating-static-500-error-html-pages-using-SXA-in-Sitecore.html</loc>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2018/12/18/Whitelist-Hosted-Agent-IP-address-in-AzureDevOps-pipeline-For-Sitecore-Unicorn-Sync.html</loc>
     <lastmod>2018-12-18T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
@@ -21,7 +28,7 @@
   </url>
   
   <url>
-    <loc>http://kezhan.info/2018/06/29/Evil-Sitecore-inline-aspx-Pages.html</loc>
+    <loc>http://kezhan.info/2018/06/29/Evil-Inline-Aspx-Pages.html</loc>
     <lastmod>2018-06-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
