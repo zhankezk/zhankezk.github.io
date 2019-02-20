@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Missing sxacontent_txm in Sitecore SXA Solr Index with Commerce Installed</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0296752641130175",
+    enable_page_level_ads: true
+  });
+</script>
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="KB" alt="KB">KB</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="https://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Missing sxacontent_txm in Sitecore SXA Solr Index with Commerce Installed </h1>
+		<span class="postdate">20 February, 2019
+			
+		</span>
+		<div>If you have used Sitecore SXA search components, you are actually using <span style='font-weight: bold;'>sxacontent_txm</span> field in Solr. It’s a computed field and out of box functionality of SXA that go through all data sources of a page and add all content to the field for search purpose. Pretty handy for setting up your site search quickly.</div><div><br /></div><div>Above was exactly what I did, however after a certain point, I realised that the site search stopped working and after checking Solr indexes, I found that <span style='font-weight: bold;'>sxacontent_txm</span> field disappeared.</div><div><br /></div><div>After some Googling and reading, came across following statements in Sitecore Commerce 9.0 Update 2 and 3’s release notes:</div><div><br /></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>On Azure, the SXA configuration for Azure indexing (\App_Config\Include\Z.Foundation.Overrides\Sitecore.XA.Foundation.Search.Azure.config) has been disabled to allow indexing to work properly in conjunction with Commerce. SXA Search components are not used in the SXA Storefront, but plain SXA sites without commerce will be affected if deployed in the same instance:</div><div>- <b>The sxacontent computed field is missing – SXA search will not work at all as it’s using this field to find results.</b></div><div>- Geo-search will not work – no ordering by distance or searching within radius.</div><div>- Dynamic search results boosting (boosting rules in the search scope) – some rules will not work as they require computed fields which are defined in this config (on the other hand, there will be nothing to boost as you won’t have search results anyway).</div><div>- Field readers for tag and treelist will no longer be there – SXA tags will not work.</div></div><div><br /></div><div>References:</div><ul><li><div><a target="_blank" href='https://dev.sitecore.net/Downloads/Sitecore%20Commerce/90/Sitecore%20Experience%20Commerce%2090%20Update2/Release%20Notes'>https://dev.sitecore.net/Downloads/Sitecore%20Commerce/90/Sitecore%20Experience%20Commerce%2090%20Update2/Release%20Notes</a></div></li><li><div><a target="_blank" href='https://dev.sitecore.net/Downloads/Sitecore%20Commerce/90/Sitecore%20Experience%20Commerce%2090%20Update3/Release%20Notes'>https://dev.sitecore.net/Downloads/Sitecore%20Commerce/90/Sitecore%20Experience%20Commerce%2090%20Update3/Release%20Notes</a></div></li></ul><div><br /></div><div>As you can see, this explains why the field is gone and SXA search not working is expected actually.</div><div><br /></div><div>Submitted a ticket to Sitecore in the hope that they probably have a patch already(Sometime they do, just trying my luck XD)</div><div><br /></div><div>So the reason they do this is due to since it go through all the related items, in Commerce context, there could be too large number of catalogue items the crawler goes through which causes performance issues(Not familiar with Commerce yet, so don’t take this part 100%, just take it as rough idea).</div><div><br /></div><div>And for now, patch or solution is only on the roadmap, however without any timeline yet. The configuration may be enabled if Commerce has less than 100 items or another way is to not use the sxacontent field but apply custom implementations.&nbsp;</div>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2019/02/12/Generating-static-500-error-html-pages-using-SXA-in-Sitecore.html" title="Previous Post: Generating static 500 error html pages using SXA in Sitecore">&larr; Generating static 500 error html pages using SXA in Sitecore</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="//disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
