@@ -7,6 +7,13 @@
   <!-- Generated with pretzel -->
   
   <url>
+    <loc>http://kezhan.info/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html</loc>
+    <lastmod>2019-04-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
     <loc>http://kezhan.info/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>

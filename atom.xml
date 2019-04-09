@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2019-04-09T11:52:25.9124285+00:00</updated>
+  <updated>2019-04-09T12:24:49.632402+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html"/>
+    <title>Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</title>
+    <updated>2019-04-09T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;If you noticed Sitecore user boost feature doesn’t work with your Sitecore 9.1 Initial Release with Identify server, request a patch from Sitecore support with the reference number:&amp;nbsp;&lt;span style=&apos;font-size: 13px; font-weight: bold;&apos;&gt;308082.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px; font-weight: bold;&apos;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Please make sure only to proceed for this particular Sitecore version. The patch contains only&amp;nbsp;&lt;/span&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Sitecore.Owin.Authentication.dll and Sitecore.Owin.Authentication.config 2 files.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Interestingly in the 9.1 Update 1 version that’s just released, didn’t see this reference number in Release Notes:&amp;nbsp;&lt;/span&gt;&lt;a target=&quot;_blank&quot; href=&apos;https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes&apos; style=&apos;font-size: 13px;&apos;&gt;https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes&lt;/a&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;, maybe didn’t make it in time for QA.&lt;/span&gt;&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html</id>

@@ -6,8 +6,17 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Tue, 09 Apr 2019 11:52:25 %z</pubDate>
-    <lastBuildDate>Tue, 09 Apr 2019 11:52:25 %z</lastBuildDate>
+    <pubDate>Tue, 09 Apr 2019 12:24:49 %z</pubDate>
+    <lastBuildDate>Tue, 09 Apr 2019 12:24:49 %z</lastBuildDate>
+    
+    <item>
+      <title>Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</title>
+      <link>http://kezhan.info/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html</link>
+      <pubDate>Tue, 09 Apr 2019 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html</guid>
+      <description>&lt;div&gt;If you noticed Sitecore user boost feature doesn’t work with your Sitecore 9.1 Initial Release with Identify server, request a patch from Sitecore support with the reference number:&amp;nbsp;&lt;span style=&apos;font-size: 13px; font-weight: bold;&apos;&gt;308082.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px; font-weight: bold;&apos;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Please make sure only to proceed for this particular Sitecore version. The patch contains only&amp;nbsp;&lt;/span&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Sitecore.Owin.Authentication.dll and Sitecore.Owin.Authentication.config 2 files.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;Interestingly in the 9.1 Update 1 version that’s just released, didn’t see this reference number in Release Notes:&amp;nbsp;&lt;/span&gt;&lt;a target=&quot;_blank&quot; href=&apos;https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes&apos; style=&apos;font-size: 13px;&apos;&gt;https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes&lt;/a&gt;&lt;span style=&apos;font-size: 13px;&apos;&gt;, maybe didn’t make it in time for QA.&lt;/span&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</title>
