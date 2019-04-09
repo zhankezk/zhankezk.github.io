@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2019-03-10T06:08:00.5148468+00:00</updated>
+  <updated>2019-04-09T11:52:25.9124285+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html"/>
+    <title>Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</title>
+    <updated>2019-04-08T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;Sitecore 9.0.2 with Solr setup, our code has custom ResultSearchItem model and is using Sitecore ContentSearch Linq query and one of the query is using string.CompareTo() method, something like below:&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&apos;box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902);-en-codeblock:true;&apos;&gt;&lt;div&gt;&lt;div&gt;var query1 = PredicateBuilder.True&amp;lt;ProductSearchResultItem&amp;gt;();&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;query1&amp;nbsp;= query1.And(x =&amp;gt; x.somestringfield.CompareTo(SomeValuesWithSpaces) &amp;lt;= 0);&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The query works sometimes and below errors starts to appear in the logs:&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div style=&apos;margin-left: 40px;&apos;&gt;8156 12:44:41 INFO&amp;nbsp;&amp;nbsp;Solr Query - ?q=((xxxxxxx:(xxxx) AND _template:(xxxxxxx)) AND ((-xxxxx:(xxxxxx)&amp;nbsp;&amp;nbsp;*:*) AND somestringfield:[&lt;b&gt;&lt;font style=&apos;color: rgb(255, 4, 4); --inversion-type-color: simple;&apos;&gt;Some values with spaces TO *&lt;/font&gt;&lt;/b&gt;]))&amp;amp;rows=2&amp;amp;fq=_indexname:(xxxxxxx)&amp;amp;wt=xml&amp;amp;sort=xxxxxxx asc&lt;/div&gt;&lt;div style=&apos;margin-left: 40px;&apos;&gt;8156 12:44:41 ERROR Solr Error : [&apos;org.apache.solr.search.SyntaxError: Cannot parse ‘((xxxxxxxxx:(xxxx) AND _template:(xxxxxxxxxxxxxxxx)) AND ((-xxxxx:(xxxxxxx)&amp;nbsp;&amp;nbsp;*:*) AND somestringfield:[&lt;span style=&apos;font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;&apos;&gt;Some values with spaces TO *&lt;/span&gt;]))&apos;: Encountered &apos; &amp;lt;RANGE_GOOP&amp;gt; &apos;Tier &apos;&apos; at line 1, column 138.&lt;/div&gt;&lt;div style=&apos;margin-left: 40px;&apos;&gt;Was expecting:&lt;/div&gt;&lt;div style=&apos;margin-left: 40px;&apos;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&apos;TO&apos; ...&lt;/div&gt;&lt;div style=&apos;margin-left: 40px;&apos;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&apos;] - Query attempted: [((xxxxxxxx:(xxxx) AND _template:(xxxxx)) AND ((-xxxx:(xxxxx)&amp;nbsp;&amp;nbsp;*:*) AND somestringfield:[&lt;span style=&apos;font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;&apos;&gt;Some values with spaces TO *&lt;/span&gt;]))]&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Basically when value of&amp;nbsp;SomeValuesWithSpaces contains space, since Sitecore doesn’t wrap the value in double quotes while translating the &amp;nbsp;LINQ to Solr queries, it breaks the Solr query syntax.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;My solution is to manually wrap the&amp;nbsp;SomeValuesWithSpaces value with double quotes, it does resolve the issue however I am uncertain if this is the correct and most elegant solution. Will update if I found one, please let me know if you have one.&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2019/02/20/Missing-sxacontenttxm-in-Sitecore-SXA-Solr-Index-with-Commerce-Installed.html</id>

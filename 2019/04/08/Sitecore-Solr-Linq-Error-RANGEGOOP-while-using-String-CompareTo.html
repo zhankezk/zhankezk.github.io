@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0296752641130175",
+    enable_page_level_ads: true
+  });
+</script>
+	</head>
+
+	<body>
+	    <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQXXF7"
+					height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || []; w[l].push({
+					'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+				}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-TQXXF7');</script>
+		<!-- End Google Tag Manager -->
+		<script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"87fb325d-c796-4ef5-9497-fcef28dc8564"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
+		<div id="container">
+			<div id="side">
+				<div id="hometext"><a href="/" id="home" title="KB" alt="KB">KB</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+						<li><a href="https://mdyard.azurewebsites.net/">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo </h1>
+		<span class="postdate"> 8 April, 2019
+			
+		</span>
+		<div>Sitecore 9.0.2 with Solr setup, our code has custom ResultSearchItem model and is using Sitecore ContentSearch Linq query and one of the query is using string.CompareTo() method, something like below:</div><div><br /></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902);-en-codeblock:true;'><div><div>var query1 = PredicateBuilder.True&lt;ProductSearchResultItem&gt;();</div></div><div><div><br /></div></div><div><div>query1&nbsp;= query1.And(x =&gt; x.somestringfield.CompareTo(SomeValuesWithSpaces) &lt;= 0);</div><div><br /></div></div></div><div></div><div><br /></div><div>The query works sometimes and below errors starts to appear in the logs:</div><div><br /></div><div style='margin-left: 40px;'>8156 12:44:41 INFO&nbsp;&nbsp;Solr Query - ?q=((xxxxxxx:(xxxx) AND _template:(xxxxxxx)) AND ((-xxxxx:(xxxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<b><font style='color: rgb(255, 4, 4); --inversion-type-color: simple;'>Some values with spaces TO *</font></b>]))&amp;rows=2&amp;fq=_indexname:(xxxxxxx)&amp;wt=xml&amp;sort=xxxxxxx asc</div><div style='margin-left: 40px;'>8156 12:44:41 ERROR Solr Error : ['org.apache.solr.search.SyntaxError: Cannot parse ‘((xxxxxxxxx:(xxxx) AND _template:(xxxxxxxxxxxxxxxx)) AND ((-xxxxx:(xxxxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<span style='font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;'>Some values with spaces TO *</span>]))': Encountered ' &lt;RANGE_GOOP&gt; 'Tier '' at line 1, column 138.</div><div style='margin-left: 40px;'>Was expecting:</div><div style='margin-left: 40px;'>&nbsp;&nbsp;&nbsp;&nbsp;'TO' ...</div><div style='margin-left: 40px;'>&nbsp;&nbsp;&nbsp;&nbsp;'] - Query attempted: [((xxxxxxxx:(xxxx) AND _template:(xxxxx)) AND ((-xxxx:(xxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<span style='font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;'>Some values with spaces TO *</span>]))]</div><div><br /></div><div>Basically when value of&nbsp;SomeValuesWithSpaces contains space, since Sitecore doesn’t wrap the value in double quotes while translating the &nbsp;LINQ to Solr queries, it breaks the Solr query syntax.&nbsp;</div><div><br /></div><div>My solution is to manually wrap the&nbsp;SomeValuesWithSpaces value with double quotes, it does resolve the issue however I am uncertain if this is the correct and most elegant solution. Will update if I found one, please let me know if you have one.</div>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  <a href="/2019/02/20/Missing-sxacontenttxm-in-Sitecore-SXA-Solr-Index-with-Commerce-Installed.html" title="Previous Post: Missing sxacontent_txm in Sitecore SXA Solr Index with Commerce Installed">&larr; Missing sxacontent_txm in Sitecore SXA Solr Index with Commerce Installed</a>  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kezblog'; 
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="//disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</body>
+</html>
