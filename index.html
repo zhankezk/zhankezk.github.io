@@ -61,21 +61,6 @@
 		<li>
 			<div class="idea">
 				
-					<h2><a class="postlink" href="/2019/10/02/Some-TDS-issues-with-WebDeploy-packages.html">Some TDS issues with WebDeploy packages</a></h2>
-					<div class="postdate"> 2 October, 2019
-						<ul>
-						
-						</ul>
-					</div>
-					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div><div>The context is Sitecore 9.2 + SXA 1.9 + TDS 6.0.0.1() + YAML setup in both Sitecore and TDS</div><div><br/></div><div><br/></div><ul><li><div>&quot;Input is not a valid Base-64 string&quot; error while serializing SXA theme items</div></li></ul><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>1111 11:11:11 ERROR Deployment thread failed while deploying item &apos;/sitecore/media library/Themes/Tenant/Site/ThemeName/sass/component-carousel&apos;.</div><div>1111 11:11:11 ERROR Exception The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. (FormatException):</div><div>at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)</div><div>at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)</div><div>at System.Convert.FromBase64String(String s)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.SetField(Item sitecoreItem, Field fieldData)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.UpsertParsedItem(Database db, ISitecoreDeployInfo itemToDeploy)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.ProcessItemToDeploy(Database db, LoadOptions loadOptions, DeploySettingsModel deploySettings, ISitecoreDeployInfo itemToDeploy, Single progressPercent)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.ProcessItemDeployQueue()</div><div>1111 11:11:11 INFO Deployment thread terminated</div></div><div><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;</span></div><div><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span>This issue was identified in 6.0.0.1 and resolved in 6.0.0.6</div><div><br/></div><ul><li><div>&quot;The current item does not have a version in &quot;English:English&quot;.&quot; error while deploying using WebDeploy packages with&nbsp; <a target="_blank" href='http://sc.local/api/TDS/WebDeploy/Invoke' style='font-size: 11.0pt; font-family: &quot;Calibri&quot;,sans-serif; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;'>http://sc.local/api/TDS/WebDeploy/Invoke</a></div><div><span style='font-size: 11pt; font-family: Calibri;'>This error.</span></div></li></ul><div><span style='font-size: 11pt; font-family: Calibri;'><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp; &nbsp; This issue happens on Tenant and Site items, and can be seem from the TDS sync window in Visual Studio as well, bascially while comparing Tenant items, Shared Fields are empty and versioned item fields do not display after this section.</span><br/></span></div><div><span style='font-size: 11pt; font-family: Calibri;'><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp; &nbsp; This issue was identified in 6.0.0.1 and resolved in&nbsp; 6.0.0.7</span><br/></span></span></div><ul><li><div><span style='font-size: 11pt; font-family: Calibri;'>No bin folder or any project dlls in generated WebDeploy packages when outDir and/or&nbsp;</span><span style='font-size: 11pt; font-family: Calibri;'>OutputDirectory parameter is used with Source web project and Package bundling are setup in the solution.</span></div><div><font face='Calibri'><span style='font-size: 11pt;'>This issue is</span> <span style='font-size: 14.6667px;'>observed</span><span style='font-size: 11pt;'>&nbsp;in 6.0.0.1 and resolved in 6.0.0.8 and above</span></font></div></li></ul><div><span style='font-size: 11pt; font-family: Calibri;'><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><br/></span></span></div><div><br/></div></div>
-					<a href="/2019/10/02/Some-TDS-issues-with-WebDeploy-packages.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
-		<li>
-			<div class="idea">
-				
 					<h2><a class="postlink" href="/2019/09/20/Where-is-Site-Order-stored-in-Sitecore-SXA-Site-Manager-Powershell-tool.html">Where is Site Order stored in Sitecore SXA Site Manager Powershell tool</a></h2>
 					<div class="postdate">20 September, 2019
 						<ul>
@@ -118,14 +103,25 @@
 			</div>
 		</li>
     
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html">Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</a></h2>
+					<div class="postdate"> 9 April, 2019
+						<ul>
+						
+						</ul>
+					</div>
+					<div>If you noticed Sitecore user boost feature doesn’t work with your Sitecore 9.1 Initial Release with Identify server, request a patch from Sitecore support with the reference number:&nbsp;<span style='font-size: 13px; font-weight: bold;'>308082.</span></div><div><span style='font-size: 13px; font-weight: bold;'><br /></span></div><div><span style='font-size: 13px;'>Please make sure only to proceed for this particular Sitecore version. The patch contains only&nbsp;</span><span style='font-size: 13px;'>Sitecore.Owin.Authentication.dll and Sitecore.Owin.Authentication.config 2 files.</span></div><div><span style='font-size: 13px;'><br /></span></div><div><span style='font-size: 13px;'>Interestingly in the 9.1 Update 1 version that’s just released, didn’t see this reference number in Release Notes:&nbsp;</span><a target="_blank" href='https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes' style='font-size: 13px;'>https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes</a><span style='font-size: 13px;'>, maybe didn’t make it in time for QA.</span></div>
+					<a href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
-
-	<li>
-		<span class="olderpostdate"> 09 Apr </span> <a class="postlink" href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html">Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</a>
-	</li>
 
 	<li>
 		<span class="olderpostdate"> 08 Apr </span> <a class="postlink" href="/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html">Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</a>
