@@ -45,14 +45,44 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2019/09/20/Where-is-Site-Order-stored-in-Sitecore-SXA-Site-Manager-Powershell-tool.html">Where is Site Order stored in Sitecore SXA Site Manager Powershell tool</a></h1>
+					<h1><a href="/2019/10/31/Use-one-licensexml-for-all-local-Sitecore-instances-with-SymbolicLink.html">Use one license.xml for all local Sitecore instances with SymbolicLink</a></h1>
+					<div class="postdate">31 October, 2019
+						<ul>
+						
+						</ul>
+					</div>
+					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>It&apos;s common for us who work with Sitecore having multiple Sitecore instances locally.</div><div><br/></div><div>When the time comes that the license.xml expires and needs to be replaced, it&apos;s a bit of manual work to replace all the locations. There are PowerShell scripts to replace all at once but I wanted it to be even easier, so tried pointing all license.xml to one license.xml file using symlink which is supported by Windows.</div><div><br/></div><div>Saving below scripts into a PowerShell(ps1) file and executing should replace all license.xml files under c:\inetpub\wwwroot to link to the license.xml defined in the scripts. You can change the 2 parameters as well if required.</div><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>Param(</div><div>&nbsp;&nbsp;&nbsp;&nbsp;[string] $licenseFile = &quot;C:\ResourceFiles\license.xml&quot;,</div><div>&nbsp;&nbsp;&nbsp;&nbsp;[string] $websitesRoot = &quot;C:\inetpub\wwwroot&quot;</div><div>)</div><div>function make-link ($target, $link) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $link -ItemType SymbolicLink -Value $target</div><div>}</div><div>Set-Location $websitesRoot</div><div>Get-ChildItem -Filter license.xml -Recurse | Select FullName | ForEach-Object {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Processing &quot;$_.FullName</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Rename-Item -Path $_.FullName -NewName &quot;license.xml.bak&quot;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Rename to license.xml.bak&quot;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;make-link -target $licenseFile -link $_.FullName</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Link created&quot;</div><div>}</div></div><div><br/></div><div>Also make sure to run the script as an administrator and make sure the target license.xml is readable by all IIS apps.</div>
+					<br />
+					<a href="/2019/10/31/Use-one-licensexml-for-all-local-Sitecore-instances-with-SymbolicLink.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2019/10/02/Some-TDS-issues-with-WebDeploy-packages.html">Some TDS issues with WebDeploy packages</a></h2>
+					<div class="postdate"> 2 October, 2019
+						<ul>
+						
+						</ul>
+					</div>
+					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div><div>The context is Sitecore 9.2 + SXA 1.9 + TDS 6.0.0.1() + YAML setup in both Sitecore and TDS</div><div><br/></div><div><br/></div><ul><li><div>&quot;Input is not a valid Base-64 string&quot; error while serializing SXA theme items</div></li></ul><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>1111 11:11:11 ERROR Deployment thread failed while deploying item &apos;/sitecore/media library/Themes/Tenant/Site/ThemeName/sass/component-carousel&apos;.</div><div>1111 11:11:11 ERROR Exception The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. (FormatException):</div><div>at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)</div><div>at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)</div><div>at System.Convert.FromBase64String(String s)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.SetField(Item sitecoreItem, Field fieldData)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.UpsertParsedItem(Database db, ISitecoreDeployInfo itemToDeploy)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.ProcessItemToDeploy(Database db, LoadOptions loadOptions, DeploySettingsModel deploySettings, ISitecoreDeployInfo itemToDeploy, Single progressPercent)</div><div>at HedgehogDevelopment.SitecoreProject.WebDeployClient.Jobs.SitecoreItemInstaller.ProcessItemDeployQueue()</div><div>1111 11:11:11 INFO Deployment thread terminated</div></div><div><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;</span></div><div><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span>This issue was identified in 6.0.0.1 and resolved in 6.0.0.6</div><div><br/></div><ul><li><div>&quot;The current item does not have a version in &quot;English:English&quot;.&quot; error while deploying using WebDeploy packages with&nbsp; <a target="_blank" href='http://sc.local/api/TDS/WebDeploy/Invoke' style='font-size: 11.0pt; font-family: &quot;Calibri&quot;,sans-serif; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;'>http://sc.local/api/TDS/WebDeploy/Invoke</a></div><div><span style='font-size: 11pt; font-family: Calibri;'>This error.</span></div></li></ul><div><span style='font-size: 11pt; font-family: Calibri;'><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp; &nbsp; This issue happens on Tenant and Site items, and can be seem from the TDS sync window in Visual Studio as well, bascially while comparing Tenant items, Shared Fields are empty and versioned item fields do not display after this section.</span><br/></span></div><div><span style='font-size: 11pt; font-family: Calibri;'><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp; &nbsp; This issue was identified in 6.0.0.1 and resolved in&nbsp; 6.0.0.7</span><br/></span></span></div><ul><li><div><span style='font-size: 11pt; font-family: Calibri;'>No bin folder or any project dlls in generated WebDeploy packages when outDir and/or&nbsp;</span><span style='font-size: 11pt; font-family: Calibri;'>OutputDirectory parameter is used with Source web project and Package bundling are setup in the solution.</span></div><div><font face='Calibri'><span style='font-size: 11pt;'>This issue is</span> <span style='font-size: 14.6667px;'>observed</span><span style='font-size: 11pt;'>&nbsp;in 6.0.0.1 and resolved in 6.0.0.8 and above</span></font></div></li></ul><div><span style='font-size: 11pt; font-family: Calibri;'><span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span><br/></span></span></div><div><br/></div></div>
+					<a href="/2019/10/02/Some-TDS-issues-with-WebDeploy-packages.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2019/09/20/Where-is-Site-Order-stored-in-Sitecore-SXA-Site-Manager-Powershell-tool.html">Where is Site Order stored in Sitecore SXA Site Manager Powershell tool</a></h2>
 					<div class="postdate">20 September, 2019
 						<ul>
 						
 						</ul>
 					</div>
 					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>Just being curious.</div><div><br/></div><div>It&apos;s the Order filed of</div><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>/sitecore/system/Settings/Foundation/Experience Accelerator/Multisite/Management/Sites</div></div><div><br/></div>
-					<br />
 					<a href="/2019/09/20/Where-is-Site-Order-stored-in-Sitecore-SXA-Site-Manager-Powershell-tool.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -88,40 +118,18 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html">Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</a></h2>
-					<div class="postdate"> 9 April, 2019
-						<ul>
-						
-						</ul>
-					</div>
-					<div>If you noticed Sitecore user boost feature doesn’t work with your Sitecore 9.1 Initial Release with Identify server, request a patch from Sitecore support with the reference number:&nbsp;<span style='font-size: 13px; font-weight: bold;'>308082.</span></div><div><span style='font-size: 13px; font-weight: bold;'><br /></span></div><div><span style='font-size: 13px;'>Please make sure only to proceed for this particular Sitecore version. The patch contains only&nbsp;</span><span style='font-size: 13px;'>Sitecore.Owin.Authentication.dll and Sitecore.Owin.Authentication.config 2 files.</span></div><div><span style='font-size: 13px;'><br /></span></div><div><span style='font-size: 13px;'>Interestingly in the 9.1 Update 1 version that’s just released, didn’t see this reference number in Release Notes:&nbsp;</span><a target="_blank" href='https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes' style='font-size: 13px;'>https://dev.sitecore.net/Downloads/Sitecore%20Experience%20Platform/91/Sitecore%20Experience%20Platform%2091%20Update1/Release%20Notes</a><span style='font-size: 13px;'>, maybe didn’t make it in time for QA.</span></div>
-					<a href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html">Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</a></h2>
-					<div class="postdate"> 8 April, 2019
-						<ul>
-						
-						</ul>
-					</div>
-					<div>Sitecore 9.0.2 with Solr setup, our code has custom ResultSearchItem model and is using Sitecore ContentSearch Linq query and one of the query is using string.CompareTo() method, something like below:</div><div><br /></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.14902);-en-codeblock:true;'><div><div>var query1 = PredicateBuilder.True&lt;ProductSearchResultItem&gt;();</div></div><div><div><br /></div></div><div><div>query1&nbsp;= query1.And(x =&gt; x.somestringfield.CompareTo(SomeValuesWithSpaces) &lt;= 0);</div><div><br /></div></div></div><div></div><div><br /></div><div>The query works sometimes and below errors starts to appear in the logs:</div><div><br /></div><div style='margin-left: 40px;'>8156 12:44:41 INFO&nbsp;&nbsp;Solr Query - ?q=((xxxxxxx:(xxxx) AND _template:(xxxxxxx)) AND ((-xxxxx:(xxxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<b><font style='color: rgb(255, 4, 4); --inversion-type-color: simple;'>Some values with spaces TO *</font></b>]))&amp;rows=2&amp;fq=_indexname:(xxxxxxx)&amp;wt=xml&amp;sort=xxxxxxx asc</div><div style='margin-left: 40px;'>8156 12:44:41 ERROR Solr Error : ['org.apache.solr.search.SyntaxError: Cannot parse ‘((xxxxxxxxx:(xxxx) AND _template:(xxxxxxxxxxxxxxxx)) AND ((-xxxxx:(xxxxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<span style='font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;'>Some values with spaces TO *</span>]))': Encountered ' &lt;RANGE_GOOP&gt; 'Tier '' at line 1, column 138.</div><div style='margin-left: 40px;'>Was expecting:</div><div style='margin-left: 40px;'>&nbsp;&nbsp;&nbsp;&nbsp;'TO' ...</div><div style='margin-left: 40px;'>&nbsp;&nbsp;&nbsp;&nbsp;'] - Query attempted: [((xxxxxxxx:(xxxx) AND _template:(xxxxx)) AND ((-xxxx:(xxxxx)&nbsp;&nbsp;*:*) AND somestringfield:[<span style='font-weight: bold; color: rgb(255, 4, 4); --inversion-type-color:  simple;'>Some values with spaces TO *</span>]))]</div><div><br /></div><div>Basically when value of&nbsp;SomeValuesWithSpaces contains space, since Sitecore doesn’t wrap the value in double quotes while translating the &nbsp;LINQ to Solr queries, it breaks the Solr query syntax.&nbsp;</div><div><br /></div><div>My solution is to manually wrap the&nbsp;SomeValuesWithSpaces value with double quotes, it does resolve the issue however I am uncertain if this is the correct and most elegant solution. Will update if I found one, please let me know if you have one.</div>
-					<a href="/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 09 Apr </span> <a class="postlink" href="/2019/04/09/Sitecore-91-Initial-Release-with-Identify-Server-User-Boost-Feature-Patch.html">Sitecore 9.1 Initial Release with Identify Server User Boost Feature Patch</a>
+	</li>
+
+	<li>
+		<span class="olderpostdate"> 08 Apr </span> <a class="postlink" href="/2019/04/08/Sitecore-Solr-Linq-Error-RANGEGOOP-while-using-String-CompareTo.html">Sitecore Solr Linq Error RANGE_GOOP while using String CompareTo</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 20 Feb </span> <a class="postlink" href="/2019/02/20/Missing-sxacontenttxm-in-Sitecore-SXA-Solr-Index-with-Commerce-Installed.html">Missing sxacontent_txm in Sitecore SXA Solr Index with Commerce Installed</a>
