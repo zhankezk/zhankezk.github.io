@@ -6,7 +6,7 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Use one license.xml for all local Sitecore instances with SymbolicLink</title>
+		<title>Sitecore Helix Documentation version 2 in ePub format</title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -42,16 +42,16 @@
 			<div id="content">
 				<div class="entry-container">
 	<div class='entry'>
-		<h1> Use one license.xml for all local Sitecore instances with SymbolicLink </h1>
-		<span class="postdate">31 October, 2019
+		<h1> Sitecore Helix Documentation version 2 in ePub format </h1>
+		<span class="postdate">17 February, 2020
 			
 		</span>
-		<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>It&apos;s common for us who work with Sitecore having multiple Sitecore instances locally.</div><div><br/></div><div>When the time comes that the license.xml expires and needs to be replaced, it&apos;s a bit of manual work to replace all the locations. There are PowerShell scripts to replace all at once but I wanted it to be even easier, so tried pointing all license.xml to one license.xml file using symlink which is supported by Windows.</div><div><br/></div><div>Saving below scripts into a PowerShell(ps1) file and executing should replace all license.xml files under c:\inetpub\wwwroot to link to the license.xml defined in the scripts. You can change the 2 parameters as well if required.</div><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>Param(</div><div>&nbsp;&nbsp;&nbsp;&nbsp;[string] $licenseFile = &quot;C:\ResourceFiles\license.xml&quot;,</div><div>&nbsp;&nbsp;&nbsp;&nbsp;[string] $websitesRoot = &quot;C:\inetpub\wwwroot&quot;</div><div>)</div><div>function make-link ($target, $link) {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;New-Item -Path $link -ItemType SymbolicLink -Value $target</div><div>}</div><div>Set-Location $websitesRoot</div><div>Get-ChildItem -Filter license.xml -Recurse | Select FullName | ForEach-Object {</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Processing &quot;$_.FullName</div><div>&nbsp;&nbsp;&nbsp;&nbsp;Rename-Item -Path $_.FullName -NewName &quot;license.xml.bak&quot;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Rename to license.xml.bak&quot;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;make-link -target $licenseFile -link $_.FullName</div><div>&nbsp;&nbsp;&nbsp;&nbsp;#Write-Host &quot;Link created&quot;</div><div>}</div></div><div><br/></div><div>Also make sure to run the script as an administrator and make sure the target license.xml is readable by all IIS apps.</div>
+		<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>If you don&apos;t know about Helix yet but you have been working with Sitecore, you should deinifetly have a look. And for others who have been enjoying the better world brought by Helix, Helix 2.0 was out in case you haven&apos;t heard.</div><div><br/></div><div>And here is a copy of it in ePub format so you can download it and use your fav book reading app to learn all of it in style (Comparing to using browsers...):</div><div><br/></div><div><a target="_blank" href='https://storage.kezhan.info/share/SitecoreHelix.epub'>Siteocre Helix 2.0.epub</a></div><div><br/></div><div>This version is exact copy of release v2.0.0:&nbsp; <a target="_blank" href='https://github.com/Sitecore/Helix.Docs/releases/tag/v2.0.0'>https://github.com/Sitecore/Helix.Docs/releases/tag/v2.0.0</a>&nbsp;btw</div><div><br/></div>
 	</div>
 </div>
 <div id="page-navigation"> 
-	<div class="left">  <a href="/2019/09/20/Where-is-Site-Order-stored-in-Sitecore-SXA-Site-Manager-Powershell-tool.html" title="Previous Post: Where is Site Order stored in Sitecore SXA Site Manager Powershell tool">&larr; Where is Site Order stored in Sitecore SXA Site Manager Powershell tool</a>  </div> 
-	<div class="right">  <a href="/2020/02/17/Sitecore-Helix-Documentation-version-2-in-ePub-format.html" title="next Post: Sitecore Helix Documentation version 2 in ePub format">Sitecore Helix Documentation version 2 in ePub format &rarr; </a>  </div> 
+	<div class="left">  <a href="/2019/10/31/Use-one-licensexml-for-all-local-Sitecore-instances-with-SymbolicLink.html" title="Previous Post: Use one license.xml for all local Sitecore instances with SymbolicLink">&larr; Use one license.xml for all local Sitecore instances with SymbolicLink</a>  </div> 
+	<div class="right">  </div> 
 	<div class="clear">&nbsp;</div>
 </div> 
 

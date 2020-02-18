@@ -3,7 +3,7 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2020-02-18T01:48:58.6557024+00:00</updated>
+  <updated>2020-02-18T02:01:44.6163497+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
@@ -12,9 +12,9 @@
 
   
   <entry>
-    <id>http://kezhan.info/2020/02/17/Sitecore-Helix-Documentation-in-ePub-format.html</id>
-    <link type="text/html" rel="alternate" href="http://kezhan.info/2020/02/17/Sitecore-Helix-Documentation-in-ePub-format.html"/>
-    <title>Sitecore Helix Documentation in ePub format</title>
+    <id>http://kezhan.info/2020/02/17/Sitecore-Helix-Documentation-version-2-in-ePub-format.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2020/02/17/Sitecore-Helix-Documentation-version-2-in-ePub-format.html"/>
+    <title>Sitecore Helix Documentation version 2 in ePub format</title>
     <updated>2020-02-17T00:00:00+00:00</updated>
     <author>
       <name>Ke</name>
