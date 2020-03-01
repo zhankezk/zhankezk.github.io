@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2020-02-18T10:37:44.4106584+00:00</updated>
+  <updated>2020-03-01T13:41:36.6016644+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2020/03/01/Sitecore-Patch-Finder.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2020/03/01/Sitecore-Patch-Finder.html"/>
+    <title>Sitecore Patch Finder</title>
+    <updated>2020-03-01T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;I built this little website long time ago to search through the Sitecore Support Github (&lt;a target=&quot;_blank&quot; href=&apos;https://github.com/SitecoreSupport&apos; style=&apos;box-sizing: border-box; background-color: rgb(255, 255, 255); color: rgb(35, 82, 124); outline: -webkit-focus-ring-color auto 5px; outline-offset: -2px; font-family: &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: underline;&apos;&gt;https://github.com/SitecoreSupport&lt;/a&gt;) repos to find bugs, patches and hot fixes. Only shared it with a few people but recently saw another similar website was released for exactly the same purpose but mine is much better.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;So I did some polishing and released mine on&amp;nbsp;&lt;a target=&quot;_blank&quot; href=&apos;http://sitecorepatchfinder.com/&apos;&gt;http://sitecorepatchfinder.com/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;It run daily and convert all the patches in Sitecore Support repos into Azure Cognitive Search and the website just basically use search on top of the indexes.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Still polishing here and there but I guess use if you need it.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;And always, contact Sitecore Support before you apply any patches!&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2020/02/17/Sitecore-Helix-Documentation-version-2-in-ePub-format.html</id>
