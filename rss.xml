@@ -6,8 +6,17 @@
     <atom:link href="http://kezhan.info/rss.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-au</language>
-    <pubDate>Thu, 02 Apr 2020 05:29:37 %z</pubDate>
-    <lastBuildDate>Thu, 02 Apr 2020 05:29:37 %z</lastBuildDate>
+    <pubDate>Sat, 04 Apr 2020 09:15:25 %z</pubDate>
+    <lastBuildDate>Sat, 04 Apr 2020 09:15:25 %z</lastBuildDate>
+    
+    <item>
+      <title>Azure DevOps - Cloud Warmup for Sitecore</title>
+      <link>http://kezhan.info/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 %z</pubDate>
+      <author>Ke</author>
+      <guid>http://kezhan.info/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html</guid>
+      <description>&lt;div&gt;An Azure DevOps extension which provides a custom pipeline deploy task that warms up Sitecore websites.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;More details to add.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;Based on request timeout, total retry, wait between retry and total timeout. Ensure successes from below&lt;/div&gt;&lt;/li&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;Website root url returns 200&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;li&gt;&lt;div&gt;&apos;App_Data/Transforms&apos; folder is empty via Kudu APIs (Which means Bootloader instalaltions are finished if there is any)&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;/ol&gt;&lt;li&gt;&lt;div&gt;When above are all passed, ensure that following files are removed in Web App&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;&apos;App_Data/maintance.lock”&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;li&gt;&lt;div&gt;&apos;app_offline.htm&apos;&lt;/div&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/ol&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Sitecore Patch Finder</title>

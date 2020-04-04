@@ -45,14 +45,29 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2020/03/01/Sitecore-Patch-Finder.html">Sitecore Patch Finder</a></h1>
+					<h1><a href="/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html">Azure DevOps - Cloud Warmup for Sitecore</a></h1>
+					<div class="postdate"> 4 April, 2020
+						<ul>
+						
+						</ul>
+					</div>
+					<div>An Azure DevOps extension which provides a custom pipeline deploy task that warms up Sitecore websites.</div><div><br /></div><div>More details to add.</div><div><br /></div><ol><li><div>Based on request timeout, total retry, wait between retry and total timeout. Ensure successes from below</div></li><ol><li><div>Website root url returns 200&nbsp;</div></li><li><div>'App_Data/Transforms' folder is empty via Kudu APIs (Which means Bootloader instalaltions are finished if there is any)&nbsp;</div></li></ol><li><div>When above are all passed, ensure that following files are removed in Web App&nbsp;</div></li><ol><li><div>'App_Data/maintance.lock”&nbsp;</div></li><li><div>'app_offline.htm'</div></li></ol></ol><div><br /></div>
+					<br />
+					<a href="/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html#disqus_thread">Comments</a>
+				
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
+				
+					<h2><a class="postlink" href="/2020/03/01/Sitecore-Patch-Finder.html">Sitecore Patch Finder</a></h2>
 					<div class="postdate"> 1 March, 2020
 						<ul>
 						
 						</ul>
 					</div>
 					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>I built this little website long time ago to search through the Sitecore Support Github (<a target="_blank" href='https://github.com/SitecoreSupport'>https://github.com/SitecoreSupport</a>) repos to find bugs, patches and hot fixes. Only shared it with a few people but recently saw another similar website was released for exactly the same purpose but mine is much better.</div><div><br/></div><div>So I did some polishing and released mine on&nbsp;<a target="_blank" href='http://sitecorepatchfinder.com/'>http://sitecorepatchfinder.com/</a></div><div><br/></div><div>It run daily and convert all the patches in Sitecore Support repos into Azure Cognitive Search and the website just basically use search on top of the indexes.</div><div><br/></div><div>Still polishing here and there but I guess use if you need it.&nbsp;</div><div><br/></div><div>And always, contact Sitecore Support before you apply any patches!</div>
-					<br />
 					<a href="/2020/03/01/Sitecore-Patch-Finder.html#disqus_thread">Comments</a>
 				
 			</div>
@@ -103,25 +118,14 @@
 			</div>
 		</li>
     
-		<li>
-			<div class="idea">
-				
-					<h2><a class="postlink" href="/2019/09/11/Model-Rendering-Variant-doesnt-work-with-custom-Sitecore-SXA-rendering.html">Model Rendering Variant doesnt work with custom Sitecore SXA rendering</a></h2>
-					<div class="postdate">11 September, 2019
-						<ul>
-						
-						</ul>
-					</div>
-					<?xml version='1.0' encoding='UTF-8'?>  <!DOCTYPE body SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>    <body><div>When you created a very simple Sitecore SXA rendering that supports Rendering Variants following Sitecore Documentation (<a target="_blank" href='https://doc.sitecore.com/developers/sxa/19/sitecore-experience-accelerator/en/build-a-rendering-that-includes-variants.html#UUID-db7bd5f9-8aa9-c04f-cc0d-478a4f913450_id__View'>https://doc.sitecore.com/developers/sxa/19/sitecore-experience-accelerator/en/build-a-rendering-that-includes-variants.html#UUID-db7bd5f9-8aa9-c04f-cc0d-478a4f913450_id__View</a>) but when you use &quot;Model&quot; variant while creating a new rendering variant, regardless what you set in &apos;Property Path&quot; field, even with just &quot;Item.Paths.Path&quot;, it doesn&apos;t work and no html or any value is generated.&nbsp;</div><div><br/></div><div>Double check your cshtml and the line where&nbsp;@Html.RenderingVariants().RenderVariant is being called:</div><div><br/></div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>@using Sitecore.Extensions</div><div>@using Sitecore.XA.Foundation.MarkupDecorator.Extensions</div><div>@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions</div><div>@using Sitecore.XA.Foundation.RenderingVariants.Extensions</div><div>@using Sitecore.XA.Foundation.RenderingVariants.Fields</div><div>@using Sitecore.XA.Foundation.Variants.Abstractions.Fields</div><div>@model PageTitle.Models.PageTitleModel</div><div>&lt;div @Html.Sxa().Component(&quot;page-title&quot;, Model.Attributes)&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;component-content&quot;&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;@Model.CustomProperty&lt;/h1&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@foreach (BaseVariantField variantField in Model.VariantFields)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>@Html.RenderingVariants().RenderVariant(variantField, Model.Item, Model.RenderingWebEditingParams)</b></div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div><div>&lt;/div&gt;</div></div><div><br/></div><div>It needs to be &quot;@Html.RenderingVariants().RenderVariant(variantField, Model.Item, Model.RenderingWebEditingParams, <b>Model</b>)&quot; for the &quot;Model&quot; variant to work. After your change, the csthml should look like this:</div><div style='box-sizing: border-box; padding: 8px; font-family: Monaco, Menlo, Consolas, &quot;Courier New&quot;, monospace; font-size: 12px; color: rgb(51, 51, 51); border-radius: 4px; background-color: rgb(251, 250, 248); border: 1px solid rgba(0, 0, 0, 0.15);-en-codeblock:true;'><div>@using Sitecore.Extensions</div><div>@using Sitecore.XA.Foundation.MarkupDecorator.Extensions</div><div>@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions</div><div>@using Sitecore.XA.Foundation.RenderingVariants.Extensions</div><div>@using Sitecore.XA.Foundation.RenderingVariants.Fields</div><div>@using Sitecore.XA.Foundation.Variants.Abstractions.Fields</div><div>@model PageTitle.Models.PageTitleModel</div><div>&lt;div @Html.Sxa().Component(&quot;page-title&quot;, Model.Attributes)&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;component-content&quot;&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;@Model.CustomProperty&lt;/h1&gt;</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@foreach (BaseVariantField variantField in Model.VariantFields)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.RenderingVariants().RenderVariant(variantField, Model.Item, Model.RenderingWebEditingParams, <b>Model</b>)</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div><div>&lt;/div&gt;</div></div><div><br/></div><div>The reason is the &quot;Model&quot; argument is being used directly by the reflection method to find the values of the property that&apos;s defined, if that&apos;s not passed in, then no value can be retrieved.</div><div><br/></div><div>A lot of articles online uses the same code just like on Sitecore Documentation site, hopefully this helps you if you are scratching your head trying to figure out why this doesn&apos;t work.</div>
-					<a href="/2019/09/11/Model-Rendering-Variant-doesnt-work-with-custom-Sitecore-SXA-rendering.html#disqus_thread">Comments</a>
-				
-			</div>
-		</li>
-    
 </ul>
 
 <h3>OLDER</h3>
 <ul class="postArchive">
+
+	<li>
+		<span class="olderpostdate"> 11 Sep </span> <a class="postlink" href="/2019/09/11/Model-Rendering-Variant-doesnt-work-with-custom-Sitecore-SXA-rendering.html">Model Rendering Variant doesnt work with custom Sitecore SXA rendering</a>
+	</li>
 
 	<li>
 		<span class="olderpostdate"> 28 Apr </span> <a class="postlink" href="/2019/04/28/Common-Causes-and-Troubleshooting-Sitecore-App-Restarts-on-Azure-Web-App-Services.html">Common Causes and Troubleshooting Sitecore App Restarts on Azure Web App Services</a>

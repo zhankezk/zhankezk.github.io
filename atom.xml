@@ -3,13 +3,25 @@
   <title>Kb Feed</title>
   <link href="http://kezhan.info/"/>
   <link type="application/atom+xml" rel="self" href="http://kezhan.info/atom.xml"/>
-  <updated>2020-04-02T05:29:37.1417311+00:00</updated>
+  <updated>2020-04-04T09:15:25.2094062+00:00</updated>
   <id>http://kezhan.info/</id>
   <author>
     <name>Ke</name>
     <email>Nope</email>
   </author>
 
+  
+  <entry>
+    <id>http://kezhan.info/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html</id>
+    <link type="text/html" rel="alternate" href="http://kezhan.info/2020/04/04/Azure-DevOps---Cloud-Warmup-for-Sitecore.html"/>
+    <title>Azure DevOps - Cloud Warmup for Sitecore</title>
+    <updated>2020-04-04T00:00:00+00:00</updated>
+    <author>
+      <name>Ke</name>
+      <uri>http://kezhan.info/</uri>
+    </author>
+    <content type="html">&lt;div&gt;An Azure DevOps extension which provides a custom pipeline deploy task that warms up Sitecore websites.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;More details to add.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;Based on request timeout, total retry, wait between retry and total timeout. Ensure successes from below&lt;/div&gt;&lt;/li&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;Website root url returns 200&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;li&gt;&lt;div&gt;&apos;App_Data/Transforms&apos; folder is empty via Kudu APIs (Which means Bootloader instalaltions are finished if there is any)&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;/ol&gt;&lt;li&gt;&lt;div&gt;When above are all passed, ensure that following files are removed in Web App&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;ol&gt;&lt;li&gt;&lt;div&gt;&apos;App_Data/maintance.lock”&amp;nbsp;&lt;/div&gt;&lt;/li&gt;&lt;li&gt;&lt;div&gt;&apos;app_offline.htm&apos;&lt;/div&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/ol&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;</content>
+  </entry>
   
   <entry>
     <id>http://kezhan.info/2020/03/01/Sitecore-Patch-Finder.html</id>
